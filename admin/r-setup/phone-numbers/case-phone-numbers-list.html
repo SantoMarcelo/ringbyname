@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>Case - Phone Numbers List</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Case - Phone Numbers List</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.setup&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=i.icon-fontello-phonenumber</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>12094002837</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[7]/div/div</td>
+	<td>exact:Menu: Menu 1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[7]/div</td>
+	<td>12395806997</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[7]/div[2]/div</td>
+	<td>exact:Menu: Menu 1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[3]/section/article/div</td>
+	<td>12092573583</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[3]/section/article/div/div</td>
+	<td>Dev QC1 User</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[3]/section/article[7]/div</td>
+	<td>12399632886</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[3]/section/article[7]/div[2]/div</td>
+	<td>Dev QC9 User</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[5]/section/article/div</td>
+	<td>12132826679</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[5]/section/article/div[2]/div</td>
+	<td>devqc.user1@ringbyname.com</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[5]/section/article[7]/div</td>
+	<td>13054347067</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[5]/section/article[7]/div[2]/div</td>
+	<td>devqc.user1@ringbyname.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>1209</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=form.search&gt;button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>12094002837</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[2]/div</td>
+	<td>12092573699</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[3]/section/article/div</td>
+	<td>12092573583</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[3]/section/article[2]/div</td>
+	<td>12092573701</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=form.search&gt;button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>1305901</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=form.search&gt;button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[5]/section/article/div</td>
+	<td>13059013208</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=form.search&gt;button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/div/p/span[2]/select</td>
+	<td>label=5</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[5]/div</td>
+	<td>12393075614</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[2]/div</td>
+	<td>12395806997</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[4]/div/p/span[2]/select</td>
+	<td>label=5</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[3]/section/article[5]/div</td>
+	<td>12399633665</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'2')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[3]/section/article/div</td>
+	<td>12399633071</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[6]/div/p/span[2]/select</td>
+	<td>label=5</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[5]/section/article[5]/div</td>
+	<td>13054347083</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'2')])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[5]/section/article[2]/div</td>
+	<td>13054347067</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[6]/div/p/span[2]/select</td>
+	<td>label=10</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[4]/div/p/span[2]/select</td>
+	<td>label=10</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/div/p/span[2]/select</td>
+	<td>label=10</td>
+</tr>
+</tbody></table>
+</body>
+</html>

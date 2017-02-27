@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>Case - Department Update - Valida Data</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Case - Department Update - Valida Data</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Department 1</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;users0&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;users7&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;callStrategy1&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;checkboxTimeOfDayAllDay&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[5]/div[2]/div[2]/span/select</td>
+	<td>Department 1</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>12345</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[5]/div[5]/div[2]/span/select</td>
+	<td>America/New_York</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;radioGreetingAuto&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;checkboxCallbackRequest&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Department 100</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=users0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=users7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxTimeOfDayCustom</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.set-custom-hours.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@data-ng-click=&quot;setTime($event, businessHours.custom, 'monday')&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='time']</td>
+	<td>09:00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='time'])[2]</td>
+	<td>11:00</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxOpen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='button']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//select</td>
+	<td>label=America/New_York</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>00345</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=radioGreetingText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>CHANGED</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[5]/div[8]/div[2]/span/select</td>
+	<td>label=English</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxCallbackRequest</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/p/i</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>Department 100</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.checkbox.check-complete &gt; label.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>id=users0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>id=users7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;checkboxTimeOfDayCustom&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.set-custom-hours.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=exact:09:00 AM to 11:00 AM</td>
+	<td>exact:09:00 AM to 11:00 AM</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//a[contains(text(),'09:00 AM to 11:00 AM')])[7]</td>
+	<td>exact:09:00 AM to 11:00 AM</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//select</td>
+	<td>America/New_York</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=x</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>00345</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;radioGreetingText&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>//input[@id=&quot;checkboxCallbackRequest&quot;]</td>
+	<td>Request call back option</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>CHANGED</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Department 1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=users0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=users7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxTimeOfDayAllDay</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>12345</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=radioGreetingAuto</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxCallbackRequest</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=callStrategy2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.set-ring-times-order.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.set-ring-times-order.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@class=&quot;button is-primary button-save ng-binding&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=callStrategy1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

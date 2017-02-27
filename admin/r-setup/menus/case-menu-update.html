@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>Case - Menu Update - Valid Data</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Case - Menu Update - Valid Data</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[6]/div/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Menu 10</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/div[2]/span/select</td>
+	<td>label=Dev QC1 User</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[3]/div[2]/span/select</td>
+	<td>label=Dev QC2 User</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[2]/span/select</td>
+	<td>label=Dev QC3 User</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[5]/div[2]/span/select</td>
+	<td>label=Dev QC4 User</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxOperatorDial</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxOperator</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[11]/div/span/select</td>
+	<td>label=Dev QC1 User</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=radioGreetingText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>Press 1 for sales, 2 for technical support00</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/p/i</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[6]/div/div</td>
+	<td>Menu 10</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[6]/div/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Menu 10</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/div[2]/span/select</td>
+	<td>Dev QC1 User</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[3]/div[2]/span/select</td>
+	<td>Dev QC2 User</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[2]/span/select</td>
+	<td>Dev QC3 User</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[5]/div[2]/span/select</td>
+	<td>Dev QC4 User</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;checkboxOperatorDial&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;checkboxOperator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[11]/div/span/select</td>
+	<td>Dev QC1 User</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;radioGreetingText&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>Press 1 for sales, 2 for technical support00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Menu 1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/div[2]/span/select</td>
+	<td>label=Department 1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[3]/div[2]/span/select</td>
+	<td>label=Department 2</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[2]/span/select</td>
+	<td>label=Department 3</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[5]/div[2]/span/select</td>
+	<td>label=Department 4</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxOperator</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=radioGreetingAuto</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>Press 1 for sales, 2 for technical support</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/p/i</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[6]/div/div</td>
+	<td>Menu 1</td>
+</tr>
+</tbody></table>
+</body>
+</html>

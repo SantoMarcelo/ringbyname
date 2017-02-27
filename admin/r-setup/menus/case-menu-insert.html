@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>Case - Menu Insert - Valid Data</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Case - Menu Insert - Valid Data</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.setup.menu.add&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Menu TO BE ERASED</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/div/span/select</td>
+	<td>label=1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/div[2]/span/select</td>
+	<td>label=Department 1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@data-ng-click=&quot;SetupMenuDetailsController.addOption($event, SetupMenuDetailsController.record)&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[3]/div/span/select</td>
+	<td>label=2</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[3]/div[2]/span/select</td>
+	<td>label=Dev QC1 User</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@data-ng-click=&quot;SetupMenuDetailsController.addOption($event, SetupMenuDetailsController.record)&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div/span/select</td>
+	<td>label=3</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[2]/span/select</td>
+	<td>label=Department 4</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxOperator</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[8]/div/span/select</td>
+	<td>label=Dev QC5 User</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[3]/div[2]/div[2]/span/select</td>
+	<td>label=English</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@data-ng-click=&quot;SetupMenuDetailsController.addOption($event, SetupMenuDetailsController.record)&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[5]/div/span/select</td>
+	<td>label=4</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[5]/div[2]/span/select</td>
+	<td>label=Department 6</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[3]/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div/span/select</td>
+	<td>label=3</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[7]/div/div</td>
+	<td>Menu TO BE ERASED</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[7]/div/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Menu TO BE ERASED</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/div[2]/span/select</td>
+	<td>Department 1</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[3]/div[2]/span/select</td>
+	<td>Dev QC1 User</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[2]/span/select</td>
+	<td>Department 6</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/div/span/select</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[3]/div/span/select</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div/span/select</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;checkboxOperator&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[8]/div/span/select</td>
+	<td>Dev QC5 User</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;radioGreetingAuto&quot;]</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
