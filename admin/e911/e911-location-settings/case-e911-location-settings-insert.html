@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>case-e911-location-settings-insert</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case-e911-location-settings-insert</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.e911.location-settings&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.e911.location-settings.add&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Test Location TO BE ERASED</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td>NW 31ST ST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>7209</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section/div[4]/div[2]/span/select</td>
+	<td>label=Room</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>MIAMI</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[7]</td>
+	<td>FL</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[8]</td>
+	<td>33122</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section/div[9]/div[2]/span/select</td>
+	<td>label=United States</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkbox-13054347067</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkbox-13059013208</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/span/select</td>
+	<td>label=13054347067</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/p/i</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.name.ng-binding</td>
+	<td>Test Location TO BE ERASED</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/section/article/div[2]</td>
+	<td>7209 NW 31ST ST MIAMI FL US</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/section/article/div[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Test Location TO BE ERASED</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>7209</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td>NW 31ST ST</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section/div[4]/div[2]/span/select</td>
+	<td>Room</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>MIAMI</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[7]</td>
+	<td>FL</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[8]</td>
+	<td>33122</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section/div[9]/div[2]/span/select</td>
+	<td>United States</td>
+</tr>
+<tr>
+	<td>assertCssCount</td>
+	<td>css=input#checkbox-13059013208[disabled='disabled']</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertCssCount</td>
+	<td>css=input#checkbox-13054347067[disabled='disabled']</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/span/select</td>
+	<td>13054347067</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>TO BE ERASED</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=form.search&gt;button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.name.ng-binding</td>
+	<td>Test Location TO BE ERASED</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/section/article/div[2]</td>
+	<td>7209 NW 31ST ST MIAMI FL US</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=form.search&gt;button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.e911.location-settings.overseas&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkbox-13054347067</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkbox-13059013208</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>8000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.e911.general-settings&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.e911.location-settings&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.name.ng-binding</td>
+	<td>Dev QC Comp 3</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/section/article/div[2]</td>
+	<td>7206 NW 31ST ST MIAMI FL US</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
