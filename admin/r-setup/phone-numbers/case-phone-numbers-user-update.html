@@ -37,6 +37,76 @@
 	<td>CHANGED</td>
 </tr>
 <tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[2]/span/select</td>
+	<td>label=Spanish</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/p/i</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[3]/section/article/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>CNAM QC U 100</td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>//input[@id=&quot;checkboxGreetingByName&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id=&quot;radioGreetingText&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>CHANGED</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[2]/span/select</td>
+	<td>Spanish</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>CNAM QC U 1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[2]/span/select</td>
+	<td>label=English</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=radioGreetingAuto</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxGreetingByName</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>xpath=(//button[@type='submit'])[2]</td>
 	<td></td>
@@ -57,21 +127,30 @@
 	<td>CNAM QC U 1</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
-	<td>//input[@id=&quot;checkboxGreetingByName&quot;]</td>
+	<td>assertChecked</td>
+	<td>id=radioGreetingAuto</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertChecked</td>
-	<td>//input[@id=&quot;radioGreetingText&quot;]</td>
+	<td>//input[@id=&quot;checkboxGreetingByName&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertValue</td>
 	<td>xpath=(//input[@type='text'])[3]</td>
-	<td>CHANGED</td>
+	<td></td>
 </tr>
-
+<tr>
+	<td>click</td>
+	<td>id=radioGreetingText</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[4]/div[2]/span/select</td>
+	<td>English</td>
+</tr>
 </tbody></table>
 </body>
 </html>
