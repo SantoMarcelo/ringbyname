@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>case-active-announcement-list</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case-active-announcement-list</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.announcement-center&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>Announcement 2</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=form.search&gt;button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.name.ng-binding</td>
+	<td>ENABLED Announcement 2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div[2]</td>
+	<td>ENABLED Announcement Content 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=form.search&gt;button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/div/p/span[2]/select</td>
+	<td>label=5</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.name.ng-binding</td>
+	<td>ENABLED Announcement 4</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div[2]</td>
+	<td>ENABLED Announcement Content 4</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[5]/div/span</td>
+	<td>ENABLED Announcement 3</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article[5]/div[2]</td>
+	<td>ENABLED Announcement Content 3</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div/section/article/div[2]</td>
+	<td>ENABLED Announcement Content 6</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.name.ng-binding</td>
+	<td>ENABLED Announcement 6</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/div/p/span[2]/select</td>
+	<td>label=10</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
