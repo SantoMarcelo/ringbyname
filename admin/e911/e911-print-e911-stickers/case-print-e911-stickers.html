@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>case-print-e911-stickers</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case-print-e911-stickers</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.e911&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@ui-sref=&quot;admin.e911.print-stickers&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertCssCount</td>
+	<td>css=a.print.ng-binding[href=&quot;http://www.ringbyname.com/download/E911-warning-labels.pdf&quot;]</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h3.ng-binding</td>
+	<td>Warning</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p.ng-binding</td>
+	<td>Click the link below to download E911 Stickers Prints using Avery Label # 5163</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.stickers-label &gt; div &gt; p.ng-binding</td>
+	<td>This is VoIP service. E911 Service may be limited or unavailable under the following circunstances including but not limited to:</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[3]/div/ul/li[2]</td>
+	<td>During an internet service outage</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=li.ng-binding</td>
+	<td>During an eletrical outage</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[3]/div/p[2]</td>
+	<td>exact:IMPORTANT: Emergency calls are routed to the PSAP for your designated Emergency Response Location. if your physical location differs from your designated location required emergency service will be delayde or unavailable.</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
