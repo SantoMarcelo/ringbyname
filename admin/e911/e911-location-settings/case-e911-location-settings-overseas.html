@@ -134,7 +134,7 @@
 	<td>5000</td>
 	<td></td>
 </tr>
-<!--Verify if the number was set like Overseas, and if the location are deleted -->
+<!--Verify if the number 12399633665 was set like Overseas-->
 <tr>
 	<td>click</td>
 	<td>//a[@ui-sref=&quot;admin.e911.general-settings&quot;]</td>
@@ -161,6 +161,11 @@
 	<td>1</td>
 </tr>
 <tr>
+	<td>assertCssCount</td>
+	<td>css=input#checkbox-12399633071[disabled='disabled']</td>
+	<td>0</td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>//a[@ui-sref=&quot;admin.e911.general-settings&quot;]</td>
 	<td></td>
@@ -170,11 +175,7 @@
 	<td>//a[@ui-sref=&quot;admin.e911.location-settings&quot;]</td>
 	<td></td>
 </tr>
-<tr>
-	<td>assertCssCount</td>
-	<td>css=input#checkbox-12399633071[disabled='disabled']</td>
-	<td>0</td>
-</tr>
+<!--Verify if the location not was deleted, because yet to be associated with the number 12399633071-->
 <tr>
 	<td>waitForElementPresent</td>
 	<td>css=div.flex-table</td>
@@ -190,6 +191,7 @@
 	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/section/article[2]/div[2]</td>
 	<td>326 191ST TER NORTH MIAMI BEACH FL US</td>
 </tr>
+<!--Set phone number 12399633071 like Overseas-->
 <tr>
 	<td>click</td>
 	<td>link=Overseas (No E911) Extensions</td>
@@ -215,6 +217,7 @@
 	<td>5000</td>
 	<td></td>
 </tr>
+<!--Verify if the location was deleted-->
 <tr>
 	<td>click</td>
 	<td>//a[@ui-sref=&quot;admin.e911.general-settings&quot;]</td>
