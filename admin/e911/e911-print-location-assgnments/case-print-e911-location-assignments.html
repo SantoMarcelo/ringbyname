@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>case-print-e911-location-assignments</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case-print-e911-location-assignments</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>link=E911</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/nav/ul/li/a[5]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h1.ng-binding</td>
+	<td>Dev QC Comp 3</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div/h1[2]</td>
+	<td>7206 NW 31ST ST</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div/h1[3]</td>
+	<td>MIAMI, FL, 33122</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=li.ng-binding.ng-scope</td>
+	<td>Dev QC5 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div/ul/li[2]</td>
+	<td>Dev QC6 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div/ul/li[3]</td>
+	<td>Dev QC9 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/h1</td>
+	<td>Overseas (No E911) Extensions</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/ul/li</td>
+	<td>Dev QC1 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/ul/li[2]</td>
+	<td>Dev QC2 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/ul/li[3]</td>
+	<td>Dev QC3 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/ul/li[4]</td>
+	<td>Dev QC4 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/ul/li[5]</td>
+	<td>Dev QC7 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/ul/li[6]</td>
+	<td>Dev QC8 User (Ext )</td>
+</tr>
+<!--Insert a Location to validate if print is ok-->
+<tr>
+	<td>click</td>
+	<td>css=li.has-text-left.menu &gt; a &gt; span.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add location</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>Test Print Location</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>325</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td>191st</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>Miami</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[7]</td>
+	<td>FL</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[8]</td>
+	<td>33179</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section/div[9]/div[2]/span/select</td>
+	<td>label=United States</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkbox-12399633665</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkbox-12399633071</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-setup']/section/section/div/section[2]/div/div/form/section[2]/div[2]/span/select</td>
+	<td>label=12399633665</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//article/div[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=article.ng-scope &gt; div.cell.column-location-name</td>
+	<td>Test Print Location</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/section/article/div[2]</td>
+	<td>325 NE 191ST ST MIAMI FL US</td>
+</tr>
+<!--Verify if print location is ok-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-setup']/section/nav/ul/li/a[5]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/h1</td>
+	<td>Test Print Location</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/h1[2]</td>
+	<td>325 NE 191ST ST</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/h1[3]</td>
+	<td>MIAMI, FL, 33179</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/ul/li</td>
+	<td>Dev QC7 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[2]/ul/li[2]</td>
+	<td>Dev QC8 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[3]/h1</td>
+	<td>Overseas (No E911) Extensions</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[3]/ul/li</td>
+	<td>Dev QC1 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[3]/ul/li[2]</td>
+	<td>Dev QC2 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[3]/ul/li[3]</td>
+	<td>Dev QC3 User (Ext )</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div[2]/div[3]/ul/li[4]</td>
+	<td>Dev QC4 User (Ext )</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=li.has-text-left.menu &gt; a &gt; span.ng-binding</td>
+	<td></td>
+</tr>
+<!--Remove location-->
+<tr>
+	<td>click</td>
+	<td>link=Overseas (No E911) Extensions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkbox-12399633665</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkbox-12399633071</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause </td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Location Assignments</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.page-main</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Location Settings</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/section/article/div[1]</td>
+	<td>Dev QC Comp 3</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-setup']/section/section/div/section/div/div/div[2]/section/article/div[2]</td>
+	<td>7206 NW 31ST ST MIAMI FL US</td>
+</tr>
+</tbody></table>
+</body>
+</html>
