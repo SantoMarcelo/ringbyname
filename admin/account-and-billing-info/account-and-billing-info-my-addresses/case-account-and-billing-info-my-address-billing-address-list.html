@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>case-account-and-billing-my-address-billing-address</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case-account-and-billing-my-address-billing-address</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>link=Account &amp; Billing Info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-account-billing-information']/section/nav/ul/li/a[4]/span</td>
+	<td></td>
+</tr>
+<!--Verify original data-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>7203 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div[2]</td>
+	<td>4856XXXXXXXX2434</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[2]/div</td>
+	<td>7206 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[2]/div[2]</td>
+	<td>4317XXXXXXXX3012</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[3]/div</td>
+	<td>7201 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[4]/div[2]</td>
+	<td>1657XXXXXXXX9581</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=i.icon-fontello-tick.ng-scope</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[5]/div</td>
+	<td>7204 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[5]/div[2]</td>
+	<td>6665XXXXXXXX9440</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[6]/div</td>
+	<td>7205 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[6]/div[2]</td>
+	<td>2132XXXXXXXX9678</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>6</td>
+</tr>
+<!--Validate pagination-->
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div[2]/div/p/span[2]/select</td>
+	<td>label=5</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>7205 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div[2]</td>
+	<td>2132XXXXXXXX9678</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>7203 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div[2]</td>
+	<td>4856XXXXXXXX2434</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[5]/div</td>
+	<td>7204 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[5]/div[2]</td>
+	<td>6665XXXXXXXX9440</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>6</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div[2]/div/p/span[2]/select</td>
+	<td>label=10</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[6]/div</td>
+	<td>7205 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[6]/div[2]</td>
+	<td>2132XXXXXXXX9678</td>
+</tr>
+<!--Validate Search-->
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>7201</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table &gt; header</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>7201 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div[2]</td>
+	<td>5995XXXXXXXX5387</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>7204</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table &gt; header</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>7204 NW 31st ST, Miami, FL 33122 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div[2]</td>
+	<td>6665XXXXXXXX9440</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>6</td>
+</tr>
+</tr>
+</tbody></table>
+</body>
+</html>

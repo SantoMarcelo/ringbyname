@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>New Test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">New Test</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>link=Add Billing Addresses</td>
+	<td></td>
+</tr>
+<!--Validate insert a new billing address-->
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td>191st ST</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>apto 204</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>Miami</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[7]</td>
+	<td>FL</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/form/section/div[6]/div[2]/span/select</td>
+	<td>label=United States</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[8]</td>
+	<td>33179</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>7</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/p</td>
+	<td>Click on the address to view the address details</td>
+</tr>
+<!--Validate if address was created correctly-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[7]/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td>191st ST</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>apto 204</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>Miami</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[7]</td>
+	<td>FL</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/form/section/div[6]/div[2]/span/select</td>
+	<td>United States</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[8]</td>
+	<td>33179</td>
+</tr>
+<!--Set addres like default-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-account-billing-information']/section/nav/ul/li/a[2]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.email.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=checkboxDefault</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=i.icon-fontello-tick.ng-scope</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=My Addresses</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[7]/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.checkbox.check-complete &gt; label.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table &gt; header</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=i.icon-fontello-tick.ng-scope</td>
+	<td></td>
+</tr>
+<!--Validate search of new address-->
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>123 191st ST, Miami, FL 33179 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table &gt; header</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>7</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>191st</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article/div</td>
+	<td>123 191st ST, Miami, FL 33179 US</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<!--Delete a new address-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[3]/div[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.checkbox.check-complete &gt; label.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.flex-table &gt; header</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=i.icon-fontello-tick.ng-scope</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[7]/div[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='button']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=i.icon-fontello-tick.ng-scope</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/p</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>6</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong.ng-binding</td>
+	<td>6</td>
+</tr>
+</tr>
+</tr>
+</tbody></table>
+</body>
+</html>
