@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>case-account-and-billinginfo-billing-and-payment-add-credit-card</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case-account-and-billinginfo-billing-and-payment-add-credit-card</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>link=Add credit card</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@type='text']</td>
+	<td>4556637564791563</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>John</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>Smith</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/form/section/div[4]/div[2]/span/select</td>
+	<td>label=07 - July</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/form/section/div[5]/div[2]/span/select</td>
+	<td>label=2018</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td>892</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>Visa</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>551133664422</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[7]</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[8]</td>
+	<td>Mauro Ramos, Centro</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[9]</td>
+	<td>200</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[10]</td>
+	<td>Florianopolis</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[11]</td>
+	<td>SC</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/form/section/div[14]/div[2]/span/select</td>
+	<td>label=Brazil</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[12]</td>
+	<td>88020301</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div/section/article[7]/div/div</td>
+	<td>4556XXXXXXXX1563</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
