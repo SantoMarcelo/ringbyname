@@ -1,0 +1,9 @@
+/.settings
+/.buildpath
+/.project
+/composer.phar
+/vendor
+/nbproject/
+/.idea
+/bin
+*.ftpconfig
