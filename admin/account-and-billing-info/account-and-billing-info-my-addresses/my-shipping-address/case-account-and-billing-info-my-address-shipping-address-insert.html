@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://login.qc.dev.ringbyname.com/" />
+<title>case-account-and-billing-info-my-address-shipping-address-insert</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case-account-and-billing-info-my-address-shipping-address-insert</td></tr>
+</thead><tbody>
+<!--Insert a new shipping address-->
+<tr>
+	<td>click</td>
+	<td>link=Add Shipping Address</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td>Osmar Cunha</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>402</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>Florianopolis</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[7]</td>
+	<td>SC</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/form/section/div[6]/div[2]/span/select</td>
+	<td>label=Brazil</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[8]</td>
+	<td>88010150</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/p</td>
+	<td></td>
+</tr>
+<!--Validate if was inserted correctly-->
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div[3]/section/article[7]/div</td>
+	<td>123 Osmar Cunha, Florianopolis, SC 88010150 BR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div[4]/div/p[2]/strong</td>
+	<td>7</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div[3]/section/article[7]/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[3]</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[4]</td>
+	<td>Osmar Cunha</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[5]</td>
+	<td>402</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[6]</td>
+	<td>Florianopolis</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[7]</td>
+	<td>SC</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section[2]/div/div/form/section/div[6]/div[2]/span/select</td>
+	<td>Brazil</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@type='text'])[8]</td>
+	<td>88010150</td>
+</tr>
+<!--Search by new shipping address-->
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div[3]/section/article/div</td>
+	<td>123 Osmar Cunha, Florianopolis, SC 88010150 BR</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div[4]/div/p[2]/strong</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@type='text'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='submit'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='page-account-billing-information']/section/section/div/section/div/div/div[4]/div/p[2]/strong</td>
+	<td>7</td>
+</tr>
+</tbody></table>
+</body>
+</html>
