@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<ns2:test-suite xmlns="" xmlns:ns2="urn:model.allure.qatools.yandex.ru" start="1511893461777" stop="1511893473041">
+  <name>Login in application login</name>
+  <title>Login in application login</title>
+  <test-cases>
+    <test-case start="1511893461777" stop="1511893473035" status="broken">
+      <name>Login in application login Login with admin user</name>
+      <title>Login in application login Login with admin user</title>
+      <failure>
+        <message>private method `exit' called for #&lt;Capybara::Session&gt;</message>
+        <stack-trace>/Users/Marcelo/Documents/Projects/Work/ringByName/webapp/spec/login_spec.rb:26:in `block (3 levels) in &lt;top (required)&gt;'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:254:in `instance_exec'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:254:in `block in run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:500:in `block in with_around_and_singleton_context_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:457:in `block in with_around_example_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/hooks.rb:466:in `block in run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/hooks.rb:604:in `run_around_example_hooks_for'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/hooks.rb:466:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/allure-rspec-0.8.0/lib/allure-rspec/hooks.rb:33:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:457:in `with_around_example_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:500:in `with_around_and_singleton_context_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:251:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:628:in `block in run_examples'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:624:in `map'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:624:in `run_examples'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:590:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:591:in `block in run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:591:in `map'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:591:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:118:in `block (3 levels) in run_specs'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:118:in `map'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:118:in `block (2 levels) in run_specs'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/configuration.rb:1896:in `with_suite_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:113:in `block in run_specs'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/reporter.rb:79:in `report'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:112:in `run_specs'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:87:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:71:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:45:in `invoke'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/exe/rspec:4:in `&lt;top (required)&gt;'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/bin/rspec:23:in `load'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/bin/rspec:23:in `&lt;main&gt;'</stack-trace>
+      </failure>
+      <steps>
+        <step start="1511893461777" stop="1511893468180" status="passed">
+          <name>when I access login page</name>
+          <title>when I access login page</title>
+          <attachments/>
+        </step>
+        <step start="1511893468180" stop="1511893469613" status="passed">
+          <name>And I fill the user and password to login</name>
+          <title>And I fill the user and password to login</title>
+          <attachments/>
+        </step>
+        <step start="1511893469613" stop="1511893469634" status="passed">
+          <name>I can see the home page</name>
+          <title>I can see the home page</title>
+          <attachments/>
+        </step>
+      </steps>
+      <attachments>
+        <attachment source="3ea9474d15fdd0b357ce5f9a6d47dca0ea1f64eeb1918d2f541ea9fe779de557-attachment.png" title="screenshot" size="38823" type="image/png"/>
+      </attachments>
+      <labels>
+        <label name="thread" value="70166008567900"/>
+        <label name="host" value="Appss-Mac-mini.local"/>
+      </labels>
+      <parameters/>
+    </test-case>
+  </test-cases>
+  <labels>
+    <label name="thread" value="70166008567900"/>
+    <label name="host" value="Appss-Mac-mini.local"/>
+  </labels>
+</ns2:test-suite>

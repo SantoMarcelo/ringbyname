@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<ns2:test-suite xmlns="" xmlns:ns2="urn:model.allure.qatools.yandex.ru" start="1511895657145" stop="1511895665866">
+  <name>Login in application Success login</name>
+  <title>Login in application Success login</title>
+  <test-cases>
+    <test-case start="1511895657145" stop="1511895665865" status="passed">
+      <name>Login in application Success login login with admin user</name>
+      <title>Login in application Success login login with admin user</title>
+      <steps>
+        <step start="1511895657146" stop="1511895662435" status="passed">
+          <name>when I access login page</name>
+          <title>when I access login page</title>
+          <attachments/>
+        </step>
+        <step start="1511895662435" stop="1511895663883" status="passed">
+          <name>and I fill the user and password to login</name>
+          <title>and I fill the user and password to login</title>
+          <attachments/>
+        </step>
+        <step start="1511895663883" stop="1511895663902" status="passed">
+          <name>the I can see the home page</name>
+          <title>the I can see the home page</title>
+          <attachments/>
+        </step>
+      </steps>
+      <attachments>
+        <attachment source="734f8e488a62807afbb050ebe89eea71444969d81696528328b6970eca8d7ca1-attachment.png" title="screenshot" size="40254" type="image/png"/>
+      </attachments>
+      <labels>
+        <label name="thread" value="70304848156780"/>
+        <label name="host" value="Appss-Mac-mini.local"/>
+      </labels>
+      <parameters/>
+    </test-case>
+  </test-cases>
+  <labels>
+    <label name="thread" value="70304848156780"/>
+    <label name="host" value="Appss-Mac-mini.local"/>
+  </labels>
+</ns2:test-suite>

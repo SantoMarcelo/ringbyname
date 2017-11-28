@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="2" skipped="0" failures="1" errors="0" time="16.990744" timestamp="2017-11-28T14:19:18-02:00" hostname="Appss-Mac-mini.local">
+<properties>
+<property name="seed" value="26554"/>
+</properties>
+<testcase classname="spec.login_spec" name="Login in application login Login with admin user" file="./spec/login_spec.rb" time="9.942812"></testcase>
+<testcase classname="spec.login_spec" name="Login in application Validations Login validations" file="./spec/login_spec.rb" time="7.045336"><failure message="
+expected: [{:message=&gt;&quot;Sorry, that account is invalid. Please try again.&quot;}, {:message=&gt;&quot;Sorry, that account is invalid. Please try again.&quot;}]
+     got: [{:message=&gt;&quot;× Sorry, that account is invalid. Please try again.&quot;}, {:message=&gt;&quot;× Sorry, that account is invalid. Please try again.&quot;}]
+
+(compared using eql?)
+
+Diff:
+@@ -1,3 +1,3 @@
+-[{:message=&gt;&quot;Sorry, that account is invalid. Please try again.&quot;},
+- {:message=&gt;&quot;Sorry, that account is invalid. Please try again.&quot;}]
++[{:message=&gt;&quot;× Sorry, that account is invalid. Please try again.&quot;},
++ {:message=&gt;&quot;× Sorry, that account is invalid. Please try again.&quot;}]
+" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: expect(page_messages).to eql expect_messages
+
+  expected: [{:message=&gt;&quot;Sorry, that account is invalid. Please try again.&quot;}, {:message=&gt;&quot;Sorry, that account is invalid. Please try again.&quot;}]
+       got: [{:message=&gt;&quot;× Sorry, that account is invalid. Please try again.&quot;}, {:message=&gt;&quot;× Sorry, that account is invalid. Please try again.&quot;}]
+
+  (compared using eql?)
+
+  Diff:
+  @@ -1,3 +1,3 @@
+  -[{:message=&gt;&quot;Sorry, that account is invalid. Please try again.&quot;},
+  - {:message=&gt;&quot;Sorry, that account is invalid. Please try again.&quot;}]
+  +[{:message=&gt;&quot;× Sorry, that account is invalid. Please try again.&quot;},
+  + {:message=&gt;&quot;× Sorry, that account is invalid. Please try again.&quot;}]
+  
+./spec/login_spec.rb:47:in `block (3 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+</testsuite>

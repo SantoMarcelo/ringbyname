@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<ns2:test-suite xmlns="" xmlns:ns2="urn:model.allure.qatools.yandex.ru" start="1511893323474" stop="1511893336454">
+  <name>Login in application Validations</name>
+  <title>Login in application Validations</title>
+  <test-cases>
+    <test-case start="1511893323474" stop="1511893336453" status="broken">
+      <name>Login in application Validations Login validations</name>
+      <title>Login in application Validations Login validations</title>
+      <failure>
+        <message>Unable to find visible css "input[data-ng-model=\"data.username\"]"</message>
+        <stack-trace>/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-2.16.1/lib/capybara/node/finders.rb:314:in `block in synced_resolve'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-2.16.1/lib/capybara/node/base.rb:85:in `synchronize'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-2.16.1/lib/capybara/node/finders.rb:302:in `synced_resolve'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-2.16.1/lib/capybara/node/finders.rb:37:in `find'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-2.16.1/lib/capybara/session.rb:810:in `block (2 levels) in &lt;class:Session&gt;'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/capybara-2.16.1/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/site_prism-2.9/lib/site_prism/page.rb:98:in `find_first'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/site_prism-2.9/lib/site_prism/element_container.rb:9:in `block (2 levels) in element'&#xD;
+/Users/Marcelo/Documents/Projects/Work/ringByName/webapp/spec/pages/login_page.rb:11:in `do_login'&#xD;
+/Users/Marcelo/Documents/Projects/Work/ringByName/webapp/spec/login_spec.rb:40:in `block (4 levels) in &lt;top (required)&gt;'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/allure-rspec-0.8.0/lib/allure-rspec/dsl.rb:51:in `block in __with_step'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/allure-rspec-0.8.0/lib/allure-rspec/dsl.rb:47:in `synchronize'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/allure-rspec-0.8.0/lib/allure-rspec/dsl.rb:47:in `__with_step'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/allure-rspec-0.8.0/lib/allure-rspec/dsl.rb:20:in `step'&#xD;
+/Users/Marcelo/Documents/Projects/Work/ringByName/webapp/spec/login_spec.rb:39:in `block (3 levels) in &lt;top (required)&gt;'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:254:in `instance_exec'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:254:in `block in run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:500:in `block in with_around_and_singleton_context_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:457:in `block in with_around_example_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/hooks.rb:466:in `block in run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/hooks.rb:604:in `run_around_example_hooks_for'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/hooks.rb:466:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/allure-rspec-0.8.0/lib/allure-rspec/hooks.rb:33:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:457:in `with_around_example_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:500:in `with_around_and_singleton_context_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example.rb:251:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:628:in `block in run_examples'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:624:in `map'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:624:in `run_examples'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:590:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:591:in `block in run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:591:in `map'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/example_group.rb:591:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:118:in `block (3 levels) in run_specs'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:118:in `map'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:118:in `block (2 levels) in run_specs'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/configuration.rb:1896:in `with_suite_hooks'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:113:in `block in run_specs'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/reporter.rb:79:in `report'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:112:in `run_specs'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:87:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:71:in `run'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/lib/rspec/core/runner.rb:45:in `invoke'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems/rspec-core-3.7.0/exe/rspec:4:in `&lt;top (required)&gt;'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/bin/rspec:23:in `load'&#xD;
+/Users/Marcelo/.rbenv/versions/2.4.2/bin/rspec:23:in `&lt;main&gt;'</stack-trace>
+      </failure>
+      <steps>
+        <step start="1511893323474" stop="1511893325126" status="passed">
+          <name>when I access login page</name>
+          <title>when I access login page</title>
+          <attachments/>
+        </step>
+        <step start="1511893325126" stop="1511893335188" status="failed">
+          <name>And I don&#xB4;t fill the username and try to login</name>
+          <title>And I don&#xB4;t fill the username and try to login</title>
+          <attachments/>
+        </step>
+      </steps>
+      <attachments>
+        <attachment source="cbbc3f93a5a30984d60cd639f839c788bdb2200184211d622da0a48a20ee4c3c-attachment.png" title="screenshot" size="127408" type="image/png"/>
+      </attachments>
+      <labels>
+        <label name="thread" value="70173780555860"/>
+        <label name="host" value="Appss-Mac-mini.local"/>
+      </labels>
+      <parameters/>
+    </test-case>
+  </test-cases>
+  <labels>
+    <label name="thread" value="70173780555860"/>
+    <label name="host" value="Appss-Mac-mini.local"/>
+  </labels>
+</ns2:test-suite>

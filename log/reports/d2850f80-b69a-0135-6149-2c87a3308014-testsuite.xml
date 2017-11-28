@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<ns2:test-suite xmlns="" xmlns:ns2="urn:model.allure.qatools.yandex.ru" start="1511894970576" stop="1511894983773">
+  <name>Login in application Validations</name>
+  <title>Login in application Validations</title>
+  <test-cases>
+    <test-case start="1511894970577" stop="1511894983772" status="passed">
+      <name>Login in application Validations validate empty user</name>
+      <title>Login in application Validations validate empty user</title>
+      <steps>
+        <step start="1511894970577" stop="1511894980695" status="passed">
+          <name>when I access login page</name>
+          <title>when I access login page</title>
+          <attachments/>
+        </step>
+        <step start="1511894980695" stop="1511894982095" status="passed">
+          <name>and I don&#xB4;t fill the username and try to login</name>
+          <title>and I don&#xB4;t fill the username and try to login</title>
+          <attachments/>
+        </step>
+        <step start="1511894982095" stop="1511894982373" status="passed">
+          <name>then I can see the validation message</name>
+          <title>then I can see the validation message</title>
+          <attachments/>
+        </step>
+      </steps>
+      <attachments>
+        <attachment source="904a291fcd74b14a9b1aa462dd35889a4ae0f9c2304191ab6ac5e5074ecb9e90-attachment.png" title="screenshot" size="37172" type="image/png"/>
+      </attachments>
+      <labels>
+        <label name="thread" value="70279720286300"/>
+        <label name="host" value="Appss-Mac-mini.local"/>
+      </labels>
+      <parameters/>
+    </test-case>
+  </test-cases>
+  <labels>
+    <label name="thread" value="70279720286300"/>
+    <label name="host" value="Appss-Mac-mini.local"/>
+  </labels>
+</ns2:test-suite>

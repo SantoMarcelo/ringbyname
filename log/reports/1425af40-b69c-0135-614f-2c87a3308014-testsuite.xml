@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<ns2:test-suite xmlns="" xmlns:ns2="urn:model.allure.qatools.yandex.ru" start="1511895478836" stop="1511895523337">
+  <name>Login in application Login Validations</name>
+  <title>Login in application Login Validations</title>
+  <test-cases>
+    <test-case start="1511895478837" stop="1511895493430" status="passed">
+      <name>Login in application Login Validations validate empty user</name>
+      <title>Login in application Login Validations validate empty user</title>
+      <steps>
+        <step start="1511895478837" stop="1511895490314" status="passed">
+          <name>when I access login page</name>
+          <title>when I access login page</title>
+          <attachments/>
+        </step>
+        <step start="1511895490314" stop="1511895491752" status="passed">
+          <name>and I don&#xB4;t fill the username and try to login</name>
+          <title>and I don&#xB4;t fill the username and try to login</title>
+          <attachments/>
+        </step>
+        <step start="1511895491752" stop="1511895491993" status="passed">
+          <name>then I can see the validation message</name>
+          <title>then I can see the validation message</title>
+          <attachments/>
+        </step>
+      </steps>
+      <attachments>
+        <attachment source="904a291fcd74b14a9b1aa462dd35889a4ae0f9c2304191ab6ac5e5074ecb9e90-attachment.png" title="screenshot" size="37172" type="image/png"/>
+      </attachments>
+      <labels>
+        <label name="thread" value="70211042809940"/>
+        <label name="host" value="Appss-Mac-mini.local"/>
+      </labels>
+      <parameters/>
+    </test-case>
+    <test-case start="1511895493431" stop="1511895503358" status="passed">
+      <name>Login in application Login Validations validate empty password</name>
+      <title>Login in application Login Validations validate empty password</title>
+      <steps>
+        <step start="1511895493431" stop="1511895500135" status="passed">
+          <name>when I access login page</name>
+          <title>when I access login page</title>
+          <attachments/>
+        </step>
+        <step start="1511895500135" stop="1511895501589" status="passed">
+          <name>when I don&#xB4;t fill the password and try to login</name>
+          <title>when I don&#xB4;t fill the password and try to login</title>
+          <attachments/>
+        </step>
+        <step start="1511895501589" stop="1511895501945" status="passed">
+          <name>then I can see the validation message</name>
+          <title>then I can see the validation message</title>
+          <attachments/>
+        </step>
+      </steps>
+      <attachments>
+        <attachment source="36015700fa974ed4b71c06832b78bbabe20b730824391de192d60985b8bdb08a-attachment.png" title="screenshot" size="42806" type="image/png"/>
+      </attachments>
+      <labels>
+        <label name="thread" value="70211042809940"/>
+        <label name="host" value="Appss-Mac-mini.local"/>
+      </labels>
+      <parameters/>
+    </test-case>
+    <test-case start="1511895503359" stop="1511895513159" status="passed">
+      <name>Login in application Login Validations validate incorrect user</name>
+      <title>Login in application Login Validations validate incorrect user</title>
+      <steps>
+        <step start="1511895503359" stop="1511895510020" status="passed">
+          <name>when I access login page</name>
+          <title>when I access login page</title>
+          <attachments/>
+        </step>
+        <step start="1511895510020" stop="1511895511438" status="passed">
+          <name>when I don&#xB4;t fill the password and try to login</name>
+          <title>when I don&#xB4;t fill the password and try to login</title>
+          <attachments/>
+        </step>
+        <step start="1511895511438" stop="1511895511733" status="passed">
+          <name>then I can see the validation message</name>
+          <title>then I can see the validation message</title>
+          <attachments/>
+        </step>
+      </steps>
+      <attachments>
+        <attachment source="fd617a45888aa36bd925244bd622f30290bbae200f718a9a5a076369db4ffbe2-attachment.png" title="screenshot" size="41775" type="image/png"/>
+      </attachments>
+      <labels>
+        <label name="thread" value="70211042809940"/>
+        <label name="host" value="Appss-Mac-mini.local"/>
+      </labels>
+      <parameters/>
+    </test-case>
+    <test-case start="1511895513159" stop="1511895523336" status="passed">
+      <name>Login in application Login Validations validate incorrect password</name>
+      <title>Login in application Login Validations validate incorrect password</title>
+      <steps>
+        <step start="1511895513160" stop="1511895519885" status="passed">
+          <name>when I access login page</name>
+          <title>when I access login page</title>
+          <attachments/>
+        </step>
+        <step start="1511895519885" stop="1511895521612" status="passed">
+          <name>when I don&#xB4;t fill the password and try to login</name>
+          <title>when I don&#xB4;t fill the password and try to login</title>
+          <attachments/>
+        </step>
+        <step start="1511895521612" stop="1511895521953" status="passed">
+          <name>then I can see the validation message</name>
+          <title>then I can see the validation message</title>
+          <attachments/>
+        </step>
+      </steps>
+      <attachments>
+        <attachment source="076d4a4ba0bc3f341a2f92b19d0fcdcd36808de7e969e268d50db232e2f9da06-attachment.png" title="screenshot" size="41939" type="image/png"/>
+      </attachments>
+      <labels>
+        <label name="thread" value="70211042809940"/>
+        <label name="host" value="Appss-Mac-mini.local"/>
+      </labels>
+      <parameters/>
+    </test-case>
+  </test-cases>
+  <labels>
+    <label name="thread" value="70211042809940"/>
+    <label name="host" value="Appss-Mac-mini.local"/>
+  </labels>
+</ns2:test-suite>

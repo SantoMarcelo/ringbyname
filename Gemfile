@@ -1,0 +1,11 @@
+source 'http://rubygems.org'
+
+gem 'rspec'
+gem 'selenium-webdriver'
+gem 'capybara'
+gem 'site_prism'
+gem 'faker'
+gem 'mongo'
+gem 'rspec_junit_formatter'
+gem 'allure-rspec'
+gem 'httparty'
