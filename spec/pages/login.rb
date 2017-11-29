@@ -13,6 +13,10 @@ class Login < SitePrism::Page
        self.btn_submit.click
     end
 
+    def access_reset_page 
+        self.link_reset_pass.click
+    end
+
 end
 
 # tipo de Padrão de projeto => Page Object
