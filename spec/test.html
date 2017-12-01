@@ -1,0 +1,118 @@
+<div class="flex-table" data-loading="false">
+    <header>
+        <div class="cell column-ext ng-binding">Ext</div>
+        <div class="cell column-name ng-binding">Name</div>
+        <div class="cell column-type ng-binding">Type</div>
+        <div class="cell column-direct ng-binding">Direct #</div>
+        <div class="cell column-admin has-text-centered ng-binding">Admin</div>
+    </header>
+    <section data-perfect-scrollbar="" class="ps ps--theme_default" data-ps-id="78b2e2bf-94a5-3e70-4b07-1ea2da565a69">
+        <!-- ngRepeat: user in SetupUserIndexController.users.rows | itemsPerPage: SetupUserIndexController.pagination.perPage -->
+        <article total-items="SetupUserIndexController.pagination.totalRows" current-page="SetupUserIndexController.pagination.current"
+            ui-sref-active="active" ui-sref="admin.setup.user.details(user)" ng-repeat="user in SetupUserIndexController.users.rows | itemsPerPage: SetupUserIndexController.pagination.perPage"
+            class="ng-scope" href="#!/admin/setup/user/00edf3375cb2dbf353ac384209939dec">
+            <div class="cell column-ext ng-binding">101</div>
+            <div class="cell column-name">
+                <div class="name ng-binding">Dev Marcelo 1&nbsp;User</div>
+            </div>
+            <div class="cell column-type">
+                <div class="type" data-ng-mouseenter="SetupUserIndexController.getUserAreaCodes(user)">
+                    <span data-uib-popover-html="SetupUserIndexController.areaCodes[user.id]" data-popover-enable="false" data-popover-trigger="mouseenter"
+                        data-popover-append-to-body="true" data-popover-class="admin-tooltip user-area-codes" class="ng-binding">R! User</span>
+                </div>
+            </div>
+            <div class="cell column-direct">
+                <span data-uib-popover-html="'Caller Name: ' + user.caller_id.external.name + '<br>Caller Number: ' + user.caller_id.external.number"
+                    data-popover-enable="false" data-popover-trigger="mouseenter" data-popover-append-to-body="true" data-popover-class="admin-tooltip"
+                    class="ng-binding">12392080525</span>
+            </div>
+            <div class="cell column-admin has-text-centered">
+                <!-- ngIf: user.permission == 'admin' -->
+                <i class="icon-fontello-tick ng-scope" data-ng-if="user.permission == 'admin'"></i>
+                <!-- end ngIf: user.permission == 'admin' -->
+            </div>
+        </article>
+        <!-- end ngRepeat: user in SetupUserIndexController.users.rows | itemsPerPage: SetupUserIndexController.pagination.perPage -->
+        <article total-items="SetupUserIndexController.pagination.totalRows" current-page="SetupUserIndexController.pagination.current"
+            ui-sref-active="active" ui-sref="admin.setup.user.details(user)" ng-repeat="user in SetupUserIndexController.users.rows | itemsPerPage: SetupUserIndexController.pagination.perPage"
+            class="ng-scope" href="#!/admin/setup/user/a55452509cc5124390e5e2928f57eb33">
+            <div class="cell column-ext ng-binding">102</div>
+            <div class="cell column-name">
+                <div class="name ng-binding">Dev Marcelo 2&nbsp;User</div>
+            </div>
+            <div class="cell column-type">
+                <div class="type" data-ng-mouseenter="SetupUserIndexController.getUserAreaCodes(user)">
+                    <span data-uib-popover-html="SetupUserIndexController.areaCodes[user.id]" data-popover-enable="false" data-popover-trigger="mouseenter"
+                        data-popover-append-to-body="true" data-popover-class="admin-tooltip user-area-codes" class="ng-binding">R! User</span>
+                </div>
+            </div>
+            <div class="cell column-direct">
+                <span data-uib-popover-html="'Caller Name: ' + user.caller_id.external.name + '<br>Caller Number: ' + user.caller_id.external.number"
+                    data-popover-enable="false" data-popover-trigger="mouseenter" data-popover-append-to-body="true" data-popover-class="admin-tooltip"
+                    class="ng-binding">12392065017</span>
+            </div>
+            <div class="cell column-admin has-text-centered">
+                <!-- ngIf: user.permission == 'admin' -->
+                <i class="icon-fontello-tick ng-scope" data-ng-if="user.permission == 'admin'"></i>
+                <!-- end ngIf: user.permission == 'admin' -->
+            </div>
+        </article>
+        <!-- end ngRepeat: user in SetupUserIndexController.users.rows | itemsPerPage: SetupUserIndexController.pagination.perPage -->
+        <article total-items="SetupUserIndexController.pagination.totalRows" current-page="SetupUserIndexController.pagination.current"
+            ui-sref-active="active" ui-sref="admin.setup.user.details(user)" ng-repeat="user in SetupUserIndexController.users.rows | itemsPerPage: SetupUserIndexController.pagination.perPage"
+            class="ng-scope" href="#!/admin/setup/user/1f7a884701de598593602736de01b1c1">
+            <div class="cell column-ext ng-binding">103</div>
+            <div class="cell column-name">
+                <div class="name ng-binding">Dev Marcelo 3&nbsp;User</div>
+            </div>
+            <div class="cell column-type">
+                <div class="type" data-ng-mouseenter="SetupUserIndexController.getUserAreaCodes(user)">
+                    <span data-uib-popover-html="SetupUserIndexController.areaCodes[user.id]" data-popover-enable="" data-popover-trigger="mouseenter"
+                        data-popover-append-to-body="true" data-popover-class="admin-tooltip user-area-codes" class="ng-binding">R! Virtual User</span>
+                </div>
+            </div>
+            <div class="cell column-direct">
+                <span data-uib-popover-html="'Caller Name: ' + user.caller_id.external.name + '<br>Caller Number: ' + user.caller_id.external.number"
+                    data-popover-enable="true" data-popover-trigger="mouseenter" data-popover-append-to-body="true" data-popover-class="admin-tooltip"
+                    class="ng-binding">None</span>
+            </div>
+            <div class="cell column-admin has-text-centered">
+                <!-- ngIf: user.permission == 'admin' -->
+                <i class="icon-fontello-tick ng-scope" data-ng-if="user.permission == 'admin'"></i>
+                <!-- end ngIf: user.permission == 'admin' -->
+            </div>
+        </article>
+        <!-- end ngRepeat: user in SetupUserIndexController.users.rows | itemsPerPage: SetupUserIndexController.pagination.perPage -->
+        <article total-items="SetupUserIndexController.pagination.totalRows" current-page="SetupUserIndexController.pagination.current"
+            ui-sref-active="active" ui-sref="admin.setup.user.details(user)" ng-repeat="user in SetupUserIndexController.users.rows | itemsPerPage: SetupUserIndexController.pagination.perPage"
+            class="ng-scope" href="#!/admin/setup/user/529cefcb549265c382e6b9b005f48f64">
+            <div class="cell column-ext ng-binding">104</div>
+            <div class="cell column-name">
+                <div class="name ng-binding">Dev Marcelo 4&nbsp;User</div>
+            </div>
+            <div class="cell column-type">
+                <div class="type" data-ng-mouseenter="SetupUserIndexController.getUserAreaCodes(user)">
+                    <span data-uib-popover-html="SetupUserIndexController.areaCodes[user.id]" data-popover-enable="" data-popover-trigger="mouseenter"
+                        data-popover-append-to-body="true" data-popover-class="admin-tooltip user-area-codes" class="ng-binding">R! Virtual User</span>
+                </div>
+            </div>
+            <div class="cell column-direct">
+                <span data-uib-popover-html="'Caller Name: ' + user.caller_id.external.name + '<br>Caller Number: ' + user.caller_id.external.number"
+                    data-popover-enable="true" data-popover-trigger="mouseenter" data-popover-append-to-body="true" data-popover-class="admin-tooltip"
+                    class="ng-binding">None</span>
+            </div>
+            <div class="cell column-admin has-text-centered">
+                <!-- ngIf: user.permission == 'admin' -->
+                <i class="icon-fontello-tick ng-scope" data-ng-if="user.permission == 'admin'"></i>
+                <!-- end ngIf: user.permission == 'admin' -->
+            </div>
+        </article>
+        <!-- end ngRepeat: user in SetupUserIndexController.users.rows | itemsPerPage: SetupUserIndexController.pagination.perPage -->
+        <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+            <div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+        </div>
+        <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">
+            <div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+        </div>
+    </section>
+</div>

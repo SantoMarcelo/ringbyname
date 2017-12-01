@@ -52,6 +52,7 @@ describe('validate admin Setup', :setup) do
       end
 
       e.step('then I check user list') do
+        users.grid_user_list
       end
     end
   end

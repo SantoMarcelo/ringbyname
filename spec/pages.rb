@@ -5,6 +5,7 @@ module Pages
     def reset; Reset_Password.new end
     def home; Home.new end
     def admin_dashboard; Dashboard.new end
+    def users; User.new end
     
 
 end
