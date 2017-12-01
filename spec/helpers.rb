@@ -6,5 +6,5 @@ module Helpers
         sleep(1)
         return File.new(page.save_screenshot(File.join(Dir.pwd, target)))
     end
-    
+
 end

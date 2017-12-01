@@ -25,6 +25,19 @@ RSpec.configure do |config|
   config.include Helpers
   config.include Pages
   
+  
+end
+
+$browser = 'firefox'
+
+Capybara.register_driver :selenium do |app|
+
+  if $browser.include?('chrome')
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+  elsif $browser.include?('firefox')
+    Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true)
+  end
+
 end
 
 Capybara.configure do |c|
