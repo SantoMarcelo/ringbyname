@@ -1,6 +1,7 @@
 
 require_relative '../pages/login'
 require_relative '../pages/admin/dashboard'
+require_relative '../pages/admin/setup/users'
 
 describe('access admin page', :admin) do
   before(:each) do
@@ -36,23 +37,22 @@ describe('validate admin Setup', :setup) do
     home.goto_admin
     admin_dashboard.wait_until_btn_continue_visible
     admin_dashboard.btn_continue.click
+    
   end
 
   describe('validate users setup') do
-    it('access user setup') do |e|
+    it('access user setup and validate user list') do |e|
       e.step('when I on admin page') do
-        admin_dashboard.admin_setup.click
+       admin_dashboard.admin_setup.click
       end
-      e.step('the I can see the user setup') do
+      e.step('I can see the user setup') do
         expect(find('.page-title').text).to eql 'Setup'
       end
-    end
-    it('validate user list') do |e|
-      e.step('when I on user setup page') do
+      e.step('and I can access the user setings') do
+        users.access_user_menu
       end
-
       e.step('then I check user list') do
-        users.grid_user_list
+        users.validate_user_list
       end
     end
   end

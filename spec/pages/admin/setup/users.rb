@@ -1,16 +1,66 @@
+require_relative '../../../sections'
 
 class User < SitePrism::Page
+  # search elements
+  element :txt_search, '.input'
+  element :btn_search, '.button'
+  # grid elements line 1
+  element :grid_user_list, '.flex-table'
+  element :grid_line_one_ext, 'article.ng-scope:nth-child(1) .column-ext'
+  element :grid_line_one_name, 'article.ng-scope:nth-child(1) .column-name'
+  element :grid_line_one_type, 'article.ng-scope:nth-child(1) .column-type'
+  element :grid_line_one_direct, 'article.ng-scope:nth-child(1) .column-direct'
+  element :grid_line_one_admin, 'article.ng-scope:nth-child(1) .column-admin'
+  # grid elements line 2
+  element :grid_line_two_ext, 'article.ng-scope:nth-child(2) .column-ext'
+  element :grid_line_two_name, 'article.ng-scope:nth-child(2) .column-name'
+  element :grid_line_two_type, 'article.ng-scope:nth-child(2) .column-type'
+  element :grid_line_two_direct, 'article.ng-scope:nth-child(2) .column-direct'
+  element :grid_line_two_admin, 'article.ng-scope:nth-child(2) .column-admin'
+  # grid elements line 3
+  element :grid_line_tree_ext, 'article.ng-scope:nth-child(3) .column-ext'
+  element :grid_line_tree_name, 'article.ng-scope:nth-child(3) .column-name'
+  element :grid_line_tree_type, 'article.ng-scope:nth-child(3) .column-type'
+  element :grid_line_tree_direct, 'article.ng-scope:nth-child(3) .column-direct'
+  element :grid_line_tree_admin, 'article.ng-scope:nth-child(3) .column-admin'
+  # grid elements line 4
+  element :grid_line_four_ext, 'article.ng-scope:nth-child(4) .column-ext'
+  element :grid_line_four_name, 'article.ng-scope:nth-child(4) .column-name'
+  element :grid_line_four_type, 'article.ng-scope:nth-child(4) .column-type'
+  element :grid_line_four_direct, 'article.ng-scope:nth-child(4) .column-direct'
+  element :grid_line_four_admin, 'article.ng-scope:nth-child(4) .column-admin'
 
-    element :txt_search, '.input'
-    element :btn_search, '.button'
-    element :grid_user_list, '.flex-table'
-    element :select_number_pages, 'select[class^="option.value"]'
-    element :info_total_records, 'strong[class="ng-binding"]'
-    element :link_outbound_caller, 'a[ui-sref="admin.setup.user.outbound"]'
-    element :link_multiple_password, 'a[ui-sref="admin.setup.user.password"]'
-    element :tool_tip_search, 'i[tag="ADMIN_TOOLTIP_00069"]'
-    element :tool_tip_users_extension, 'i[tag="ADMIN_TOOLTIP_00070"]'
+  element :select_number_pages, 'select[class^="option.value"]'
+  element :info_total_records, 'strong[class="ng-binding"]'
+  # Settings for all users
+  element :link_outbound_caller, 'a[ui-sref="admin.setup.user.outbound"]'
+  element :link_multiple_password, 'a[ui-sref="admin.setup.user.password"]'
+  # tooltips
+  element :tool_tip_search, 'i[tag="ADMIN_TOOLTIP_00069"]'
+  element :tool_tip_users_extension, 'i[tag="ADMIN_TOOLTIP_00070"]'
 
+  section :menu, Sections::SetupMenu, '.navigation-left' 
 
+  def validate_user_list
+    grid_values = [
+      { extension: '101', name: 'Dev Marcelo 1 user', type: 'R! User', direct: '12392080525' },
+      { extension: '102', name: 'Dev Marcelo 2 user', type: 'R! User', direct: '12392065017' },
+      { extension: '103', name: 'Dev Marcelo 3 user', type: 'R! Virtual User', direct: 'None' },
+      { extension: '104', name: 'Dev Marcelo 4 user', type: 'R! Virtual User', direct: 'None' }
+    ]
+
+    for i in 1..4
+      grid_values.each do |item|
+        item[:extension] == find("article.ng-scope:nth-child(#{i}) .column-ext").text
+        item[:name] == find("article.ng-scope:nth-child(#{i}) .column-name").text
+        item[:type] == find("article.ng-scope:nth-child(#{i}) .column-type").text
+        item[:direct] == find("article.ng-scope:nth-child(#{i}) .column-direct").text
+      end
+    end
+  end
+
+  def access_user_menu
+    self.menu.users.click
+  end
 
 end
