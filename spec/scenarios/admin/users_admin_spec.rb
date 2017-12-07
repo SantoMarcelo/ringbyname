@@ -1,48 +1,25 @@
 
-require_relative '../pages/login'
-require_relative '../pages/admin/dashboard'
-require_relative '../pages/admin/setup/users'
+require_relative '../../pages/login'
+require_relative '../../pages/admin/setup/dashboard'
+require_relative '../../pages/admin/setup/users'
 
-describe('access admin page', :admin) do
-  before(:each) do
-    login_page.load
-    login_page.do_login('devmarcelo.user1@ringbyname.com', '123456asd')
-    home.wait_until_home_menu_visible
-  end
-  it('go to admin page') do |e|
-    e.step('when I on home page') do
-      expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-    end
 
-    e.step('and I access the admin page') do
-      home.goto_admin
-    end
 
-    e.step('I can see admin dashboard') do
-      expect(admin_dashboard.current_url).to end_with '/#!/admin/dashboard'
-      admin_dashboard.wait_until_btn_continue_visible
-      admin_dashboard.btn_continue.click
-    end
-  end
-  after(:each) do |e|
-    e.attach_file('screenshot', get_screenshot)
-  end
-end
-
-describe('validate admin Setup', :setup) do
+describe('validate Users Setup', :usersetup) do
   before do
     login_page.load
     login_page.do_login('devmarcelo.user1@ringbyname.com', '123456asd')
     home.wait_until_home_menu_visible
+    home.wait_until_user_status_visible
     home.goto_admin
     admin_dashboard.wait_until_btn_continue_visible
     admin_dashboard.btn_continue.click
   end
 
-  describe('validate users setup') do
+  describe('validate users list', :userList) do
     it('access user setup and validate user list') do |e|
       e.step('when I on admin page') do
-        admin_dashboard.admin_setup.click
+        admin_dashboard.options.admin_setup.click
       end
       e.step('I can see the user setup') do
         expect(find('.page-title').text).to eql 'Setup'
@@ -100,16 +77,17 @@ describe('validate admin Setup', :setup) do
         
       end
     end
-    
-    it('validate user details') do |e|
+  end
+  describe('validate users details', :user_details) do
+    it('validate user information') do |e|
       e.step('when I on users setup') do
-        admin_dashboard.admin_setup.click
+        admin_dashboard.options.admin_setup.click
       end
       e.step('and I select the first user') do
         find('article.ng-scope:nth-child(1)').click
       end
       e.step('then I check user informations') do
-              
+        
       end
     end
   end

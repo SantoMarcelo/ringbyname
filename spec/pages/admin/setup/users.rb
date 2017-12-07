@@ -41,10 +41,6 @@ class User < SitePrism::Page
 
   section :menu, Sections::SetupMenu, '.navigation-left' 
 
-  def validate_user_list
-     
-  end
-
   def access_user_menu
     self.menu.users.click
   end

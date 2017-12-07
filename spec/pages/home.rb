@@ -2,6 +2,7 @@
 class Home < SitePrism::Page
     element :home_menu, '.dropdown-user-menu.dropdown'
     element :option_admin, 'a[ui-sref="admin.dashboard"]'
+    element :user_status, 'button[class="btn s12 ng-binding btn-online"]'
     
     
 
