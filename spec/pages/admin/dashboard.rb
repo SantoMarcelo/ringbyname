@@ -5,7 +5,7 @@ class Dashboard < SitePrism::Page
   element :message_welcome, '.helper'
   element :btn_continue, '.button-save'
 
-  #admi menu
+  # admi menu
   element :admin_dasboard, 'a[ui-sref="admin.dashboard"]'
   element :admin_setup, 'a[ui-sref="admin.setup"]'
   element :admin_e911, 'a´[ui-sref="admin.e911"]'

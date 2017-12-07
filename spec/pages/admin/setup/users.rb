@@ -42,21 +42,7 @@ class User < SitePrism::Page
   section :menu, Sections::SetupMenu, '.navigation-left' 
 
   def validate_user_list
-    grid_values = [
-      { extension: '101', name: 'Dev Marcelo 1 user', type: 'R! User', direct: '12392080525' },
-      { extension: '102', name: 'Dev Marcelo 2 user', type: 'R! User', direct: '12392065017' },
-      { extension: '103', name: 'Dev Marcelo 3 user', type: 'R! Virtual User', direct: 'None' },
-      { extension: '104', name: 'Dev Marcelo 4 user', type: 'R! Virtual User', direct: 'None' }
-    ]
-
-    for i in 1..4
-      grid_values.each do |item|
-        item[:extension] == find("article.ng-scope:nth-child(#{i}) .column-ext").text
-        item[:name] == find("article.ng-scope:nth-child(#{i}) .column-name").text
-        item[:type] == find("article.ng-scope:nth-child(#{i}) .column-type").text
-        item[:direct] == find("article.ng-scope:nth-child(#{i}) .column-direct").text
-      end
-    end
+     
   end
 
   def access_user_menu

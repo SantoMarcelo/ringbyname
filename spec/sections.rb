@@ -22,6 +22,17 @@ module Sections
 
     end
 
+    # class UserDetails < Siteprism::Section
+    #     element :txt_first_name, 'input[placeholder="First Name"]'
+    #     element :txt_last_name, 'input[placeholder="Last Name"]'
+    #     element :txt_email, 'input[placeholder="E-mail"]'
+    #     element :txt_password, 'input[placeholder="Password"]'
+    #     element :txt_password_repeart, 'input[placeholder="Repeat"]'
+    #     element :txt_extension, 'input[placeholder="Extension"]'
+    #    # element :
+    # end
+
+
 
 end
 
