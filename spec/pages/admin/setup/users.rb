@@ -1,4 +1,4 @@
-require_relative '../../../sections'
+require_relative '../../../sections/admin/setup/users_sections'
 
 class User < SitePrism::Page
   # search elements
