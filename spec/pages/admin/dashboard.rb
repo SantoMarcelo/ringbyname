@@ -1,5 +1,5 @@
 
-require_relative '../../../sections/admin/admin_dashboard'
+require_relative '../../sections/admin/admin_dashboard'
 
 class Dashboard < SitePrism::Page
   # welcome message

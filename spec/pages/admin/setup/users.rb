@@ -1,4 +1,4 @@
-require_relative '../../../sections/admin/setup/users_sections'
+require_relative '../../../sections/admin/setup/user_admin'
 
 class User < SitePrism::Page
   # search elements
@@ -39,7 +39,10 @@ class User < SitePrism::Page
   element :tool_tip_search, 'i[tag="ADMIN_TOOLTIP_00069"]'
   element :tool_tip_users_extension, 'i[tag="ADMIN_TOOLTIP_00070"]'
 
-  section :menu, Sections::SetupMenu, '.navigation-left' 
+  #section :menu, Sections::SetupMenu, '.navigation-left' 
+  section :menus, Sections::SetupMenu, '.navigation-left'
+
+  section :details, Sections::UserDetails, '.page-details'
 
   def access_user_menu
     self.menu.users.click

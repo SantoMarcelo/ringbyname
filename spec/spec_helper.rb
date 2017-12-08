@@ -8,7 +8,7 @@ require 'allure-rspec'
 require 'logger'
 
 require_relative 'helpers'
-require_relative 'pages'
+require_relative 'object_factory'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

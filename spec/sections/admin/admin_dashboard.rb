@@ -1,4 +1,5 @@
 
+module Sections
 class MenuOptions < SitePrism::Section
     element :navigation_bar, '#navigation-bar'
     element :admin_dasboard, 'a[ui-sref="admin.dashboard"]'
@@ -8,3 +9,5 @@ class MenuOptions < SitePrism::Section
     element :admin_announcements, 'a[ui-sref="admin.announcement-center"]'
     element :admin_account_billing, 'a[ui-sref="admin.account-billing-information"]'
   end
+
+end

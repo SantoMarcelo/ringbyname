@@ -1,6 +1,6 @@
 
-
-class UserDetails < Siteprism::Section
+module Sections
+class UserDetails < SitePrism::Section
     # user information
     element :txt_first_name, 'input[placeholder="First Name"]'
     element :txt_last_name, 'input[placeholder="Last Name"]'
@@ -41,3 +41,5 @@ class UserDetails < Siteprism::Section
     # reset button
     element :btn_reset_user, 'button[data-ng-click*="resetUser"]'
   end
+
+end

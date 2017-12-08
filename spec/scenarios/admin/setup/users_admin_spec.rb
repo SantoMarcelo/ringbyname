@@ -1,7 +1,7 @@
 
-require_relative '../../pages/login'
-require_relative '../../pages/admin/setup/dashboard'
-require_relative '../../pages/admin/setup/users'
+require_relative '../../../pages/login'
+require_relative '../../../pages/admin/dashboard'
+require_relative '../../../pages/admin/setup/users'
 
 
 
