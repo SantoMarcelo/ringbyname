@@ -3,8 +3,6 @@ require_relative '../../../pages/login'
 require_relative '../../../pages/admin/dashboard'
 require_relative '../../../pages/admin/setup/users'
 
-
-
 describe('validate Users Setup', :usersetup) do
   before do
     login_page.load
@@ -53,47 +51,32 @@ describe('validate Users Setup', :usersetup) do
           direct: 'None'
         }
 
-        expect(@user1[:extension]).to eql users.grid_line_one_ext.text
-        expect(@user1[:name]).to eql users.grid_line_one_name.text
-        expect(@user1[:type]).to eql users.grid_line_one_type.text
-        expect(@user1[:direct]).to eql users.grid_line_one_direct.text
-
-        expect(@user2[:extension]).to eql users.grid_line_two_ext.text
-        expect(@user2[:name]).to eql users.grid_line_two_name.text
-        expect(@user2[:type]).to eql users.grid_line_two_type.text
-        expect(@user2[:direct]).to eql users.grid_line_two_direct.text
-
-        expect(@user3[:extension]).to eql users.grid_line_tree_ext.text
-        expect(@user3[:name]).to eql users.grid_line_tree_name.text
-        expect(@user3[:type]).to eql users.grid_line_tree_type.text
-        expect(@user3[:direct]).to eql users.grid_line_tree_direct.text
-
-        expect(@user4[:extension]).to eql users.grid_line_four_ext.text
-        expect(@user4[:name]).to eql users.grid_line_four_name.text
-        expect(@user4[:type]).to eql users.grid_line_four_type.text
-        expect(@user4[:direct]).to eql users.grid_line_four_direct.text
-
+        expect(users.is_user_in_grid(@user1)).to eql true
+        expect(users.is_user_in_grid(@user2)).to eql true 
+        expect(users.is_user_in_grid(@user3)).to eql true 
+        expect(users.is_user_in_grid(@user4)).to eql true  
+       
         expect(users.info_total_records.text).to eql '4'
-        
+
       end
     end
   end
-  describe('validate users details', :user_details) do
-    it('validate user information') do |e|
-      e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
-      end
-      e.step('and I select the first user') do
-        find('article.ng-scope:nth-child(1)').click
-      end
-      e.step('then I check user informations') do
-        
-      end
-    end
-  end
+  # describe('validate users details', :user_details) do
+  #   it('validate user information') do |e|
+  #     e.step('when I on users setup') do
+  #       admin_dashboard.options.admin_setup.click
+  #     end
+  #     e.step('and I select the first user') do
+  #       find('article.ng-scope:nth-child(1)').click
+  #     end
+  #     e.step('then I check user informations') do
+
+  #     end
+  #   end
+  # end
 
   after(:each) do |e|
     e.attach_file('screenshot', get_screenshot)
+    Capybara.current_session.driver.quit
   end
-
 end

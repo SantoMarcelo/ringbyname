@@ -20,7 +20,7 @@ describe('Login in application', :inprogress) do
         login_page.do_login('devmarcelo.user1@ringbyname.com', '123456asd')
       end
 
-      e.step 'the I can see the home page' do
+      e.step 'then I can see the home page' do
         # wait for load home page
         home.wait_until_home_menu_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'

@@ -8,4 +8,6 @@ class SetupMenu < SitePrism::Section
     element :phone_number, 'a[ui-sref="admin.setup.phone-number"]'
   end
 
+  
+
 end
