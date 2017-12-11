@@ -9,6 +9,7 @@ require 'logger'
 
 require_relative 'helpers'
 require_relative 'object_factory'
+require_relative 'config'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -26,9 +27,12 @@ RSpec.configure do |config|
   config.include Pages
   
   
+  
 end
 
 $browser = 'firefox'
+$environment = 'marcelo.dev'
+$branch = 'current'
 
 Capybara.register_driver :selenium do |app|
 
@@ -42,6 +46,11 @@ end
 
 Capybara.configure do |c|
   c.default_driver = :selenium
+  if $environment != 'production'
+    $url = c.app_host   = "http://login.#{$environment}.ringbyname.com/#{$branch}"
+  else
+    $url = c.app_host   = "http://login.ringbyname.com"
+  end
 end
 
 Capybara.default_max_wait_time = 10

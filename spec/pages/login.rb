@@ -1,6 +1,8 @@
 
 class Login < SitePrism::Page
-    set_url 'http://login.marcelo.dev.ringbyname.com/current/'
+
+    
+    set_url $url
     element :txt_user, 'input[data-ng-model="data.username"]'
     element :txt_password, 'input[data-ng-model="data.password"]'
     element :btn_submit, 'button[data-ng-click="login($event)"]'
