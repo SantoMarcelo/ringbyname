@@ -26,8 +26,7 @@ class User < SitePrism::Page
 
   #validate each line of grid
   def is_user_in_grid(user)
-   
-
+   self.wait_until_grid_rows_visible
     grid_rows.each do |u|
       if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
        return true
@@ -35,4 +34,18 @@ class User < SitePrism::Page
     end
     return false
   end
+
+  def select_user_in_grid(user)
+    self.wait_until_grid_rows_visible
+    grid_rows.each do |u|
+      if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
+       u.click
+      end
+    end 
+  end
+
+  def validate_user_details(user)
+    self.details.txt_first_name.text.include?(user[:firstName])
+  end
+
 end
