@@ -9,7 +9,7 @@ require 'logger'
 
 require_relative 'helpers'
 require_relative 'object_factory'
-#require_relative 'config'
+require_relative 'config'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -25,14 +25,12 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Helpers
   config.include Pages
-  
-  
-  
+  config.include Config
 end
 
 $browser = 'firefox'
-$environment = 'marcelo'
-$branch = 'current'
+$environment = 'marcel'
+$branch = 'crm'
 
 Capybara.register_driver :selenium do |app|
 

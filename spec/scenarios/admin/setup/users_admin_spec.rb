@@ -4,9 +4,9 @@ require_relative '../../../pages/admin/dashboard'
 require_relative '../../../pages/admin/setup/users'
 
 describe('validate Users Setup', :usersetup) do
-  before do
+  before(:each) do
     login_page.load
-    login_page.do_login('devmarcelo.user1@ringbyname.com', '123456asd')
+    login_page.do_login($marcel_user)
     home.wait_until_home_menu_visible
     home.wait_until_user_status_visible
     home.goto_admin
@@ -16,8 +16,14 @@ describe('validate Users Setup', :usersetup) do
     @user1 = {
       extension: '101',
       name: 'Dev Marcelo 1 User',
+      first_name: 'Dev Marcelo 1',
+      last_name: 'User',
+      email: 'devmarcelo.user1@ringbyname.com',
       type: 'R! User',
-      direct: '12392080525'
+      direct: '12392080525',
+      outbound_caller_id: '12392080525 (New user 9314129)',
+      voicemail_password: '1234',
+      number_of_rings: '5'
     }
     @user2 = {
       extension: '102',
@@ -36,6 +42,18 @@ describe('validate Users Setup', :usersetup) do
       name: 'Dev Marcelo 4 User',
       type: 'R! Virtual User',
       direct: 'None'
+    }
+    @user_changed = {
+      extension: '101',
+      name: 'Dev Marcelo 1 User',
+      first_name: 'Dev Marcelo 1 CHANGED',
+      last_name: 'User CHANGED',
+      email: 'devmarcelo.user1.CHANGED@ringbyname.com',
+      type: 'R! User',
+      direct: '12392080525',
+      outbound_caller_id: '12392080525 (New user 9314129)',
+      voicemail_password: '1234',
+      number_of_rings: '5'
     }
   end
 
@@ -60,6 +78,7 @@ describe('validate Users Setup', :usersetup) do
       end
     end
   end
+
   describe('validate users details', :user_details) do
     it('validate user information') do |e|
       e.step('when I on users setup') do
@@ -69,23 +88,89 @@ describe('validate Users Setup', :usersetup) do
         users.select_user_in_grid(@user1)
       end
       e.step('then I check user informations') do
-        @user = {
-          first_name: 'Dev Marcelo 1',
-          last_name: 'User',
-          email: 'devmarcelo.user1@ringbyname.com',
-          extension: '101',
-          direct_number: '12392080525',
-          outbound_caller_id: '12392080525 (New user 9314129)',
-          voicemail_password: '1234'
-        }
-        expect(users.details.txt_first_name.text.include?(@user[:first_name]))
-        expect(users.details.txt_last_name.text.include?(@user[:last_name]))
-        expect(users.details.txt_email.text.include?(@user[:email]))
-        expect(users.details.txt_extension.text.include?(@user[:extension]))
-        expect(users.details.txt_direct_number.text.include?(@user[:direct_number]))
-        expect(users.details.select_outbound_caller_id.text.include?(@user[:outbound_caller_id]))
-       
-        expect(users.details.txt_voicemail_password.texte.include?(@user[:voicemail_password]))
+        expect(users.details.txt_first_name.text.include?(@user1[:first_name]))
+        expect(users.details.txt_last_name.text.include?(@user1[:last_name]))
+        expect(users.details.txt_email.text.include?(@user1[:email]))
+        expect(users.details.txt_extension.text.include?(@user1[:extension]))
+        expect(users.details.txt_direct_number.text.include?(@user1[:direct]))
+        expect(users.details.select_outbound_caller_id.text.include?(@user1[:outbound_caller_id]))
+        voicemail_active = expect(users.details.checkbox_voicemail).to be_checked
+        if voicemail_active == true
+          expect(users.details.txt_voicemail_password.text.include?(@user1[:voicemail_password]))
+        end
+        expect(users.details.radio_auto_greeting).to be_checked
+        expect(users.details.radio_text_greeting).not_to be_checked
+        expect(users.details.radio_file_greeting).not_to be_checked
+        expect(users.details.checkbox_callback_request).to be_checked
+        expect(users.details.checkbox_require_key_press).to be_checked
+        expect(users.details.txt_number_rings.text.include?(@user1[:number_of_rings]))
+        expect(users.details.checkbox_inbound_call_recording).not_to be_checked
+        expect(users.details.checkbox_outbound_call_recording).not_to be_checked
+        expect(users.details.checkbox_call_pickup).to be_checked
+      end
+      e.step('then I validate all tooltips texts') do
+        # need to create this validation
+        # expect(users.validate_user_details_tooltips).to eql true
+      end
+    end
+  end
+
+  describe('validate users update', :user_update) do
+    it('update users and check changed data') do |e|
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
+      end
+      e.step('and I select the first user') do
+        users.select_user_in_grid(@user1)
+      end
+      e.step('and I change user informatios') do
+        users.change_user_data(@user_changed)
+      end
+      e.step('then I check if all changes are displayed correctly') do
+      end
+    end
+  end
+
+  describe('Validate CRM Feature', :crm_feature) do
+    
+    it('update users to enable CRM feature') do |e|
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
+      end
+      e.step('and I select the first user') do
+        users.select_user_in_grid($marcel_user1)
+      end
+      e.step('then I allow CRM feature to user') do
+        users.crm_feature_enable
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('and I check if the change was saved correctly') do
+        users.wait_until_grid_rows_visible
+        users.select_user_in_grid($marcel_user1)
+        sleep(5)
+        expect(users.details.checkbox_crm).to be_checked
+      end
+    end
+    
+    it('update user to disable CRM feature ') do |e|
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
+      end
+      e.step('and I select the first user') do
+
+        users.select_user_in_grid($marcel_user1)
+      end
+      e.step('then I allow CRM feature to user') do
+        users.crm_feature_enable
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('and I check if the change was saved correctly') do
+        users.wait_until_grid_rows_visible
+        users.select_user_in_grid($marcel_user1)
+        sleep(5)
+        expect(users.details.checkbox_crm).not_to be_checked
       end
     end
   end

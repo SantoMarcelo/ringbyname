@@ -9,9 +9,9 @@ class Login < SitePrism::Page
     element :link_reset_pass, 'a[ui-sref="auth.reset-password"]'
     element :message, '.alert-danger'
 
-    def do_login(user, password)
-       self.txt_user.set user
-       self.txt_password.set password
+    def do_login(user)
+       self.txt_user.set (user[:username])
+       self.txt_password.set (user[:password])
        self.btn_submit.click
     end
 

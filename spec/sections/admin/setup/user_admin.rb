@@ -18,6 +18,7 @@ class UserDetails < SitePrism::Section
     # voice mail
     element :checkbox_voicemail, '#checkboxVoicemailEnabled'
     element :txt_voicemail_password, 'input[data-ng-model$="voicemail_pin"]'
+    #greeting
     element :radio_auto_greeting, '#radioGreetingAuto'
     element :radio_text_greeting, '#radioGreetingText'
     element :txt_text_greeting, 'input[data-ng-model$="greeting.text_to_speech"]'
@@ -40,6 +41,20 @@ class UserDetails < SitePrism::Section
     element :btn_save_user, 'button[type="submit"]:nth-child(1)'
     # reset button
     element :btn_reset_user, 'button[data-ng-click*="resetUser"]'
+    #CRM feature options
+    element :checkbox_crm, '#checkboxCrmEnabled'
   end
 
+  class Tooltips < SitePrism::Section
+    elements :tool_tips, '.page-details .icon-tooltip'
+    element :popover, '.popover-content'
+    element :tt_user_email, 'i[tag="ADMIN_TOOLTIP_00071"]'
+  end
+
+  class Messages < SitePrism::Section
+
+    element :modal, '#modalContentId'
+    element :btn_ok, '.swal2-confirm'
+
+  end
 end
