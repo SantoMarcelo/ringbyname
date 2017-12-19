@@ -11,4 +11,5 @@ gem 'allure-rspec'
 gem 'httparty'
 gem 'geckodriver-helper', '~> 0.0.4'
 gem 'chromedriver-helper', '~> 1.1'
+gem 'couchdb', '~> 0.2.2'
 

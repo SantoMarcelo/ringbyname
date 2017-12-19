@@ -6,6 +6,8 @@ require 'faker'
 require 'mongo'
 require 'allure-rspec'
 require 'logger'
+require 'httparty'
+#require 'Couch'
 
 require_relative 'helpers'
 require_relative 'object_factory'
@@ -26,6 +28,8 @@ RSpec.configure do |config|
   config.include Helpers
   config.include Pages
   config.include Config
+  config.include HTTParty
+  config.include Couch::Server
 end
 
 $browser = 'firefox'

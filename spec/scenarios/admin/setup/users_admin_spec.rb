@@ -5,6 +5,10 @@ require_relative '../../../pages/admin/setup/users'
 
 describe('validate Users Setup', :usersetup) do
   before(:each) do
+    server = Couch::Server.new("http://couchdb.dev.ringbyname.com", "5984" )
+    res = server.get("/account%2Fb1%2F09%2Fd4ae6352974e71f26a04054720d1/b109d4ae6352974e71f26a04054720d1")
+    json = res.body
+    puts json
     login_page.load
     login_page.do_login($marcel_user)
     home.wait_until_home_menu_visible
@@ -13,6 +17,7 @@ describe('validate Users Setup', :usersetup) do
     admin_dashboard.wait_until_btn_continue_visible
     admin_dashboard.btn_continue.click
 
+    
     @user1 = {
       extension: '101',
       name: 'Dev Marcelo 1 User',
@@ -132,46 +137,74 @@ describe('validate Users Setup', :usersetup) do
   end
 
   describe('Validate CRM Feature', :crm_feature) do
-    
-    it('update users to enable CRM feature') do |e|
-      e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
-      end
-      e.step('and I select the first user') do
-        users.select_user_in_grid($marcel_user1)
-      end
-      e.step('then I allow CRM feature to user') do
-        users.crm_feature_enable
-        expect(users.message.modal.text).to eql 'User updated successfully.'
-        users.message.btn_ok.click
-      end
-      e.step('and I check if the change was saved correctly') do
-        users.wait_until_grid_rows_visible
-        users.select_user_in_grid($marcel_user1)
-        sleep(5)
-        expect(users.details.checkbox_crm).to be_checked
-      end
-    end
-    
-    it('update user to disable CRM feature ') do |e|
-      e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
-      end
-      e.step('and I select the first user') do
+    # it('update users to enable CRM feature') do |e|
+    #   e.step('when I on users setup') do
+    #     admin_dashboard.options.admin_setup.click
+    #   end
+    #   e.step('and I select the first user') do
+    #     users.select_user_in_grid($marcel_user1)
+    #   end
+    #   e.step('then I allow CRM feature to user') do
+    #     users.crm_feature_enable
+    #     expect(users.message.modal.text).to eql 'User updated successfully.'
+    #     users.message.btn_ok.click
+    #   end
+    #   e.step('and I check if the change was saved correctly') do
+    #     users.wait_until_grid_rows_visible
+    #     users.select_user_in_grid($marcel_user1)
+    #     sleep(2)
+    #     expect(users.details.checkbox_crm).to be_checked
+    #   end
+    # end
 
-        users.select_user_in_grid($marcel_user1)
+    # it('update users to disable CRM feature') do |e|
+    #   e.step('when I on users setup') do
+    #    admin_dashboard.options.admin_setup.click
+    #   end
+    #   e.step('and I select the first user') do
+    #     users.select_user_in_grid($marcel_user1)
+    #   end
+    #   e.step('then I allow CRM feature to user') do
+    #     users.crm_feature_disable
+    #     expect(users.message.modal.text).to eql 'User updated successfully.'
+    #     users.message.btn_ok.click
+    #   end
+    #   e.step('and I check if the change was saved correctly') do
+    #     users.wait_until_grid_rows_visible
+    #     users.select_user_in_grid($marcel_user1)
+    #     sleep(2)
+    #     expect(users.details.checkbox_crm).not_to be_checked
+    #   end
+    # end
+
+    it('validate validation message') do |e|
+      e.step('Given I has only 1 CRM license') do
+        puts "###"
+        puts $marcel_user.to_json
+        
+        puts "@@@@"
+        puts @response
+        puts "@@@@"
+        if @response.success?
+       @response.each do |u|
+          puts "#####"
+          puts u
+          puts "****"
+        end
       end
-      e.step('then I allow CRM feature to user') do
-        users.crm_feature_enable
-        expect(users.message.modal.text).to eql 'User updated successfully.'
-        users.message.btn_ok.click
-      end
-      e.step('and I check if the change was saved correctly') do
-        users.wait_until_grid_rows_visible
-        users.select_user_in_grid($marcel_user1)
-        sleep(5)
-        expect(users.details.checkbox_crm).not_to be_checked
-      end
+       end
+      #  e.step('when I on users setup') do
+      #   admin_dashboard.options.admin_setup.click
+      #  end
+      #  e.step('and I select the first user') do
+      #    users.select_user_in_grid($marcel_user1)
+      #  end
+      #  e.step('and I try to allow CRM feature to user') do
+      #    users.crm_feature_enable
+      #  end
+      #  e.step('then I see the validation message') do
+      #   expect(users.message.modal.text).to eql 'You do not have sufficient CRM licenses.'
+      #  end
     end
   end
 

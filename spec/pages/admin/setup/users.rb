@@ -8,8 +8,6 @@ class User < SitePrism::Page
   # all rows in user grid
   elements :grid_rows, 'article.ng-scope'
   
-  
-
   element :select_number_pages, 'select[class^="option.value"]'
   element :info_total_records, 'strong[class="ng-binding"]'
   # Settings for all users
@@ -57,11 +55,15 @@ class User < SitePrism::Page
   end
 
   def crm_feature_enable
+    self.details.wait_until_btn_save_user_visible
+    sleep(2)
     self.details.checkbox_crm.click
     self.details.btn_save_user.click
   end
 
   def crm_feature_disable
+    self.details.wait_until_btn_save_user_visible
+    sleep(2)
     self.details.checkbox_crm.click
     self.details.btn_save_user.click
   end
