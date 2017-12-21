@@ -29,12 +29,12 @@ RSpec.configure do |config|
   config.include Pages
   config.include Config
   config.include HTTParty
-  config.include Couch::Server
+  #config.include Couch::Server
 end
 
 $browser = 'firefox'
-$environment = 'marcel'
-$branch = 'crm'
+$environment = 'marcelo'
+$branch = 'current'
 
 Capybara.register_driver :selenium do |app|
 

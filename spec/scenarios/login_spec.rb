@@ -17,7 +17,7 @@ describe('Login in application', :inprogress) do
       end
 
       e.step 'and I fill the user and password to login' do
-        login_page.do_login($marcel_user)
+        login_page.do_login($marcel_admin_user)
       end
 
       e.step 'then I can see the home page' do

@@ -5,19 +5,14 @@ require_relative '../../../pages/admin/setup/users'
 
 describe('validate Users Setup', :usersetup) do
   before(:each) do
-    server = Couch::Server.new("http://couchdb.dev.ringbyname.com", "5984" )
-    res = server.get("/account%2Fb1%2F09%2Fd4ae6352974e71f26a04054720d1/b109d4ae6352974e71f26a04054720d1")
-    json = res.body
-    puts json
     login_page.load
-    login_page.do_login($marcel_user)
+    login_page.do_login($marcelo_admin_user)
     home.wait_until_home_menu_visible
     home.wait_until_user_status_visible
     home.goto_admin
     admin_dashboard.wait_until_btn_continue_visible
     admin_dashboard.btn_continue.click
 
-    
     @user1 = {
       extension: '101',
       name: 'Dev Marcelo 1 User',
@@ -34,7 +29,7 @@ describe('validate Users Setup', :usersetup) do
       extension: '102',
       name: 'Dev Marcelo 2 User',
       type: 'R! User',
-      direct: '12392065017'
+      direct: 'none'
     }
     @user3 = {
       extension: '103',
@@ -137,75 +132,64 @@ describe('validate Users Setup', :usersetup) do
   end
 
   describe('Validate CRM Feature', :crm_feature) do
-    # it('update users to enable CRM feature') do |e|
-    #   e.step('when I on users setup') do
-    #     admin_dashboard.options.admin_setup.click
-    #   end
-    #   e.step('and I select the first user') do
-    #     users.select_user_in_grid($marcel_user1)
-    #   end
-    #   e.step('then I allow CRM feature to user') do
-    #     users.crm_feature_enable
-    #     expect(users.message.modal.text).to eql 'User updated successfully.'
-    #     users.message.btn_ok.click
-    #   end
-    #   e.step('and I check if the change was saved correctly') do
-    #     users.wait_until_grid_rows_visible
-    #     users.select_user_in_grid($marcel_user1)
-    #     sleep(2)
-    #     expect(users.details.checkbox_crm).to be_checked
-    #   end
-    # end
-
-    # it('update users to disable CRM feature') do |e|
-    #   e.step('when I on users setup') do
-    #    admin_dashboard.options.admin_setup.click
-    #   end
-    #   e.step('and I select the first user') do
-    #     users.select_user_in_grid($marcel_user1)
-    #   end
-    #   e.step('then I allow CRM feature to user') do
-    #     users.crm_feature_disable
-    #     expect(users.message.modal.text).to eql 'User updated successfully.'
-    #     users.message.btn_ok.click
-    #   end
-    #   e.step('and I check if the change was saved correctly') do
-    #     users.wait_until_grid_rows_visible
-    #     users.select_user_in_grid($marcel_user1)
-    #     sleep(2)
-    #     expect(users.details.checkbox_crm).not_to be_checked
-    #   end
-    # end
-
-    it('validate validation message') do |e|
-      e.step('Given I has only 1 CRM license') do
-        puts "###"
-        puts $marcel_user.to_json
-        
-        puts "@@@@"
-        puts @response
-        puts "@@@@"
-        if @response.success?
-       @response.each do |u|
-          puts "#####"
-          puts u
-          puts "****"
-        end
+    it('update users to enable CRM feature') do |e|
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
       end
-       end
-      #  e.step('when I on users setup') do
-      #   admin_dashboard.options.admin_setup.click
-      #  end
-      #  e.step('and I select the first user') do
-      #    users.select_user_in_grid($marcel_user1)
-      #  end
-      #  e.step('and I try to allow CRM feature to user') do
-      #    users.crm_feature_enable
-      #  end
-      #  e.step('then I see the validation message') do
-      #   expect(users.message.modal.text).to eql 'You do not have sufficient CRM licenses.'
-      #  end
+      e.step('and I select the first user') do
+        users.select_user_in_grid($marcelo_user1)
+      end
+      e.step('then I allow CRM feature to user') do
+        users.crm_feature_enable
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('and I check if the change was saved correctly') do
+        users.wait_until_grid_rows_visible
+        expect(users.grid_rows.include? (users.grid_icon_crm))
+        users.select_user_in_grid($marcelo_user1)
+        expect(users.details.checkbox_crm).to be_checked
+      end
     end
+
+    it('check maximum number of license validation message') do |e|
+      e.step('Given I has only 1 CRM license') do
+        #expect(users.get_number_of_crm_licenses).to eql 1
+      end
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
+      end
+      e.step('and I allow CRM feature to users') do
+        users.select_user_in_grid($marcelo_user2)
+        users.crm_feature_enable
+      end
+      e.step('then I see the validation message') do
+        expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this user, please buy another license or disable CRM of another user before proceeding."
+      end
+    end
+    
+    it('update users to disable CRM feature') do |e|
+      e.step('when I on users setup') do
+       admin_dashboard.options.admin_setup.click
+      end
+      e.step('and I select the first user') do
+        users.select_user_in_grid($marcelo_user1)
+      end
+      e.step('then I allow CRM feature to user') do
+        users.crm_feature_disable
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('and I check if the change was saved correctly') do
+        users.wait_until_grid_rows_visible
+        expect(page).not_to have_selector('.column-crm > i[data-ng-if="user.crm.is_enabled"]')
+        users.select_user_in_grid($marcelo_user1)
+        sleep(2)
+        expect(users.details.checkbox_crm).not_to be_checked
+      end
+    end
+
+   
   end
 
   after(:each) do |e|

@@ -7,6 +7,8 @@ class User < SitePrism::Page
   element :btn_search, '.button'
   # all rows in user grid
   elements :grid_rows, 'article.ng-scope'
+  element :grid_icon_admin, '.column-admin:last-child'
+  element :grid_icon_crm, '.column-crm > i[data-ng-if="user.crm.is_enabled"]'
   
   element :select_number_pages, 'select[class^="option.value"]'
   element :info_total_records, 'strong[class="ng-binding"]'
@@ -46,6 +48,7 @@ class User < SitePrism::Page
         u.click
       end
     end
+    sleep(1)
   end
 
   def change_user_data(user)
@@ -56,17 +59,40 @@ class User < SitePrism::Page
 
   def crm_feature_enable
     self.details.wait_until_btn_save_user_visible
-    sleep(2)
+    sleep(1)
     self.details.checkbox_crm.click
     self.details.btn_save_user.click
   end
 
   def crm_feature_disable
     self.details.wait_until_btn_save_user_visible
-    sleep(2)
+    sleep(1)
     self.details.checkbox_crm.click
     self.details.btn_save_user.click
   end
 
+  def get_number_of_crm_licenses
+    user = { 'data' => {
+      'username' => 'devmarcelo.user1@ringbyname.com',
+      'password' => '123456asd',
+      'stay_sign_in' => 0,
+      'timezone' => 'America/Sao_Paulo'
+    }}
+    headers = {
+      'X-Application-Id' => 'webapp',
+      'X-Version' => 'v2'
+    }
+
+    @response = HTTParty.post(
+      'http://api.marcel.dev.ringbyname.com/auth?',
+      body: user.to_json,
+      headers: headers
+    )
+    
+    number_of_license = @response.parsed_response['data']['account']['crm']['licenses']
+
+    return number_of_license
+ 
+  end
   
 end
