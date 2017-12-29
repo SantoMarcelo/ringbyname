@@ -1,7 +1,7 @@
 
 
 require_relative '../pages/login'
-require_relative '../pages/home'
+require_relative '../pages/home/home'
 require_relative '../pages/reset_password'
 
 describe('Login in application', :inprogress) do

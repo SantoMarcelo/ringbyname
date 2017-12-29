@@ -10,6 +10,7 @@ class Login < SitePrism::Page
     element :message, '.alert-danger'
 
     def do_login(user)
+        
        self.txt_user.set (user[:username])
        self.txt_password.set (user[:password])
        self.btn_submit.click

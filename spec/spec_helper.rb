@@ -34,14 +34,19 @@ end
 
 $browser = 'firefox'
 $environment = 'marcelo'
-$branch = 'current'
+$branch = 'crm'
+$profile = 'test'
+
+
+
 
 Capybara.register_driver :selenium do |app|
 
   if $browser.include?('chrome')
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
   elsif $browser.include?('firefox')
-    Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true)
+    $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true, :profile => $profile)
+    
   end
 
 end

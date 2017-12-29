@@ -7,4 +7,5 @@ module Helpers
         return File.new(page.save_screenshot(File.join(Dir.pwd, target)))
     end
 
+    
 end

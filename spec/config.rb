@@ -3,7 +3,7 @@
 module Config
 #dev marcelo
 $marcelo_admin_user = {
-    username: 'devmarcelo.user1@ringbyname.com',
+    username: 'devmarcelo.user4@ringbyname.com',
     password: '123456asd'
 }
 
