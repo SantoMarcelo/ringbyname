@@ -42,15 +42,26 @@ class Contact < SitePrism::Page
   end
     
   def validate_oppo_in_grid(opportunity)
+    puts "validando..."
 
     self.contact_card.contact_crm_list.each do |u|
       puts u.text
       if u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:price]) && u.text.include?(opportunity[:status])
       puts "OK"  
       end
-      
-    end
 
+    end
+  end
+
+  def select_opportunity(opportunity)
+    puts "procurando..."
+    self.contact_card.contact_crm_list.each do |u|
+        puts u.text
+        if u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:price]) && u.text.include?(opportunity[:status])
+        puts "achei"
+            u.click  
+        end
+    end
   end
 
 end
