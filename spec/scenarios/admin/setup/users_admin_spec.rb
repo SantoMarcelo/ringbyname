@@ -6,7 +6,7 @@ require_relative '../../../pages/admin/setup/users'
 describe('validate Users Setup', :usersetup) do
   before(:each) do
     login_page.load
-    login_page.do_login($marcelo_admin_user)
+    login_page.do_login($admin_user)
     home.wait_until_home_menu_visible
     home.wait_until_user_status_visible
     home.goto_admin
@@ -137,7 +137,7 @@ describe('validate Users Setup', :usersetup) do
         admin_dashboard.options.admin_setup.click
       end
       e.step('and I select the first user') do
-        users.select_user_in_grid($marcelo_user1)
+        users.select_user_in_grid($user1)
       end
       e.step('then I allow CRM feature to user') do
         users.crm_feature_enable
@@ -147,11 +147,11 @@ describe('validate Users Setup', :usersetup) do
       e.step('and I check if the change was saved correctly') do
         users.wait_until_grid_rows_visible
         expect(users.grid_rows.include? (users.grid_icon_crm))
-        users.select_user_in_grid($marcelo_user1)
+        users.select_user_in_grid($user1)
         expect(users.details.checkbox_crm).to be_checked
       end
     end
-
+  
     it('check maximum number of license validation message') do |e|
       e.step('Given I has only 1 CRM license') do
         #expect(users.get_number_of_crm_licenses).to eql 1
@@ -160,7 +160,7 @@ describe('validate Users Setup', :usersetup) do
         admin_dashboard.options.admin_setup.click
       end
       e.step('and I allow CRM feature to users') do
-        users.select_user_in_grid($marcelo_user2)
+        users.select_user_in_grid($user2)
         users.crm_feature_enable
       end
       e.step('then I see the validation message') do
@@ -173,9 +173,9 @@ describe('validate Users Setup', :usersetup) do
        admin_dashboard.options.admin_setup.click
       end
       e.step('and I select the first user') do
-        users.select_user_in_grid($marcelo_user1)
+        users.select_user_in_grid($user1)
       end
-      e.step('then I allow CRM feature to user') do
+      e.step('then I unallow CRM feature to user') do
         users.crm_feature_disable
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
@@ -183,7 +183,7 @@ describe('validate Users Setup', :usersetup) do
       e.step('and I check if the change was saved correctly') do
         users.wait_until_grid_rows_visible
         expect(page).not_to have_selector('.column-crm > i[data-ng-if="user.crm.is_enabled"]')
-        users.select_user_in_grid($marcelo_user1)
+        users.select_user_in_grid($user1)
         sleep(2)
         expect(users.details.checkbox_crm).not_to be_checked
       end

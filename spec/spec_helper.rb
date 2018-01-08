@@ -13,6 +13,8 @@ require_relative 'helpers'
 require_relative 'object_factory'
 require_relative 'config'
 
+
+#Rspec configuration
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -32,20 +34,19 @@ RSpec.configure do |config|
   #config.include Couch::Server
 end
 
+#Environment Configuration
 $browser = 'firefox'
 $environment = 'marcelo'
-$branch = 'crm'
+$branch = 'crm-phase2'
 $profile = 'test'
 
-
-
-
+#, :profile => $profile
 Capybara.register_driver :selenium do |app|
 
   if $browser.include?('chrome')
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   elsif $browser.include?('firefox')
-    $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true, :profile => $profile)
+    $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true)
     
   end
 

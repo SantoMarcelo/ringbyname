@@ -6,4 +6,5 @@ module Pages
   def admin_dashboard; Dashboard.new end
   def users; User.new end
   def contact; Contact.new end
+  def config; Config.new end
 end

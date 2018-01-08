@@ -5,7 +5,7 @@ module Sections
         
         #element :contact_notes
         element :contact_crm_icon, 'div[class="ng-isolate-scope"] > ul > li[class^="crm-tab"]'
-        elements :contact_crm_list, '.crm__history > table[class="table table-striped"] > tbody > tr'
+        elements :contact_opportunity_list, '.crm__history > table > tbody > tr'
     end 
 
     class OpportunityForm < SitePrism::Section
@@ -20,9 +20,10 @@ module Sections
 
         element :select_oppo_next_action, 'select[data-ng-model="opportunity.action.id"]'
         element :date_oppo_follow_up, 'div[data-initial-date="filters.date"] > input[data-ng-model="useless"]' 
+        element :date_close_date, 'div[data-initial-date="filters.dateClose"]> input'
         element :txt_oppo_comment, 'textarea[data-ng-model="opportunity.comments"]'
-        element :btn_oppo_save, 'div > button[class="btn btn-primary ng-binding"]'
-        element :btn_oppo_cancel, 'div > button[data-ng-click="cancel($event)"]'
+        element :btn_oppo_save, 'button[data-ng-click="submit()"]'
+        element :btn_oppo_cancel, 'button[data-ng-click="cancel()"]'
     end
 
 end

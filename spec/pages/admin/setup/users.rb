@@ -62,6 +62,7 @@ class User < SitePrism::Page
     sleep(1)
     self.details.checkbox_crm.click
     self.details.btn_save_user.click
+    sleep(2)
   end
 
   def crm_feature_disable
