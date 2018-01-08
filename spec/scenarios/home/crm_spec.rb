@@ -28,7 +28,7 @@ describe('CRM - Opportunity', :general_crm) do
       name: 'Big OpportunityEDITED',
       source: 'Social Media Site',
       status: 'Dead',
-      probability: '50%',
+      probability: '100%',
       product: 'Test ProductEDITED',
       price: '$8,888.88',
       action: 'Email',
@@ -88,7 +88,7 @@ describe('CRM - Opportunity', :general_crm) do
         puts 'and I check if the opportunity is in grid'
         expect(contact.validate_contact_opportunity_list(@opportunity)).to eql true
       end
-      Capybara.current_session.driver.quit
+      
     end
     it('access CRM and verify opportunities') do |e|
       puts 'access CRM and verify opportunities'
@@ -135,6 +135,7 @@ describe('CRM - Opportunity', :general_crm) do
         expect(contact.message.text).to eql 'Opportunity updated.'
       end
       e.step('and I check if was updated correctly') do
+        puts 'and I check if was updated correctly'
         contact.wait_until_contact_opportunity_list_visible
         contact.select_opportunity(@edited_opportunity)
         contact.wait_until_oppo_form_visible
@@ -152,5 +153,9 @@ describe('CRM - Opportunity', :general_crm) do
         contact.oppo_form.btn_oppo_cancel.click
       end
     end
+  end
+
+  after(:each) do
+    Capybara.current_session.driver.quit
   end
 end

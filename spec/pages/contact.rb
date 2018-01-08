@@ -35,10 +35,11 @@ class Contact < SitePrism::Page
 
     oppo_form.txt_oppo_product.set(opportunity[:product])
     oppo_form.txt_oppo_price.set(opportunity[:price])
-    oppo_form.date_close_date.set(opportunity[:close_date])
+    
 
     oppo_form.select_oppo_next_action.find('option', text: (opportunity[:action])).select_option
     oppo_form.txt_oppo_comment.set(opportunity[:comment])
+    oppo_form.date_close_date.set(opportunity[:close_date])
 
     oppo_form.btn_oppo_save.click
   end
