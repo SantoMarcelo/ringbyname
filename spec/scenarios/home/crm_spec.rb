@@ -39,6 +39,124 @@ describe('CRM - Opportunity', :general_crm) do
       comment: 'Test Comment EDITED'
 
     }
+
+    @opportunity1 = {
+          name: 'Big Opportunity 1',
+          source: 'Social Media Site',
+          status: 'Attempted',
+          probability: '50%',
+          product: 'Test Product',
+          price: '$9,999.99',
+          action: 'Phone Call',
+          follow_up: '01-02-2018',
+          close_date: '05-01-2015',
+          comment: 'Test Comment',
+          contact_owner: 'Dev Marcelo 1 User'
+        }
+        @opportunity2 = {
+          name: 'Small Oppo 2',
+          source: 'Website',
+          status: 'Contacted',
+          probability: '25%',
+          product: 'Test Product',
+          price: '$9,999.99',
+          action: 'Phone Call',
+          follow_up: '01-02-2018',
+          close_date: '05-01-2015',
+          comment: 'Test Comment',
+          contact_owner: 'Dev Marcelo 1 User'
+        }
+        @opportunity3 = {
+          name: 'Old opport 3',
+          source: 'Word of Mouth',
+          status: 'Qualified',
+          probability: '75%',
+          product: 'Test Product',
+          price: '$9,999.99',
+          action: 'Phone Call',
+          follow_up: '01-02-2018',
+          close_date: '05-01-2015',
+          comment: 'Test Comment',
+          contact_owner: 'Dev Marcelo 1 User'
+        }
+        @opportunity4 = {
+          name: 'New Opportunity 4',
+          source: 'Referral',
+          status: 'Unqualified',
+          probability: '100%',
+          product: 'Test Product',
+          price: '$9,999.99',
+          action: 'Phone Call',
+          follow_up: '01-02-2018',
+          close_date: '05-01-2015',
+          comment: 'Test Comment',
+          contact_owner: 'Dev Marcelo 1 User'
+        }
+        @opportunity5 = {
+          name: 'Gold Opportunity 5',
+          source: 'Advertisement',
+          status: 'Dead',
+          probability: '100%',
+          product: 'Test Product',
+          price: '$9,999.99',
+          action: 'Phone Call',
+          follow_up: '01-02-2018',
+          close_date: '05-01-2015',
+          comment: 'Test Comment',
+          contact_owner: 'Dev Marcelo 1 User'
+        }
+        @opportunity6 = {
+          name: 'china business 6',
+          source: 'Advertisement',
+          status: 'Quoted',
+          probability: '100%',
+          product: 'Test Product',
+          price: '$9,999.99',
+          action: 'Phone Call',
+          follow_up: '01-02-2018',
+          close_date: '05-01-2015',
+          comment: 'Test Comment',
+          contact_owner: 'Dev Marcelo 1 User'
+        }
+        @opportunity7 = {
+          name: 'Gold Opportunity 7',
+          source: 'Advertisement',
+          status: 'Negotiating',
+          probability: '100%',
+          product: 'Test Product',
+          price: '$9,999.99',
+          action: 'Phone Call',
+          follow_up: '01-02-2018',
+          close_date: '05-01-2015',
+          comment: 'Test Comment',
+          contact_owner: 'Dev Marcelo 1 User'
+        }
+        @opportunity8 = {
+          name: 'Gold Opportunity 8',
+          source: 'Advertisement',
+          status: 'Closed Won',
+          probability: '100%',
+          product: 'Test Product',
+          price: '$9,999.99',
+          action: 'Phone Call',
+          follow_up: '01-02-2018',
+          close_date: '05-01-2015',
+          comment: 'Test Comment',
+          contact_owner: 'Dev Marcelo 1 User'
+        }
+        @opportunity9 = {
+          name: 'Gold Opportunity 9',
+          source: 'Advertisement',
+          status: 'Closed Lost',
+          probability: '100%',
+          product: 'Test Product',
+          price: '$9,999.99',
+          action: 'Phone Call',
+          follow_up: '01-02-2018',
+          close_date: '05-01-2015',
+          comment: 'Test Comment',
+          contact_owner: 'Dev Marcelo 1 User'
+        }
   end
 
   describe('add opportunity', :add_contact_opo) do
@@ -192,84 +310,204 @@ describe('CRM - Opportunity', :general_crm) do
       end
     end
   end
-  # describe('search opportunit in mini app', :search_oppo) do
-  #   it('seacrch by opportunity name') do |e|
-  #     puts 'seacrch by opportunity name'
-  #     e.step('given I have five different opportunities') do
-  #       @opportunity1 = {
-  #         name: 'Big Opportunity 1',
-  #         source: 'Social Media Site',
-  #         status: 'Qualified',
-  #         probability: '50%',
-  #         product: 'Test Product',
-  #         price: '$9,999.99',
-  #         action: 'Phone Call',
-  #         follow_up: '01-02-2018',
-  #         close_date: '05-01-2015',
-  #         comment: 'Test Comment'
-  #       }
-  #       @opportunity2 = {
-  #         name: 'Small Oppo 2',
-  #         source: 'Website',
-  #         status: 'Attempted',
-  #         probability: '25%',
-  #         product: 'Test Product',
-  #         price: '$9,999.99',
-  #         action: 'Phone Call',
-  #         follow_up: '01-02-2018',
-  #         close_date: '05-01-2015',
-  #         comment: 'Test Comment'
-  #       }
-  #       @opportunity3 = {
-  #         name: 'Old opport 3',
-  #         source: 'Word of Mouth',
-  #         status: 'Qualified',
-  #         probability: '75%',
-  #         product: 'Test Product',
-  #         price: '$9,999.99',
-  #         action: 'Phone Call',
-  #         follow_up: '01-02-2018',
-  #         close_date: '05-01-2015',
-  #         comment: 'Test Comment'
-  #       }
-  #       @opportunity4 = {
-  #         name: 'New Opportunity 4',
-  #         source: 'Referral',
-  #         status: 'Qualified',
-  #         probability: '100%',
-  #         product: 'Test Product',
-  #         price: '$9,999.99',
-  #         action: 'Phone Call',
-  #         follow_up: '01-02-2018',
-  #         close_date: '05-01-2015',
-  #         comment: 'Test Comment'
-  #       }
-  #       @opportunity5 = {
-  #         name: 'Gold Opportunity 5',
-  #         source: 'Advertisement',
-  #         status: 'Qualified',
-  #         probability: '100%',
-  #         product: 'Test Product',
-  #         price: '$9,999.99',
-  #         action: 'Phone Call',
-  #         follow_up: '01-02-2018',
-  #         close_date: '05-01-2015',
-  #         comment: 'Test Comment'
-  #       }
-  #       #generate opportunity
-  #       crm.create_opportunity(@opportunity1)
-  #     end
-  #     # e.step('when I search by name') do
+  describe('search opportunit in mini app', :search_oppo) do
+    it('seacrch by opportunity name') do |e|
+      puts 'seacrch by opportunity name'
+      e.step('given I have five different opportunities') do
+        puts 'criando'
+        
+       # generate opportunity
+        home.wait_until_contact_visible
+        sleep(2)
+        home.select_contact($contact1)
+        contact.wait_until_contact_card_visible
+        contact.access_crm_list
+        
+        crm.create_opportunity(@opportunity1)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
 
-  #     # end
-  #     # e.step('then I can see only the searched opportunity') do
+        crm.create_opportunity(@opportunity2)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
 
-  #     # end
-  #   end
-  #   # it('search opportunity by status') do |_e|
-  #   #   puts 'search opportunity by status'
-  #   # end
-  #end
+        crm.create_opportunity(@opportunity3)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+
+        crm.create_opportunity(@opportunity4)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+
+        crm.create_opportunity(@opportunity5)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+
+        crm.create_opportunity(@opportunity6)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+
+        crm.create_opportunity(@opportunity7)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+
+        crm.create_opportunity(@opportunity8)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+
+        crm.create_opportunity(@opportunity9)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+        sleep(2)
+      end
+      e.step('when I access mini app and search by name') do
+        home.access_crm
+        crm.wait_until_opportunity_list_visible
+        crm.crm.txt_search.set(@opportunity1[:name])
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('then I can see only the searched opportunity') do
+        expect(crm.validate_opportunity_list(@opportunity1)).to eql true
+      end
+    end
+    it('search opportunity by status') do |e|
+      
+      e.step('when I search by Attempted status') do
+        puts 'search by Attempted status'
+       
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Attempted').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Attempted status') do
+        puts 'the I can see oly opportunity with Attempted status'
+        crm.wait_until_label_current_filter_visible
+        expect(crm.label_current_filter.text).to eql 'Attempted'
+        expect(crm.validate_opportunity_list(@opportunity1)).to eql true
+       
+      end
+      e.step('when I search by Contacted status') do
+        puts 'search by Contacted status'
+        
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Contacted').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Contacted status') do
+        puts 'the I can see oly opportunity with Contacted status'
+      crm.wait_until_label_current_filter_visible
+        expect(crm.label_current_filter.text).to eql 'Contacted'
+        expect(crm.validate_opportunity_list(@opportunity2)).to eql true
+      end
+      e.step('when I search by Qualified status') do
+        puts 'search by Qualified status'
+        
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Qualified').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Qualified status') do
+        puts 'the I can see oly opportunity with Qualified status'
+      crm.wait_until_label_current_filter_visible
+        expect(crm.label_current_filter.text).to eql 'Qualified'
+        expect(crm.validate_opportunity_list(@opportunity3)).to eql true
+      end
+      e.step('when I search by Unqualified status') do
+        puts 'search by Unqualified status'
+        
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Unqualified').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Unqualified status') do
+        puts 'the I can see oly opportunity with Unqualified status'
+      crm.wait_until_label_current_filter_visible
+      expect(crm.label_current_filter.text).to eql 'Unqualified'
+        expect(crm.validate_opportunity_list(@opportunity4)).to eql true
+      end
+      e.step('when I search by Dead status') do
+        puts 'search by Dead status'
+        
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Dead').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Dead status') do
+        puts 'the I can see oly opportunity with Dead status'
+      crm.wait_until_label_current_filter_visible
+      expect(crm.label_current_filter.text).to eql 'Dead'
+        expect(crm.validate_opportunity_list(@opportunity5)).to eql true
+      end
+      e.step('when I search by Quoted status') do
+        puts 'search by Quoted status'
+        
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Quoted').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Quoted status') do
+        puts 'the I can see oly opportunity with Quoted status'
+      crm.wait_until_label_current_filter_visible
+      expect(crm.label_current_filter.text).to eql 'Quoted'
+        expect(crm.validate_opportunity_list(@opportunity6)).to eql true
+      end
+      e.step('when I search by Negotiating status') do
+        puts 'search by Negotiating status'
+        
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Negotiating').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Negotiating status') do
+        puts 'the I can see oly opportunity with Negotiating status'
+      crm.wait_until_label_current_filter_visible
+      expect(crm.label_current_filter.text).to eql 'Negotiating'
+        expect(crm.validate_opportunity_list(@opportunity7)).to eql true
+      end
+      e.step('when I search by Closed Won status') do
+        puts 'search by Closed Won status'
+        
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Closed Won').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Closed Won status') do
+        puts 'the I can see oly opportunity with Closed Won status'
+      crm.wait_until_label_current_filter_visible
+      expect(crm.label_current_filter.text).to eql 'Closed Won'
+        expect(crm.validate_opportunity_list(@opportunity8)).to eql true
+      end
+      e.step('when I search by Closed Lost status') do
+        puts 'search by Closed Lost status'
+        
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Closed Lost').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Closed Lost status') do
+        puts 'the I can see oly opportunity with Closed Lost status'
+      crm.wait_until_label_current_filter_visible
+      expect(crm.label_current_filter.text).to eql 'Closed Lost'
+        expect(crm.validate_opportunity_list(@opportunity9)).to eql true
+      end
+       e.step('when I search by Default status') do
+        puts 'search by Default status'
+        
+        home.access_crm
+        crm.crm.select_filter.find('option', text: 'Default').select_option
+        crm.crm.btn_apply.click
+        sleep(1)
+      end
+      e.step('the I can see oly opportunity with Default status') do
+        puts 'the I can see oly opportunity with Default status'
+        
+        expect(crm.validate_opportunity_list(@opportunity8)).to eql false
+        expect(crm.validate_opportunity_list(@opportunity9)).to eql false
+      end
+      
+    end
+  end
 
   after(:each) do |e|
     e.attach_file('screenshot', get_screenshot)

@@ -4,7 +4,7 @@ class CRM < SitePrism::Section
     element :txt_search, 'input[ng-model="crmCard.search.key"]'
     element :btn_apply, 'button[type="submit"]'
     element :select_filter, 'select[data-ng-model="crmCard.search.filter"]'
-
+    
 end
 
 class Contact < SitePrism::Section
