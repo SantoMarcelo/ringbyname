@@ -63,6 +63,7 @@ Capybara.configure do |c|
 end
 
 Capybara.default_max_wait_time = 10
+Capybara.page.driver.browser.manage.window.maximize
 
 
 AllureRSpec.configure do |c|

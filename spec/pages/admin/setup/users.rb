@@ -63,6 +63,7 @@ class User < SitePrism::Page
     self.details.checkbox_crm.click
     self.details.btn_save_user.click
     sleep(2)
+    
   end
 
   def crm_feature_disable
@@ -70,6 +71,7 @@ class User < SitePrism::Page
     sleep(1)
     self.details.checkbox_crm.click
     self.details.btn_save_user.click
+    wait_until_grid_rows_visible
   end
 
   def get_number_of_crm_licenses

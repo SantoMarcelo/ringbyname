@@ -9,7 +9,7 @@ class Contact < SitePrism::Page
   element :message, 'div[class="noty_message"] > span'
 
   section :contact_card, Sections::ContactCard, '.contact-card'
-  section :oppo_form, Sections::OpportunityForm, '.modal-content'
+  section :oppo_form, Sections::ContactOpportunityForm, '.modal-content'
 
   elements :contact_opportunity_list, '.crm__history > table > tbody > tr'
 
@@ -25,6 +25,8 @@ class Contact < SitePrism::Page
   def fill_opportunity_data(opportunity)
     wait_until_oppo_form_visible
     sleep(1)
+
+    oppo_form.date_close_date.set(opportunity[:close_date])
     oppo_form.txt_oppo_name.set(opportunity[:name])
     oppo_form.date_oppo_follow_up.set(opportunity[:follow_up])
     
@@ -39,7 +41,7 @@ class Contact < SitePrism::Page
 
     oppo_form.select_oppo_next_action.find('option', text: (opportunity[:action])).select_option
     oppo_form.txt_oppo_comment.set(opportunity[:comment])
-    oppo_form.date_close_date.set(opportunity[:close_date])
+    
 
     oppo_form.btn_oppo_save.click
   end

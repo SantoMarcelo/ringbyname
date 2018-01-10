@@ -8,7 +8,7 @@ module Sections
         elements :contact_opportunity_list, '.crm__history > table > tbody > tr'
     end 
 
-    class OpportunityForm < SitePrism::Section
+    class ContactOpportunityForm < SitePrism::Section
         
         element :txt_oppo_name, 'input[data-ng-model="opportunity.name"]'
         element :select_oppo_source, 'select[data-ng-model="opportunity.source.id"]'

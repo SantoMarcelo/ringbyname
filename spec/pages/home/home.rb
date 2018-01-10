@@ -1,5 +1,6 @@
 require_relative '../../sections/home/menu'
 require_relative '../../sections/home/home'
+require_relative '../../sections/home/contact_card'
 
 class Home < SitePrism::Page
   element :dropdown, '.dropdown-user-menu.dropdown'
@@ -9,7 +10,8 @@ class Home < SitePrism::Page
   section :home_menu, Sections::MainMenu, '.nav-middle-top'
   section :contact, Sections::Contact, '#contact-list'
 
-  elements :opportunity_list, '.crm-card-list > div > table > tbody > tr'
+    
+  element :message, 'div[class="noty_message"] > span'
 
   def menu_access
     dropdown.click
@@ -35,15 +37,4 @@ class Home < SitePrism::Page
     end
   end
 
-  def validate_oppo_list(opportunity)
-    opportunity_list.each do |u|
-      puts u.text
-      if u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:status]) && u.text.include?(opportunity[:price]) && u.text.include?(opportunity[:probability])
-        puts 'true'
-        return true
-      end
-    end
-    puts 'false'
-    return false
-  end
 end
