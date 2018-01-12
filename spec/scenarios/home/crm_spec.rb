@@ -64,7 +64,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2018',
+          close_date: '05-02-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -77,7 +77,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2018',
+          close_date: '05-03-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -90,7 +90,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2018',
+          close_date: '05-04-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -103,7 +103,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2018',
+          close_date: '05-05-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -116,7 +116,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2018',
+          close_date: '05-06-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -129,7 +129,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2018',
+          close_date: '05-07-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -142,7 +142,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2018',
+          close_date: '05-08-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -155,7 +155,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2018',
+          close_date: '05-09-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -174,6 +174,7 @@ describe('CRM - Opportunity', :general_crm) do
         # select user and allow CRM feature
         users.select_user_in_grid($user1)
         users.crm_feature_enable
+        sleep(5)
         users.wait_until_message_visible
         # validate if was allowed correctly
         expect(users.message.modal.text).to eql 'User updated successfully.'
@@ -331,7 +332,7 @@ describe('CRM - Opportunity', :general_crm) do
         puts '3'
         contact.wait_until_contact_card_visible
         puts '4'
-        contact.access_crm
+        #contact.access_crm
         puts '5'       
         crm.create_opportunity(@opportunity1)
         expect(contact.message.text).to eql 'Opportunity inserted.'

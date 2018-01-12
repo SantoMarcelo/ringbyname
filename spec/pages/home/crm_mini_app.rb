@@ -40,10 +40,11 @@ class CrmMiniApp < SitePrism::Page
     puts opportunity[:price]
     puts opportunity[:probability]
 
+    #need to validate close date in this step: && u.text.include?(opportunity[:close_date])
     wait_until_opportunity_list_visible
     opportunity_list.each do |u|
       puts u.text
-      if u.text.include?(opportunity[:contact_owner]) && u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:status]) && u.text.include?(opportunity[:price]) && u.text.include?(opportunity[:probability])
+      if u.text.include?(opportunity[:contact_owner]) && u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:status])  && u.text.include?(opportunity[:price]) && u.text.include?(opportunity[:probability])
         puts 'true'
         return true
       end
@@ -89,7 +90,7 @@ class CrmMiniApp < SitePrism::Page
 
   def create_opportunity(opportunity)
     contact = Contact.new
-    sleep(1)
+    sleep(2)
     contact.add_opportunity.click
     contact.fill_opportunity_data(opportunity)
   end
