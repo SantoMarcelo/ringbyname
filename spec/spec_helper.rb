@@ -7,14 +7,13 @@ require 'mongo'
 require 'allure-rspec'
 require 'logger'
 require 'httparty'
-#require 'Couch'
+# require 'Couch'
 
 require_relative 'helpers'
 require_relative 'object_factory'
 require_relative 'config'
 
-
-#Rspec configuration
+# Rspec configuration
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -31,25 +30,37 @@ RSpec.configure do |config|
   config.include Pages
   config.include Config
   config.include HTTParty
-  #config.include Couch::Server
+  # config.include Couch::Server
 end
 
-#Environment Configuration
+# Environment Configuration
 $browser = 'firefox'
 $environment = 'marcelo'
 $branch = 'crm-phase2'
 $profile = 'test'
 
-#, :profile => $profile
+# , :profile => $profile
 Capybara.register_driver :selenium do |app|
+  # headless
+  args = ['window-size=1920,1080']
 
-  if $browser.include?('chrome')
-    Capybara::Selenium::Driver.new(app, browser: :chrome)
-  elsif $browser.include?('firefox')
-    $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true)
-    
+  if $browser.include?('headless')
+    args.push('headless')
+    args.push('disable-gpu')
   end
 
+  chrome_caps = Selenium::WebDriver::Remote::Capabilities.chrome(
+    'chromeOptions' => {
+      'args' => args
+    }
+  )
+
+  if $browser.include?('chrome')
+    Capybara::Selenium::Driver.new(app, browser: :chrome, desired_capabilities: chrome_caps)
+  elsif $browser.include?('firefox')
+    $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true)
+
+  end
 end
 
 Capybara.configure do |c|
@@ -58,18 +69,15 @@ Capybara.configure do |c|
   if $environment != 'production'
     $url = c.app_host   = "http://login.#{$environment}.dev.ringbyname.com/#{$branch}"
   else
-    $url = c.app_host   = "http://login.ringbyname.com"
+    $url = c.app_host   = 'http://login.ringbyname.com'
   end
 end
 
 Capybara.default_max_wait_time = 10
 Capybara.page.driver.browser.manage.window.maximize
 
-
 AllureRSpec.configure do |c|
   c.output_dir = 'log/reports'
   c.clean_dir = false
   c.logging_level = Logger::WARN
 end
-
-

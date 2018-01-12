@@ -22,8 +22,9 @@ describe('CRM - Opportunity', :general_crm) do
       price: '$9,999.99',
       action: 'Phone Call',
       follow_up: '01-02-2018',
-      close_date: '05-01-2015',
-      comment: 'Test Comment'
+      close_date: '05-01-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
     }
 
     @edited_opportunity = {
@@ -35,8 +36,9 @@ describe('CRM - Opportunity', :general_crm) do
       price: '$8,888.88',
       action: 'Email',
       follow_up: '10-02-2018',
-      close_date: '10-01-2015',
-      comment: 'Test Comment EDITED'
+      close_date: '10-01-2018',
+      comment: 'Test Comment EDITED',
+      contact_owner: 'Dev Marcelo 1 User'
 
     }
 
@@ -49,7 +51,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2015',
+          close_date: '05-01-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -62,7 +64,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2015',
+          close_date: '05-01-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -75,7 +77,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2015',
+          close_date: '05-01-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -88,7 +90,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2015',
+          close_date: '05-01-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -101,7 +103,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2015',
+          close_date: '05-01-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -114,7 +116,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2015',
+          close_date: '05-01-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -127,7 +129,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2015',
+          close_date: '05-01-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -140,7 +142,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2015',
+          close_date: '05-01-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -153,7 +155,7 @@ describe('CRM - Opportunity', :general_crm) do
           price: '$9,999.99',
           action: 'Phone Call',
           follow_up: '01-02-2018',
-          close_date: '05-01-2015',
+          close_date: '05-01-2018',
           comment: 'Test Comment',
           contact_owner: 'Dev Marcelo 1 User'
         }
@@ -194,8 +196,8 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('and I select CRM menu and click to add') do
         puts 'and I select CRM menu and click to add'
-        contact.access_crm_list
-        find('.crm-tab__add-button').click
+        contact.access_crm
+        #find('.crm-tab__add-button').click
       end
       e.step('then I filled opportunity information') do
         puts 'then I filled opportunity information'
@@ -209,12 +211,13 @@ describe('CRM - Opportunity', :general_crm) do
         puts 'and I check if the opportunity is in grid'
         expect(contact.validate_contact_opportunity_list(@opportunity)).to eql true
       end
-      e.step('access CRM and verify opportunities') do
-        puts 'access CRM and verify opportunities'
+      e.step('and access CRM and verify opportunities') do
+        puts 'and access CRM and verify opportunities'
+        puts 'acessando crm'
         home.access_crm
-        home.wait_until_opportunity_list_visible
+        crm.wait_until_opportunity_list_visible
         expect(home.current_url).to end_with '/#!/app/crm'
-        expect(home.validate_opportunity_list(@opportunity)).to eql true
+        expect(crm.validate_opportunity_list(@opportunity)).to eql true
       end
     end
   end
@@ -234,15 +237,17 @@ describe('CRM - Opportunity', :general_crm) do
       e.step('and I access CRM menu') do
         puts 'and I access CRM menu'
         contact.access_crm_list
+        
       end
       e.step('when I select a opportunity to edit') do
         puts 'when I select a opportunity to edit'
         contact.select_opportunity(@opportunity)
+        
       end
       e.step('and I edit a opportunity') do
         puts 'and I edit a opportunity'
         sleep(3)
-        contact.fill_opportunity_data(@edited_opportunity)
+        contact.edit_fill_opportunity_data(@edited_opportunity)
       end
       e.step('then I see the success message') do
         puts 'then I see the success message'
@@ -253,19 +258,19 @@ describe('CRM - Opportunity', :general_crm) do
         contact.wait_until_contact_opportunity_list_visible
         sleep(2)
         contact.select_opportunity(@edited_opportunity)
-        contact.wait_until_oppo_form_visible
-        expect(contact.oppo_form.txt_oppo_name.text.include?(@edited_opportunity[:name]))
-        expect(contact.oppo_form.select_oppo_source.text.include?(@edited_opportunity[:source]))
-        expect(contact.oppo_form.select_oppo_status.text.include?(@edited_opportunity[:status]))
-        expect(contact.oppo_form.select_oppo_prob.text.include?(@edited_opportunity[:probability]))
-        expect(contact.oppo_form.txt_oppo_product.text.include?(@edited_opportunity[:product]))
-        expect(contact.oppo_form.txt_oppo_price.text.include?(@edited_opportunity[:price]))
-        expect(contact.oppo_form.select_oppo_next_action.text.include?(@edited_opportunity[:action]))
-        expect(contact.oppo_form.date_oppo_follow_up.text.include?(@edited_opportunity[:follow_up]))
-        expect(contact.oppo_form.date_close_date.text.include?(@edited_opportunity[:close_date]))
-        expect(contact.oppo_form.txt_oppo_comment.text.include?(@edited_opportunity[:comment]))
+        contact.wait_until_edit_oppo_form_visible
+        expect(contact.edit_oppo_form.txt_oppo_name.text.include?(@edited_opportunity[:name]))
+        expect(contact.edit_oppo_form.select_oppo_source.text.include?(@edited_opportunity[:source]))
+        expect(contact.edit_oppo_form.select_oppo_status.text.include?(@edited_opportunity[:status]))
+        expect(contact.edit_oppo_form.select_oppo_prob.text.include?(@edited_opportunity[:probability]))
+        expect(contact.edit_oppo_form.txt_oppo_product.text.include?(@edited_opportunity[:product]))
+        expect(contact.edit_oppo_form.txt_oppo_price.text.include?(@edited_opportunity[:price]))
+        expect(contact.edit_oppo_form.select_oppo_next_action.text.include?(@edited_opportunity[:action]))
+        expect(contact.edit_oppo_form.date_oppo_follow_up.text.include?(@edited_opportunity[:follow_up]))
+        expect(contact.edit_oppo_form.date_close_date.text.include?(@edited_opportunity[:close_date]))
+        expect(contact.edit_oppo_form.txt_oppo_comment.text.include?(@edited_opportunity[:comment]))
 
-        contact.oppo_form.btn_oppo_cancel.click
+        contact.edit_oppo_form.btn_oppo_cancel.click
       end
     end
     it('edit opportunity by CRM mini app', :edit_oppo_miniapp) do |e|
@@ -310,6 +315,7 @@ describe('CRM - Opportunity', :general_crm) do
       end
     end
   end
+
   describe('search opportunit in mini app', :search_oppo) do
     it('seacrch by opportunity name') do |e|
       puts 'seacrch by opportunity name'
@@ -317,12 +323,16 @@ describe('CRM - Opportunity', :general_crm) do
         puts 'criando'
         
        # generate opportunity
+       puts '1'
         home.wait_until_contact_visible
         sleep(2)
+        puts '2'
         home.select_contact($contact1)
+        puts '3'
         contact.wait_until_contact_card_visible
-        contact.access_crm_list
-        
+        puts '4'
+        contact.access_crm
+        puts '5'       
         crm.create_opportunity(@opportunity1)
         expect(contact.message.text).to eql 'Opportunity inserted.'
 
@@ -508,6 +518,9 @@ describe('CRM - Opportunity', :general_crm) do
       
     end
   end
+
+
+
 
   after(:each) do |e|
     e.attach_file('screenshot', get_screenshot)

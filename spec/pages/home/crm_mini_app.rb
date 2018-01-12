@@ -34,6 +34,12 @@ class CrmMiniApp < SitePrism::Page
   end
 
   def validate_opportunity_list(opportunity)
+    puts opportunity[:contact_owner]
+    puts opportunity[:name]
+    puts opportunity[:status]
+    puts opportunity[:price]
+    puts opportunity[:probability]
+
     wait_until_opportunity_list_visible
     opportunity_list.each do |u|
       puts u.text
@@ -83,8 +89,8 @@ class CrmMiniApp < SitePrism::Page
 
   def create_opportunity(opportunity)
     contact = Contact.new
-    sleep(2)
-    find('.crm-tab__add-button').click
+    sleep(1)
+    contact.add_opportunity.click
     contact.fill_opportunity_data(opportunity)
   end
 end
