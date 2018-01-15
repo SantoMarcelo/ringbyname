@@ -22,7 +22,7 @@ module Sections
         element :date_oppo_follow_up, 'div[data-initial-date="crmContactCard.filters.date"] > input' 
         element :date_close_date, 'div[data-initial-date="crmContactCard.filters.dateClose"] > input'
         element :txt_oppo_comment, 'textarea[data-ng-model="crmContactCard.opportunity.comments"]'
-        element :link_upload_attach, '.fileinput-button > i[class="icon-fontello-upload"]'
+        element :link_upload_attach, '.fileinput-button > .icon-fontello-upload'
         element :btn_oppo_save, 'button[data-ng-click="crmContactCard.submit()"]'
         element :btn_oppo_cancel, 'button[data-ng-click="smsCompose.cancelForm()"]'
    end
@@ -41,7 +41,7 @@ module Sections
         element :date_oppo_follow_up, 'div[data-initial-date="filters.date"] > input' 
         element :date_close_date, 'div[data-initial-date="filters.dateClose"] > input'
         element :txt_oppo_comment, 'textarea[data-ng-model="opportunity.comments"]'
-        element :link_upload_attach, '.fileinput-button > i[class="icon-fontello-upload"]'
+        element :link_upload_attach, '.fileinput-button > input[data-fileupload-model="attachment.selected"]'
         element :btn_oppo_save, 'button[data-ng-click="submit()"]'
         element :btn_oppo_cancel, 'button[data-ng-click="cancel()"]'
 

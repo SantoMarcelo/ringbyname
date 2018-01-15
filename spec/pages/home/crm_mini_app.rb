@@ -14,6 +14,7 @@ class CrmMiniApp < SitePrism::Page
   section :crm, Sections::CRM, '.crm-card-search-bar'
 
   elements :opportunity_list, '.crm-card-list > div > table > tbody > tr'
+  elements :pagination, '.pagination > li[ng-repeat^="pageNumber"] > a'
   element :label_current_filter, 'div > p > strong.ng-binding'
 
   element :message, 'div[class="noty_message"] > span'
@@ -40,11 +41,11 @@ class CrmMiniApp < SitePrism::Page
     puts opportunity[:price]
     puts opportunity[:probability]
 
-    #need to validate close date in this step: && u.text.include?(opportunity[:close_date])
+    # need to validate close date in this step: && u.text.include?(opportunity[:close_date])
     wait_until_opportunity_list_visible
     opportunity_list.each do |u|
       puts u.text
-      if u.text.include?(opportunity[:contact_owner]) && u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:status])  && u.text.include?(opportunity[:price]) && u.text.include?(opportunity[:probability])
+      if u.text.include?(opportunity[:contact_owner]) && u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:status]) && u.text.include?(opportunity[:price]) && u.text.include?(opportunity[:probability])
         puts 'true'
         return true
       end
@@ -94,4 +95,10 @@ class CrmMiniApp < SitePrism::Page
     contact.add_opportunity.click
     contact.fill_opportunity_data(opportunity)
   end
+
+  def goto_page(number)
+    pagination.each do |u|
+      u.click if number > 1
+    end
+   end
 end

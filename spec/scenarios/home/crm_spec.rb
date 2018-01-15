@@ -21,7 +21,7 @@ describe('CRM - Opportunity', :general_crm) do
       product: 'Test Product',
       price: '$9,999.99',
       action: 'Phone Call',
-      follow_up: '01-02-2018',
+      follow_up: '12-01-2018',
       close_date: '05-01-2018',
       comment: 'Test Comment',
       contact_owner: 'Dev Marcelo 1 User'
@@ -43,122 +43,200 @@ describe('CRM - Opportunity', :general_crm) do
     }
 
     @opportunity1 = {
-          name: 'Big Opportunity 1',
-          source: 'Social Media Site',
-          status: 'Attempted',
-          probability: '50%',
-          product: 'Test Product',
-          price: '$9,999.99',
-          action: 'Phone Call',
-          follow_up: '01-02-2018',
-          close_date: '05-01-2018',
-          comment: 'Test Comment',
-          contact_owner: 'Dev Marcelo 1 User'
-        }
-        @opportunity2 = {
-          name: 'Small Oppo 2',
-          source: 'Website',
-          status: 'Contacted',
-          probability: '25%',
-          product: 'Test Product',
-          price: '$9,999.99',
-          action: 'Phone Call',
-          follow_up: '01-02-2018',
-          close_date: '05-02-2018',
-          comment: 'Test Comment',
-          contact_owner: 'Dev Marcelo 1 User'
-        }
-        @opportunity3 = {
-          name: 'Old opport 3',
-          source: 'Word of Mouth',
-          status: 'Qualified',
-          probability: '75%',
-          product: 'Test Product',
-          price: '$9,999.99',
-          action: 'Phone Call',
-          follow_up: '01-02-2018',
-          close_date: '05-03-2018',
-          comment: 'Test Comment',
-          contact_owner: 'Dev Marcelo 1 User'
-        }
-        @opportunity4 = {
-          name: 'New Opportunity 4',
-          source: 'Referral',
-          status: 'Unqualified',
-          probability: '100%',
-          product: 'Test Product',
-          price: '$9,999.99',
-          action: 'Phone Call',
-          follow_up: '01-02-2018',
-          close_date: '05-04-2018',
-          comment: 'Test Comment',
-          contact_owner: 'Dev Marcelo 1 User'
-        }
-        @opportunity5 = {
-          name: 'Gold Opportunity 5',
-          source: 'Advertisement',
-          status: 'Dead',
-          probability: '100%',
-          product: 'Test Product',
-          price: '$9,999.99',
-          action: 'Phone Call',
-          follow_up: '01-02-2018',
-          close_date: '05-05-2018',
-          comment: 'Test Comment',
-          contact_owner: 'Dev Marcelo 1 User'
-        }
-        @opportunity6 = {
-          name: 'china business 6',
-          source: 'Advertisement',
-          status: 'Quoted',
-          probability: '100%',
-          product: 'Test Product',
-          price: '$9,999.99',
-          action: 'Phone Call',
-          follow_up: '01-02-2018',
-          close_date: '05-06-2018',
-          comment: 'Test Comment',
-          contact_owner: 'Dev Marcelo 1 User'
-        }
-        @opportunity7 = {
-          name: 'Gold Opportunity 7',
-          source: 'Advertisement',
-          status: 'Negotiating',
-          probability: '100%',
-          product: 'Test Product',
-          price: '$9,999.99',
-          action: 'Phone Call',
-          follow_up: '01-02-2018',
-          close_date: '05-07-2018',
-          comment: 'Test Comment',
-          contact_owner: 'Dev Marcelo 1 User'
-        }
-        @opportunity8 = {
-          name: 'Gold Opportunity 8',
-          source: 'Advertisement',
-          status: 'Closed Won',
-          probability: '100%',
-          product: 'Test Product',
-          price: '$9,999.99',
-          action: 'Phone Call',
-          follow_up: '01-02-2018',
-          close_date: '05-08-2018',
-          comment: 'Test Comment',
-          contact_owner: 'Dev Marcelo 1 User'
-        }
-        @opportunity9 = {
-          name: 'Gold Opportunity 9',
-          source: 'Advertisement',
-          status: 'Closed Lost',
-          probability: '100%',
-          product: 'Test Product',
-          price: '$9,999.99',
-          action: 'Phone Call',
-          follow_up: '01-02-2018',
-          close_date: '05-09-2018',
-          comment: 'Test Comment',
-          contact_owner: 'Dev Marcelo 1 User'
-        }
+      name: 'Big Opportunity 1',
+      source: 'Social Media Site',
+      status: 'Attempted',
+      probability: '50%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-01-2018',
+      close_date: '05-01-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity2 = {
+      name: 'Small Oppo 2',
+      source: 'Website',
+      status: 'Contacted',
+      probability: '25%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-02-2018',
+      close_date: '05-02-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity3 = {
+      name: 'Old opport 3',
+      source: 'Word of Mouth',
+      status: 'Qualified',
+      probability: '75%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-03-2018',
+      close_date: '05-03-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity4 = {
+      name: 'New Opportunity 4',
+      source: 'Referral',
+      status: 'Unqualified',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-04-2018',
+      close_date: '05-04-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity5 = {
+      name: 'Gold Opportunity 5',
+      source: 'Advertisement',
+      status: 'Dead',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-05-2018',
+      close_date: '05-05-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity6 = {
+      name: 'china business 6',
+      source: 'Advertisement',
+      status: 'Quoted',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-06-2018',
+      close_date: '05-06-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity7 = {
+      name: 'Gold Opportunity 7',
+      source: 'Advertisement',
+      status: 'Negotiating',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-07-2018',
+      close_date: '05-07-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity8 = {
+      name: 'Gold Opportunity 8',
+      source: 'Advertisement',
+      status: 'Closed Won',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-08-2018',
+      close_date: '05-08-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity9 = {
+      name: 'Gold Opportunity 9',
+      source: 'Advertisement',
+      status: 'Closed Lost',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-09-2018',
+      close_date: '05-09-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity10 = {
+      name: 'Gold Opportunity 10',
+      source: 'Advertisement',
+      status: 'Negotiating',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-10-2018',
+      close_date: '05-10-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity11 = {
+      name: 'Gold Opportunity 11',
+      source: 'Advertisement',
+      status: 'Negotiating',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-11-2018',
+      close_date: '05-11-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity12 = {
+      name: 'Gold Opportunity 12',
+      source: 'Advertisement',
+      status: 'Negotiating',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-12-2018',
+      close_date: '05-12-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity13 = {
+      name: 'Gold Opportunity 13',
+      source: 'Advertisement',
+      status: 'Negotiating',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-13-2018',
+      close_date: '05-13-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity14 = {
+      name: 'Gold Opportunity 14',
+      source: 'Advertisement',
+      status: 'Negotiating',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '06-14-2018',
+      close_date: '05-14-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
+    @opportunity15 = {
+      name: 'Gold Opportunity 15',
+      source: 'Advertisement',
+      status: 'Negotiating',
+      probability: '100%',
+      product: 'Test Product',
+      price: '$9,999.99',
+      action: 'Phone Call',
+      follow_up: '01-02-2018',
+      close_date: '05-15-2018',
+      comment: 'Test Comment',
+      contact_owner: 'Dev Marcelo 1 User'
+    }
   end
 
   describe('add opportunity', :add_contact_opo) do
@@ -198,7 +276,7 @@ describe('CRM - Opportunity', :general_crm) do
       e.step('and I select CRM menu and click to add') do
         puts 'and I select CRM menu and click to add'
         contact.access_crm
-        #find('.crm-tab__add-button').click
+        # find('.crm-tab__add-button').click
       end
       e.step('then I filled opportunity information') do
         puts 'then I filled opportunity information'
@@ -238,12 +316,10 @@ describe('CRM - Opportunity', :general_crm) do
       e.step('and I access CRM menu') do
         puts 'and I access CRM menu'
         contact.access_crm_list
-        
       end
       e.step('when I select a opportunity to edit') do
         puts 'when I select a opportunity to edit'
         contact.select_opportunity(@opportunity)
-        
       end
       e.step('and I edit a opportunity') do
         puts 'and I edit a opportunity'
@@ -322,18 +398,13 @@ describe('CRM - Opportunity', :general_crm) do
       puts 'seacrch by opportunity name'
       e.step('given I have five different opportunities') do
         puts 'criando'
-        
-       # generate opportunity
-       puts '1'
+
+        # generate opportunity
+
         home.wait_until_contact_visible
         sleep(2)
-        puts '2'
         home.select_contact($contact1)
-        puts '3'
         contact.wait_until_contact_card_visible
-        puts '4'
-        #contact.access_crm
-        puts '5'       
         crm.create_opportunity(@opportunity1)
         expect(contact.message.text).to eql 'Opportunity inserted.'
 
@@ -374,10 +445,9 @@ describe('CRM - Opportunity', :general_crm) do
       end
     end
     it('search opportunity by status') do |e|
-      
       e.step('when I search by Attempted status') do
         puts 'search by Attempted status'
-       
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Attempted').select_option
         crm.crm.btn_apply.click
@@ -388,11 +458,10 @@ describe('CRM - Opportunity', :general_crm) do
         crm.wait_until_label_current_filter_visible
         expect(crm.label_current_filter.text).to eql 'Attempted'
         expect(crm.validate_opportunity_list(@opportunity1)).to eql true
-       
       end
       e.step('when I search by Contacted status') do
         puts 'search by Contacted status'
-        
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Contacted').select_option
         crm.crm.btn_apply.click
@@ -400,13 +469,13 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('the I can see oly opportunity with Contacted status') do
         puts 'the I can see oly opportunity with Contacted status'
-      crm.wait_until_label_current_filter_visible
+        crm.wait_until_label_current_filter_visible
         expect(crm.label_current_filter.text).to eql 'Contacted'
         expect(crm.validate_opportunity_list(@opportunity2)).to eql true
       end
       e.step('when I search by Qualified status') do
         puts 'search by Qualified status'
-        
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Qualified').select_option
         crm.crm.btn_apply.click
@@ -414,13 +483,13 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('the I can see oly opportunity with Qualified status') do
         puts 'the I can see oly opportunity with Qualified status'
-      crm.wait_until_label_current_filter_visible
+        crm.wait_until_label_current_filter_visible
         expect(crm.label_current_filter.text).to eql 'Qualified'
         expect(crm.validate_opportunity_list(@opportunity3)).to eql true
       end
       e.step('when I search by Unqualified status') do
         puts 'search by Unqualified status'
-        
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Unqualified').select_option
         crm.crm.btn_apply.click
@@ -428,13 +497,13 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('the I can see oly opportunity with Unqualified status') do
         puts 'the I can see oly opportunity with Unqualified status'
-      crm.wait_until_label_current_filter_visible
-      expect(crm.label_current_filter.text).to eql 'Unqualified'
+        crm.wait_until_label_current_filter_visible
+        expect(crm.label_current_filter.text).to eql 'Unqualified'
         expect(crm.validate_opportunity_list(@opportunity4)).to eql true
       end
       e.step('when I search by Dead status') do
         puts 'search by Dead status'
-        
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Dead').select_option
         crm.crm.btn_apply.click
@@ -442,13 +511,13 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('the I can see oly opportunity with Dead status') do
         puts 'the I can see oly opportunity with Dead status'
-      crm.wait_until_label_current_filter_visible
-      expect(crm.label_current_filter.text).to eql 'Dead'
+        crm.wait_until_label_current_filter_visible
+        expect(crm.label_current_filter.text).to eql 'Dead'
         expect(crm.validate_opportunity_list(@opportunity5)).to eql true
       end
       e.step('when I search by Quoted status') do
         puts 'search by Quoted status'
-        
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Quoted').select_option
         crm.crm.btn_apply.click
@@ -456,13 +525,13 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('the I can see oly opportunity with Quoted status') do
         puts 'the I can see oly opportunity with Quoted status'
-      crm.wait_until_label_current_filter_visible
-      expect(crm.label_current_filter.text).to eql 'Quoted'
+        crm.wait_until_label_current_filter_visible
+        expect(crm.label_current_filter.text).to eql 'Quoted'
         expect(crm.validate_opportunity_list(@opportunity6)).to eql true
       end
       e.step('when I search by Negotiating status') do
         puts 'search by Negotiating status'
-        
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Negotiating').select_option
         crm.crm.btn_apply.click
@@ -470,13 +539,13 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('the I can see oly opportunity with Negotiating status') do
         puts 'the I can see oly opportunity with Negotiating status'
-      crm.wait_until_label_current_filter_visible
-      expect(crm.label_current_filter.text).to eql 'Negotiating'
+        crm.wait_until_label_current_filter_visible
+        expect(crm.label_current_filter.text).to eql 'Negotiating'
         expect(crm.validate_opportunity_list(@opportunity7)).to eql true
       end
       e.step('when I search by Closed Won status') do
         puts 'search by Closed Won status'
-        
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Closed Won').select_option
         crm.crm.btn_apply.click
@@ -484,13 +553,13 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('the I can see oly opportunity with Closed Won status') do
         puts 'the I can see oly opportunity with Closed Won status'
-      crm.wait_until_label_current_filter_visible
-      expect(crm.label_current_filter.text).to eql 'Closed Won'
+        crm.wait_until_label_current_filter_visible
+        expect(crm.label_current_filter.text).to eql 'Closed Won'
         expect(crm.validate_opportunity_list(@opportunity8)).to eql true
       end
       e.step('when I search by Closed Lost status') do
         puts 'search by Closed Lost status'
-        
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Closed Lost').select_option
         crm.crm.btn_apply.click
@@ -498,13 +567,13 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('the I can see oly opportunity with Closed Lost status') do
         puts 'the I can see oly opportunity with Closed Lost status'
-      crm.wait_until_label_current_filter_visible
-      expect(crm.label_current_filter.text).to eql 'Closed Lost'
+        crm.wait_until_label_current_filter_visible
+        expect(crm.label_current_filter.text).to eql 'Closed Lost'
         expect(crm.validate_opportunity_list(@opportunity9)).to eql true
       end
-       e.step('when I search by Default status') do
+      e.step('when I search by Default status') do
         puts 'search by Default status'
-        
+
         home.access_crm
         crm.crm.select_filter.find('option', text: 'Default').select_option
         crm.crm.btn_apply.click
@@ -512,16 +581,120 @@ describe('CRM - Opportunity', :general_crm) do
       end
       e.step('the I can see oly opportunity with Default status') do
         puts 'the I can see oly opportunity with Default status'
-        
+
         expect(crm.validate_opportunity_list(@opportunity8)).to eql false
         expect(crm.validate_opportunity_list(@opportunity9)).to eql false
       end
-      
     end
   end
 
+  describe('opportunity pagination', :crm_pagination) do
+    it('validate mini app pagination', :mini_app_pagination) do |e|
+      e.step('given when I have more than 10 opportunity inserted') do
+        home.wait_until_contact_visible
+        sleep(2)
+        home.select_contact($contact1)
+        contact.wait_until_contact_card_visible
+        crm.create_opportunity(@opportunity10)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
 
+        crm.create_opportunity(@opportunity11)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
 
+        crm.create_opportunity(@opportunity12)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+
+        crm.create_opportunity(@opportunity13)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+
+        crm.create_opportunity(@opportunity14)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+
+        crm.create_opportunity(@opportunity15)
+        expect(contact.message.text).to eql 'Opportunity inserted.'
+      end
+      e.step('and I access crm mini app') do
+        home.access_crm
+      end
+      e.step('when I change the opportunity page') do
+        crm.wait_until_pagination_visible
+        crm.goto_page(2)
+        sleep(2)
+      end
+      e.step('then I can see the most older opportunity') do
+        crm.wait_until_opportunity_list_visible
+        expect(crm.validate_opportunity_list(@opportunity3)).to eql true
+        expect(crm.validate_opportunity_list(@opportunity2)).to eql true
+        expect(crm.validate_opportunity_list(@opportunity1)).to eql true
+        expect(crm.validate_opportunity_list(@opportunity)).to eql true
+      end
+    end
+
+    it('validate contact card opportunity pagination', :contact_card_pagination) do |e|
+      e.step('given when I on contact card') do
+        home.wait_until_contact_visible
+        sleep(2)
+        home.select_contact($contact1)
+        contact.wait_until_contact_card_visible
+      end
+      e.step('and I access oportunity list') do
+        contact.access_crm_list
+        contact.wait_until_contact_opportunity_list_visible
+        contact.icon_opportunity_list.send_keys :tab
+      end
+      e.step('when I change the opportunity page') do
+        contact.wait_until_pagination_visible
+        crm.goto_page(2)
+        sleep(2)
+      end
+      e.step('then I can see the most older opportunity') do
+        contact.wait_until_contact_opportunity_list_visible
+        expect(contact.validate_contact_opportunity_list(@opportunity10)).to eql true
+        expect(contact.validate_contact_opportunity_list(@opportunity11)).to eql true
+        expect(contact.validate_contact_opportunity_list(@opportunity12)).to eql true
+        expect(contact.validate_contact_opportunity_list(@opportunity13)).to eql true
+        expect(contact.validate_contact_opportunity_list(@opportunity14)).to eql true
+        expect(contact.validate_contact_opportunity_list(@opportunity15)).to eql true
+      end
+    end
+  end
+
+  describe('upload attachments', :upload_attachment) do
+    it('attache file when create a opportunity') do |e|
+      e.step('attach file') do
+        home.wait_until_contact_visible
+        sleep(2)
+        home.select_contact($contact1)
+        contact.wait_until_contact_card_visible
+        contact.access_crm_list
+        contact.select_opportunity(@opportunity1)
+        puts "tabs"
+        # contact.oppo_form.txt_oppo_name.send_keys :tab
+        # contact.oppo_form.select_oppo_source.send_keys :tab
+        # contact.oppo_form.select_oppo_status.send_keys :tab
+        # contact.oppo_form.select_oppo_prob.send_keys :tab
+        # contact.oppo_form.txt_oppo_product.send_keys :tab
+        # contact.oppo_form.txt_oppo_price.send_keys :tab
+        # contact.oppo_form.select_oppo_next_action.send_keys :tab
+        # contact.oppo_form.date_oppo_follow_up.send_keys :tab
+        # contact.oppo_form.date_close_date.send_keys :tab
+        # contact.oppo_form.txt_oppo_comment.send_keys :tab
+        #sleep(3)
+        #contact.edit_oppo_form.link_upload_attach.click
+        #click_link('Attach Document or Quote ')
+        
+        # contact.oppo_form.send_keys :tab
+        # contact.oppo_form.send_keys :tab
+        # contact.oppo_form.send_keys :tab
+        # contact.oppo_form.send_keys :tab
+        # contact.oppo_form.send_keys :tab
+        # #contact.oppo_form.link_upload_attach.click
+
+        puts "attach file"
+        contact.attach_file(contact.edit_oppo_form.link_upload_attach, './test_attach.docx')
+      end
+    end
+  end
 
   after(:each) do |e|
     e.attach_file('screenshot', get_screenshot)

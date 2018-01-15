@@ -27,6 +27,8 @@ class MiniAppOpportunityForm < SitePrism::Section
     element :txt_oppo_comment, 'textarea[data-ng-model="record.comments"]'
     element :btn_oppo_save, 'button[data-ng-click="submit()"]'
     element :btn_oppo_cancel, 'button[data-ng-click="cancel()"]'
+
+    
 end
 
 end

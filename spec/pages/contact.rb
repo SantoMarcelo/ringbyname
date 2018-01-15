@@ -15,6 +15,7 @@ class Contact < SitePrism::Page
   section :edit_oppo_form, Sections::EditContactOpportunityForm, '.modal-content'
   
   elements :contact_opportunity_list, '.crm__history > table > tbody > tr'
+  elements :pagination, '.pagination > li[ng-repeat^="pageNumber"] > a'
 
   def verify_contact(contact)
     wait_until_contact_card_visible
@@ -106,4 +107,10 @@ class Contact < SitePrism::Page
     end
     
   end
+
+  def goto_page(number)
+    pagination.each do |u|
+      u.click if number > 1
+    end
+   end
 end

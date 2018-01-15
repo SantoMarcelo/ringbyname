@@ -33,13 +33,14 @@ RSpec.configure do |config|
   # config.include Couch::Server
 end
 
+
 # Environment Configuration
-$browser = 'firefox'
-$environment = 'marcelo'
-$branch = 'crm-phase2'
+# , :profile => $profile
+$browser = ENV['BROWSER']
+$environment = ENV['ENVIRONMENT']
+$branch = ENV['BRANCH']
 $profile = 'test'
 
-# , :profile => $profile
 Capybara.register_driver :selenium do |app|
   # headless
   args = ['window-size=1920,1080']

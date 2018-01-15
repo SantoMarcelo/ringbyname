@@ -1,0 +1,7 @@
+desc "rodar dev marcelo com firefox"
+task :marcelo_firefox do
+    ENV['BROWSER'] = 'firefox'
+    ENV['ENVIRONMENT'] = 'marcelo'
+    ENV['BRANCH'] = 'current'
+    sh 'rspec -fd'
+end
