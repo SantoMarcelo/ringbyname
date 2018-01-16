@@ -58,8 +58,8 @@ class Contact < SitePrism::Page
     wait_until_edit_oppo_form_visible
     sleep(1)
 
-    edit_oppo_form.txt_oppo_name.set(opportunity[:name])
-    edit_oppo_form.select_oppo_source.find('option', text: (opportunity[:source])).select_option
+     edit_oppo_form.txt_oppo_name.set(opportunity[:name])
+     edit_oppo_form.select_oppo_source.find('option', text: (opportunity[:source])).select_option
      edit_oppo_form.select_oppo_status.find('option', text: (opportunity[:status])).select_option
      edit_oppo_form.select_oppo_prob.find('option', text: (opportunity[:probability])).select_option
      edit_oppo_form.txt_oppo_product.set(opportunity[:product])

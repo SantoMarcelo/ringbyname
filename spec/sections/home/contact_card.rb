@@ -41,7 +41,7 @@ module Sections
         element :date_oppo_follow_up, 'div[data-initial-date="filters.date"] > input' 
         element :date_close_date, 'div[data-initial-date="filters.dateClose"] > input'
         element :txt_oppo_comment, 'textarea[data-ng-model="opportunity.comments"]'
-        element :link_upload_attach, '.fileinput-button > input[data-fileupload-model="attachment.selected"]'
+        element :link_upload_attach, '.fileinput-button > input[data-fileupload-model="attachment.selected"]:nth-child(2)'
         element :btn_oppo_save, 'button[data-ng-click="submit()"]'
         element :btn_oppo_cancel, 'button[data-ng-click="cancel()"]'
 

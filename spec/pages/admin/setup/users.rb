@@ -51,6 +51,16 @@ class User < SitePrism::Page
     sleep(1)
   end
 
+  def grid_check_user_info(user)
+    self.wait_until_grid_rows_visible
+    grid_rows.each do |u|
+      if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
+        true if u.include?(self.grid_icon_crm)
+      end
+    end
+    sleep(1)
+  end
+
   def change_user_data(user)
     self.details.txt_first_name.set (user[:first_name])
     self.details.txt_last_name.set (user[:last_name])

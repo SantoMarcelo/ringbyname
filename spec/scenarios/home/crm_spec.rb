@@ -299,6 +299,89 @@ describe('CRM - Opportunity', :general_crm) do
         expect(crm.validate_opportunity_list(@opportunity)).to eql true
       end
     end
+    it('verify validations when insert opportunity') do |e|
+      e.step('given when I on contactr card page') do
+        home.wait_until_contact_visible
+        sleep(2)
+        home.select_contact($contact1)
+        contact.wait_until_contact_card_visible
+      end
+      e.step('and I add a oportunity') do
+        contact.access_crm
+      end
+      e.step('when I try to inser opportunity without name') do
+       puts 'when I try to inser opportunity without name'
+        contact.oppo_form.select_oppo_next_action.send_keys :tab
+        contact.oppo_form.date_oppo_follow_up.send_keys :tab
+        contact.oppo_form.date_close_date.send_keys :tab
+        contact.oppo_form.txt_oppo_comment.send_keys :tab
+
+        contact.oppo_form.btn_oppo_save.click
+      end
+      e.step('then I see a validation message') do
+        expect(contact.message.text).to eql 'Please provide the opportunity name.'
+      end
+      e.step('when I try to inser opportunity without source') do
+        puts 'when I try to inser opportunity without source'
+        sleep(5)
+        contact.oppo_form.txt_oppo_name.set 'Oportunity Validations'
+       
+        contact.oppo_form.select_oppo_next_action.send_keys :tab
+        contact.oppo_form.date_oppo_follow_up.send_keys :tab
+        contact.oppo_form.date_close_date.send_keys :tab
+        contact.oppo_form.txt_oppo_comment.send_keys :tab
+       
+        contact.oppo_form.btn_oppo_save.click
+      end
+      e.step('then I see a validation message') do
+        expect(contact.message.text).to eql 'Invalid opportunity source.'
+      end
+      e.step('when I try to inser opportunity without status') do
+        puts 'when I try to inser opportunity without status'
+        sleep(5)
+        contact.oppo_form.select_oppo_source.find('option', text: 'Website').select_option
+       
+        contact.oppo_form.select_oppo_next_action.send_keys :tab
+        contact.oppo_form.date_oppo_follow_up.send_keys :tab
+        contact.oppo_form.date_close_date.send_keys :tab
+        contact.oppo_form.txt_oppo_comment.send_keys :tab
+       
+        contact.oppo_form.btn_oppo_save.click
+      end
+      e.step('then I see a validation message') do
+            expect(contact.message.text).to eql 'Please provide a valid status.'
+      end
+      e.step('when I try to inser opportunity without probability') do
+        puts 'when I try to inser opportunity without probability'
+        sleep(5)
+        contact.oppo_form.select_oppo_status.find('option', text: 'Qualified').select_option
+       
+        contact.oppo_form.select_oppo_next_action.send_keys :tab
+        contact.oppo_form.date_oppo_follow_up.send_keys :tab
+        contact.oppo_form.date_close_date.send_keys :tab
+        contact.oppo_form.txt_oppo_comment.send_keys :tab
+       
+        contact.oppo_form.btn_oppo_save.click
+      end
+      e.step('then I see a validation message') do
+        expect(contact.message.text).to eql 'Please provide a valid probability.'
+      end
+      e.step('when I try to inser opportunity without next action') do
+        puts 'when I try to inser opportunity without next action'
+        sleep(5)
+        contact.oppo_form.select_oppo_prob.find('option', text: '50%').select_option
+       
+        contact.oppo_form.select_oppo_next_action.send_keys :tab
+        contact.oppo_form.date_oppo_follow_up.send_keys :tab
+        contact.oppo_form.date_close_date.send_keys :tab
+        contact.oppo_form.txt_oppo_comment.send_keys :tab
+       
+        contact.oppo_form.btn_oppo_save.click
+      end
+      e.step('then I see a validation message') do
+        expect(contact.message.text).to eql 'Please provide a valid next action.'
+      end
+    end
   end
 
   describe('edit opportunity', :edit_oppo) do
@@ -571,16 +654,16 @@ describe('CRM - Opportunity', :general_crm) do
         expect(crm.label_current_filter.text).to eql 'Closed Lost'
         expect(crm.validate_opportunity_list(@opportunity9)).to eql true
       end
-      e.step('when I search by Default status') do
-        puts 'search by Default status'
+      e.step('when I search by All Open status') do
+        puts 'search by All Open status'
 
         home.access_crm
-        crm.crm.select_filter.find('option', text: 'Default').select_option
+        crm.crm.select_filter.find('option', text: 'All Open').select_option
         crm.crm.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see oly opportunity with Default status') do
-        puts 'the I can see oly opportunity with Default status'
+      e.step('the I can see oly opportunity with All Open status') do
+        puts 'the I can see oly opportunity with All Open status'
 
         expect(crm.validate_opportunity_list(@opportunity8)).to eql false
         expect(crm.validate_opportunity_list(@opportunity9)).to eql false
@@ -659,7 +742,7 @@ describe('CRM - Opportunity', :general_crm) do
     end
   end
 
-  describe('upload attachments', :upload_attachment) do
+  pending('upload attachments', :upload_attachment) do
     it('attache file when create a opportunity') do |e|
       e.step('attach file') do
         home.wait_until_contact_visible
@@ -668,31 +751,40 @@ describe('CRM - Opportunity', :general_crm) do
         contact.wait_until_contact_card_visible
         contact.access_crm_list
         contact.select_opportunity(@opportunity1)
-        puts "tabs"
-        # contact.oppo_form.txt_oppo_name.send_keys :tab
-        # contact.oppo_form.select_oppo_source.send_keys :tab
-        # contact.oppo_form.select_oppo_status.send_keys :tab
-        # contact.oppo_form.select_oppo_prob.send_keys :tab
-        # contact.oppo_form.txt_oppo_product.send_keys :tab
-        # contact.oppo_form.txt_oppo_price.send_keys :tab
-        # contact.oppo_form.select_oppo_next_action.send_keys :tab
-        # contact.oppo_form.date_oppo_follow_up.send_keys :tab
-        # contact.oppo_form.date_close_date.send_keys :tab
-        # contact.oppo_form.txt_oppo_comment.send_keys :tab
-        #sleep(3)
-        #contact.edit_oppo_form.link_upload_attach.click
-        #click_link('Attach Document or Quote ')
-        
-        # contact.oppo_form.send_keys :tab
-        # contact.oppo_form.send_keys :tab
-        # contact.oppo_form.send_keys :tab
-        # contact.oppo_form.send_keys :tab
-        # contact.oppo_form.send_keys :tab
-        # #contact.oppo_form.link_upload_attach.click
+        # contact.edit_oppo_form.link_upload_attach.click
+        # contact.find('.fileinput-button > .icon-fontello-upload').click
 
-        puts "attach file"
-        contact.attach_file(contact.edit_oppo_form.link_upload_attach, './test_attach.docx')
+        puts 'attach file'
+        page.attach_file('.fileinput-button > .icon-fontello-upload', 'C:\Projects\automated-tests\R-app\rapp\spec\test_attach.docx')
       end
+    end
+  end
+
+  describe('opportunity owner', :oppo_owner)do
+  
+    it('display only opportunity what logged user is an owner') do |e|
+      puts 'WARNING: Need to has 2 CRM licenses provisioned on account'
+      e.step('given when I allow CRM license to other user')do
+      home.goto_admin
+      admin_dashboard.wait_until_btn_continue_visible
+      admin_dashboard.btn_continue.click
+      admin_dashboard.options.admin_setup.click
+      # select user and allow CRM feature
+      users.select_user_in_grid($user2)
+      users.crm_feature_enable
+      sleep(5)
+      users.wait_until_message_visible
+      # validate if was allowed correctly
+      expect(users.message.modal.text).to eql 'User updated successfully.'
+      users.message.btn_ok.click
+      users.wait_until_grid_rows_visible
+      expect(users.grid_check_user_info($user2)).to eql true
+      users.select_user_in_grid($user2)
+      expect(users.details.checkbox_crm).to be_checked
+      # return to home page
+      admin_dashboard.goto_home
+      end
+
     end
   end
 

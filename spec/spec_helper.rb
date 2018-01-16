@@ -33,18 +33,24 @@ RSpec.configure do |config|
   # config.include Couch::Server
 end
 
-
 # Environment Configuration
 # , :profile => $profile
 $browser = ENV['BROWSER']
 $environment = ENV['ENVIRONMENT']
 $branch = ENV['BRANCH']
-$profile = 'test'
+# $profile = 'test'
+
+#options to start firefox
+options = Selenium::WebDriver::Firefox::Options.new
+options.profile = 'default'
+options.add_preference('dom.webnotifications.enabled', false)
+#options.add_argument('window-size=1920,1080')
+
+#argument to chromedriver
+args = ['window-size=1920,1080']
 
 Capybara.register_driver :selenium do |app|
   # headless
-  args = ['window-size=1920,1080']
-
   if $browser.include?('headless')
     args.push('headless')
     args.push('disable-gpu')
@@ -59,8 +65,7 @@ Capybara.register_driver :selenium do |app|
   if $browser.include?('chrome')
     Capybara::Selenium::Driver.new(app, browser: :chrome, desired_capabilities: chrome_caps)
   elsif $browser.include?('firefox')
-    $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true)
-
+    $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true, options: options)
   end
 end
 
@@ -75,7 +80,7 @@ Capybara.configure do |c|
 end
 
 Capybara.default_max_wait_time = 10
-Capybara.page.driver.browser.manage.window.maximize
+Capybara.page.driver.browser.manage.window.resize_to(1920,1080)
 
 AllureRSpec.configure do |c|
   c.output_dir = 'log/reports'
