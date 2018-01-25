@@ -4,7 +4,7 @@ require_relative '../pages/login/login'
 require_relative '../pages/main/home'
 require_relative '../pages/login/reset_password'
 
-describe('Login in application', :inprogress) do
+describe('Login in application', :full_login) do
   before(:all) do
     # remover usuário no banco de dados
     # mongodb://usuario:senha@servidor:porta/banco_de_dados
@@ -26,7 +26,7 @@ describe('Login in application', :inprogress) do
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
       end
 
-      Capybara.current_session.driver.quit
+      #Capybara.current_session.driver.quit
     end
   end
 
