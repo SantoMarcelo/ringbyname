@@ -1,5 +1,5 @@
 
-require_relative '../sections/home/contact_card'
+require_relative '../sections/main/contact_card'
 
 class Contact < SitePrism::Page
   element :txt_contact_name

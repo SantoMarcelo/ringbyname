@@ -1,9 +1,9 @@
-require_relative '../../pages/login'
-require_relative '../../pages/home/home'
-require_relative '../../pages/home/crm_mini_app'
-require_relative '../../pages/reset_password'
-require_relative '../../pages/contact'
-require_relative '../../pages/admin/dashboard'
+require_relative '../../../pages/login/login'
+require_relative '../../../pages/main/home'
+require_relative '../../../pages/main/crm/crm_mini_app'
+require_relative '../../../pages/login/reset_password'
+require_relative '../../../pages/contact'
+require_relative '../../../pages/admin/dashboard'
 
 describe('CRM - Opportunity', :general_crm) do
   before do
@@ -12,6 +12,34 @@ describe('CRM - Opportunity', :general_crm) do
     login_page.do_login($admin_user)
     home.wait_until_home_menu_visible
     home.wait_until_user_status_visible
+
+    # @oportunities = [
+    #   { name: 'Big Opportunity',
+    #     source: 'Website',
+    #     status: 'Qualified',
+    #     probability: '50%',
+    #     product: 'Test Product',
+    #     price: '$9,999.99',
+    #     action: 'Phone Call',
+    #     follow_up: '12-01-2018',
+    #     close_date: '05-01-2018',
+    #     comment: 'Test Comment',
+    #     contact_owner: 'Dev Marcelo 1 User'
+    #   }, 
+    #   {name: 'Big OpportunityEDITED',
+    #   source: 'Social Media Site',
+    #   status: 'Dead',
+    #   probability: '100%',
+    #   product: 'Test ProductEDITED',
+    #   price: '$8,888.88',
+    #   action: 'Email',
+    #   follow_up: '10-02-2018',
+    #   close_date: '10-01-2018',
+    #   comment: 'Test Comment EDITED',
+    #   contact_owner: 'Dev Marcelo 1 User'
+    #   }
+    # ]
+
 
     @opportunity = {
       name: 'Big Opportunity',
@@ -237,6 +265,7 @@ describe('CRM - Opportunity', :general_crm) do
       comment: 'Test Comment',
       contact_owner: 'Dev Marcelo 1 User'
     }
+  
   end
 
   describe('add opportunity', :add_contact_opo) do
@@ -780,6 +809,13 @@ describe('CRM - Opportunity', :general_crm) do
       expect(users.details.checkbox_crm).to be_checked
       # return to home page
       admin_dashboard.goto_home
+      end
+      e.step('and I access crm mini app') do
+        home.access_crm
+      end
+
+      e.step('then I see the empty oportunity list') do
+        
       end
 
     end

@@ -1,5 +1,8 @@
 require_relative '../../../sections/admin/setup/user_admin'
 require_relative '../../../sections/admin/setup/setup_menu'
+require_relative '../../../pages/main/home'
+require_relative '../../../pages/admin/dashboard'
+
 
 class User < SitePrism::Page
   # search elements
@@ -83,6 +86,23 @@ class User < SitePrism::Page
     self.details.checkbox_crm.click
     self.details.btn_save_user.click
     wait_until_grid_rows_visible
+  end
+
+  def user_allow_crm_feature(user)
+    home = Home.new
+    admin_dashboard = Dashboard.new
+
+        home.goto_admin
+        admin_dashboard.wait_until_btn_continue_visible
+        admin_dashboard.btn_continue.click
+        admin_dashboard.options.admin_setup.click
+        # select user and allow CRM feature
+        self.select_user_in_grid(user)
+        self.crm_feature_enable
+        sleep(5)
+        self.wait_until_message_visible
+       
+
   end
 
   def get_number_of_crm_licenses

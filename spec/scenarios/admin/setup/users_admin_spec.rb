@@ -1,5 +1,5 @@
 
-require_relative '../../../pages/login'
+require_relative '../../../pages/login/login'
 require_relative '../../../pages/admin/dashboard'
 require_relative '../../../pages/admin/setup/users'
 

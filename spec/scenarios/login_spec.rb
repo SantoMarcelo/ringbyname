@@ -1,8 +1,8 @@
 
 
-require_relative '../pages/login'
-require_relative '../pages/home/home'
-require_relative '../pages/reset_password'
+require_relative '../pages/login/login'
+require_relative '../pages/main/home'
+require_relative '../pages/login/reset_password'
 
 describe('Login in application', :inprogress) do
   before(:all) do

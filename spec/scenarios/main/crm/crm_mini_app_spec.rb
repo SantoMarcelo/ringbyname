@@ -1,13 +1,13 @@
-require_relative '../../pages/login'
-require_relative '../../pages/home/home'
-require_relative '../../pages/home/crm_mini_app'
-require_relative '../../pages/reset_password'
-require_relative '../../pages/contact'
-require_relative '../../pages/admin/dashboard'
+require_relative '../../../pages/login/login'
+require_relative '../../../pages/main/home'
+require_relative '../../../pages/main/crm/crm_mini_app'
+require_relative '../../../pages/login/reset_password'
+require_relative '../../../pages/contact'
+require_relative '../../../pages/admin/dashboard'
 
-describe('CRM - Opportunity', :general_crm) do
+describe('CRM - Opportunity', :miniapp_crm_geral) do
   before do
-    #Capybara.page.driver.browser.manage.window.maximize
+    Capybara.page.driver.browser.manage.window.maximize
     login_page.load
     login_page.do_login($admin_user)
     home.wait_until_home_menu_visible
@@ -239,13 +239,21 @@ describe('CRM - Opportunity', :general_crm) do
     }
   end
 
-  describe('add opportunity', :add_contact_opo) do
+  describe('add opportunity', :miniapp_add_contact_opo) do
     it('access contact card and add a opportunity') do |e|
       puts 'access contact card and add a opportunity'
       e.step('Given when I has CRM license allowed') do
         puts 'Given when I has CRM license allowed'
         # access admin page
-        users.user_allow_crm_feature($user1)
+        home.goto_admin
+        admin_dashboard.wait_until_btn_continue_visible
+        admin_dashboard.btn_continue.click
+        admin_dashboard.options.admin_setup.click
+        # select user and allow CRM feature
+        users.select_user_in_grid($user1)
+        users.crm_feature_enable
+        sleep(5)
+        users.wait_until_message_visible
         # validate if was allowed correctly
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
@@ -270,12 +278,12 @@ describe('CRM - Opportunity', :general_crm) do
         contact.access_crm
         # find('.crm-tab__add-button').click
       end
-      e.step('and I filled opportunity information') do
-        puts 'and I filled opportunity information'
+      e.step('then I filled opportunity information') do
+        puts 'then I filled opportunity information'
         contact.fill_opportunity_data(@opportunity)
       end
-      e.step('then I see the inserted message') do
-        puts 'then I see the inserted message'
+      e.step('Then I see the inserted message') do
+        puts 'Then I see the inserted message'
         expect(contact.message.text).to eql 'Opportunity inserted.'
       end
       e.step('and I check if the opportunity is in grid') do
@@ -311,7 +319,6 @@ describe('CRM - Opportunity', :general_crm) do
         contact.oppo_form.btn_oppo_save.click
       end
       e.step('then I see a validation message') do
-        puts 'then I see a validation message: Please provide the opportunity name.'
         expect(contact.message.text).to eql 'Please provide the opportunity name.'
       end
       e.step('when I try to inser opportunity without source') do
@@ -327,7 +334,6 @@ describe('CRM - Opportunity', :general_crm) do
         contact.oppo_form.btn_oppo_save.click
       end
       e.step('then I see a validation message') do
-        puts 'then I see a validation message: Invalid opportunity source.'
         expect(contact.message.text).to eql 'Invalid opportunity source.'
       end
       e.step('when I try to inser opportunity without status') do
@@ -343,7 +349,6 @@ describe('CRM - Opportunity', :general_crm) do
         contact.oppo_form.btn_oppo_save.click
       end
       e.step('then I see a validation message') do
-        puts 'then I see a validation message: Please provide a valid status.'
             expect(contact.message.text).to eql 'Please provide a valid status.'
       end
       e.step('when I try to inser opportunity without probability') do
@@ -359,7 +364,6 @@ describe('CRM - Opportunity', :general_crm) do
         contact.oppo_form.btn_oppo_save.click
       end
       e.step('then I see a validation message') do
-        puts 'then I see a validation message: Please provide a valid probability.'
         expect(contact.message.text).to eql 'Please provide a valid probability.'
       end
       e.step('when I try to inser opportunity without next action') do
@@ -375,13 +379,12 @@ describe('CRM - Opportunity', :general_crm) do
         contact.oppo_form.btn_oppo_save.click
       end
       e.step('then I see a validation message') do
-        puts 'then I see a validation message: Please provide a valid next action.'
         expect(contact.message.text).to eql 'Please provide a valid next action.'
       end
     end
   end
 
-  describe('edit opportunity', :edit_oppo) do
+  describe('edit opportunity', :miniapp_edit_oppo) do
     it('edit opportunity by contact card') do |e|
       puts 'edit opportunity by contact card'
       e.step('Given I on home page and access contact card') do
@@ -473,7 +476,7 @@ describe('CRM - Opportunity', :general_crm) do
     end
   end
 
-  describe('search opportunit in mini app', :search_oppo) do
+  describe('search opportunit in mini app', :miniapp_search_oppo) do
     it('seacrch by opportunity name') do |e|
       puts 'seacrch by opportunity name'
       e.step('given I have five different opportunities') do
@@ -668,7 +671,7 @@ describe('CRM - Opportunity', :general_crm) do
     end
   end
 
-  describe('opportunity pagination', :crm_pagination) do
+  describe('opportunity pagination', :miniapp_crm_pagination) do
     it('validate mini app pagination', :mini_app_pagination) do |e|
       e.step('given when I have more than 10 opportunity inserted') do
         home.wait_until_contact_visible
@@ -709,34 +712,6 @@ describe('CRM - Opportunity', :general_crm) do
         expect(crm.validate_opportunity_list(@opportunity)).to eql true
       end
     end
-
-    it('validate contact card opportunity pagination', :contact_card_pagination) do |e|
-      e.step('given when I on contact card') do
-        home.wait_until_contact_visible
-        sleep(2)
-        home.select_contact($contact1)
-        contact.wait_until_contact_card_visible
-      end
-      e.step('and I access oportunity list') do
-        contact.access_crm_list
-        contact.wait_until_contact_opportunity_list_visible
-        contact.icon_opportunity_list.send_keys :tab
-      end
-      e.step('when I change the opportunity page') do
-        contact.wait_until_pagination_visible
-        crm.goto_page(2)
-        sleep(2)
-      end
-      e.step('then I can see the most older opportunity') do
-        contact.wait_until_contact_opportunity_list_visible
-        expect(contact.validate_contact_opportunity_list(@opportunity10)).to eql true
-        expect(contact.validate_contact_opportunity_list(@opportunity11)).to eql true
-        expect(contact.validate_contact_opportunity_list(@opportunity12)).to eql true
-        expect(contact.validate_contact_opportunity_list(@opportunity13)).to eql true
-        expect(contact.validate_contact_opportunity_list(@opportunity14)).to eql true
-        expect(contact.validate_contact_opportunity_list(@opportunity15)).to eql true
-      end
-    end
   end
 
   pending('upload attachments', :upload_attachment) do
@@ -757,32 +732,7 @@ describe('CRM - Opportunity', :general_crm) do
     end
   end
 
-  describe('opportunity owner', :oppo_owner)do
-  
-    it('display only opportunity what logged user is an owner') do |e|
-      puts 'WARNING: Need to has 2 CRM licenses provisioned on account'
-      e.step('given when I allow CRM license to other user')do
-      home.goto_admin
-      admin_dashboard.wait_until_btn_continue_visible
-      admin_dashboard.btn_continue.click
-      admin_dashboard.options.admin_setup.click
-      # select user and allow CRM feature
-      users.select_user_in_grid($user2)
-      users.crm_feature_enable
-      sleep(5)
-      users.wait_until_message_visible
-      # validate if was allowed correctly
-      expect(users.message.modal.text).to eql 'User updated successfully.'
-      users.message.btn_ok.click
-      users.wait_until_grid_rows_visible
-      expect(users.grid_check_user_info($user2)).to eql true
-      users.select_user_in_grid($user2)
-      expect(users.details.checkbox_crm).to be_checked
-      # return to home page
-      admin_dashboard.goto_home
-      end
-
-    end
+  pending('opportunity owner', :oppo_owner)do
   end
 
   after(:each) do |e|
