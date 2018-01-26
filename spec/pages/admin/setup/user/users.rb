@@ -17,8 +17,8 @@ class User < Setup
 
   # validate each line of grid
   def is_user_in_grid(user)
-    wait_until_grid_rows_visible
-    grid_rows.each do |u|
+    user_main.wait_until_grid_rows_visible
+    setup.grid_rows.each do |u|
       if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
         return true
       end
@@ -27,8 +27,8 @@ class User < Setup
   end
 
   def select_user_in_grid(user)
-    wait_until_grid_rows_visible
-    grid_rows.each do |u|
+    user_main.wait_until_grid_rows_visible
+    setup.grid_rows.each do |u|
       if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
         u.click
       end
@@ -37,8 +37,8 @@ class User < Setup
   end
 
   def grid_check_user_info(user)
-    wait_until_grid_rows_visible
-    grid_rows.each do |u|
+    user_main.wait_until_grid_rows_visible
+    setup.grid_rows.each do |u|
       if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
         true if u.include?(grid_icon_crm)
       end

@@ -66,11 +66,12 @@ describe('validate Users Setup', :usersetup) do
       end
       e.step('I can see the user setup') do
         puts 'I can see the user setup'
-        expect(user.title.text).to eql 'Setup'
+        expect(users.admin_title.text).to eql 'Setup'
       end
       e.step('and I can access the user setings') do
         puts 'and I can access the user setings'
         users.access_user_menu
+        expect(users.user_main.title.text).to eql 'Users'
       end
       e.step('then I check user list') do
         puts 'then I check user list'
@@ -78,18 +79,28 @@ describe('validate Users Setup', :usersetup) do
         expect(users.is_user_in_grid(@user2)).to eql true
         expect(users.is_user_in_grid(@user3)).to eql true
         expect(users.is_user_in_grid(@user4)).to eql true
-
-        expect(users.info_total_records.text).to eql '4'
+        expect(users.user_main.info_total_records.text).to eql '4'
       end
     end
   end
   describe('search users', :search_user) do
     it('validat search by extension, name, type and direct number')do |e|
+      puts 'validat search by extension, name, type and direct number'
       e.step('when I on users setup')do
+        puts 'when I on users setup'
+        admin_dashboard.options.admin_setup.click
+        expect(users.admin_title.text).to eql 'Setup'
+        users.access_user_menu
+        expect(users.user_main.title.text).to eql 'Users'
       end
       e.step('and search by extension')do
+        puts 'and search by extension'
+        users.user_main.txt_search.set (@user1[:extension])
+        users.user_main.btn_search.click
       end
-      e.step('')do
+      e.step('then i can see only the filtred user')do
+        puts 'then i can see only the filtred user'
+
       end
     end
   end
