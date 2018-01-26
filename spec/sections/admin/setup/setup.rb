@@ -8,6 +8,28 @@ class SetupMenu < SitePrism::Section
     element :phone_number, 'a[ui-sref="admin.setup.phone-number"]'
   end
 
+  class SetupMain < SitePrism::Section
+    element :title, '.page-main .main-title'
+    element :txt_search, '.form input.input'
+    element :btn_search, '.form button.button'
+
+    elements :grid_rows, 'article.ng-scope'
+    element :grid_icon_admin, '.column-admin:last-child'
+    element :grid_icon_crm, '.column-crm > i[data-ng-if="user.crm.is_enabled"]'
   
+    element :select_number_pages, 'select[class^="option.value"]'
+    element :info_total_records, 'strong[class="ng-binding"]'
+    # Settings for all users
+    element :link_outbound_caller, 'a[ui-sref="admin.setup.user.outbound"]'
+    element :link_multiple_password, 'a[ui-sref="admin.setup.user.password"]'
+
+    def do_search(info)
+      self.setup.txt_search.set (info)
+      self.setup.btn_search.click
+    end
+    
+  end
+
+
 
 end

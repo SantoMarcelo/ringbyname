@@ -4,29 +4,12 @@ require_relative '../../../../pages/main/home'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 require_relative '../setup'
 
-
 class User < Setup
   
-  # all rows in user grid
-  elements :grid_rows, 'article.ng-scope'
-  element :grid_icon_admin, '.column-admin:last-child'
-  element :grid_icon_crm, '.column-crm > i[data-ng-if="user.crm.is_enabled"]'
-  
-  element :select_number_pages, 'select[class^="option.value"]'
-  element :info_total_records, 'strong[class="ng-binding"]'
-  # Settings for all users
-  element :link_outbound_caller, 'a[ui-sref="admin.setup.user.outbound"]'
-  element :link_multiple_password, 'a[ui-sref="admin.setup.user.password"]'
-  # tooltips
-  element :tool_tip_search, 'i[tag="ADMIN_TOOLTIP_00069"]'
-  element :tool_tip_users_extension, 'i[tag="ADMIN_TOOLTIP_00070"]'
-  elements :tool_tips, '.page-details .icon-tooltip'
-  element :popover, '.popover2'
-
-  
+  section :user_main, Sections::SetupMain, '.webapp-admin-page-main'
   section :details, Sections::UserDetails, '.page-details'
-  
-  #section :tooltips, Sections::Tooltips, '.page-details'
+
+  # section :tooltips, Sections::Tooltips, '.page-details'
 
   def access_user_menu
     menu.users.click
@@ -40,11 +23,11 @@ class User < Setup
         return true
       end
     end
-    return false
+    false
   end
 
   def select_user_in_grid(user)
-    self.wait_until_grid_rows_visible
+    wait_until_grid_rows_visible
     grid_rows.each do |u|
       if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
         u.click
@@ -54,36 +37,35 @@ class User < Setup
   end
 
   def grid_check_user_info(user)
-    self.wait_until_grid_rows_visible
+    wait_until_grid_rows_visible
     grid_rows.each do |u|
       if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
-        true if u.include?(self.grid_icon_crm)
+        true if u.include?(grid_icon_crm)
       end
     end
     sleep(1)
   end
 
   def change_user_data(user)
-    self.details.txt_first_name.set (user[:first_name])
-    self.details.txt_last_name.set (user[:last_name])
-    self.details.txt_email.set (user[:email])
+    details.txt_first_name.set (user[:first_name])
+    details.txt_last_name.set (user[:last_name])
+    details.txt_email.set (user[:email])
   end
 
   def crm_feature_enable
     sleep(1)
-    self.details.wait_until_btn_save_user_visible
+    details.wait_until_btn_save_user_visible
     sleep(1)
-    self.details.checkbox_crm.click
-    self.details.btn_save_user.click
+    details.checkbox_crm.click
+    details.btn_save_user.click
     sleep(2)
-    
   end
 
   def crm_feature_disable
-    self.details.wait_until_btn_save_user_visible
+    details.wait_until_btn_save_user_visible
     sleep(1)
-    self.details.checkbox_crm.click
-    self.details.btn_save_user.click
+    details.checkbox_crm.click
+    details.btn_save_user.click
     wait_until_grid_rows_visible
   end
 
@@ -91,17 +73,15 @@ class User < Setup
     home = Home.new
     admin_dashboard = Dashboard.new
 
-        home.goto_admin
-        admin_dashboard.wait_until_btn_continue_visible
-        admin_dashboard.btn_continue.click
-        admin_dashboard.options.admin_setup.click
-        # select user and allow CRM feature
-        self.select_user_in_grid(user)
-        self.crm_feature_enable
-        sleep(5)
-        self.wait_until_message_visible
-       
-
+    home.goto_admin
+    admin_dashboard.wait_until_btn_continue_visible
+    admin_dashboard.btn_continue.click
+    admin_dashboard.options.admin_setup.click
+    # select user and allow CRM feature
+    select_user_in_grid(user)
+    crm_feature_enable
+    sleep(5)
+    wait_until_message_visible
   end
 
   def get_number_of_crm_licenses
@@ -110,7 +90,7 @@ class User < Setup
       'password' => '123456asd',
       'stay_sign_in' => 0,
       'timezone' => 'America/Sao_Paulo'
-    }}
+    } }
     headers = {
       'X-Application-Id' => 'webapp',
       'X-Version' => 'v2'
@@ -121,11 +101,9 @@ class User < Setup
       body: user.to_json,
       headers: headers
     )
-    
+
     number_of_license = @response.parsed_response['data']['account']['crm']['licenses']
 
-    return number_of_license
- 
+    number_of_license
   end
-  
 end

@@ -1,7 +1,7 @@
 
-require_relative '../../pages/login/login'
-require_relative '../../pages/admin/dashboard/dashboard'
-require_relative '../../pages/admin/setup/user/users'
+require_relative '../../../pages/login/login'
+require_relative '../../../pages/admin/dashboard/dashboard'
+require_relative '../../../pages/admin/setup/user/users'
 
 describe('access admin page', :admin) do
   before(:each) do

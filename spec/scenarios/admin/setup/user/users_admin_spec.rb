@@ -29,7 +29,7 @@ describe('validate Users Setup', :usersetup) do
       extension: '102',
       name: 'Dev Marcelo 2 User',
       type: 'R! User',
-      direct: 'none'
+      direct: 'None'
     }
     @user3 = {
       extension: '103',
@@ -57,18 +57,23 @@ describe('validate Users Setup', :usersetup) do
     }
   end
 
-  describe('validate users list', :userList) do
+  describe('validate users list', :user_list) do
     it('access user setup and validate user list') do |e|
+      puts 'access user setup and validate user list'
       e.step('when I on admin page') do
+        puts 'when I on admin page'
         admin_dashboard.options.admin_setup.click
       end
       e.step('I can see the user setup') do
-        expect(find('.page-title').text).to eql 'Setup'
+        puts 'I can see the user setup'
+        expect(user.title.text).to eql 'Setup'
       end
       e.step('and I can access the user setings') do
+        puts 'and I can access the user setings'
         users.access_user_menu
       end
       e.step('then I check user list') do
+        puts 'then I check user list'
         expect(users.is_user_in_grid(@user1)).to eql true
         expect(users.is_user_in_grid(@user2)).to eql true
         expect(users.is_user_in_grid(@user3)).to eql true
@@ -78,16 +83,32 @@ describe('validate Users Setup', :usersetup) do
       end
     end
   end
+  describe('search users', :search_user) do
+    it('validat search by extension, name, type and direct number')do |e|
+      e.step('when I on users setup')do
+      end
+      e.step('and search by extension')do
+      end
+      e.step('')do
+      end
+    end
+  end
+
+
 
   describe('validate users details', :user_details) do
     it('validate user information') do |e|
+      puts 'validate user information'
       e.step('when I on users setup') do
+        puts 'when I on users setup'
         admin_dashboard.options.admin_setup.click
       end
       e.step('and I select the first user') do
+        puts 'and I select the first user'
         users.select_user_in_grid(@user1)
       end
       e.step('then I check user informations') do
+        puts 'then I check user informations'
         expect(users.details.txt_first_name.text.include?(@user1[:first_name]))
         expect(users.details.txt_last_name.text.include?(@user1[:last_name]))
         expect(users.details.txt_email.text.include?(@user1[:email]))

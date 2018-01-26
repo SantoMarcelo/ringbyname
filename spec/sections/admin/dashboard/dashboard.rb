@@ -1,13 +1,24 @@
 
 module Sections
-class MenuOptions < SitePrism::Section
-    element :navigation_bar, '#navigation-bar'
-    element :admin_dasboard, 'a[ui-sref="admin.dashboard"]'
-    element :admin_setup, 'a[ui-sref="admin.setup"]'
-    element :admin_e911, 'a´[ui-sref="admin.e911"]'
-    element :admin_reports, 'a[ui-sref="admin.reporting-analytics"]'
-    element :admin_announcements, 'a[ui-sref="admin.announcement-center"]'
-    element :admin_account_billing, 'a[ui-sref="admin.account-billing-information"]'
+
+  class Overview < SitePrism::Section
+    #carroussel elements
+    element :link_main, '.gallery a[ui-sref="admin.setup"]'
+    element :link_e911, '.gallery a[ui-sref="admin.e911"]'
+    element :link_reporting, '.gallery a[ui-sref="admin.reporting-analytics"]'
+    element :link_annoucement, '.gallery a[ui-sref="admin.announcement-center"]'
+    element :link_account_billing, '.gallery a[ui-sref="admin.account-billing-information"]'
+    element :link_account_billing, '.gallery a[href^="http://support"]'
+
+    element :btn_next, '.gallery button[class~="next"]'
+    element :btn_next, '.gallery button[class~="previous"]'
   end
 
+  class Annoucement < SitePrism::Section
+
+  end
+
+  class MoreQuickLinks < SitePrism::Section
+    
+  end
 end

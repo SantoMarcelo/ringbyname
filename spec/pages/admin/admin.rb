@@ -1,4 +1,4 @@
-require_relative '../../sections/admin/dashboard/dashboard'
+require_relative '../../sections/admin/admin'
 
 
 class Admin < SitePrism::Page
