@@ -1,7 +1,7 @@
 
-require_relative '../../../pages/login/login'
-require_relative '../../../pages/admin/dashboard'
-require_relative '../../../pages/admin/setup/users'
+require_relative '../../../../pages/login/login'
+require_relative '../../../../pages/admin/dashboard/dashboard'
+require_relative '../../../../pages/admin/setup/user/users'
 
 describe('validate Users Setup', :usersetup) do
   before(:each) do
@@ -138,7 +138,7 @@ describe('validate Users Setup', :usersetup) do
       end
       e.step('and I select the first user') do
         users.select_user_in_grid($user1)
-      end
+      end 
       e.step('then I allow CRM feature to user') do
         users.crm_feature_enable
         expect(users.message.modal.text).to eql 'User updated successfully.'

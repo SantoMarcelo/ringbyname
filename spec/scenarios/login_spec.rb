@@ -15,75 +15,52 @@ describe('Login in application', :full_login) do
       e.step 'when I access login page' do
         login_page.load
       end
-
       e.step 'and I fill the user and password to login' do
         login_page.do_login($admin_user)
       end
-
       e.step 'then I can see the home page' do
         # wait for load home page
         home.wait_until_home_menu_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
       end
-
-      #Capybara.current_session.driver.quit
+      e.step 'and I log out from application' do
+        home.logout
+      end
     end
   end
 
-  describe('Login Validations', :loginValidations) do
-    it('validate empty user') do |e|
+  describe('Login Validations', :login_validations) do
+    it('Login message validations') do |e|
+      e.step('Given I have a user list and the message list') do
+        @users = [
+          { username: '', password: '123456asd' },
+          { username: 'devmarcelo.user1@ringbyname.com', password: '' },
+          { username: 'devmarcelo.user@ringbyname.com', password: '123456asd' },
+          { username: 'devmarcelo.user1@ringbyname.com', password: '123456' }
+        ]
+        @expect_messages = [
+          '× "Username": Value is required and can\'t be empty',
+          '× "Password": Value is required and can\'t be empty',
+          '× Sorry, that account is invalid. Please try again.',
+          '× Sorry, the requested information could not be found.'
+        ]
+      end
       e.step 'when I access login page' do
         login_page.load
       end
 
-      e.step 'and I don´t fill the username and try to login' do
-        login_page.do_login('', '123456asd')
+      e.step 'and I validate the validations' do
+        # login_page.do_login('', '123456asd')
+        @validations = []
+        @users.each do |u|
+          login_page.do_login(u)
+          @validations.push login_page.message.text
+          login_page.close_message.click
+        end
       end
 
       e.step 'then I can see the validation message' do
-        expect(login_page.message.text).to eql '× Sorry, that account is invalid. Please try again.'
-      end
-    end
-
-    it('validate empty password') do |e|
-      e.step 'when I access login page' do
-        login_page.load
-      end
-
-      e.step 'when I don´t fill the password and try to login' do
-        login_page.do_login('devmarcelo.user1@ringbyname.com', '')
-      end
-
-      e.step 'then I can see the validation message' do
-        expect(login_page.message.text).to eql '× Sorry, the requested information could not be found.'
-      end
-    end
-
-    it('validate incorrect user') do |e|
-      e.step 'when I access login page' do
-        login_page.load
-      end
-
-      e.step 'when I try to login with a incorrect user' do
-        login_page.do_login('devmarcelo.user@ringbyname.com', '123456asd')
-      end
-
-      e.step 'then I can see the validation message' do
-        expect(login_page.message.text).to eql '× Sorry, that account is invalid. Please try again.'
-      end
-    end
-
-    it('validate incorrect password') do |e|
-      e.step 'when I access login page' do
-        login_page.load
-      end
-
-      e.step 'when I try to login with incorrect password' do
-        login_page.do_login('devmarcelo.user1@ringbyname.com', '123456')
-      end
-
-      e.step 'then I can see the validation message' do
-        expect(login_page.message.text).to eql '× Sorry, the requested information could not be found.'
+        expect(@validations).to eql @expect_messages
       end
     end
   end

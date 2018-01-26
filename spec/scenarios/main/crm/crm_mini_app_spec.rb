@@ -3,7 +3,7 @@ require_relative '../../../pages/main/home'
 require_relative '../../../pages/main/crm/crm_mini_app'
 require_relative '../../../pages/login/reset_password'
 require_relative '../../../pages/contact'
-require_relative '../../../pages/admin/dashboard'
+require_relative '../../../pages/admin/dashboard/dashboard'
 
 describe('CRM - Opportunity', :miniapp_crm_geral) do
   before do

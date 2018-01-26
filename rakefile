@@ -3,6 +3,24 @@ task :marcelo_firefox do
     ENV['BROWSER'] = 'firefox'
     ENV['ENVIRONMENT'] = 'marcelo'
     ENV['BRANCH'] = 'crm-phase2'
-    sh 'rspec -fd --tag add_contact_opo'
+    sh 'rspec -fd --tag admin'
+    #sh 'allure serve log/reports'
+end
+
+desc "rodar dev marcelo com chrome"
+task :marcelo_chrome do
+    ENV['BROWSER'] = 'chrome'
+    ENV['ENVIRONMENT'] = 'marcelo'
+    ENV['BRANCH'] = 'crm-phase2'
+    sh 'rspec -fd --tag full_login'
+    #sh 'allure serve log/reports'
+end
+
+desc "rodar dev marcelo com chrome headless"
+task :marcelo_headless do
+    ENV['BROWSER'] = 'chrome headless'
+    ENV['ENVIRONMENT'] = 'marcelo'
+    ENV['BRANCH'] = 'crm-phase2'
+    sh 'rspec -fd --tag full_login'
     #sh 'allure serve log/reports'
 end

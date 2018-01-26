@@ -1,13 +1,12 @@
-require_relative '../../../sections/admin/setup/user_admin'
-require_relative '../../../sections/admin/setup/setup_menu'
-require_relative '../../../pages/main/home'
-require_relative '../../../pages/admin/dashboard'
+require_relative '../../../../sections/admin/setup/user/user'
+require_relative '../../../../sections/admin/setup/setup'
+require_relative '../../../../pages/main/home'
+require_relative '../../../../pages/admin/dashboard/dashboard'
+require_relative '../setup'
 
 
-class User < SitePrism::Page
-  # search elements
-  element :txt_search, '.input'
-  element :btn_search, '.button'
+class User < Setup
+  
   # all rows in user grid
   elements :grid_rows, 'article.ng-scope'
   element :grid_icon_admin, '.column-admin:last-child'
@@ -22,11 +21,11 @@ class User < SitePrism::Page
   element :tool_tip_search, 'i[tag="ADMIN_TOOLTIP_00069"]'
   element :tool_tip_users_extension, 'i[tag="ADMIN_TOOLTIP_00070"]'
   elements :tool_tips, '.page-details .icon-tooltip'
-  element :popover, '.popover'
+  element :popover, '.popover2'
 
-  section :menu, Sections::SetupMenu, '.navigation-left'
+  
   section :details, Sections::UserDetails, '.page-details'
-  section :message, Sections::Messages, '.swal2-container'
+  
   #section :tooltips, Sections::Tooltips, '.page-details'
 
   def access_user_menu

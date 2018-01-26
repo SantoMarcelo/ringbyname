@@ -75,7 +75,7 @@ Capybara.configure do |c|
   if $environment != 'production'
     $url = c.app_host   = "http://login.#{$environment}.dev.ringbyname.com/#{$branch}"
   else
-    $url = c.app_host   = 'http://login.ringbyname.com'
+    #$url = c.app_host   = 'http://login.ringbyname.com'
   end
 end
 

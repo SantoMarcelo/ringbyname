@@ -5,7 +5,7 @@ require_relative '../../../sections/main/contact_card'
 require_relative '../../../pages/login/login'
 require_relative '../../../pages/contact'
 require_relative '../../../pages/main/home'
-require_relative '../../../pages/admin/dashboard'
+require_relative '../../../pages/admin/dashboard/dashboard'
 
 class CrmMiniApp < SitePrism::Page
   section :home_menu, Sections::MainMenu, '.nav-middle-top'

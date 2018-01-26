@@ -3,7 +3,7 @@ require_relative '../../../pages/main/home'
 require_relative '../../../pages/main/crm/crm_mini_app'
 require_relative '../../../pages/login/reset_password'
 require_relative '../../../pages/contact'
-require_relative '../../../pages/admin/dashboard'
+require_relative '../../../pages/admin/dashboard/dashboard'
 
 describe('CRM - Opportunity', :general_crm) do
   before do
@@ -279,135 +279,135 @@ describe('CRM - Opportunity', :general_crm) do
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
         users.wait_until_grid_rows_visible
-        expect(users.grid_rows.include?(users.grid_icon_crm))
+       # expect(users.grid_rows.include?(users.grid_icon_crm))
         users.select_user_in_grid($user1)
-        expect(users.details.checkbox_crm).to be_checked
+        #expect(users.details.checkbox_crm).to be_checked
         # return to home page
         admin_dashboard.goto_home
       end
-      e.step('when I on home page and access contact card') do
-        puts 'when I on home page and access contact card'
-        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-        home.wait_until_contact_visible
-        sleep(2)
-        home.select_contact($contact1)
-        contact.wait_until_contact_card_visible
-        expect(contact.verify_contact($contact1)) == true
-      end
-      e.step('and I select CRM menu and click to add') do
-        puts 'and I select CRM menu and click to add'
-        contact.access_crm
-        # find('.crm-tab__add-button').click
-      end
-      e.step('and I filled opportunity information') do
-        puts 'and I filled opportunity information'
-        contact.fill_opportunity_data(@opportunity)
-      end
-      e.step('then I see the inserted message') do
-        puts 'then I see the inserted message'
-        expect(contact.message.text).to eql 'Opportunity inserted.'
-      end
-      e.step('and I check if the opportunity is in grid') do
-        puts 'and I check if the opportunity is in grid'
-        expect(contact.validate_contact_opportunity_list(@opportunity)).to eql true
-      end
-      e.step('and access CRM and verify opportunities') do
-        puts 'and access CRM and verify opportunities'
-        puts 'acessando crm'
-        home.access_crm
-        crm.wait_until_opportunity_list_visible
-        expect(home.current_url).to end_with '/#!/app/crm'
-        expect(crm.validate_opportunity_list(@opportunity)).to eql true
-      end
-    end
-    it('verify validations when insert opportunity') do |e|
-      e.step('given when I on contactr card page') do
-        home.wait_until_contact_visible
-        sleep(2)
-        home.select_contact($contact1)
-        contact.wait_until_contact_card_visible
-      end
-      e.step('and I add a oportunity') do
-        contact.access_crm
-      end
-      e.step('when I try to inser opportunity without name') do
-       puts 'when I try to inser opportunity without name'
-        contact.oppo_form.select_oppo_next_action.send_keys :tab
-        contact.oppo_form.date_oppo_follow_up.send_keys :tab
-        contact.oppo_form.date_close_date.send_keys :tab
-        contact.oppo_form.txt_oppo_comment.send_keys :tab
+    #   e.step('when I on home page and access contact card') do
+    #     puts 'when I on home page and access contact card'
+    #     expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+    #     home.wait_until_contact_visible
+    #     sleep(2)
+    #     home.select_contact($contact1)
+    #     contact.wait_until_contact_card_visible
+    #     expect(contact.verify_contact($contact1)) == true
+    #   end
+    #   e.step('and I select CRM menu and click to add') do
+    #     puts 'and I select CRM menu and click to add'
+    #     contact.access_crm
+    #     # find('.crm-tab__add-button').click
+    #   end
+    #   e.step('and I filled opportunity information') do
+    #     puts 'and I filled opportunity information'
+    #     contact.fill_opportunity_data(@opportunity)
+    #   end
+    #   e.step('then I see the inserted message') do
+    #     puts 'then I see the inserted message'
+    #     expect(contact.message.text).to eql 'Opportunity inserted.'
+    #   end
+    #   e.step('and I check if the opportunity is in grid') do
+    #     puts 'and I check if the opportunity is in grid'
+    #     expect(contact.validate_contact_opportunity_list(@opportunity)).to eql true
+    #   end
+    #   e.step('and access CRM and verify opportunities') do
+    #     puts 'and access CRM and verify opportunities'
+    #     puts 'acessando crm'
+    #     home.access_crm
+    #     crm.wait_until_opportunity_list_visible
+    #     expect(home.current_url).to end_with '/#!/app/crm'
+    #     expect(crm.validate_opportunity_list(@opportunity)).to eql true
+    #   end
+    # end
+    # it('verify validations when insert opportunity') do |e|
+    #   e.step('given when I on contactr card page') do
+    #     home.wait_until_contact_visible
+    #     sleep(2)
+    #     home.select_contact($contact1)
+    #     contact.wait_until_contact_card_visible
+    #   end
+    #   e.step('and I add a oportunity') do
+    #     contact.access_crm
+    #   end
+    #   e.step('when I try to inser opportunity without name') do
+    #    puts 'when I try to inser opportunity without name'
+    #     contact.oppo_form.select_oppo_next_action.send_keys :tab
+    #     contact.oppo_form.date_oppo_follow_up.send_keys :tab
+    #     contact.oppo_form.date_close_date.send_keys :tab
+    #     contact.oppo_form.txt_oppo_comment.send_keys :tab
 
-        contact.oppo_form.btn_oppo_save.click
-      end
-      e.step('then I see a validation message') do
-        puts 'then I see a validation message: Please provide the opportunity name.'
-        expect(contact.message.text).to eql 'Please provide the opportunity name.'
-      end
-      e.step('when I try to inser opportunity without source') do
-        puts 'when I try to inser opportunity without source'
-        sleep(5)
-        contact.oppo_form.txt_oppo_name.set 'Oportunity Validations'
+    #     contact.oppo_form.btn_oppo_save.click
+    #   end
+    #   e.step('then I see a validation message') do
+    #     puts 'then I see a validation message: Please provide the opportunity name.'
+    #     expect(contact.message.text).to eql 'Please provide the opportunity name.'
+    #   end
+    #   e.step('when I try to inser opportunity without source') do
+    #     puts 'when I try to inser opportunity without source'
+    #     sleep(5)
+    #     contact.oppo_form.txt_oppo_name.set 'Oportunity Validations'
        
-        contact.oppo_form.select_oppo_next_action.send_keys :tab
-        contact.oppo_form.date_oppo_follow_up.send_keys :tab
-        contact.oppo_form.date_close_date.send_keys :tab
-        contact.oppo_form.txt_oppo_comment.send_keys :tab
+    #     contact.oppo_form.select_oppo_next_action.send_keys :tab
+    #     contact.oppo_form.date_oppo_follow_up.send_keys :tab
+    #     contact.oppo_form.date_close_date.send_keys :tab
+    #     contact.oppo_form.txt_oppo_comment.send_keys :tab
        
-        contact.oppo_form.btn_oppo_save.click
-      end
-      e.step('then I see a validation message') do
-        puts 'then I see a validation message: Invalid opportunity source.'
-        expect(contact.message.text).to eql 'Invalid opportunity source.'
-      end
-      e.step('when I try to inser opportunity without status') do
-        puts 'when I try to inser opportunity without status'
-        sleep(5)
-        contact.oppo_form.select_oppo_source.find('option', text: 'Website').select_option
+    #     contact.oppo_form.btn_oppo_save.click
+    #   end
+    #   e.step('then I see a validation message') do
+    #     puts 'then I see a validation message: Invalid opportunity source.'
+    #     expect(contact.message.text).to eql 'Invalid opportunity source.'
+    #   end
+    #   e.step('when I try to inser opportunity without status') do
+    #     puts 'when I try to inser opportunity without status'
+    #     sleep(5)
+    #     contact.oppo_form.select_oppo_source.find('option', text: 'Website').select_option
        
-        contact.oppo_form.select_oppo_next_action.send_keys :tab
-        contact.oppo_form.date_oppo_follow_up.send_keys :tab
-        contact.oppo_form.date_close_date.send_keys :tab
-        contact.oppo_form.txt_oppo_comment.send_keys :tab
+    #     contact.oppo_form.select_oppo_next_action.send_keys :tab
+    #     contact.oppo_form.date_oppo_follow_up.send_keys :tab
+    #     contact.oppo_form.date_close_date.send_keys :tab
+    #     contact.oppo_form.txt_oppo_comment.send_keys :tab
        
-        contact.oppo_form.btn_oppo_save.click
-      end
-      e.step('then I see a validation message') do
-        puts 'then I see a validation message: Please provide a valid status.'
-            expect(contact.message.text).to eql 'Please provide a valid status.'
-      end
-      e.step('when I try to inser opportunity without probability') do
-        puts 'when I try to inser opportunity without probability'
-        sleep(5)
-        contact.oppo_form.select_oppo_status.find('option', text: 'Qualified').select_option
+    #     contact.oppo_form.btn_oppo_save.click
+    #   end
+    #   e.step('then I see a validation message') do
+    #     puts 'then I see a validation message: Please provide a valid status.'
+    #         expect(contact.message.text).to eql 'Please provide a valid status.'
+    #   end
+    #   e.step('when I try to inser opportunity without probability') do
+    #     puts 'when I try to inser opportunity without probability'
+    #     sleep(5)
+    #     contact.oppo_form.select_oppo_status.find('option', text: 'Qualified').select_option
        
-        contact.oppo_form.select_oppo_next_action.send_keys :tab
-        contact.oppo_form.date_oppo_follow_up.send_keys :tab
-        contact.oppo_form.date_close_date.send_keys :tab
-        contact.oppo_form.txt_oppo_comment.send_keys :tab
+    #     contact.oppo_form.select_oppo_next_action.send_keys :tab
+    #     contact.oppo_form.date_oppo_follow_up.send_keys :tab
+    #     contact.oppo_form.date_close_date.send_keys :tab
+    #     contact.oppo_form.txt_oppo_comment.send_keys :tab
        
-        contact.oppo_form.btn_oppo_save.click
-      end
-      e.step('then I see a validation message') do
-        puts 'then I see a validation message: Please provide a valid probability.'
-        expect(contact.message.text).to eql 'Please provide a valid probability.'
-      end
-      e.step('when I try to inser opportunity without next action') do
-        puts 'when I try to inser opportunity without next action'
-        sleep(5)
-        contact.oppo_form.select_oppo_prob.find('option', text: '50%').select_option
+    #     contact.oppo_form.btn_oppo_save.click
+    #   end
+    #   e.step('then I see a validation message') do
+    #     puts 'then I see a validation message: Please provide a valid probability.'
+    #     expect(contact.message.text).to eql 'Please provide a valid probability.'
+    #   end
+    #   e.step('when I try to inser opportunity without next action') do
+    #     puts 'when I try to inser opportunity without next action'
+    #     sleep(5)
+    #     contact.oppo_form.select_oppo_prob.find('option', text: '50%').select_option
        
-        contact.oppo_form.select_oppo_next_action.send_keys :tab
-        contact.oppo_form.date_oppo_follow_up.send_keys :tab
-        contact.oppo_form.date_close_date.send_keys :tab
-        contact.oppo_form.txt_oppo_comment.send_keys :tab
+    #     contact.oppo_form.select_oppo_next_action.send_keys :tab
+    #     contact.oppo_form.date_oppo_follow_up.send_keys :tab
+    #     contact.oppo_form.date_close_date.send_keys :tab
+    #     contact.oppo_form.txt_oppo_comment.send_keys :tab
        
-        contact.oppo_form.btn_oppo_save.click
-      end
-      e.step('then I see a validation message') do
-        puts 'then I see a validation message: Please provide a valid next action.'
-        expect(contact.message.text).to eql 'Please provide a valid next action.'
-      end
-    end
+    #     contact.oppo_form.btn_oppo_save.click
+    #   end
+    #   e.step('then I see a validation message') do
+    #     puts 'then I see a validation message: Please provide a valid next action.'
+    #     expect(contact.message.text).to eql 'Please provide a valid next action.'
+    #   end
+     end
   end
 
   describe('edit opportunity', :edit_oppo) do
@@ -768,7 +768,7 @@ describe('CRM - Opportunity', :general_crm) do
     end
   end
 
-  pending('upload attachments', :upload_attachment) do
+  describe('upload attachments', :upload_attachment) do
     it('attache file when create a opportunity') do |e|
       e.step('attach file') do
         home.wait_until_contact_visible

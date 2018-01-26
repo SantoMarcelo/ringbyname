@@ -5,6 +5,7 @@ require_relative '../../sections/main/contact_card'
 class Home < SitePrism::Page
   element :dropdown, '.dropdown-user-menu.dropdown'
   element :option_admin, 'a[ui-sref="admin.dashboard"]'
+  element :option_logout, 'a[ui-sref="auth.logout"]'
   element :user_status, 'button[class="btn s12 ng-binding btn-online"]'
 
   section :home_menu, Sections::MainMenu, '.nav-middle-top'
@@ -35,6 +36,11 @@ class Home < SitePrism::Page
         break
       end
     end
+  end
+
+  def logout
+    dropdown.click
+    option_logout.click
   end
 
 end

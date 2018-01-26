@@ -1,12 +1,12 @@
 
 require_relative '../../pages/login/login'
-require_relative '../../pages/admin/dashboard'
-require_relative '../../pages/admin/setup/users'
+require_relative '../../pages/admin/dashboard/dashboard'
+require_relative '../../pages/admin/setup/user/users'
 
 describe('access admin page', :admin) do
   before(:each) do
     login_page.load
-    login_page.do_login('devmarcelo.user1@ringbyname.com', '123456asd')
+    login_page.do_login($admin_user)
     home.wait_until_home_menu_visible
   end
   it('go to admin page') do |e|

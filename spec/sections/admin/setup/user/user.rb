@@ -43,7 +43,7 @@ class UserDetails < SitePrism::Section
     element :btn_reset_user, 'button[data-ng-click*="resetUser"]'
     #CRM feature options
     element :checkbox_crm, 'div.checkbox > input[data-ng-model="SetupUserDetailsController.record.crm.is_enabled"]'
-  end
+  end  
 
   class Tooltips < SitePrism::Section
     elements :tool_tips, '.page-details .icon-tooltip'
