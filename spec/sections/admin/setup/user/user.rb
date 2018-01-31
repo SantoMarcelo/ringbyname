@@ -16,7 +16,7 @@ class UserDetails < SitePrism::Section
     element :checkbox_device, '.device'
     element :link_add_cell_landline, 'a[data-ng-click*="addCellphone"]'
     # voice mail
-    element :checkbox_voicemail, '#checkboxVoicemailEnabled'
+    element :checkbox_voicemail, '.checkbox input[data-ng-model*="extras.is_voicemail_enabled"]'
     element :txt_voicemail_password, 'input[data-ng-model$="voicemail_pin"]'
     #greeting
     element :radio_auto_greeting, '#radioGreetingAuto'
@@ -43,12 +43,12 @@ class UserDetails < SitePrism::Section
     element :btn_reset_user, 'button[data-ng-click*="resetUser"]'
     #CRM feature options
     element :checkbox_crm, 'div.checkbox > input[data-ng-model="SetupUserDetailsController.record.crm.is_enabled"]'
+
+    elements :icon_tooltips, 'i.icon-tooltip'
   end  
 
-  class Tooltips < SitePrism::Section
-    elements :tool_tips, '.page-details .icon-tooltip'
-    element :popover, '.popover-content'
-    element :tt_user_email, 'i[tag="ADMIN_TOOLTIP_00071"]'
+  class Tooltips < SitePrism::Section 
+    
   end
 
   class Messages < SitePrism::Section

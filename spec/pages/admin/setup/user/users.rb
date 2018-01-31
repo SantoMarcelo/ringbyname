@@ -8,7 +8,10 @@ class User < Setup
   
   section :user_main, Sections::SetupMain, '.webapp-admin-page-main'
   section :details, Sections::UserDetails, '.page-details'
+  section :tooltips, Sections::TollTips, '.popover.admin-tooltip'
+  
 
+ 
   # section :tooltips, Sections::Tooltips, '.page-details'
 
   def access_user_menu
@@ -24,6 +27,17 @@ class User < Setup
       end
     end
     false
+  end
+
+  def validate_details_tooltips
+    tolltip_texts = []
+    details.icon_tooltips.each do |u|
+      u.click
+      tooltips.wait_until_tooltip_text_visible
+      tolltip_texts.push(tooltips.tooltip_text.text)
+      u.click
+    end
+    return tolltip_texts
   end
 
   def select_user_in_grid(user)
@@ -46,10 +60,29 @@ class User < Setup
     sleep(1)
   end
 
+  def is_checkbox_checked(element)
+    checks = all('.checkbox')
+    checks.each do |u|
+      if u.text == element
+        puts u.text
+        return status = u.checked?
+        puts status
+      end
+    end
+  end
+
   def change_user_data(user)
     details.txt_first_name.set (user[:first_name])
     details.txt_last_name.set (user[:last_name])
     details.txt_email.set (user[:email])
+    details.txt_extension.set (user[:extension])
+    details.checkbox_voicemail.click
+    details.checkbox_callback_request.click
+    details.checkbox_require_key_press.click
+    details.txt_number_rings. set(user[:number_of_rings])
+    details.checkbox_inbound_call_recording.click
+    details.checkbox_outbound_call_recording.click
+    details.checkbox_call_pickup.click
   end
 
   def crm_feature_enable

@@ -8,5 +8,9 @@ module Sections
         element :admin_announcements, 'a[ui-sref="admin.announcement-center"]'
         element :admin_account_billing, 'a[ui-sref="admin.account-billing-information"]'
       end
+
+      class TollTips < SitePrism::Section
+        element :tooltip_text, '.popover .popover-content'
+      end
     
     end

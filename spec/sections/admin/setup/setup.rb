@@ -12,7 +12,10 @@ class SetupMenu < SitePrism::Section
     element :title, '.page-main .main-title'
     element :txt_search, '.form input.input'
     element :btn_search, '.form button.button'
-
+    element :btn_clear_search, '.icon .delete'
+    element :icon_search_tooltip, 'i.icon-tooltip:nth-child(3)'
+       
+    element :icon_grid_tooltip, 'i.icon-tooltip:nth-child(2)'
     elements :grid_rows, 'article.ng-scope'
     element :grid_icon_admin, '.column-admin:last-child'
     element :grid_icon_crm, '.column-crm > i[data-ng-if="user.crm.is_enabled"]'
@@ -27,7 +30,7 @@ class SetupMenu < SitePrism::Section
       self.setup.txt_search.set (info)
       self.setup.btn_search.click
     end
-    
+
   end
 
 
