@@ -11,6 +11,8 @@ class UserDetails < SitePrism::Section
     element :txt_extension, 'input[placeholder="Extension"]'
     element :txt_direct_number, 'div[class="control ng-binding"]:nth-of-type(2)'
     element :select_outbound_caller_id, 'select[data-ng-options$="outboundCallers"]'
+    element :txt_caller_custom_number, 'input[data-ng-model*="caller_id.external.number"]'
+    element :txt_caller_custom_name, 'input[data-ng-model*="caller_id.external.name"]'
     # devices
     element :link_add_device, 'a[data-ng-click*=addSoftphone]'
     element :checkbox_device, '.device'

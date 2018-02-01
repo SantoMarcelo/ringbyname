@@ -44,17 +44,20 @@ describe('validate Users Setup', :usersetup) do
       direct: 'None'
     }
     @user_changed = {
-      extension: '101',
-      name: 'Dev Marcelo 1 User',
+      extension: '999',
+      name: 'Dev Marcelo 1 CHANGED User CHANGED',
       first_name: 'Dev Marcelo 1 CHANGED',
       last_name: 'User CHANGED',
       email: 'devmarcelo.user1.CHANGED@ringbyname.com',
       type: 'R! User',
       direct: '12392080525',
-      outbound_caller_id: '12392080525 (New user 9314129)',
+      outbound_caller_id: '12392068773 (Dev Comp 1 Marcelo)',
       voicemail_password: '1234',
-      number_of_rings: '10'
+      number_of_rings: '10',
+      caller_custom_number: '9999999999',
+      caller_custom_name: 'Test Custom Name'
     }
+    # Capybara.ignore_hidden_elements = true
   end
 
   describe('validate users list', :user_list) do
@@ -84,77 +87,77 @@ describe('validate Users Setup', :usersetup) do
     end
   end
   describe('search users', :search_user) do
-    it('validate all search cases')do |e|
+    it('validate all search cases') do |e|
       puts 'validate all search cases'
-      e.step('when I on users setup')do
+      e.step('when I on users setup') do
         puts 'when I on users setup'
         admin_dashboard.options.admin_setup.click
         expect(users.admin_title.text).to eql 'Setup'
         users.access_user_menu
         expect(users.user_main.title.text).to eql 'Users'
       end
-      e.step('and search by extension')do
+      e.step('and search by extension') do
         puts 'and search by extension'
         users.user_main.txt_search.set (@user1[:extension])
         users.user_main.btn_search.click
       end
-      e.step('then i can see only the filtred user')do
+      e.step('then i can see only the filtred user') do
         puts 'then i can see only the filtred user'
         expect(users.is_user_in_grid(@user1)).to eql true
         expect(users.user_main.info_total_records.text).to eql '1'
       end
-      e.step('and search by name')do
+      e.step('and search by name') do
         puts 'and search by name'
         users.user_main.txt_search.set (@user2[:name])
         users.user_main.btn_search.click
       end
-      e.step('then i can see only the filtred user')do
+      e.step('then i can see only the filtred user') do
         puts 'then i can see only the filtred user'
-        #users.user_main.wait_until_grid_rows_visible
+        # users.user_main.wait_until_grid_rows_visible
         sleep 1
         expect(users.is_user_in_grid(@user2)).to eql true
         expect(users.user_main.info_total_records.text).to eql '1'
       end
-      e.step('and search by type')do
+      e.step('and search by type') do
         puts 'and search by type'
         users.user_main.txt_search.set (@user3[:type])
         users.user_main.btn_search.click
       end
-      e.step('then i can see only the filtred user')do
+      e.step('then i can see only the filtred user') do
         puts 'then i can see only the filtred user'
         sleep 1
         expect(users.is_user_in_grid(@user3)).to eql true
         expect(users.user_main.info_total_records.text).to eql '2'
       end
-      e.step('and search by Direct#')do
+      e.step('and search by Direct#') do
         puts 'and search by Direct#'
         users.user_main.txt_search.set (@user1[:direct])
         users.user_main.btn_search.click
       end
-      e.step('then i can see only the filtred user')do
+      e.step('then i can see only the filtred user') do
         puts 'then i can see only the filtred user'
         sleep 1
         expect(users.is_user_in_grid(@user1)).to eql true
         expect(users.user_main.info_total_records.text).to eql '1'
       end
-      e.step('and search with special character')do
+      e.step('and search with special character') do
         puts 'and search with special character'
-        users.user_main.txt_search.set ('!@#$%¨&*()')
+        users.user_main.txt_search.set '!@#$%¨&*()'
         users.user_main.btn_search.click
       end
-      e.step('then i can see only the filtred user')do
+      e.step('then i can see only the filtred user') do
         puts 'then i can see only the filtred user'
         sleep 1
         expect(users.user_main.grid_rows.empty?).to eql true
         expect(users.user_main.info_total_records.text).to eql '0'
-        end
-      e.step('validate clear search field')do
+      end
+      e.step('validate clear search field') do
         puts 'validate clear search field'
-        users.user_main.txt_search.set ('Clear search field') 
+        users.user_main.txt_search.set 'Clear search field'
         users.user_main.btn_clear_search.click
       end
-      e.step('validate what field is cleared and grid was refreshd with all users')do
-      puts 'validate what field is cleared and grid was refreshd with all users'
+      e.step('validate what field is cleared and grid was refreshd with all users') do
+        puts 'validate what field is cleared and grid was refreshd with all users'
         expect(users.user_main.txt_search.text).to eql ''
         expect(users.is_user_in_grid(@user1)).to eql true
         expect(users.is_user_in_grid(@user2)).to eql true
@@ -162,13 +165,13 @@ describe('validate Users Setup', :usersetup) do
         expect(users.is_user_in_grid(@user4)).to eql true
         expect(users.user_main.info_total_records.text).to eql '4'
       end
-      e.step('validate search tooltips text')do
+      e.step('validate search tooltips text') do
         puts 'validate search tooltips text'
         users.user_main.icon_search_tooltip.click
         users.tooltips.wait_until_tooltip_text_visible
         expect(users.tooltips.tooltip_text.text).to eql 'Enter any Extension number, telephone number, or name to find it in your account.'
       end
-      e.step('validate grid tooltip')do
+      e.step('validate grid tooltip') do
         puts 'validate grid tooltip'
         users.user_main.icon_grid_tooltip.click
         users.tooltips.wait_until_tooltip_text_visible
@@ -177,9 +180,8 @@ describe('validate Users Setup', :usersetup) do
     end
   end
 
-describe('validate users details', :user_details) do
+  describe('validate users details', :user_details) do
     it('validate user information') do |e|
-      
       puts 'validate user information'
       e.step('when I on users setup') do
         puts 'when I on users setup'
@@ -197,48 +199,49 @@ describe('validate users details', :user_details) do
         expect(users.details.txt_extension.text.include?(@user1[:extension]))
         expect(users.details.txt_direct_number.text.include?(@user1[:direct]))
         expect(users.details.select_outbound_caller_id.text.include?(@user1[:outbound_caller_id]))
-        voicemail_active = expect(users.details.checkbox_voicemail).to be_checked
+        voicemail_active = expect(users.details.checkbox_voicemail(visible: false)).to be_checked
         if voicemail_active == true
           expect(users.details.txt_voicemail_password.text.include?(@user1[:voicemail_password]))
         end
-        expect(users.details.radio_auto_greeting).to be_checked
-        expect(users.details.radio_text_greeting).not_to be_checked
-        expect(users.details.radio_file_greeting).not_to be_checked
-        expect(users.details.checkbox_callback_request).to be_checked
-        expect(users.details.checkbox_require_key_press).to be_checked
+        expect(users.details.radio_auto_greeting(visible: false)).to be_checked
+        expect(users.details.radio_text_greeting(visible: false)).not_to be_checked
+        expect(users.details.radio_file_greeting(visible: false)).not_to be_checked
+        expect(users.details.checkbox_callback_request(visible: false)).to be_checked
+        expect(users.details.checkbox_require_key_press(visible: false)).to be_checked
         expect(users.details.txt_number_rings.text.include?(@user1[:number_of_rings]))
-        expect(users.details.checkbox_inbound_call_recording).not_to be_checked
-        expect(users.details.checkbox_outbound_call_recording).not_to be_checked
-        expect(users.details.checkbox_call_pickup).to be_checked
+        expect(users.details.checkbox_inbound_call_recording(visible: false)).not_to be_checked
+        expect(users.details.checkbox_outbound_call_recording(visible: false)).not_to be_checked
+        expect(users.details.checkbox_call_pickup(visible: false)).to be_checked
       end
       e.step('and I validate all tooltips texts') do
         puts 'and I validate all tooltips texts'
-        #Add all tooltips text in array to validate with array returned in validation method.
-        tooltips_texts_expect =[
-          "Please enter an e-mail to be used as a login for this user. This must be a unique e-mail. This email will also be used to send notifications to the user, such as new voicemail and fax alerts.",
-          "Please enter a password for this user. Passwords are alphanumeric and may contain letter and number combinations as well as special characters.",
-          "Please re-enter your password to check for accuracy.",
-          "You may enter any 3 to 5-digit extension number not currently in use in your account",
-          "This is the direct telephone number that has been assigned to this user by the system administrator. If you would like to change the telephone number assigned, please navigate to the Phone Numbers section of the admin panel.",
-          "You may select what outbound caller ID will be used by this user when placing a call. This number will be displayed to all telephone numbers dialed by this user. To assign the same Outbound Caller ID to more than one user, consider using the \"Set Outbound Caller ID for Mutlitiple Users\" tool.",
-          "Click on this option if you wish to attach an additional VoIP telephone, or software based softphone to this user.",
-          "Click on this checkbox to enable routing of calls to a specific device.",
-          "Click on this option if you would like the system to simultaneously route calls to a landline or mobile phone. Expert Tip: Try forwarding calls to a colleague while you are away on vaction, simply enter their extension number instead of a landline or mobile phone number",
+        # Add all tooltips text in array to validate with array returned in validation method.
+        tooltips_texts_expect = [
+          'Please enter an e-mail to be used as a login for this user. This must be a unique e-mail. This email will also be used to send notifications to the user, such as new voicemail and fax alerts.',
+          'Please enter a password for this user. Passwords are alphanumeric and may contain letter and number combinations as well as special characters.',
+          'Please re-enter your password to check for accuracy.',
+          'You may enter any 3 to 5-digit extension number not currently in use in your account',
+          'This is the direct telephone number that has been assigned to this user by the system administrator. If you would like to change the telephone number assigned, please navigate to the Phone Numbers section of the admin panel.',
+          'You may select what outbound caller ID will be used by this user when placing a call. This number will be displayed to all telephone numbers dialed by this user. To assign the same Outbound Caller ID to more than one user, consider using the "Set Outbound Caller ID for Mutlitiple Users" tool.',
+          'Click on this option if you wish to attach an additional VoIP telephone, or software based softphone to this user.',
+          'Click on this checkbox to enable routing of calls to a specific device.',
+          'Click on this option if you would like the system to simultaneously route calls to a landline or mobile phone. Expert Tip: Try forwarding calls to a colleague while you are away on vaction, simply enter their extension number instead of a landline or mobile phone number',
           "Click on this checkbox to enable or disable voicemail for this user\'s extensions",
-          "Enter any 4-digit numeric password for voicemail box access",
-          "Select this option if you would like the system to use an automated voicemail greeting.",
-          "Select a language and enter the voicemail greeting you would like the system to read to your callers",
-          "Use this option if you would like to use an MP3 ro WAV file as a voicemail greeting",
-          "Click on this checkbox to grant this user Administrator access to the system and all configuration settings."
+          'Enter any 4-digit numeric password for voicemail box access',
+          'Select this option if you would like the system to use an automated voicemail greeting.',
+          'Select a language and enter the voicemail greeting you would like the system to read to your callers',
+          'Use this option if you would like to use an MP3 ro WAV file as a voicemail greeting',
+          'Click on this checkbox to grant this user Administrator access to the system and all configuration settings.'
         ]
         users.details.wait_until_btn_save_user_visible
         expect(users.validate_details_tooltips).to eql tooltips_texts_expect
-       end
+      end
     end
-end
+  end
 
   describe('validate users update', :user_update) do
     it('update users and check changed data') do |e|
+      puts 'update users and check changed data'
       e.step('when I on users setup') do
         puts 'when I on users setup'
         admin_dashboard.options.admin_setup.click
@@ -249,30 +252,90 @@ end
       end
       e.step('and I change user informatios') do
         puts 'and I change user informatios'
-        users.change_user_data(@user_changed)
+
+        users.details.txt_first_name.set (@user_changed[:first_name])
+        users.details.txt_last_name.set (@user_changed[:last_name])
+        users.details.txt_email.set (@user_changed[:email])
+        users.details.txt_extension.set (@user_changed[:extension])
+        users.details.select_outbound_caller_id.find('option', text: (@user_changed[:outbound_caller_id])).select_option
+        # get all checkboxes on the user datails and click in the each.
+        checkbox = all('.checkbox')
+        checkbox.each do |u|
+          u.click if u.text.include?('Enable Voicemail Box of User Calls')
+          u.click if u.text.include?('Use Callback Request')
+          if u.text.include?('Require key press to accept transferred calls')
+            u.click
+          end
+          if u.text.include?('Enable inbound call recording for this user')
+            u.click
+          end
+          if u.text.include?('Enable outbound call recording for this user')
+            u.click
+          end
+          if u.text.include?('Allow others to remotely answer this user\'s calls')
+            u.click
+          end
+        end
+        users.details.btn_save_user.click
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
       end
       e.step('then I check if all changes are displayed correctly') do
         puts 'then I check if all changes are displayed correctly'
+        users.select_user_in_grid(@user_changed)
+        users.details.wait_until_btn_save_user_visible
         expect(users.details.txt_first_name.text.include?(@user_changed[:first_name]))
         expect(users.details.txt_last_name.text.include?(@user_changed[:last_name]))
         expect(users.details.txt_email.text.include?(@user_changed[:email]))
         expect(users.details.txt_extension.text.include?(@user_changed[:extension]))
         expect(users.details.txt_direct_number.text.include?(@user_changed[:direct]))
         expect(users.details.select_outbound_caller_id.text.include?(@user_changed[:outbound_caller_id]))
-        voicemail_active = expect(users.details.checkbox_voicemail).to be_checked
-        if voicemail_active == true
-          expect(users.details.txt_voicemail_password.text.include?(@user_changed[:voicemail_password]))
-        end
-        expect(users.details.radio_auto_greeting).to be_checked
-        expect(users.details.radio_text_greeting).not_to be_checked
-        expect(users.details.radio_file_greeting).not_to be_checked
-        expect(users.details.checkbox_callback_request).to be_checked
-        expect(users.details.checkbox_require_key_press).to be_checked
+        expect(users.details.checkbox_voicemail(visible: false)).not_to be_checked
+        expect(users.details.checkbox_callback_request(visible: false)).not_to be_checked
+        expect(users.details.checkbox_require_key_press(visible: false)).not_to be_checked
         expect(users.details.txt_number_rings.text.include?(@user_changed[:number_of_rings]))
-        expect(users.details.checkbox_inbound_call_recording).not_to be_checked
-        expect(users.details.checkbox_outbound_call_recording).not_to be_checked
-        expect(users.details.checkbox_call_pickup).to be_checked
+        expect(users.details.checkbox_inbound_call_recording(visible: false)).to be_checked
+        expect(users.details.checkbox_outbound_call_recording(visible: false)).to be_checked
+        expect(users.details.checkbox_call_pickup(visible: false)).not_to be_checked
       end
+      e.step('verify change outbound caller to custom options')do
+      puts 'verify change outbound caller to custom options'
+        users.details.select_outbound_caller_id.find('option', text: '(Click here)').select_option
+        users.details.txt_caller_custom_number.set(@user_changed[:caller_custom_number])
+        users.details.txt_caller_custom_name.set(@user_changed[:caller_custom_name])
+      end
+    end
+    after do
+      # return user data to default
+      users.details.txt_first_name.set (@user1[:first_name])
+      users.details.txt_last_name.set (@user1[:last_name])
+      users.details.txt_email.set (@user1[:email])
+      users.details.txt_extension.set (@user1[:extension])
+      users.details.select_outbound_caller_id.find('option', text: (@user1[:outbound_caller_id])).select_option
+      checkbox = all('.checkbox')
+      checkbox.each do |u|
+        u.click if u.text.include?('Enable Voicemail Box of User Calls')
+        u.click if u.text.include?('Use Callback Request')
+        if u.text.include?('Require key press to accept transferred calls')
+          u.click
+        end
+        if u.text.include?('Enable inbound call recording for this user')
+          u.click
+        end
+        if u.text.include?('Enable outbound call recording for this user')
+          u.click
+        end
+        if u.text.include?('Allow others to remotely answer this user\'s calls')
+          u.click
+        end
+      end
+      users.details.txt_number_rings.set(@user1[:number_of_rings])
+      users.details.btn_save_user.click
+      users.message.wait_until_modal_visible
+      expect(users.message.modal.text).to eql 'User updated successfully.'
+      users.message.btn_ok.click
+      users.is_user_in_grid(@user1)
     end
   end
 
@@ -283,7 +346,7 @@ end
       end
       e.step('and I select the first user') do
         users.select_user_in_grid($user1)
-      end 
+      end
       e.step('then I allow CRM feature to user') do
         users.crm_feature_enable
         expect(users.message.modal.text).to eql 'User updated successfully.'
@@ -291,15 +354,15 @@ end
       end
       e.step('and I check if the change was saved correctly') do
         users.wait_until_grid_rows_visible
-        expect(users.grid_rows.include? (users.grid_icon_crm))
+        expect(users.grid_rows.include?(users.grid_icon_crm))
         users.select_user_in_grid($user1)
         expect(users.details.checkbox_crm).to be_checked
       end
     end
-  
+
     it('check maximum number of license validation message') do |e|
-      e.step('Given I has only 1 CRM license') do
-        #expect(users.get_number_of_crm_licenses).to eql 1
+      e.step('given I has only 1 CRM license') do
+        # expect(users.get_number_of_crm_licenses).to eql 1
       end
       e.step('when I on users setup') do
         admin_dashboard.options.admin_setup.click
@@ -312,10 +375,10 @@ end
         expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this user, please buy another license or disable CRM of another user before proceeding."
       end
     end
-    
+
     it('update users to disable CRM feature') do |e|
       e.step('when I on users setup') do
-       admin_dashboard.options.admin_setup.click
+        admin_dashboard.options.admin_setup.click
       end
       e.step('and I select the first user') do
         users.select_user_in_grid($user1)
@@ -333,8 +396,6 @@ end
         expect(users.details.checkbox_crm).not_to be_checked
       end
     end
-
-   
   end
 
   after(:each) do |e|
@@ -342,7 +403,3 @@ end
     Capybara.current_session.driver.quit
   end
 end
-
-
-
-

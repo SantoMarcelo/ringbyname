@@ -3,7 +3,7 @@ task :marcelo_firefox do
     ENV['BROWSER'] = 'firefox'
     ENV['ENVIRONMENT'] = 'marcelo'
     ENV['BRANCH'] = 'crm-phase2'
-    sh 'rspec -fd --tag user_details'
+    sh 'rspec -fd --tag user_update'
     #sh 'allure serve log/reports'
 end
 

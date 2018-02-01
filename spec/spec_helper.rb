@@ -64,7 +64,6 @@ Capybara.register_driver :selenium do |app|
 
   if $browser.include?('chrome')
     $driver = Capybara::Selenium::Driver.new(app, browser: :chrome, desired_capabilities: chrome_caps)
-    
   elsif $browser.include?('firefox')
     $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true, options: options)
   end
@@ -82,6 +81,7 @@ end
 
 Capybara.default_max_wait_time = 10
 Capybara.page.driver.browser.manage.window.resize_to(1920,1080)
+#Capybara.ignore_hidden_elements = true
 
 
 AllureRSpec.configure do |c|

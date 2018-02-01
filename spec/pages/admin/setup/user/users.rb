@@ -72,17 +72,20 @@ class User < Setup
   end
 
   def change_user_data(user)
+    
     details.txt_first_name.set (user[:first_name])
     details.txt_last_name.set (user[:last_name])
     details.txt_email.set (user[:email])
     details.txt_extension.set (user[:extension])
-    details.checkbox_voicemail.click
+    find('.checkbox input[data-ng-model*="extras.is_voicemail_enabled"]', visible: false).click
+    details.checkbox_voicemail(visible: false).click
     details.checkbox_callback_request.click
     details.checkbox_require_key_press.click
     details.txt_number_rings. set(user[:number_of_rings])
     details.checkbox_inbound_call_recording.click
     details.checkbox_outbound_call_recording.click
     details.checkbox_call_pickup.click
+    
   end
 
   def crm_feature_enable
