@@ -15,8 +15,12 @@ class UserDetails < SitePrism::Section
     element :txt_caller_custom_name, 'input[data-ng-model*="caller_id.external.name"]'
     # devices
     element :link_add_device, 'a[data-ng-click*=addSoftphone]'
-    element :checkbox_device, '.device'
+    elements :checkboxes_device, '.device'
+    elements :link_devices_name, '.control > span > a[data-ng-click*="getDeviceSettings"]'
+    elements :icon_delete_device, '.control > span >  i[data-ng-click*="removeDevice"]'
+    # devices#landline
     element :link_add_cell_landline, 'a[data-ng-click*="addCellphone"]'
+    elements :link_landline_items, '.control > span > a[data-ng-click*="editCellphone"]'
     # voice mail
     element :checkbox_voicemail, '.checkbox input[data-ng-model*="extras.is_voicemail_enabled"]'
     element :txt_voicemail_password, 'input[data-ng-model$="voicemail_pin"]'
@@ -48,15 +52,27 @@ class UserDetails < SitePrism::Section
 
     elements :icon_tooltips, 'i.icon-tooltip'
   end  
-
-  class Tooltips < SitePrism::Section 
-    
-  end
-
   class Messages < SitePrism::Section
 
     element :modal, '#modalContentId'
     element :btn_ok, '.swal2-confirm'
+    # devices#modal
+    element :modal_title, '.modal-dialog  .modal-content .modal-title'
+    element :modal_message, '.modal-dialog  .modal-content div.modal-body'
+    element :modal_button, '.modal-dialog  .modal-content .modal-footer button'
 
+  end
+  class ModalDevicesConfig <SitePrism::Section
+    element :modal_title, '.modal .modal-content .modal-title'
+    element :modal_body, '.modal .modal-content .modal-body'
+    element :close, '.modal .modal-content .modal-header .modal-close'
+  end
+  class ModalLandLine < SitePrism::Section
+    element :modal_title, '.modal-title'
+    element :txt_landline_name, '.modal-body .row .form-group > div >  input[data-ng-model="device.name"]'
+    element :txt_landline_number, '.modal-body .row .form-group > div >  input[data-ng-model="device.number"]'
+    elements :tooltips, '.modal i.icon-tooltip'
+    element :btn_cancel, '.modal .modal-content .modal-footer button.button-cancel'
+    element :btn_save, '.modal .modal-content .modal-footer button.button-save'
   end
 end

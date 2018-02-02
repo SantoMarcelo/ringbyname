@@ -9,7 +9,9 @@ class User < Setup
   section :user_main, Sections::SetupMain, '.webapp-admin-page-main'
   section :details, Sections::UserDetails, '.page-details'
   section :tooltips, Sections::TollTips, '.popover.admin-tooltip'
-  
+  section :device_modal, Sections::Messages, '.modal'
+  section :device_config_modal, Sections::ModalDevicesConfig, '.modal'
+  section :landline_modal, Sections::ModalLandLine, '.modal'
 
  
   # section :tooltips, Sections::Tooltips, '.page-details'

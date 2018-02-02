@@ -23,7 +23,14 @@ describe('validate Users Setup', :usersetup) do
       direct: '12392080525',
       outbound_caller_id: '12392080525 (New user 9314129)',
       voicemail_password: '1234',
-      number_of_rings: '5'
+      number_of_rings: '5',
+      landline_name: 'Cellphone Test',
+      landline_number: '011554899999999',
+      device_username: 'Username: 9314129',
+      device_authname: 'Auth Name: 9314129',
+      device_password: 'Password: 123456asd',
+      device_sip: 'SIP Server: 1168173.sip.dev.ringbyname.com'
+
     }
     @user2 = {
       extension: '102',
@@ -252,7 +259,6 @@ describe('validate Users Setup', :usersetup) do
       end
       e.step('and I change user informatios') do
         puts 'and I change user informatios'
-
         users.details.txt_first_name.set (@user_changed[:first_name])
         users.details.txt_last_name.set (@user_changed[:last_name])
         users.details.txt_email.set (@user_changed[:email])
@@ -299,11 +305,162 @@ describe('validate Users Setup', :usersetup) do
         expect(users.details.checkbox_outbound_call_recording(visible: false)).to be_checked
         expect(users.details.checkbox_call_pickup(visible: false)).not_to be_checked
       end
-      e.step('verify change outbound caller to custom options')do
-      puts 'verify change outbound caller to custom options'
+      e.step('when I change outbound caller to custom options')do
+      puts 'when I change outbound caller to custom options'
+        #users.select_user_in_grid(@user1)
         users.details.select_outbound_caller_id.find('option', text: '(Click here)').select_option
         users.details.txt_caller_custom_number.set(@user_changed[:caller_custom_number])
         users.details.txt_caller_custom_name.set(@user_changed[:caller_custom_name])
+        users.details.btn_save_user.click
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('then I verify outbound caller changes')do
+        puts 'then I verify outbound caller changes'
+        users.select_user_in_grid(@user_changed)
+        expect(users.details.select_outbound_caller_id.text.include?(@user_changed[:caller_custom_number]))
+        expect(users.details.txt_caller_custom_name.text.include?(@user_changed[:caller_custom_name]))
+      end
+      e.step('when I insert others devices')do
+      puts 'when I insert others devices'
+        #users.select_user_in_grid(@user1)
+        users.details.link_add_device.click
+        expect(users.details.checkboxes_device.length).to eql 2
+        users.details.link_devices_name.each do |u|
+          expect(u.text.include?('VoIP Device 9314129*'))
+        end
+        users.details.btn_save_user.click
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('then I verify if the device was inserted correctly')do
+      puts 'then I verify if the device was inserted correctly'
+        users.select_user_in_grid(@user_changed)
+        users.details.link_devices_name.each do |u|
+          expect(u.text.include?('VoIP Device 9314129a'))
+        end
+      end
+      e.step('when I validate the maximum number of devices')do
+        puts 'when I validate the maximum number of devices'
+        sleep 1
+        users.details.link_add_device.click
+        users.details.link_devices_name.each do |u|
+          expect(u.text.include?('VoIP Device 9314129*'))
+        end
+        users.details.link_add_device.click
+        users.details.link_devices_name.each do |u|
+          expect(u.text.include?('VoIP Device 9314129*'))
+        end
+        users.details.link_add_device.click
+        users.details.link_devices_name.each do |u|
+          expect(u.text.include?('VoIP Device 9314129*'))
+        end
+        users.details.link_add_device.click
+        users.details.link_devices_name.each do |u|
+          expect(u.text.include?('VoIP Device 9314129*'))
+        end
+        expect(users.details.checkboxes_device.length).to eql 5
+      end
+      e.step('then I can see the validation message')do
+        puts 'then I can see the validation message'
+        users.device_modal.wait_until_modal_title_visible
+        expect(users.device_modal.modal_title.text).to eql 'Maximum Number of Devices Reached'
+        expect(users.device_modal.modal_message.text).to eql 'You have reached the limit of devices per user.'
+        users.device_modal.modal_button.click
+      end
+      e.step('and when I delete an inserted device')do
+        puts 'and when I delete an inserted device'
+        users.details.icon_delete_device.each do |u|
+          u.click
+        end
+        users.details.link_devices_name.each do |u|
+          expect(u.text.include?('VoIP Device 9314129a')).to eql false
+        end
+        users.details.btn_save_user.click
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('then I not see the device what was inserted')do
+        puts 'then I not see the device what was inserted'
+        users.select_user_in_grid(@user_changed)
+        users.details.link_devices_name.each do |u|
+          expect(u.text.include?('VoIP Device 9314129a')).to eql false
+        end
+      end
+      e.step('and when I select device to see the config specs')do
+        puts 'and when I select device to see the config specs'
+        users.details.link_devices_name.each do |u|
+          u.click
+        end
+      end
+      e.step('then I see the modal with device configuration')do
+        puts 'then I see the modal with device configuration'
+        expect(users.device_config_modal.modal_title.text).to eql 'VoIP Configuration Settings'
+        expect(users.device_config_modal.modal_body.text.include?(@user1[:device_username]))
+        expect(users.device_config_modal.modal_body.text.include?(@user1[:device_authname]))
+        expect(users.device_config_modal.modal_body.text.include?(@user1[:device_password]))
+        expect(users.device_config_modal.modal_body.text.include?(@user1[:device_sip]))
+        users.device_config_modal.close.click
+      end
+      #landline validations
+      e.step('when I add a cellphone or landline')do
+        puts 'when I add a cellphone or landline'
+        #validate tooltips landline form
+        @expect_tooltip_texts = ['TOOLTIP_MOBILELANDILINE_NAME', 'TOOLTIP_MOBILELANDILINE_NUMBER']
+        users.details.link_add_cell_landline.click
+        expect(users.landline_modal.modal_title.text).to eql 'Add another mobile or landline destination'
+        @tooltip_landline_texts = []
+        users.landline_modal.tooltips.each do |u|
+          u.click
+          @tooltip_landline_texts.push(users.tooltips.tooltip_text.text)
+          u.click
+        end
+        expect(@tooltip_landline_texts). to eql @expect_tooltip_texts
+        #end tooltip validation
+        users.landline_modal.txt_landline_name.set(@user1[:landline_name])
+        users.landline_modal.txt_landline_number.set(@user1[:landline_number])
+        users.landline_modal.btn_save.click
+        users.details.link_landline_items.each do |u|
+          expect(u.text.include?(@user1[:landline_name]))
+          expect(u.text.include?(@user1[:landline_number]))
+        end
+        users.details.btn_save_user.click
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('then I validate if landline was inserted correctly')do
+        puts 'then I validate if landline was inserted correctly'
+        users.select_user_in_grid(@user_changed)
+        users.details.link_landline_items.each do |u|
+          expect(u.text.include?(@user1[:landline_name]))
+          expect(u.text.include?(@user1[:landline_number]))
+        end
+      end
+      e.step('and when I delete a inserted landlines')do
+        puts 'and when I delete a inserted landlines'
+        users.details.icon_delete_device.each do |u|
+          u.click
+        end
+        users.details.link_landline_items.each do |u|
+          expect(u.text.include?(@user1[:landline_name])).to eql false
+          expect(u.text.include?(@user1[:landline_number])).to eql false
+        end
+        users.details.btn_save_user.click
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('then I validate if the landline was deleted correctly')do
+        puts 'then I validate if the landline was deleted correctly'
+        users.select_user_in_grid(@user_changed)
+        users.details.link_landline_items.each do |u|
+          expect(u.text.include?(@user1[:landline_name])).to eql false
+          expect(u.text.include?(@user1[:landline_number])).to eql false
+        end
       end
     end
     after do
