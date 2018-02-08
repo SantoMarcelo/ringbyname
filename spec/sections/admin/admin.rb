@@ -12,5 +12,15 @@ module Sections
       class TollTips < SitePrism::Section
         element :tooltip_text, '.popover .popover-content'
       end
+
+      class MainMenu <SitePrism::Section
+        element :menu, '.profile-media-content'
+        element :receives_call_at, 'a[ui-sref="app.receive-calls-at"]'
+        element :my_caller_id, 'a[ui-sref="app.my-outgoing-caller-id"]'
+        element :my_profile, 'a[ui-sref="app.profile"]'
+        element :languages, 'a[ui-sref="app.language-settings"]'
+        element :home_page, 'a[ui-sref="app.welcome-page"]'
+        element :logout, 'a[ui-sref="auth.logout"]'
+      end
     
     end

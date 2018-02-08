@@ -12,7 +12,7 @@ class User < Setup
   section :device_modal, Sections::Messages, '.modal'
   section :device_config_modal, Sections::ModalDevicesConfig, '.modal'
   section :landline_modal, Sections::ModalLandLine, '.modal'
-
+  
  
   # section :tooltips, Sections::Tooltips, '.page-details'
 
@@ -59,35 +59,21 @@ class User < Setup
         true if u.include?(grid_icon_crm)
       end
     end
+    false
     sleep(1)
   end
 
-  def is_checkbox_checked(element)
-    checks = all('.checkbox')
-    checks.each do |u|
-      if u.text == element
-        puts u.text
-        return status = u.checked?
-        puts status
+  def grid_check_admin_user_info(user)
+    user_main.wait_until_grid_rows_visible
+    puts user[:extension]
+    puts user[:name]
+    setup.grid_rows.each do |u|
+      if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
+        true if u.include?(setup.grid_icon_admin)
       end
     end
-  end
-
-  def change_user_data(user)
-    
-    details.txt_first_name.set (user[:first_name])
-    details.txt_last_name.set (user[:last_name])
-    details.txt_email.set (user[:email])
-    details.txt_extension.set (user[:extension])
-    find('.checkbox input[data-ng-model*="extras.is_voicemail_enabled"]', visible: false).click
-    details.checkbox_voicemail(visible: false).click
-    details.checkbox_callback_request.click
-    details.checkbox_require_key_press.click
-    details.txt_number_rings. set(user[:number_of_rings])
-    details.checkbox_inbound_call_recording.click
-    details.checkbox_outbound_call_recording.click
-    details.checkbox_call_pickup.click
-    
+    false
+    sleep(1)
   end
 
   def crm_feature_enable

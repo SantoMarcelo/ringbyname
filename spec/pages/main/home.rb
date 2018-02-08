@@ -7,6 +7,7 @@ class Home < SitePrism::Page
   element :option_admin, 'a[ui-sref="admin.dashboard"]'
   element :option_logout, 'a[ui-sref="auth.logout"]'
   element :user_status, 'button[class="btn s12 ng-binding btn-online"]'
+  element :my_caller_id, '.dropdown-title span.hover'
 
   section :home_menu, Sections::MainMenu, '.nav-middle-top'
   section :contact, Sections::Contact, '#contact-list'

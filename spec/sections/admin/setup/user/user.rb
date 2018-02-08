@@ -5,7 +5,7 @@ class UserDetails < SitePrism::Section
     element :txt_first_name, 'input[placeholder="First Name"]'
     element :txt_last_name, 'input[placeholder="Last Name"]'
     element :txt_email, 'input[placeholder="E-mail"]'
-    element :txt_password, 'input[placeholder="Password"]'
+    elements :txt_password, '.control input[placeholder="Password"]'
     element :txt_password_repeart, 'input[placeholder="Repeat"]'
     # extensions
     element :txt_extension, 'input[placeholder="Extension"]'
@@ -17,7 +17,7 @@ class UserDetails < SitePrism::Section
     element :link_add_device, 'a[data-ng-click*=addSoftphone]'
     elements :checkboxes_device, '.device'
     elements :link_devices_name, '.control > span > a[data-ng-click*="getDeviceSettings"]'
-    elements :icon_delete_device, '.control > span >  i[data-ng-click*="removeDevice"]'
+    elements :icon_delete_device, '.control > span > i.icon-fontello-trash-empty'
     # devices#landline
     element :link_add_cell_landline, 'a[data-ng-click*="addCellphone"]'
     elements :link_landline_items, '.control > span > a[data-ng-click*="editCellphone"]'
@@ -25,9 +25,11 @@ class UserDetails < SitePrism::Section
     element :checkbox_voicemail, '.checkbox input[data-ng-model*="extras.is_voicemail_enabled"]'
     element :txt_voicemail_password, 'input[data-ng-model$="voicemail_pin"]'
     #greeting
-    element :radio_auto_greeting, '#radioGreetingAuto'
+    elements :radios, '.radio.radio-complete label'
+    element :radio_auto_greeting, '.radio #radioGreetingText'
     element :radio_text_greeting, '#radioGreetingText'
     element :txt_text_greeting, 'input[data-ng-model$="greeting.text_to_speech"]'
+    element :select_language, 'select[data-ng-model*="greeting.voice"]'
     element :radio_file_greeting, '#radioGreetingFile'
     element :select_file_greeting, 'select[data-ng-model$="greeting.file.id"]'
     element :link_upload_voicemail_file, 'div[data-file-upload$="uploadOptions"]'

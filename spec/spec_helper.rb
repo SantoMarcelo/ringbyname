@@ -40,11 +40,9 @@ $environment = ENV['ENVIRONMENT']
 $branch = ENV['BRANCH']
 # $profile = 'test'
 
-#options to start firefox
 options = Selenium::WebDriver::Firefox::Options.new
 options.profile = 'default'
 options.add_preference('dom.webnotifications.enabled', false)
-#options.add_argument('window-size=1920,1080')
 
 #argument to chromedriver
 args = ['window-size=1920,1080']
@@ -61,11 +59,11 @@ Capybara.register_driver :selenium do |app|
       'args' => args
     }
   )
-
+  #marionette: true,
   if $browser.include?('chrome')
     $driver = Capybara::Selenium::Driver.new(app, browser: :chrome, desired_capabilities: chrome_caps)
   elsif $browser.include?('firefox')
-    $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true, options: options)
+    $driver = Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true,options: options)
   end
 end
 
