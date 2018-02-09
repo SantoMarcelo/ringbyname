@@ -12,6 +12,7 @@ class User < Setup
   section :device_modal, Sections::Messages, '.modal'
   section :device_config_modal, Sections::ModalDevicesConfig, '.modal'
   section :landline_modal, Sections::ModalLandLine, '.modal'
+  section :reset_modal, Sections::Messages, '.modal'
   
  
   # section :tooltips, Sections::Tooltips, '.page-details'

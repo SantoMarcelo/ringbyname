@@ -12,8 +12,8 @@ task :marcelo_chrome do
     ENV['BROWSER'] = 'chrome'
     ENV['ENVIRONMENT'] = 'marcelo'
     ENV['BRANCH'] = 'crm-phase2'
-    sh 'rspec -fd --tag user_update'
-    #sh 'allure serve log/reports'
+    sh 'rspec -fd --tag user_setup'
+    sh 'allure serve log/reports'
 end
 
 desc "rodar dev marcelo com chrome headless"

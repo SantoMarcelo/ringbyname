@@ -3,7 +3,7 @@ require_relative '../../../../pages/login/login'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 require_relative '../../../../pages/admin/setup/user/users'
 
-describe('validate Users Setup', :usersetup) do
+describe('validate Users Setup', :user_setup) do
   before(:each) do
    
     login_page.load
@@ -52,8 +52,13 @@ describe('validate Users Setup', :usersetup) do
     @user4 = {
       extension: '104',
       name: 'Dev Marcelo 4 User',
+      email: 'devmarcelo.user4@ringbyname.com',
       type: 'R! Virtual User',
-      direct: 'None'
+      direct: 'None',
+      first_name: 'Dev Marcelo 4',
+      last_name: 'User',
+      username: 'devmarcelo.user4@ringbyname.com',
+      password: '123456asd'
     }
     @user_changed = {
       username: 'devmarcelo.user1.CHANGED@ringbyname.com',
@@ -70,6 +75,17 @@ describe('validate Users Setup', :usersetup) do
       number_of_rings: '10',
       caller_custom_number: '9999999999',
       caller_custom_name: 'Test Custom Name'
+    }
+    @user_restored = {
+      first_name: 'New User',
+      last_name: '9314132',
+      email: '407808@ringbyname.com',
+      extension: '104',
+      name: 'New User 9314132',
+      type: 'R! Virtual User',
+      direct: 'None',
+      username: '407808@ringbyname.com',
+      password: 'ahc9Ha4rt4Aa'
     }
     # Capybara.ignore_hidden_elements = true
   end
@@ -100,6 +116,7 @@ describe('validate Users Setup', :usersetup) do
       end
     end
   end
+
   describe('search users', :search_user) do
     it('validate all search cases') do |e|
       puts 'validate all search cases'
@@ -616,11 +633,11 @@ describe('validate Users Setup', :usersetup) do
       users.details.txt_first_name.set (@user1[:first_name])
       users.details.txt_last_name.set (@user1[:last_name])
       users.details.txt_email.set (@user1[:email])
-    users.details.txt_password.each do |u|
-      u.set('123456asd')
-      break
-    end
-    users.details.txt_password_repeart.set('123456asd')
+      users.details.txt_password.each do |u|
+        u.set('123456asd')
+        break
+      end
+      users.details.txt_password_repeart.set('123456asd')
       users.details.txt_extension.set (@user1[:extension])
       users.details.select_outbound_caller_id.find('option', text: (@user1[:outbound_caller_id])).select_option
       users.details.checkboxes.each do |u|
@@ -647,72 +664,156 @@ describe('validate Users Setup', :usersetup) do
       users.details.checkboxes.each do |u|
         u.click if u.text.include?('Make this user an admin')
       end
-     users.details.btn_save_user.click
-     users.message.wait_until_modal_visible
-     expect(users.message.modal.text).to eql 'User updated successfully.'
-     users.message.btn_ok.click
-     
+      users.details.btn_save_user.click
+      users.message.wait_until_modal_visible
+      expect(users.message.modal.text).to eql 'User updated successfully.'
+      users.message.btn_ok.click
     end
   end
 
-  describe('Validate CRM Feature', :crm_feature) do
-    it('update users to enable CRM feature') do |e|
+  describe('validate user reset data', :user_reset)do
+    it('reset user data and check new data')do |e|
+      puts 'reset user data and check new data'
       e.step('when I on users setup') do
+        puts 'when I on users setup'
         admin_dashboard.options.admin_setup.click
       end
-      e.step('and I select the first user') do
-        users.select_user_in_grid($user1)
+      e.step('and I select the user to reset data') do
+        puts 'and I select the user to reset data'
+        users.select_user_in_grid(@user4)
       end
-      e.step('then I allow CRM feature to user') do
-        users.crm_feature_enable
-        expect(users.message.modal.text).to eql 'User updated successfully.'
+      e.step('and I cancel reset user data')do
+        puts 'and I cancel reset user data'
+        users.details.btn_reset_user.click
+        users.reset_modal.wait_for_modal_title
+        expect(users.reset_modal.modal_title.text).to eql 'Reset User Settings'
+        expect(users.reset_modal.modal_message.text).to eql "Please confirm you wish to reset this user and erase all user settings."
+        users.reset_modal.modal_btn_cancel.click
+      end
+      e.step('the I return to user details')do
+        puts 'the I return to user details'
+        users.wait_until_reset_modal_invisible
+        expect(users.has_reset_modal?).to eql false
+      end
+      e.step('when I confirm reset user data')do
+        puts 'when I confirm reset user data'
+        users.details.btn_reset_user.click
+        users.wait_for_reset_modal
+        expect(users.reset_modal.modal_title.text).to eql 'Reset User Settings'
+        expect(users.reset_modal.modal_message.text).to eql 'Please confirm you wish to reset this user and erase all user settings.'
+        users.reset_modal.modal_btn_save.click
+        #confirmation message
+        users.wait_for_message
+        expect(users.message.modal.text).to eql 'User restored successfully'
         users.message.btn_ok.click
       end
-      e.step('and I check if the change was saved correctly') do
-        users.wait_until_grid_rows_visible
-        expect(users.grid_rows.include?(users.grid_icon_crm))
-        users.select_user_in_grid($user1)
-        expect(users.details.checkbox_crm).to be_checked
+      e.step('then I can see the all data restored')do
+        puts 'then I can see the all data restored'
+        users.is_user_in_grid(@user_restored)
+        users.select_user_in_grid(@user_restored)
+        expect(users.details.txt_first_name.text.include?(@user_restored[:first_name]))
+        expect(users.details.txt_last_name.text.include?(@user_restored[:last_name]))
+        expect(users.details.txt_email.text.include?(@user_restored[:email]))
+        expect(users.details.txt_extension.text.include?(@user_restored[:extension]))
+        expect(users.details.txt_direct_number.text.include?(@user_restored[:direct]))
+      end
+      e.step('and I validate the login with the new user data')do
+        puts 'and I validate the login with the new user data'
+        users.main_menu.menu.click
+        users.main_menu.logout.click
+        login_page.do_login(@user_restored)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
       end
     end
 
-    it('check maximum number of license validation message') do |e|
-      e.step('given I has only 1 CRM license') do
-        # expect(users.get_number_of_crm_licenses).to eql 1
+    after do
+      puts 'return user data to default'
+      home.goto_admin
+      admin_dashboard.options.admin_setup.click
+      expect(users.admin_title.text).to eql 'Setup'
+      users.access_user_menu
+      expect(users.user_main.title.text).to eql 'Users'
+      users.select_user_in_grid(@user_restored)
+      users.details.txt_first_name.set(@user4[:first_name])
+      users.details.txt_last_name.set(@user4[:last_name])
+      users.details.txt_email.set(@user4[:email])
+      users.details.txt_password.each do |u|
+        u.set(@user4[:password])
+        break
       end
-      e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
-      end
-      e.step('and I allow CRM feature to users') do
-        users.select_user_in_grid($user2)
-        users.crm_feature_enable
-      end
-      e.step('then I see the validation message') do
-        expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this user, please buy another license or disable CRM of another user before proceeding."
-      end
-    end
-
-    it('update users to disable CRM feature') do |e|
-      e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
-      end
-      e.step('and I select the first user') do
-        users.select_user_in_grid($user1)
-      end
-      e.step('then I unallow CRM feature to user') do
-        users.crm_feature_disable
-        expect(users.message.modal.text).to eql 'User updated successfully.'
-        users.message.btn_ok.click
-      end
-      e.step('and I check if the change was saved correctly') do
-        users.wait_until_grid_rows_visible
-        expect(page).not_to have_selector('.column-crm > i[data-ng-if="user.crm.is_enabled"]')
-        users.select_user_in_grid($user1)
-        sleep(2)
-        expect(users.details.checkbox_crm).not_to be_checked
-      end
+      users.details.txt_password_repeart.set(@user4[:password])
+      users.details.txt_extension.set(@user4[:extension])
+      
+      users.details.btn_save_user.click
+      users.message.wait_until_modal_visible
+      expect(users.message.modal.text).to eql 'User updated successfully.'
+      users.message.btn_ok.click
+      expect(users.is_user_in_grid(@user4)).to eql true
     end
   end
+
+  # describe('Validate CRM Feature', :crm_feature) do
+  #   it('update users to enable CRM feature') do |e|
+  #     e.step('when I on users setup') do
+  #       admin_dashboard.options.admin_setup.click
+  #     end
+  #     e.step('and I select the first user') do
+  #       users.select_user_in_grid($user1)
+  #     end
+  #     e.step('then I allow CRM feature to user') do
+  #       users.crm_feature_enable
+  #       expect(users.message.modal.text).to eql 'User updated successfully.'
+  #       users.message.btn_ok.click
+  #     end
+  #     e.step('and I check if the change was saved correctly') do
+  #       users.wait_until_grid_rows_visible
+  #       expect(users.grid_rows.include?(users.grid_icon_crm))
+  #       users.select_user_in_grid($user1)
+  #       expect(users.details.checkbox_crm).to be_checked
+  #     end
+  #   end
+
+  #   it('check maximum number of license validation message') do |e|
+  #     e.step('given I has only 1 CRM license') do
+  #       # expect(users.get_number_of_crm_licenses).to eql 1
+  #     end
+  #     e.step('when I on users setup') do
+  #       admin_dashboard.options.admin_setup.click
+  #     end
+  #     e.step('and I allow CRM feature to users') do
+  #       users.select_user_in_grid($user2)
+  #       users.crm_feature_enable
+  #     end
+  #     e.step('then I see the validation message') do
+  #       expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this user, please buy another license or disable CRM of another user before proceeding."
+  #     end
+  #   end
+
+  #   it('update users to disable CRM feature') do |e|
+  #     e.step('when I on users setup') do
+  #       admin_dashboard.options.admin_setup.click
+  #     end
+  #     e.step('and I select the first user') do
+  #       users.select_user_in_grid($user1)
+  #     end
+  #     e.step('then I unallow CRM feature to user') do
+  #       users.crm_feature_disable
+  #       expect(users.message.modal.text).to eql 'User updated successfully.'
+  #       users.message.btn_ok.click
+  #     end
+  #     e.step('and I check if the change was saved correctly') do
+  #       users.wait_until_grid_rows_visible
+  #       expect(page).not_to have_selector('.column-crm > i[data-ng-if="user.crm.is_enabled"]')
+  #       users.select_user_in_grid($user1)
+  #       sleep(2)
+  #       expect(users.details.checkbox_crm).not_to be_checked
+  #     end
+  #   end
+  # end
+
+
 
   after(:each) do |e|
     e.attach_file('screenshot', get_screenshot)

@@ -54,6 +54,9 @@ class UserDetails < SitePrism::Section
     element :checkbox_crm, 'div.checkbox > input[data-ng-model="SetupUserDetailsController.record.crm.is_enabled"]'
 
     elements :icon_tooltips, 'i.icon-tooltip'
+    #reset user
+    element :btn_reset_user, '.control button[data-ng-click*="resetUser"]'
+    
   end  
   class Messages < SitePrism::Section
 
@@ -63,7 +66,8 @@ class UserDetails < SitePrism::Section
     element :modal_title, '.modal-dialog  .modal-content .modal-title'
     element :modal_message, '.modal-dialog  .modal-content div.modal-body'
     element :modal_button, '.modal-dialog  .modal-content .modal-footer button'
-
+    element :modal_btn_save, '.modal-dialog  .modal-content .modal-footer button.button-save'
+    element :modal_btn_cancel, '.modal-dialog  .modal-content .modal-footer button.button-cancel'
   end
   class ModalDevicesConfig <SitePrism::Section
     element :modal_title, '.modal .modal-content .modal-title'
