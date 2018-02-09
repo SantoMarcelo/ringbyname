@@ -25,6 +25,7 @@ class UserDetails < SitePrism::Section
     element :checkbox_voicemail, '.checkbox input[data-ng-model*="extras.is_voicemail_enabled"]'
     element :txt_voicemail_password, 'input[data-ng-model$="voicemail_pin"]'
     #greeting
+    elements :checkboxes, '.checkbox'
     elements :radios, '.radio.radio-complete label'
     element :radio_auto_greeting, '.radio #radioGreetingText'
     element :radio_text_greeting, '#radioGreetingText'

@@ -8,7 +8,7 @@ require_relative '../../../pages/main/home'
 require_relative '../../../pages/admin/dashboard/dashboard'
 
 class CrmMiniApp < SitePrism::Page
-  section :home_menu, Sections::MainMenu, '.nav-middle-top'
+  section :home_menu, Sections::FeaturesMenu, '.nav-middle-top'
   section :contact, Sections::Contact, '#contact-list'
   section :oppo_form, Sections::MiniAppOpportunityForm, '.modal-content'
   section :crm, Sections::CRM, '.crm-card-search-bar'

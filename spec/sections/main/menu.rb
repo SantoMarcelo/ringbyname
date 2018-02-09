@@ -1,6 +1,6 @@
 module Sections
     
-  class MainMenu < SitePrism::Section
+  class FeaturesMenu < SitePrism::Section
       element :crm, 'div[data-ui-sref="app.crm"]'
      
     end

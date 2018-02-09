@@ -3,14 +3,17 @@ require_relative '../../sections/main/home'
 require_relative '../../sections/main/contact_card'
 
 class Home < SitePrism::Page
-  element :dropdown, '.dropdown-user-menu.dropdown'
-  element :option_admin, 'a[ui-sref="admin.dashboard"]'
-  element :option_logout, 'a[ui-sref="auth.logout"]'
-  element :user_status, 'button[class="btn s12 ng-binding btn-online"]'
   element :my_caller_id, '.dropdown-title span.hover'
+  element :dropdown, '.dropdown-user-menu.dropdown'
 
-  section :home_menu, Sections::MainMenu, '.nav-middle-top'
+  #element :option_admin, 'a[ui-sref="admin.dashboard"]'
+ # element :option_logout, 'a[ui-sref="auth.logout"]'
+  element :user_status, 'button[class="btn s12 ng-binding btn-online"]'
+  
+
+  section :home_menu, Sections::FeaturesMenu, '.nav-middle-top'
   section :contact, Sections::Contact, '#contact-list'
+  section :dropdown_menu , Sections::HomeMenu, 'ul.dropdown-menu'
 
     
   element :message, 'div[class="noty_message"] > span'
@@ -21,7 +24,7 @@ class Home < SitePrism::Page
 
   def goto_admin
     menu_access
-    option_admin.click
+    dropdown_menu.goto_admin.click
   end
 
   def access_crm
@@ -41,7 +44,7 @@ class Home < SitePrism::Page
 
   def logout
     dropdown.click
-    option_logout.click
+    dropdown_menu.logout.click
   end
 
 end
