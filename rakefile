@@ -11,9 +11,9 @@ desc "rodar dev marcelo com chrome"
 task :marcelo_chrome do
     ENV['BROWSER'] = 'chrome'
     ENV['ENVIRONMENT'] = 'marcelo'
-    ENV['BRANCH'] = 'crm-phase2'
-    sh 'rspec -fd --tag user_setup'
-    sh 'allure serve log/reports'
+    ENV['BRANCH'] = 'current'
+    sh 'rspec -fd --tag user_massive_pass'
+    #sh 'allure serve log/reports'
 end
 
 desc "rodar dev marcelo com chrome headless"
@@ -24,3 +24,4 @@ task :marcelo_headless do
     sh 'rspec -fd --tag user_details'
     #sh 'allure serve log/reports'
 end
+    

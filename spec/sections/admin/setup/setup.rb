@@ -18,7 +18,7 @@ class SetupMenu < SitePrism::Section
     element :icon_grid_tooltip, 'i.icon-tooltip:nth-child(2)'
     elements :grid_rows, 'article.ng-scope'
     elements :grid_icon_admin, '.column-admin:last-child i'
-    element :grid_icon_crm, '.column-crm > i[data-ng-if="user.crm.is_enabled"]'
+    elements :grid_icon_crm, '.column-crm i'
   
     element :select_number_pages, 'select[class^="option.value"]'
     element :info_total_records, 'strong[class="ng-binding"]'

@@ -47,7 +47,9 @@ describe('validate Users Setup', :user_setup) do
       extension: '103',
       name: 'Dev Marcelo 3 User',
       type: 'R! Virtual User',
-      direct: 'None'
+      direct: 'None',
+      username: 'devmarcelo.user3@ringbyname.com',
+      password: '123456asd'
     }
     @user4 = {
       extension: '104',
@@ -115,6 +117,7 @@ describe('validate Users Setup', :user_setup) do
         expect(users.user_main.info_total_records.text).to eql '4'
       end
     end
+    
   end
 
   describe('search users', :search_user) do
@@ -268,6 +271,7 @@ describe('validate Users Setup', :user_setup) do
         expect(users.validate_details_tooltips).to eql tooltips_texts_expect
       end
     end
+ 
   end
 
   describe('validate users update', :user_update) do
@@ -726,7 +730,7 @@ describe('validate Users Setup', :user_setup) do
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
       end
-    end
+    end 
 
     after do
       puts 'return user data to default'
@@ -754,64 +758,326 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  # describe('Validate CRM Feature', :crm_feature) do
-  #   it('update users to enable CRM feature') do |e|
-  #     e.step('when I on users setup') do
-  #       admin_dashboard.options.admin_setup.click
-  #     end
-  #     e.step('and I select the first user') do
-  #       users.select_user_in_grid($user1)
-  #     end
-  #     e.step('then I allow CRM feature to user') do
-  #       users.crm_feature_enable
-  #       expect(users.message.modal.text).to eql 'User updated successfully.'
-  #       users.message.btn_ok.click
-  #     end
-  #     e.step('and I check if the change was saved correctly') do
-  #       users.wait_until_grid_rows_visible
-  #       expect(users.grid_rows.include?(users.grid_icon_crm))
-  #       users.select_user_in_grid($user1)
-  #       expect(users.details.checkbox_crm).to be_checked
-  #     end
-  #   end
+  describe('Validate CRM Feature', :crm_feature) do
+    it('update users to enable CRM feature') do |e|
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
+      end
+      e.step('and I select the first user') do
+        users.select_user_in_grid($user1)
+      end
+      e.step('then I allow CRM feature to user') do
+        users.crm_feature_enable
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('and I check if the change was saved correctly') do
+        users.setup.wait_for_grid_rows
+        expect(users.setup.grid_icon_crm.length).to eql 1
+        users.select_user_in_grid($user1)
+        expect(users.details.checkbox_crm(visible: false)).to be_checked
+      end
+    end
 
-  #   it('check maximum number of license validation message') do |e|
-  #     e.step('given I has only 1 CRM license') do
-  #       # expect(users.get_number_of_crm_licenses).to eql 1
-  #     end
-  #     e.step('when I on users setup') do
-  #       admin_dashboard.options.admin_setup.click
-  #     end
-  #     e.step('and I allow CRM feature to users') do
-  #       users.select_user_in_grid($user2)
-  #       users.crm_feature_enable
-  #     end
-  #     e.step('then I see the validation message') do
-  #       expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this user, please buy another license or disable CRM of another user before proceeding."
-  #     end
-  #   end
+    it('check maximum number of license validation message') do |e|
+      e.step('given I has only 1 CRM license') do
+        # expect(users.get_number_of_crm_licenses).to eql 1
+      end
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
+      end
+      e.step('and I allow CRM feature to users') do
+        users.select_user_in_grid($user2)
+        users.crm_feature_enable
+      end
+      e.step('then I see the validation message') do
+        expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this user, please buy another license or disable CRM of another user before proceeding."
+      end
+    end
 
-  #   it('update users to disable CRM feature') do |e|
-  #     e.step('when I on users setup') do
-  #       admin_dashboard.options.admin_setup.click
-  #     end
-  #     e.step('and I select the first user') do
-  #       users.select_user_in_grid($user1)
-  #     end
-  #     e.step('then I unallow CRM feature to user') do
-  #       users.crm_feature_disable
-  #       expect(users.message.modal.text).to eql 'User updated successfully.'
-  #       users.message.btn_ok.click
-  #     end
-  #     e.step('and I check if the change was saved correctly') do
-  #       users.wait_until_grid_rows_visible
-  #       expect(page).not_to have_selector('.column-crm > i[data-ng-if="user.crm.is_enabled"]')
-  #       users.select_user_in_grid($user1)
-  #       sleep(2)
-  #       expect(users.details.checkbox_crm).not_to be_checked
-  #     end
-  #   end
-  # end
+    it('update users to disable CRM feature') do |e|
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
+      end
+      e.step('and I select the first user') do
+        users.select_user_in_grid($user1)
+      end
+      e.step('then I unallow CRM feature to user') do
+        users.crm_feature_disable
+        expect(users.message.modal.text).to eql 'User updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('and I check if the change was saved correctly') do
+        users.setup.wait_for_grid_rows
+        expect(users.setup.grid_icon_crm.length).to eql 0
+        users.select_user_in_grid($user1)
+        sleep(2)
+        expect(users.details.checkbox_crm(visible: false)).not_to be_checked
+      end
+    end
+  end
+
+  describe('Validate Outbound Caller ID massive update', :user_massive_cId)do
+    it('set the same caller id to all users and validate') do |e|
+      puts 'set the same caller id to all users and validate'
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
+      end
+      e.step('and I select the massive update link')do
+        puts 'and I select the massive update link'
+        users.setup.link_outbound_caller.click
+        expect(users.details_cId.title.text).to eql 'Set Outbound Caller ID for multiple users'
+      end
+      e.step('and I select users to update')do
+        puts 'and I select users to update'
+        users.details_cId.wait_for_users_list
+        users.select_massive_user(@user1)
+        users.select_massive_user(@user2)
+        users.select_massive_user(@user3)
+        users.select_massive_user(@user4)
+      end
+      e.step('and I set the caller id number')do
+        puts ('and I set the caller id number')
+        users.details_cId.radios_options.each do |u|
+          u.click if u.text.include?('Use this number')
+        end
+        users.details_cId.select_cId_number.find('option', text: '12392068773 (Dev Comp 1 Marcelo)').select_option
+        users.details_cId.btn_save.click
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'Outbound Caller Id updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('then I check if was updated correctly')do
+        puts ('then I check if was updated correctly')
+        users.select_user_in_grid(@user1)
+        users.details.wait_for_txt_first_name
+        expect(users.details.select_outbound_caller_id.text.include?('12392068773 (Dev Comp 1 Marcelo)'))
+        users.select_user_in_grid(@user2)
+        users.details.wait_for_txt_first_name
+        expect(users.details.select_outbound_caller_id.text.include?('12392068773 (Dev Comp 1 Marcelo)'))
+        users.select_user_in_grid(@user3)
+        users.details.wait_for_txt_first_name
+        expect(users.details.select_outbound_caller_id.text.include?('12392068773 (Dev Comp 1 Marcelo)'))
+        users.select_user_in_grid(@user4)
+        users.details.wait_for_txt_first_name
+        expect(users.details.select_outbound_caller_id.text.include?('12392068773 (Dev Comp 1 Marcelo)'))
+      end
+      e.step('and I chek in the home page if displaying updated caller ID') do
+        puts 'and I chek in the home page if displaying updated caller ID'
+        admin_dashboard.goto_home
+        expect(home.my_caller_id.text.include?('12392068773'))
+        home.logout
+        login_page.do_login(@user2)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        expect(home.my_caller_id.text.include?('12392068773'))
+        home.logout
+        login_page.do_login(@user3)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        expect(home.my_caller_id.text.include?('12392068773'))
+        home.logout
+        login_page.do_login(@user4)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        expect(home.my_caller_id.text.include?('12392068773'))
+      end
+      e.step('when I return to massive update') do
+        puts 'when I return to massive update'
+        home.goto_admin
+        admin_dashboard.options.admin_setup.click
+        expect(users.admin_title.text).to eql 'Setup'
+        users.access_user_menu
+        expect(users.user_main.title.text).to eql 'Users'
+        users.setup.link_outbound_caller.click
+        expect(users.details_cId.title.text).to eql 'Set Outbound Caller ID for multiple users'
+      end
+      e.step('and I select all users') do
+        puts 'and I select all users'
+        users.details_cId.wait_for_users_list
+        users.select_massive_user(@user1)
+        users.select_massive_user(@user2)
+        users.select_massive_user(@user3)
+        users.select_massive_user(@user4)
+      end
+      e.step('and I set the custom caller name and number') do
+        puts 'and I set the custom caller name and number'
+        users.details_cId.radios_options.each do |u|
+          u.click if u.text.include?('Use a custom Outbound Caller ID')
+        end
+        users.details_cId.txt_cId_custom_name.set('Massive Caller ID')
+        users.details_cId.txt_cId_custom_number.set('9999999999')
+        users.details_cId.btn_save.click
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'Outbound Caller Id updated successfully.'
+        users.message.btn_ok.click
+      end
+      e.step('then I check if was updated correctly in admin') do
+        puts 'then I check if was updated correctly in admin'
+        users.select_user_in_grid(@user1)
+        expect(users.details.select_outbound_caller_id.text.include?('Massive Caller ID'))
+        expect(users.details.txt_caller_custom_name.text.include?('9999999999'))
+        users.select_user_in_grid(@user2)
+        expect(users.details.select_outbound_caller_id.text.include?('Massive Caller ID'))
+        expect(users.details.txt_caller_custom_name.text.include?('9999999999'))
+        users.select_user_in_grid(@user3)
+        expect(users.details.select_outbound_caller_id.text.include?('Massive Caller ID'))
+        expect(users.details.txt_caller_custom_name.text.include?('9999999999'))
+        users.select_user_in_grid(@user4)
+        expect(users.details.select_outbound_caller_id.text.include?('Massive Caller ID'))
+        expect(users.details.txt_caller_custom_name.text.include?('9999999999'))
+      end
+      e.step('and I chek in the home page if displaying updated caller ID') do
+        puts 'and I chek in the home page if displaying updated caller ID'
+        admin_dashboard.goto_home
+        expect(home.my_caller_id.text.include?('9999999999'))
+        home.logout
+        login_page.do_login(@user3)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        expect(home.my_caller_id.text.include?('9999999999'))
+        home.logout
+        login_page.do_login(@user2)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        expect(home.my_caller_id.text.include?('9999999999'))
+        home.logout
+        login_page.do_login(@user1)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        expect(home.my_caller_id.text.include?('9999999999'))
+      end
+    end
+  end
+
+  describe('Validate password massive update', :user_massive_pass)do
+    it('set the same password to all users and validate') do |e|
+      puts 'set the same password to all users and validate'
+      e.step('when I on users setup') do
+        admin_dashboard.options.admin_setup.click
+      end
+      e.step('when I access massive password update')do
+        puts 'when I access massive password update'
+        users.setup.link_multiple_password.click
+        expect(users.details_pass.title.text).to eql 'Set Password for multiple users'
+      end
+      e.step('and I select all users to set a new password')do
+        puts 'and I select all users to set a new password'
+        users.details_pass.wait_for_users_list
+        users.select_massive_user(@user1)
+        users.select_massive_user(@user2)
+        users.select_massive_user(@user3)
+        users.select_massive_user(@user4)
+      end
+      e.step('and I set the new password')do
+        puts 'and I set the new password'
+        users.details_pass.txt_massive_pass.set('asd123456')
+        users.details_pass.btn_save.click
+        #users.message.wait_until_modal_visible
+        #expect(users.message.modal.text).to eql ''
+        users.message.btn_ok.click
+      end
+      e.step('then I check if the password was changed correctly')do
+        puts 'then I check if the password was changed correctly'
+        user1 = {
+          username: 'devmarcelo.user1@ringbyname.com',
+          password: 'asd123456'
+        }
+        user2 = {
+          username: 'devmarcelo.user2@ringbyname.com',
+          password: 'asd123456'
+        }
+        user3 = {
+          username: 'devmarcelo.user3@ringbyname.com',
+          password: 'asd123456'
+        }
+        user4 = {
+          username: 'devmarcelo.user4@ringbyname.com',
+          password: 'asd123456'
+        }
+        users.main_menu.menu.click
+        users.main_menu.logout.click
+        login_page.do_login(user1)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        home.logout
+        login_page.do_login(user2)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        home.logout
+        login_page.do_login(user3)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        home.logout
+        login_page.do_login(user4)
+        home.wait_until_home_menu_visible
+        home.wait_until_user_status_visible
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+      end
+      e.step('when I check the min length password validation')do
+        puts 'when I check the min length password validation'
+        home.goto_admin
+        admin_dashboard.options.admin_setup.click
+        expect(users.admin_title.text).to eql 'Setup'
+        users.access_user_menu
+        expect(users.user_main.title.text).to eql 'Users'
+        users.setup.link_multiple_password.click
+        expect(users.details_pass.title.text).to eql 'Set Password for multiple users'
+        users.details_pass.wait_for_users_list
+        users.select_massive_user(@user1)
+        users.select_massive_user(@user2)
+        users.select_massive_user(@user3)
+        users.select_massive_user(@user4)
+        users.details_pass.txt_massive_pass.set('12345')
+        users.details_pass.btn_save.click
+      end
+      e.step('then I check the validation message')do
+        puts 'then I check the validation message'
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'Your password must be between 6 and 12 characters long. Please try again.'
+        users.message.btn_ok.click
+      end
+      e.step('when I check the max length password validation')do
+        puts 'when I check the max length password validation'
+        users.details_pass.txt_massive_pass.set('1234567890123')
+        users.details_pass.btn_save.click
+      end
+      e.step('then I check the validation message')do
+        puts 'then I check the validation message'
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'Your password must be between 6 and 12 characters long. Please try again.'
+        users.message.btn_ok.click
+      end
+      e.step('when I check the password composition')do
+        puts 'when I check the password composition'
+        users.details_pass.txt_massive_pass.set('testtest')
+        users.details_pass.btn_save.click
+      end
+      e.step('then I check the validation message')do
+        puts 'then I check the validation message'
+        users.message.wait_until_modal_visible
+        expect(users.message.modal.text).to eql 'Your password must include letters and numbers. Please try again.'
+        users.message.btn_ok.click
+      end
+      
+    end
+    after do
+      users.details_pass.txt_massive_pass.set('123456asd')
+      users.details_pass.btn_save.click
+      #users.message.wait_until_modal_visible
+      #expect(users.message.modal.text).to eql ''
+      users.message.btn_ok.click
+    end
+  end
 
 
 

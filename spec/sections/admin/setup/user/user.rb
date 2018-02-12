@@ -27,7 +27,7 @@ class UserDetails < SitePrism::Section
     #greeting
     elements :checkboxes, '.checkbox'
     elements :radios, '.radio.radio-complete label'
-    element :radio_auto_greeting, '.radio #radioGreetingText'
+    element :radio_auto_greeting, '.radio #radioGreetingAuto'
     element :radio_text_greeting, '#radioGreetingText'
     element :txt_text_greeting, 'input[data-ng-model$="greeting.text_to_speech"]'
     element :select_language, 'select[data-ng-model*="greeting.voice"]'
@@ -81,5 +81,20 @@ class UserDetails < SitePrism::Section
     elements :tooltips, '.modal i.icon-tooltip'
     element :btn_cancel, '.modal .modal-content .modal-footer button.button-cancel'
     element :btn_save, '.modal .modal-content .modal-footer button.button-save'
+  end
+  class MassiveCallerId < SitePrism::Section
+    element :title, '.details-title'
+    elements :users_list, '.form .column .checkbox'
+    elements :radios_options, '.control .radio'
+    element :select_cId_number, '.control .select'
+    element :txt_cId_custom_name, '.control input[data-ng-model*="custom.name"]'
+    element :txt_cId_custom_number, '.control input[data-ng-model*="custom.number"]'
+    element :btn_save, '.control button'
+  end
+  class MassivePassword < SitePrism::Section
+    element :title, '.details-title'
+    elements :users_list, '.form .column .checkbox'
+    element :txt_massive_pass, '.control .input'
+    element :btn_save, '.control button'
   end
 end

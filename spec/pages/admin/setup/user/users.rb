@@ -13,6 +13,8 @@ class User < Setup
   section :device_config_modal, Sections::ModalDevicesConfig, '.modal'
   section :landline_modal, Sections::ModalLandLine, '.modal'
   section :reset_modal, Sections::Messages, '.modal'
+  section :details_cId, Sections::MassiveCallerId, '.webapp-admin-page-details'
+  section :details_pass, Sections::MassivePassword, '.webapp-admin-page-details'
   
  
   # section :tooltips, Sections::Tooltips, '.page-details'
@@ -78,10 +80,10 @@ class User < Setup
   end
 
   def crm_feature_enable
-    sleep(1)
     details.wait_until_btn_save_user_visible
-    sleep(1)
-    details.checkbox_crm.click
+    details.checkboxes.each do |u|
+      u.click if u.text.include?('Enable CRM for this user')
+    end
     details.btn_save_user.click
     sleep(2)
   end
@@ -89,9 +91,17 @@ class User < Setup
   def crm_feature_disable
     details.wait_until_btn_save_user_visible
     sleep(1)
-    details.checkbox_crm.click
+    details.checkboxes.each do |u|
+      u.click if u.text.include?('Enable CRM for this user')
+    end
     details.btn_save_user.click
-    wait_until_grid_rows_visible
+    setup.wait_until_grid_rows_visible
+  end
+
+  def select_massive_user(user)
+    details_cId.users_list.each do |u|
+      u.click if u.text.include?(user[:name])      
+    end
   end
 
   def user_allow_crm_feature(user)
