@@ -1,7 +1,7 @@
 
 module Sections
   
-class SetupMenu < SitePrism::Section
+  class SetupMenu < SitePrism::Section
     element :users, 'a[ui-sref="admin.setup.user"]'
     element :departments, 'a[ui-sref="admin.setup.department"]'
     element :menu, 'a[ui-sref="admin.setup.menu"]'
@@ -20,8 +20,10 @@ class SetupMenu < SitePrism::Section
     elements :grid_icon_admin, '.column-admin:last-child i'
     elements :grid_icon_crm, '.column-crm i'
   
-    element :select_number_pages, 'select[class^="option.value"]'
+    element :select_number_pages, '.control .select select'
+    elements :select_number_page_options, '.control .select select option'
     element :info_total_records, 'strong[class="ng-binding"]'
+    elements :btn_page_number, 'ul.pagination li' 
     # Settings for all users
     element :link_outbound_caller, 'a[ui-sref="admin.setup.user.outbound"]'
     element :link_multiple_password, 'a[ui-sref="admin.setup.user.password"]'
@@ -31,8 +33,20 @@ class SetupMenu < SitePrism::Section
       self.setup.btn_search.click
     end
 
+    def change_page(page_number)
+      self.btn_page_number.each do |u|
+        u.text
+        u.click if u.text.include?(page_number.to_s)
+      end
+     end
   end
 
+  class CrmMenu < SitePrism::Section
+    element :opportunities, 'a[ui-sref="admin.crm.opportunities"]'
+    element :analytics, 'a[ui-sref="admin.crm.analytics"]'
+    element :souces, 'a[ui-sref="admin.crm.sources"]'
+
+  end
 
 
 end

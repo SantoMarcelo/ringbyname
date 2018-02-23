@@ -8,5 +8,6 @@ class Admin < SitePrism::Page
  element :dropdown, '.rbn-dropdown'
  element :option_home, 'ul[class="rbn-dropdown-menu dropdown-menu-right"] > li:nth-child(7) > a'
  element :admin_title, '.webapp-admin-page-header'
+ element :load, 'div#loading-bar'
 
 end

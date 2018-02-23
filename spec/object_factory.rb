@@ -8,4 +8,5 @@ module Pages
   def contact; Contact.new end
   def config; Config.new end
   def crm; CrmMiniApp.new end
+  def crm_admin; Crm.new end
 end

@@ -11,8 +11,8 @@ desc "rodar dev marcelo com chrome"
 task :marcelo_chrome do
     ENV['BROWSER'] = 'chrome'
     ENV['ENVIRONMENT'] = 'marcelo'
-    ENV['BRANCH'] = 'current'
-    sh 'rspec -fd --tag user_massive_pass'
+    ENV['BRANCH'] = 'misc-backlog-2'
+    sh 'rspec -fd --tag user_setup'
     #sh 'allure serve log/reports'
 end
 

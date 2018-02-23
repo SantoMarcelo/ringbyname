@@ -33,7 +33,7 @@ class UserDetails < SitePrism::Section
     element :select_language, 'select[data-ng-model*="greeting.voice"]'
     element :radio_file_greeting, '#radioGreetingFile'
     element :select_file_greeting, 'select[data-ng-model$="greeting.file.id"]'
-    element :link_upload_voicemail_file, 'div[data-file-upload$="uploadOptions"]'
+    element :link_upload_voicemail_file, '.fileinput-button input'
     # callback
     element :checkbox_callback_request, '#checkboxCallbackRequest'
     element :checkbox_require_key_press, '#checkboxRequireKeypress'

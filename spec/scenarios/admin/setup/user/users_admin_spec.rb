@@ -114,10 +114,78 @@ describe('validate Users Setup', :user_setup) do
         expect(users.is_user_in_grid(@user2)).to eql true
         expect(users.is_user_in_grid(@user3)).to eql true
         expect(users.is_user_in_grid(@user4)).to eql true
-        expect(users.user_main.info_total_records.text).to eql '4'
+        expect(users.user_main.info_total_records.text).to eql '14'
+      end
+      e.step('when I check the total of users')do
+        puts 'when I check the total of users'
+        expect(users.setup.select_number_pages.text.include?('10'))
+        expect(users.setup.info_total_records.text).to eql '14'
+        expect(users.setup.grid_rows.length).to eql 10
+      end
+      e.step('and I change the page')do
+        puts 'and I change the page'
+        users.setup.change_page(2)
+        sleep 1
+        # users.wait_until_load_visible
+        # users.wait_until_load_invisible
+        
+        expect(users.setup.info_total_records.text).to eql '14'
+      end
+      e.step('then I can see the second page')do
+        puts 'then I can see the second page'
+        users.setup.wait_for_grid_rows
+        expect(users.setup.grid_rows.length).to eql 4
+      end
+      e.step('when I change the total of records per page to the minimum # of records')do
+        puts 'when I change the total of records per page to the minimum # of records'
+        users.setup.change_page(1)
+        users.setup.wait_for_grid_rows
+        #users.wait_until_load_invisible
+        sleep 1
+        users.setup.select_number_page_options.each do |u|
+          u.click if u.text.include?('5')
+          break
+        end
+        sleep 1
+        # users.wait_until_load_visible
+        # users.wait_until_load_invisible
+      end
+      e.step('then I can see the three pages.')do
+        puts 'then I can see the three pages.'
+        expect(users.setup.grid_rows.length).to eql 5
+        users.setup.change_page(2)
+        users.setup.wait_for_grid_rows
+        sleep 1
+        # users.wait_until_load_visible
+        # users.wait_until_load_invisible
+        expect(users.setup.grid_rows.length).to eql 5
+        users.setup.change_page(3)
+        users.setup.wait_for_grid_rows
+        sleep 1
+        # users.wait_until_load_visible
+        # users.wait_until_load_invisible
+        expect(users.setup.grid_rows.length).to eql 4
+      end
+      e.step('when I change the total of records per page to the maximum # of records')do
+        puts 'when I change the total of records per page to the maximum # of records'
+        users.setup.change_page(1)
+        users.setup.wait_for_grid_rows
+        sleep 1
+        # users.wait_until_load_visible
+        # users.wait_until_load_invisible
+        users.setup.select_number_page_options.each do |u|
+          u.click if u.text == ('50')
+        end
+      end
+      e.step('then I can see the one page with all registers.')do
+        puts 'then I can see the one page with all registers.'
+        users.setup.wait_for_grid_rows
+        sleep 1
+        #users.wait_until_load_invisible
+        #need to check why not count all list itens
+        expect(users.setup.grid_rows.length).to eql 10
       end
     end
-    
   end
 
   describe('search users', :search_user) do
@@ -580,6 +648,7 @@ describe('validate Users Setup', :user_setup) do
         expect(users.details.radio_auto_greeting(visible: false)).to be_checked
         expect(users.details.select_language.text.include?('Portuguese'))
       end
+    
       e.step('when I remove admin permission from other user')do
         puts 'when I remove admin permission from other user'
         users.select_user_in_grid(@user2)
@@ -630,6 +699,17 @@ describe('validate Users Setup', :user_setup) do
         puts 'then I can see disabled field'
         expect(users.details.checkbox_admin_permission(visible: false).disabled?).to eql true
       end
+      # e.step('when I upload a media to my greeting') do
+      #   puts 'when I upload a media to my greeting'
+      #  # Capybara.ignore_hidden_elements = false
+       
+      #  page.execute_script("$('.fileinput-button :file').attr(\"style\", \"position:initial !important;top:initial !important;right:initial !important;opacity:initial !important;font-size:initial !important\");")
+      #  #users.details.link_upload_voicemail_file.click
+      #  target = 'medias/hold_music.mp3'
+      #  puts File.join(Dir.pwd, target)
+      #  attach_file(users.details.link_upload_voicemail_file, (File.join(Dir.pwd, target)))
+      # end
+      
     end
     after do
       puts 'Return to original data'

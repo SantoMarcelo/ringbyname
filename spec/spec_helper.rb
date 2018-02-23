@@ -79,7 +79,7 @@ end
 
 Capybara.default_max_wait_time = 10
 Capybara.page.driver.browser.manage.window.resize_to(1920,1080)
-#Capybara.ignore_hidden_elements = true
+#Capybara.ignore_hidden_elements = false
 
 
 AllureRSpec.configure do |c|

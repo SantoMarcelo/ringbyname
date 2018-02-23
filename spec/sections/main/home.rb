@@ -31,13 +31,13 @@ end
 
 class HomeMenu < SitePrism::Section
     element :menu, '.profile-media-content'
-    element :receives_call_at, 'a[ui-sref="app.receive-calls-at"]'
-    element :my_caller_id, 'a[ui-sref="app.my-outgoing-caller-id"]'
-    element :my_profile, 'a[ui-sref="app.profile"]'
-    element :goto_admin, 'a[ui-sref="admin.dashboard"]'
-    element :languages, 'a[ui-sref="app.language-settings"]'
-    element :home_page, 'a[ui-sref="app.welcome-page"]'
-    element :logout, 'a[ui-sref="auth.logout"]'
+    element :receives_call_at, 'a[data-ui-sref="app.receive-calls-at"]'
+    element :my_caller_id, 'a[data-ui-sref="app.my-outgoing-caller-id"]'
+    element :my_profile, 'a[data-ui-sref="app.profile"]'
+    element :goto_admin, 'a[data-ui-sref="admin.dashboard"]'
+    element :languages, 'a[data-ui-sref="app.language-settings"]'
+    element :home_page, 'a[data-ui-sref="app.welcome-page"]'
+    element :logout, 'a[data-ui-sref="auth.logout"]'
 end
 
 end
