@@ -1,6 +1,6 @@
 require_relative '../../../pages/login/login'
 require_relative '../../../pages/main/home'
-require_relative '../../../pages/main/crm/crm_mini_app'
+require_relative '../../../pages/main/features/crm/crm_mini_app'
 require_relative '../../../pages/login/reset_password'
 require_relative '../../../pages/contact'
 require_relative '../../../pages/admin/dashboard/dashboard'

@@ -24,10 +24,10 @@ describe('validate CRM admin') do
     end
     it('validate opportunitie search', :admin_crm_opportunities) do |e|
       puts 'validate opportunitie search'
-    #   e.step('given I has opportunities to search') do
-    #     puts 'given I has opportunities to search'
-    #     crm_admin.insert_opportunity(9)
-    #   end
+      # e.step('given I has opportunities to search') do
+      #   puts 'given I has opportunities to search'
+      #   crm_admin.insert_opportunity(9)
+      # end
       e.step('when I on admin page') do
         puts 'when I on admin page'
         admin_dashboard.options.admin_crm.click
@@ -52,19 +52,34 @@ describe('validate CRM admin') do
       e.step('then I can see all opportunities')do
         puts 'then I can see all opportunities'
         crm_admin.oppo.wait_until_oppo_grid_rows_visible
-        expect(crm_admin.oppo.oppo_grid_rows.length).to eql 9
+        expect(crm_admin.oppo.oppo_grid_rows.length).to eql 8
       end
       e.step('when I filter search by follow-up date')do
         puts'when I filter search by follow-up date'
-        follow_from = Date.today
-        follow_to = Date.today +3
-        # follow_from.strftime(%m-%m-%y)
-        # follow_to.strftime(%f) 
+        #follow_from = Date.today
+        #follow_to = Date.today
+        #puts follow_from.strftime("%m-%d-%Y")
+        #puts follow_to.strftime("%m-%d-%Y")
+        
+        crm_admin.oppo.follow_update_from.set('03-01-2018')
+        crm_admin.oppo.follow_update_from.send_keys :escape
+        crm_admin.oppo.follow_update_to.click
+        #select_date("2018-03-08", from: 'div.datepicker')
+        # sleep 2
+        # crm_admin.oppo.follow_update_to.set('01-01-2018')
+        # sleep 2
+        #crm_admin.oppo.follow_update_to.send_keys :escape
+        crm_admin.oppo.close_date_from.set('01-01-2018')
+        crm_admin.oppo.close_date_from.send_keys :escape
+        crm_admin.oppo.close_date_to.set('01-01-2018')
+        crm_admin.oppo.close_date_to.send_keys :escape
 
-        puts Date.today +3
-        crm_admin.oppo.follow_update_from.set(follow_from)
-        crm_admin.oppo.follow_update_to.set(follow_to)
-        sleep 30
+        
+        crm_admin.oppo.click_button('Search')
+
+        crm_admin.oppo.wait_until_oppo_grid_rows_visible
+sleep 3
+        
       end
       e.step('then I can see the filtred list')do
         puts 'then I can see the filtred list'  

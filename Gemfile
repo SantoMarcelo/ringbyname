@@ -12,4 +12,7 @@ gem 'httparty'
 gem 'geckodriver-helper', '~> 0.0.4'
 gem 'chromedriver-helper', '~> 1.1'
 gem 'couchdb', '~> 0.2.2'
+gem 'capybara-bootstrap-datepicker'
+gem 'pry_debug', '~> 0.1.0'
+gem 'mysql', '~> 2.9', '>= 2.9.1'
 

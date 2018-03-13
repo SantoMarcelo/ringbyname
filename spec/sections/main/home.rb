@@ -40,4 +40,5 @@ class HomeMenu < SitePrism::Section
     element :logout, 'a[data-ui-sref="auth.logout"]'
 end
 
+
 end

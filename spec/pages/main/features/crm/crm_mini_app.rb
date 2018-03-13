@@ -1,11 +1,11 @@
 
-require_relative '../../../sections/main/menu'
-require_relative '../../../sections/main/home'
-require_relative '../../../sections/main/contact_card'
-require_relative '../../../pages/login/login'
-require_relative '../../../pages/contact'
-require_relative '../../../pages/main/home'
-require_relative '../../../pages/admin/dashboard/dashboard'
+require_relative '../../../../sections/main/menu'
+require_relative '../../../../sections/main/home'
+require_relative '../../../../sections/main/contact_card'
+require_relative '../../../../pages/login/login'
+require_relative '../../../../pages/contact'
+require_relative '../../../../pages/main/home'
+require_relative '../../../../pages/admin/dashboard/dashboard'
 
 class CrmMiniApp < SitePrism::Page
   section :home_menu, Sections::FeaturesMenu, '.nav-middle-top'
