@@ -8,7 +8,7 @@ require 'allure-rspec'
 require 'logger'
 require 'httparty'
 require 'capybara-bootstrap-datepicker/rspec'
-require 'mysql'
+#require 'mysql2'
 # require 'Couch'
 
 require_relative 'helpers'

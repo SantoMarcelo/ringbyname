@@ -10,4 +10,5 @@ module Pages
   def crm; CrmMiniApp.new end
   def crm_admin; Crm.new end
   def quick_call; QuickCall.new end
+  def activity; Activity.new end
 end

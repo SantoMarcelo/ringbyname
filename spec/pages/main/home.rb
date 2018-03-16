@@ -6,6 +6,7 @@ class Home < SitePrism::Page
   element :my_caller_id, '.dropdown-title span.hover'
   element :dropdown, '.dropdown-user-menu.dropdown'
   element :title, '.column-middle-container'
+  element :message, '.noty_message .noty_text'
 
   #element :option_admin, 'a[ui-sref="admin.dashboard"]'
  # element :option_logout, 'a[ui-sref="auth.logout"]'
