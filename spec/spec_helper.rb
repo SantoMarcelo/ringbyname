@@ -8,7 +8,7 @@ require 'allure-rspec'
 require 'logger'
 require 'httparty'
 require 'capybara-bootstrap-datepicker/rspec'
-#require 'mysql2'
+#require 'mysql'
 # require 'Couch'
 
 require_relative 'helpers'
@@ -73,7 +73,7 @@ Capybara.configure do |c|
   c.default_driver = :selenium
 
   if $environment != 'production'
-    $url = c.app_host   = "http://login.#{$environment}.dev.ringbyname.com/#{$branch}"
+    $url = c.app_host   = "http://login.#{$environment}.dev.ringbyname.com/#{$branch}/"
   else
     #$url = c.app_host   = 'http://login.ringbyname.com'
   end
@@ -89,3 +89,4 @@ AllureRSpec.configure do |c|
   c.clean_dir = false
   c.logging_level = Logger::WARN
 end
+

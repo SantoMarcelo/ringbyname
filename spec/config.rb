@@ -102,8 +102,8 @@ module Config
 
   
     # # dev QC
-    # $qc_admin_user = {
-    #   username: 'devqc.user1@ringbyname.com',
+    # $admin_user = {
+    #   username: 'devqc.user6@ringbyname.com',
     #   password: '123456asd'
     # }
 
@@ -111,7 +111,7 @@ module Config
     #   name: 'Dev QC1 User'
     # }
 
-    # $qc_user1 = {
+    # $user1 = {
     #   extension: '101',
     #   name: 'Dev QC1 User',
     #   first_name: 'Dev QC1',
@@ -124,7 +124,7 @@ module Config
     #   number_of_rings: '5'
     # }
 
-    # $qc_user2 = {
+    # $user2 = {
     #   extension: '102',
     #   name: 'Dev QC2 User',
     #   first_name: 'Dev QC2',
@@ -137,7 +137,7 @@ module Config
     #   number_of_rings: '5'
     # }
 
-    # $qc_user3 = {
+    # $user3 = {
     #   extension: '103',
     #   name: 'Dev QC3 User',
     #   first_name: 'Dev qc 03',
@@ -149,7 +149,7 @@ module Config
     #   voicemail_password: '1234',
     #   number_of_rings: '5'
     # }
-    # $qc_user3 = {
+    # $user3 = {
     #   extension: '104',
     #   name: 'Dev QC4 User',
     #   first_name: 'Dev QC4',

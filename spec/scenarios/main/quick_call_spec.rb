@@ -3,15 +3,17 @@ require_relative '../../pages/main/home'
 require_relative '../../pages/main/features/quick_call/quick_call'
 require_relative '../../sections/main/features/quick_call'
 
-# require 'mysql2'
+ #require 'Mysql2'
 
 describe('validate quick call feature', :home_quick_call_feature) do
   before do
     login_page.load
     login_page.do_login($admin_user)
+   
     home.wait_until_home_menu_visible
     home.wait_until_user_status_visible
-
+    visit ('#!/app/calls')
+    
     # user_mysql = 'devroot'
     # pass_mysql = 'testtest'
     # host_mysql = 'mysql.marcelo-php56.dev.ringbyname.com'
@@ -22,26 +24,51 @@ describe('validate quick call feature', :home_quick_call_feature) do
     # sql_query = db.query('SELECT * FROM crm_opportunity')
     # listar = sql_query.fetch_fields
     # listar.each do |lista|
-    #   puts lista.name
+    #   puts lista.name 
     # end
   end
   describe('validate recent call list', :call_list) do
     it('validate recent calls', :recent_calls) do |e|
       puts 'validate recent calls'
-      e.step('when I on home page') do
-        puts 'when I on home page'
-        expect(page.text.include?('Call Presence'))
-      end
-      e.step('and I access a quick call menu') do
-        puts 'and I access a quick call menu'
-        quick_call.home_menu.quick_call.click
+      @user = {name: 'DEV UAT',
+        phone: '12065081444',
+        type: 'work'}
+        @user2 = {name: 'Test Contact 3',
+          phone: '2065081444',
+          type: 'work'}
+      # e.step('when I on home page') do
+      #   puts 'when I on home page'
+      #   expect(page.text.include?('Call Presence'))
+      # end
+      e.step('and I access a quick call page') do
+        puts 'and I access a quick call page'
         quick_call.recent_calls.wait_for_call_list
+        expect(quick_call.recent_calls.page_title.text).to eql 'Calls List'
       end
       e.step('and I check the recent call list') do
         puts 'and I check the recent call list'
-        #quick_call.validate_call_list($user2)
-        expect(quick_call.validate_call_list('Dev Marce... 102 Work 03/15 08:59 am')).to eql true
+       # expect(quick_call.validate_call_list(@user, 'department-callback')).to eql true
+        expect(quick_call.validate_call_list(@user2, 'incoming-external-call')).to eql true
+      #   expect(quick_call.validate_call_list(@user, 'outgoing-external-call')).to eql true
+      #   expect(quick_call.validate_call_list(@user, 'voicemail-insert')).to eql true
+      #   expect(quick_call.validate_call_list(@user, 'activity-callback')).to eql true
+      #   expect(quick_call.validate_call_list(@user, 'department-voicemail')).to eql true
+       end
+      e.step('when I try to mark as read an call item') do
+        puts 'when I try to mark as read an call item'
+        puts quick_call.recent_calls.mark_as_read.length
+        quick_call.mark_as_read(@user2, 'incoming-external-call')
+        sleep 10
       end
+      # e.step('then I should see the call item marked as read') do
+      #   puts 'then I should see the call item marked as read'
+      #   #quick_call.wait_for_confirm_mark_as_read
+      #   expect(home.message.text).to eql 'Activity marked as read'
+      #   sleep 3
+      #   #quick_call.check_mark_as_read(@user2, 'incoming-external-call')
+      # end
+      # e.step('when I try to dial by ') do
+      # end
     end
     it('validate dial box', :dial_box) do |e|
       puts 'validate dial box'
@@ -100,10 +127,10 @@ describe('validate quick call feature', :home_quick_call_feature) do
         quick_call.type_number_to_dial(number_to_dial)
         quick_call.dial_pad.btn_dial.click
       end
-      # e.step('then I can see the confirmation message')do
-      #   puts 'then I can see the confirmation message'
-      #   expect(quick_call.message.text).to eql 'Conecting you'
-      # end
+      e.step('then I can see the confirmation message')do
+        puts 'then I can see the confirmation message'
+        expect(quick_call.message.text).to eql 'Connecting you now'
+      end
       
     end
   end

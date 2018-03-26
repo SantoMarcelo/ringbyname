@@ -12,18 +12,22 @@ describe('Login in application', :full_login) do
 
   describe('Success login', :login) do
     it('login with admin user') do |e|
-      e.step 'when I access login page' do
+      e.step('when I access login page') do
+          puts 'when I access login page'
         login_page.load
       end
-      e.step 'and I fill the user and password to login' do
+      e.step('and I fill the user and password to login') do
+        puts 'and I fill the user and password to login'
         login_page.do_login($admin_user)
       end
-      e.step 'then I can see the home page' do
+      e.step('then I can see the home page') do
+        puts 'then I can see the home page'
         # wait for load home page
         home.wait_until_home_menu_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
       end
-      e.step 'and I log out from application' do
+      e.step('and I log out from application') do
+        puts 'and I log out from application'
         home.logout
       end
     end
@@ -32,6 +36,7 @@ describe('Login in application', :full_login) do
   describe('Login Validations', :login_validations) do
     it('Login message validations') do |e|
       e.step('Given I have a user list and the message list') do
+        puts 'Given I have a user list and the message list'
         @users = [
           { username: '', password: '123456asd' },
           { username: 'devmarcelo.user1@ringbyname.com', password: '' },
@@ -45,11 +50,13 @@ describe('Login in application', :full_login) do
           '× Sorry, the requested information could not be found.'
         ]
       end
-      e.step 'when I access login page' do
+      e.step('when I access login page') do
+        puts 'when I access login page'
         login_page.load
       end
 
-      e.step 'and I validate the validations' do
+      e.step('and I validate the validations') do
+        puts 'and I validate the validations'
         # login_page.do_login('', '123456asd')
         @validations = []
         @users.each do |u|
@@ -59,7 +66,8 @@ describe('Login in application', :full_login) do
         end
       end
 
-      e.step 'then I can see the validation message' do
+      e.step('then I can see the validation message') do
+        puts 'then I can see the validation message'
         expect(@validations).to eql @expect_messages
       end
     end
@@ -74,15 +82,18 @@ describe('Reset Password', :resetPass) do
 
   it('success reset password') do |e|
     e.step('when I access the reset password page') do
+      puts 'when I access the reset password page'
       login_page.load
       login_page.access_reset_page
     end
 
     e.step('and I fill the user email and click in reset') do
+      puts 'and I fill the user email and click in reset'
       reset.do_reset(user)
     end
 
     e.step('then I see the success message') do
+      puts 'then I see the success message'
       expect(reset.message.text).to eql "× Password reset, email sent to: #{user}"
     end
   end
@@ -90,26 +101,31 @@ describe('Reset Password', :resetPass) do
   describe('Reset password validations') do
     it('validate empty email') do |e|
       e.step('when I acces th reset password page') do
+        puts 'when I acces th reset password page'
         login_page.load
         login_page.access_reset_page
       end
 
       e.step('and dont fill the email field') do
+        puts 'and dont fill the email field'
         reset.do_reset(' ')
       end
 
       e.step('the I can see the correct validation message') do
+        puts 'the I can see the correct validation message'
         expect(reset.message.text).to eql '× Please enter a valid e-mail address.'
       end
     end
 
     it('validate invalid email') do |e|
       e.step('when I acces th reset password page') do
+        puts 'when I acces th reset password page'
         login_page.load
         login_page.access_reset_page
       end
 
       e.step('and I fill invalid email') do
+        puts 'and I fill invalid email'
         reset.do_reset('devmarcelo.user@ringbyname.coim ')
       end
 
