@@ -2,7 +2,7 @@ require_relative '../../../pages/login/login'
 require_relative '../../../pages/main/home'
 require_relative '../../../pages/main/activities/activity'
 
-describe('Validate My Activity', :activity_call_back) do
+describe('Validate My Activity', :current_sprint) do
   before do
     login_page.load
     login_page.do_login($admin_user)
@@ -95,5 +95,8 @@ describe('Validate My Activity', :activity_call_back) do
       expect(activity.team_activity.current_filters.text).to eql 'All'
       expect(activity.team_activity.activity_list.length > 2)
       end
+  end
+  after do
+    Capybara.current_session.driver.quit
   end
 end

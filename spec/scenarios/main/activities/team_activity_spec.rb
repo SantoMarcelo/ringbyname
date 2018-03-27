@@ -2,12 +2,13 @@ require_relative '../../../pages/login/login'
 require_relative '../../../pages/main/home'
 require_relative '../../../pages/main/activities/activity'
 
-describe('Validate Team Activity', :activity_call_back) do
+describe('Validate Team Activity', :current_sprint) do
+
     before do
         login_page.load
-    #   login_page.do_login($admin_user)
-    #   home.wait_until_home_menu_visible
-    #   home.wait_until_user_status_visible
+      login_page.do_login($admin_user)
+      home.wait_until_home_menu_visible
+      home.wait_until_user_status_visible
     end
     describe('Team Activity filters') do
       it('validate team activity filters') do |e|
@@ -96,6 +97,9 @@ describe('Validate Team Activity', :activity_call_back) do
         expect(activity.team_activity.current_filters.text).to eql 'All'
         expect(activity.team_activity.activity_list.length > 2)
       end
+    end
+    after do
+      Capybara.current_session.driver.quit
     end
   end
   

@@ -11,8 +11,8 @@ desc "rodar dev marcelo com chrome"
 task :marcelo_chrome do
     ENV['BROWSER'] = 'chrome'
     ENV['ENVIRONMENT'] = 'marcelo'
-    ENV['BRANCH'] = 'calls-page'
-    sh 'rspec -fd --tag recent_calls'
+    ENV['BRANCH'] = '3.11.0'
+    sh 'rspec -fd --tag current_sprint'
     #sh 'allure serve log/reports'
 end
 
