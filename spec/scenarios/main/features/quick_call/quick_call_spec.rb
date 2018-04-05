@@ -1,73 +1,83 @@
-require_relative '../../pages/login/login'
-require_relative '../../pages/main/home'
-require_relative '../../pages/main/features/quick_call/quick_call'
-require_relative '../../sections/main/features/quick_call'
+require_relative '../../../../pages/login/login'
+require_relative '../../../../pages/main/home'
+require_relative '../../../../pages/main/features/quick_call/quick_call'
+require_relative '../../../../sections/main/features/quick_call'
 
  #require 'Mysql2'
 
-describe('validate quick call feature', :current_sprint) do
+describe('validate quick call feature', :quick_call) do
   before do
+    
+    system("mysql -h mysql.marcelo-php56.dev.ringbyname.com -u devroot -ptesttest -f < insert_activities.sql")
+    puts $?
+
     login_page.load
     login_page.do_login($admin_user)
-   
     home.wait_until_home_menu_visible
     home.wait_until_user_status_visible
-    visit ('#!/app/calls')
+    visit '#!/app/calls'
+    # insert activities
     
-    # user_mysql = 'devroot'
-    # pass_mysql = 'testtest'
-    # host_mysql = 'mysql.marcelo-php56.dev.ringbyname.com'
-    # database_mysql = 'ringbyname'
-
-    # db = Mysql.new(user_mysql, pass_mysql, host_mysql)
-    # db_select = db.select_db(database_mysql)
-    # sql_query = db.query('SELECT * FROM crm_opportunity')
-    # listar = sql_query.fetch_fields
-    # listar.each do |lista|
-    #   puts lista.name 
-    # end
+  
   end
-  describe('validate recent call list', :call_list) do
+  describe('validate recent call list and dial pad', :call_list) do
     it('validate recent calls', :recent_calls) do |e|
       puts 'validate recent calls'
-      @user = { name: 'DEV UAT',
-               phone: '12065081444',
-               type: 'work'}
-      @user2 = { name: 'Test Contact 3',
-                phone: '2065081444',
-                type: 'work'}
-      # e.step('when I on home page') do
-      #   puts 'when I on home page'
-      #   expect(page.text.include?('Call Presence'))
-      # end
+      @contact1 = {
+        name: 'Test Contact 1',
+        phone1: '12065081444',
+        phone2: '2065081444',
+        type: 'work'
+      }
+      @contact2 = {
+        name: 'Test Contact 2',
+        phone1: '2065081444',
+        phone2: '12065081444',
+        type: 'work'
+      }
+      @contact3 = {
+        name: 'Test Contact 3',
+        phone1: '12065081444',
+        phone2: '2065081444',
+        type: 'work'
+      }
+      e.step('when I on home page') do
+        puts 'when I on home page'
+        expect(page.text.include?('Call Presence'))
+      end
       e.step('and I access a quick call page') do
         puts 'and I access a quick call page'
         quick_call.recent_calls.wait_for_call_list
-        expect(quick_call.recent_calls.page_title.text).to eql 'Calls List'
+        expect(quick_call.recent_calls.page_title.text).to eql 'Recent Calls'
       end
       e.step('and I check the recent call list') do
         puts 'and I check the recent call list'
-        expect(quick_call.validate_call_list(@user, 'department-callback')).to eql true
-        expect(quick_call.validate_call_list(@user2, 'incoming-external-call')).to eql true
-        expect(quick_call.validate_call_list(@user, 'outgoing-external-call')).to eql true
-        expect(quick_call.validate_call_list(@user, 'voicemail-insert')).to eql true
-        expect(quick_call.validate_call_list(@user, 'activity-callback')).to eql true
-        expect(quick_call.validate_call_list(@user, 'department-voicemail')).to eql true
-       end
+        expect(quick_call.validate_call_list(@contact1, 'outgoing-external-call')).to eql true
+        expect(quick_call.validate_call_list(@contact1, 'activity-voicemail-insert')).to eql true
+        expect(quick_call.validate_call_list(@contact1, 'incoming-external-call')).to eql true
+        expect(quick_call.validate_call_list(@contact1, 'activity-callback-insert')).to eql true
+
+        expect(quick_call.validate_call_list(@contact2, 'incoming-missed-call')).to eql true
+        expect(quick_call.validate_call_list(@contact2, 'activity-voicemail-insert')).to eql true
+        expect(quick_call.validate_call_list(@contact2, 'incoming-external-call')).to eql true
+
+        expect(quick_call.validate_call_list(@contact3, 'incoming-missed-call')).to eql true
+        expect(quick_call.validate_call_list(@contact3, 'incoming-external-call')).to eql true
+        expect(quick_call.validate_call_list(@contact3, 'activity-voicemail-insert')).to eql true
+      end
       e.step('when I try to mark as read an call item') do
         puts 'when I try to mark as read an call item'
-        puts quick_call.recent_calls.mark_as_read.length
-        quick_call.mark_as_read(@user2, 'incoming-external-call')
+        quick_call.mark_as_read(@contact1, 'activity-voicemail-insert')
       end
       e.step('then I should see the call item marked as read') do
         puts 'then I should see the call item marked as read'
         expect(home.message.text).to eql 'Activity marked as read'
-        expect(quick_call.check_mark_as_read(@user2, 'incoming-external-call')).to eql false
+        expect(quick_call.check_mark_as_read(@contact1, 'activity-voicemail-insert')).to eql false
         home.wait_until_message_invisible
       end
       e.step('when I try to dial by call list') do
         puts 'when I try to dial by call list'
-        quick_call.do_call(@user2, 'incoming-external-call')
+        quick_call.do_call(@contact2, 'activity-voicemail-insert')
       end
       e.step('then I can see the confirmation message')do
         puts 'then I can see the confirmation message'
@@ -82,7 +92,7 @@ describe('validate quick call feature', :current_sprint) do
       e.step('and I access a quick call page') do
         puts 'and I access a quick call page'
         quick_call.recent_calls.wait_for_call_list
-        expect(quick_call.recent_calls.page_title.text).to eql 'Calls List'
+        expect(quick_call.recent_calls.page_title.text).to eql 'Recent Calls'
       end
       e.step('and I select dial box') do
         puts 'and I select dial box'
@@ -142,6 +152,9 @@ describe('validate quick call feature', :current_sprint) do
         puts 'then I can see the confirmation message'
         expect(quick_call.message.text).to eql 'Connecting you now'
       end
+    end
+    after do
+      Capybara.current_session.driver.quit
     end
   end
 end

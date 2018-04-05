@@ -44,9 +44,9 @@ class Contact < SitePrism::Page
     oppo_form.select_oppo_next_action.find('option', text: (opportunity[:action])).select_option
     oppo_form.select_oppo_next_action.send_keys :tab
     oppo_form.date_oppo_follow_up.set(opportunity[:follow_up])
-    oppo_form.date_oppo_follow_up.send_keys :tab
+    #oppo_form.date_oppo_follow_up.send_keys :tab
     oppo_form.date_close_date.set(opportunity[:close_date])
-    oppo_form.date_close_date.send_keys :tab
+    #oppo_form.date_close_date.send_keys :tab
     oppo_form.txt_oppo_comment.set(opportunity[:comment])
     oppo_form.txt_oppo_comment.send_keys :tab
     

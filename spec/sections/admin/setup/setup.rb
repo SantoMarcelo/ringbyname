@@ -45,7 +45,12 @@ module Sections
     element :opportunities, 'a[ui-sref="admin.crm.opportunities"]'
     element :analytics, 'a[ui-sref="admin.crm.analytics"]'
     element :souces, 'a[ui-sref="admin.crm.sources"]'
+  end
 
+  class Departmets < SetupMain
+    element :add_depto, '.add-department'
+    element :hold_music_manager, 'a[href*="music-on-hold"]'
+    
   end
 
 

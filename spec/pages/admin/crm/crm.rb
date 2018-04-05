@@ -2,7 +2,7 @@
 require_relative '../admin'
 require_relative '../../../sections/admin/crm/crm'
 require_relative '../../../sections/admin/admin'
-
+ 
 class Crm < Admin
   section :menu, Sections::SetupMenu, '.navigation-left'
   section :message, Sections::Messages, '.swal2-container'
@@ -73,7 +73,7 @@ class Crm < Admin
             body: opportunity.to_json,
             headers: headers
         )
-         
+       
         source_id +=1
         status_id +=1
         probability_id +=1

@@ -140,7 +140,7 @@ describe('validate Users Setup', :user_setup) do
         puts 'when I change the total of records per page to the minimum # of records'
         users.setup.change_page(1)
         users.setup.wait_for_grid_rows
-        #users.wait_until_load_invisible
+        # users.wait_until_load_invisible
         sleep 1
         users.setup.select_number_page_options.each do |u|
           u.click if u.text.include?('5')
@@ -150,7 +150,7 @@ describe('validate Users Setup', :user_setup) do
         # users.wait_until_load_visible
         # users.wait_until_load_invisible
       end
-      e.step('then I can see the three pages.')do
+      e.step('then I can see the three pages.') do
         puts 'then I can see the three pages.'
         expect(users.setup.grid_rows.length).to eql 5
         users.setup.change_page(2)
@@ -166,7 +166,7 @@ describe('validate Users Setup', :user_setup) do
         # users.wait_until_load_invisible
         expect(users.setup.grid_rows.length).to eql 4
       end
-      e.step('when I change the total of records per page to the maximum # of records')do
+      e.step('when I change the total of records per page to the maximum # of records') do
         puts 'when I change the total of records per page to the maximum # of records'
         users.setup.change_page(1)
         users.setup.wait_for_grid_rows
@@ -181,8 +181,8 @@ describe('validate Users Setup', :user_setup) do
         puts 'then I can see the one page with all registers.'
         users.setup.wait_for_grid_rows
         sleep 1
-        #users.wait_until_load_invisible
-        #need to check why not count all list itens
+        # users.wait_until_load_invisible
+        # need to check why not count all list itens
         expect(users.setup.grid_rows.length).to eql 10
       end
     end
@@ -755,7 +755,7 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('validate user reset data', :user_reset)do
+  describe('validate user reset data', :user_reset) do
     it('reset user data and check new data')do |e|
       puts 'reset user data and check new data'
       e.step('when I on users setup') do
@@ -897,7 +897,7 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('Validate Outbound Caller ID massive update', :user_massive_cId)do
+  describe('Validate Outbound Caller ID massive update', :user_massive_cId) do
     it('set the same caller id to all users and validate') do |e|
       puts 'set the same caller id to all users and validate'
       e.step('when I on users setup') do
@@ -1036,7 +1036,7 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('Validate password massive update', :user_massive_pass)do
+  describe('Validate password massive update', :user_massive_pass) do
     it('set the same password to all users and validate') do |e|
       puts 'set the same password to all users and validate'
       e.step('when I on users setup') do
@@ -1158,8 +1158,6 @@ describe('validate Users Setup', :user_setup) do
       users.message.btn_ok.click
     end
   end
-
-
 
   after(:each) do |e|
     e.attach_file('screenshot', get_screenshot)

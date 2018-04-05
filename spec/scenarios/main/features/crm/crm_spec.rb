@@ -1,9 +1,9 @@
-require_relative '../../../pages/login/login'
-require_relative '../../../pages/main/home'
-require_relative '../../../pages/main/features/crm/crm_mini_app'
-require_relative '../../../pages/login/reset_password'
-require_relative '../../../pages/contact'
-require_relative '../../../pages/admin/dashboard/dashboard'
+require_relative '../../../../pages/login/login'
+require_relative '../../../../pages/main/home'
+require_relative '../../../../pages/main/features/crm/crm_mini_app'
+require_relative '../../../../pages/login/reset_password'
+require_relative '../../../../pages/contact'
+require_relative '../../../../pages/admin/dashboard/dashboard'
 
 describe('CRM - Opportunity', :general_crm) do
   before do
@@ -95,7 +95,7 @@ describe('CRM - Opportunity', :general_crm) do
       close_date: '05-02-2018',
       comment: 'Test Comment',
       contact_owner: 'Dev Marcelo 1 User'
-    }
+    } 
     @opportunity3 = {
       name: 'Old opport 3',
       source: 'Word of Mouth',
@@ -271,55 +271,55 @@ describe('CRM - Opportunity', :general_crm) do
   describe('add opportunity', :add_contact_opo) do
     it('access contact card and add a opportunity') do |e|
       puts 'access contact card and add a opportunity'
-      e.step('Given when I has CRM license allowed') do
-        puts 'Given when I has CRM license allowed'
-        # access admin page
-        users.user_allow_crm_feature($user1)
-        # validate if was allowed correctly
-        expect(users.message.modal.text).to eql 'User updated successfully.'
-        users.message.btn_ok.click
-        users.wait_until_grid_rows_visible
-       # expect(users.grid_rows.include?(users.grid_icon_crm))
-        users.select_user_in_grid($user1)
-        #expect(users.details.checkbox_crm).to be_checked
-        # return to home page
-        admin_dashboard.goto_home
+      # e.step('Given when I has CRM license allowed') do
+      #   puts 'Given when I has CRM license allowed'
+      #   # access admin page
+      #   users.user_allow_crm_feature($user1)
+      #   # validate if was allowed correctly
+      #   expect(users.message.modal.text).to eql 'User updated successfully.'
+      #   users.message.btn_ok.click
+      #   users.wait_until_grid_rows_visible
+      #  # expect(users.grid_rows.include?(users.grid_icon_crm))
+      #   users.select_user_in_grid($user1)
+      #   #expect(users.details.checkbox_crm).to be_checked
+      #   # return to home page
+      #   admin_dashboard.goto_home
+      # end
+      e.step('when I on home page and access contact card') do
+        puts 'when I on home page and access contact card'
+        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
+        home.wait_until_contact_visible
+        sleep(2)
+        home.select_contact($contact1)
+        contact.wait_until_contact_card_visible
+        expect(contact.verify_contact($contact1)) == true
       end
-    #   e.step('when I on home page and access contact card') do
-    #     puts 'when I on home page and access contact card'
-    #     expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-    #     home.wait_until_contact_visible
-    #     sleep(2)
-    #     home.select_contact($contact1)
-    #     contact.wait_until_contact_card_visible
-    #     expect(contact.verify_contact($contact1)) == true
-    #   end
-    #   e.step('and I select CRM menu and click to add') do
-    #     puts 'and I select CRM menu and click to add'
-    #     contact.access_crm
-    #     # find('.crm-tab__add-button').click
-    #   end
-    #   e.step('and I filled opportunity information') do
-    #     puts 'and I filled opportunity information'
-    #     contact.fill_opportunity_data(@opportunity)
-    #   end
-    #   e.step('then I see the inserted message') do
-    #     puts 'then I see the inserted message'
-    #     expect(contact.message.text).to eql 'Opportunity inserted.'
-    #   end
-    #   e.step('and I check if the opportunity is in grid') do
-    #     puts 'and I check if the opportunity is in grid'
-    #     expect(contact.validate_contact_opportunity_list(@opportunity)).to eql true
-    #   end
-    #   e.step('and access CRM and verify opportunities') do
-    #     puts 'and access CRM and verify opportunities'
-    #     puts 'acessando crm'
-    #     home.access_crm
-    #     crm.wait_until_opportunity_list_visible
-    #     expect(home.current_url).to end_with '/#!/app/crm'
-    #     expect(crm.validate_opportunity_list(@opportunity)).to eql true
-    #   end
-    # end
+      e.step('and I select CRM menu and click to add') do
+        puts 'and I select CRM menu and click to add'
+        contact.access_crm
+        # find('.crm-tab__add-button').click
+      end
+      # e.step('and I filled opportunity information') do
+      #   puts 'and I filled opportunity information'
+      #  # contact.fill_opportunity_data(@opportunity)
+      # end
+      # e.step('then I see the inserted message') do
+      #   puts 'then I see the inserted message'
+      #   expect(contact.message.text).to eql 'Opportunity inserted.'
+      # end
+      e.step('and I check if the opportunity is in grid') do
+        puts 'and I check if the opportunity is in grid'
+        expect(contact.validate_contact_opportunity_list(@opportunity)).to eql true
+      end
+      e.step('and access CRM and verify opportunities') do
+        puts 'and access CRM and verify opportunities'
+        puts 'acessando crm'
+        home.access_crm
+        crm.wait_until_opportunity_list_visible
+        expect(home.current_url).to end_with '/#!/app/crm'
+        expect(crm.validate_opportunity_list(@opportunity)).to eql true
+      end
+    end
     # it('verify validations when insert opportunity') do |e|
     #   e.step('given when I on contactr card page') do
     #     home.wait_until_contact_visible
@@ -407,8 +407,8 @@ describe('CRM - Opportunity', :general_crm) do
     #     puts 'then I see a validation message: Please provide a valid next action.'
     #     expect(contact.message.text).to eql 'Please provide a valid next action.'
     #   end
-     end
-  end
+    #  end
+    end
 
   describe('edit opportunity', :edit_oppo) do
     it('edit opportunity by contact card') do |e|

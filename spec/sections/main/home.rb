@@ -22,8 +22,8 @@ class MiniAppOpportunityForm < SitePrism::Section
     element :txt_oppo_price, 'input[data-ng-model="record.cost"]'
 
     element :select_oppo_next_action, 'select[data-ng-model="record.action.id"]'
-    element :date_oppo_follow_up, 'div[data-initial-date="filters.date"] > input[data-ng-model="useless"]' 
-    element :date_close_date, 'div[data-initial-date="filters.dateClose"]> input'
+    element :date_oppo_follow_up, '.control input.ng-touched' 
+    element :date_close_date, '.control input.ng-untouched'
     element :txt_oppo_comment, 'textarea[data-ng-model="record.comments"]'
     element :btn_oppo_save, 'button[data-ng-click="submit()"]'
     element :btn_oppo_cancel, 'button[data-ng-click="cancel()"]'

@@ -1,9 +1,9 @@
-require_relative '../../../pages/login/login'
-require_relative '../../../pages/main/home'
-require_relative '../../../pages/main/features/crm/crm_mini_app'
-require_relative '../../../pages/login/reset_password'
-require_relative '../../../pages/contact'
-require_relative '../../../pages/admin/dashboard/dashboard'
+require_relative '../../../../pages/login/login'
+require_relative '../../../../pages/main/home'
+require_relative '../../../../pages/main/features/crm/crm_mini_app'
+require_relative '../../../../pages/login/reset_password'
+require_relative '../../../../pages/contact'
+require_relative '../../../../pages/admin/dashboard/dashboard'
 
 describe('CRM - Opportunity', :miniapp_crm_geral) do
   before do
@@ -429,6 +429,7 @@ describe('CRM - Opportunity', :miniapp_crm_geral) do
         expect(contact.edit_oppo_form.date_oppo_follow_up.text.include?(@edited_opportunity[:follow_up]))
         expect(contact.edit_oppo_form.date_close_date.text.include?(@edited_opportunity[:close_date]))
         expect(contact.edit_oppo_form.txt_oppo_comment.text.include?(@edited_opportunity[:comment]))
+        expect(contact.edit_oppo_form.last_updated_info.text.include?('Last edited by Dev Marcelo 1 User on'))
 
         contact.edit_oppo_form.btn_oppo_cancel.click
       end

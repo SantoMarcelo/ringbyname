@@ -19,8 +19,8 @@ module Sections
         element :txt_oppo_price, 'input[data-ng-model="crmContactCard.opportunity.cost"]'
 
         element :select_oppo_next_action, 'select[data-ng-model="crmContactCard.opportunity.action.id"]'
-        element :date_oppo_follow_up, 'div[data-initial-date="crmContactCard.filters.date"] > input' 
-        element :date_close_date, 'div[data-initial-date="crmContactCard.filters.dateClose"] > input'
+        element :date_oppo_follow_up, 'div[data-initial-date*="date_follow_up"]' 
+        element :date_close_date, 'div[data-initial-date*="date_close"]'
         element :txt_oppo_comment, 'textarea[data-ng-model="crmContactCard.opportunity.comments"]'
         element :link_upload_attach, '.fileinput-button > .icon-fontello-upload'
         element :btn_oppo_save, 'button[data-ng-click="crmContactCard.submit()"]'
@@ -38,10 +38,11 @@ module Sections
         element :txt_oppo_price, 'input[data-ng-model="opportunity.cost"]'
 
         element :select_oppo_next_action, 'select[data-ng-model="opportunity.action.id"]'
-        element :date_oppo_follow_up, 'div[data-initial-date="filters.date"] > input' 
-        element :date_close_date, 'div[data-initial-date="filters.dateClose"] > input'
+        element :date_oppo_follow_up, 'div[data-initial-date*="date_follow_up"]'
+        element :date_close_date, 'div[data-initial-date*="date_close"]'
         element :txt_oppo_comment, 'textarea[data-ng-model="opportunity.comments"]'
         element :link_upload_attach, '.fileinput-button > input[data-fileupload-model="attachment.selected"]:nth-child(2)'
+        element :last_updated_info, '.last-edited'
         element :btn_oppo_save, 'button[data-ng-click="submit()"]'
         element :btn_oppo_cancel, 'button[data-ng-click="cancel()"]'
 
