@@ -11,11 +11,9 @@ class CrmMiniApp < SitePrism::Page
   section :home_menu, Sections::FeaturesMenu, '.nav-middle-top'
   section :contact, Sections::Contact, '#contact-list'
   section :oppo_form, Sections::MiniAppOpportunityForm, '.modal-content'
-  section :crm, Sections::CRM, '.crm-card-search-bar'
+  section :crm_container, Sections::CrmFeature, '.crm-card-container'
 
-  elements :opportunity_list, '.crm-card-list > div > table > tbody > tr'
-  elements :pagination, '.pagination > li[ng-repeat^="pageNumber"] > a'
-  element :label_current_filter, 'div > p > strong.ng-binding'
+ 
 
   element :message, 'div[class="noty_message"] > span'
 
@@ -32,6 +30,17 @@ class CrmMiniApp < SitePrism::Page
         break
       end
     end
+  end
+
+  def validate_list_ordenation(opportunity, order)
+    # need to validate close date in this step: && u.text.include?(opportunity[:close_date])
+    if crm_container.opportunity_list[order].text.include?(opportunity[:contact_owner]) &&
+       crm_container.opportunity_list[order].text.include?(opportunity[:name]) &&
+       crm_container.opportunity_list[order].text.include?(opportunity[:status]) &&
+       crm_container.opportunity_list[order].text.include?(opportunity[:price])
+      return true
+    end
+    return false
   end
 
   def validate_opportunity_list(opportunity)
@@ -95,9 +104,9 @@ class CrmMiniApp < SitePrism::Page
     pagination.each do |u|
       u.click if number > 1
     end
-   end
+  end
 
-   def insert_opportunity(quantity)
+  def insert_opportunity(quantity)
     user = { 'data' => {
       'username' => 'devmarcelo.user1@ringbyname.com',
       'password' => '123456asd',
@@ -132,7 +141,7 @@ class CrmMiniApp < SitePrism::Page
                "date_follow_up" => date +=i+2 ,
                "date_close" => date +=i,
                "product" => "Test Product #{i}",
-               "cost" => 99.99,
+               "cost" => "#{i}99.99",
                "comments" => "test test test test teste test test test test teste test test test test teste test test test test teste test test test test teste",
                "source" => {  
                   "id" => source_id

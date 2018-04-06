@@ -7,7 +7,7 @@ module Pages
   def users; User.new end
   def contact; Contact.new end
   def config; Config.new end
-  def crm; CrmMiniApp.new end
+  def crm_mini_app; CrmMiniApp.new end
   def crm_admin; Crm.new end
   def quick_call; QuickCall.new end
   def activity; Activity.new end

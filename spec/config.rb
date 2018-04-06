@@ -103,7 +103,7 @@ module Config
   
     # # dev QC
     # $admin_user = {
-    #   username: 'devqc.user6@ringbyname.com',
+    #   username: 'devqc.user1@ringbyname.com',
     #   password: '123456asd'
     # }
 

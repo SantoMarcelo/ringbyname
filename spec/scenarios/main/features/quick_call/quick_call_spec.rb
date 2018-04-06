@@ -8,7 +8,7 @@ require_relative '../../../../sections/main/features/quick_call'
 describe('validate quick call feature', :quick_call) do
   before do
     
-    system("mysql -h mysql.marcelo-php56.dev.ringbyname.com -u devroot -ptesttest -f < insert_activities.sql")
+    system("mysql -h mysql.marcelo-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/insert_activities.sql")
     puts $?
 
     login_page.load

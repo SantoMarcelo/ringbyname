@@ -1,9 +1,19 @@
 module Sections
 
-class CRM < SitePrism::Section
+class CrmFeature < SitePrism::Section
     element :txt_search, 'input[ng-model="crmCard.search.key"]'
     element :btn_apply, 'button[type="submit"]'
     element :select_filter, 'select[data-ng-model="crmCard.search.filter"]'
+    element :title, 'h2'
+    elements :opportunity_list, '.crm-card-list .table > tbody > tr'
+    element :list_header_name, '.table .header-name .header-sort'
+    element :list_header_followup, '.table .header-follow-up .header-sort'
+    element :list_header_close_date, '.table .header-close-date .header-sort'
+    element :list_header_cost, '.table .header-cost .header-sort' 
+    elements :pagination, '.pagination > li[ng-repeat^="pageNumber"] > .header-sort'
+    element :label_current_filter, 'div > p > strong.ng-binding'
+    element :sort_asc_indicator, '.caret.active.asc'
+    element :sort_desc_indicator, '.caret.active.up.desc'
     
 end
 

@@ -2,8 +2,8 @@ desc "rodar dev marcelo com firefox"
 task :marcelo_firefox do
     ENV['BROWSER'] = 'firefox'
     ENV['ENVIRONMENT'] = 'marcelo'
-    ENV['BRANCH'] = 'current'
-    sh 'rspec -fd --tag cc_edit_oppo'
+    ENV['BRANCH'] = '3.12.0'
+    sh 'rspec -fd --tag miniapp_crm_sort'
     #sh 'allure serve log/reports'
 end
 
@@ -11,8 +11,8 @@ desc "rodar dev marcelo com chrome"
 task :marcelo_chrome do
     ENV['BROWSER'] = 'chrome'
     ENV['ENVIRONMENT'] = 'marcelo'
-    ENV['BRANCH'] = 'current'
-    sh 'rspec -fd --tag cc_edit_oppo'
+    ENV['BRANCH'] = '3.12.0'
+    sh 'rspec -fd --tag miniapp_crm_sort'
     #sh 'allure serve log/reports'
 end
 
