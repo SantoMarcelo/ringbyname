@@ -1,0 +1,36 @@
+desc "rodar dev marcelo com firefox"
+task :test_firefox_browser do
+    ENV['BROWSER'] = 'firefox'
+    ENV['ENVIRONMENT'] = 'marcelo'
+    ENV['BRANCH'] = '3.14.20'
+    sh 'rspec -fd --tag add_note_and_check_list --format html --out log/reports/spec.html'
+    #sh 'allure serve log/reports'
+end
+
+ # 'marcelo = 69aed2821f3005236e13b1360f99cf34'
+ # 'qc = 016f3a3fbedd5b5a08b7debbdc0b8de8'
+ # 'uat = 72975dc53fdc7afce36bccc09670f8c0'
+ # 'marcos = da8b09661336ada903273334cc64ebf1'
+ # 'thiago = b109d4ae6352974e71f26a04054720d1'
+ # 'marcel = 19b142a310a2facdc62db067ac0889c0'
+
+desc "rodar dev marcelo com chrome"
+task :test_chrome_browser do
+    ENV['BROWSER'] = 'chrome'
+    ENV['ENVIRONMENT'] = 'marcel'
+    ENV['BRANCH'] = 'current'
+    ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
+    sh 'rspec -fd --tag master --format html --out log/reports/spec2.html'
+    #sh 'allure serve log/reports'
+end
+
+desc "rodar dev marcelo com chrome headless"
+task :test_headless_browser do
+    ENV['BROWSER'] = 'chrome headless'
+    ENV['ENVIRONMENT'] = 'marcel'
+    ENV['BRANCH'] = 'current'
+    ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
+    sh 'rspec -fd --tag master --format html --out log/reports/spec2.html'
+    #sh 'allure serve log/reports'
+end 
+    
