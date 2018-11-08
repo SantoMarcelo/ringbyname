@@ -38,7 +38,6 @@ describe('Contact Card', :master) do
       end
       e.step('then I should see the filtred list') do
         puts '  then I should see the filtred list'
-        expect(home.contact).to 
         expect(home.validate_contact_list(@contacts[2])).to eql true
       end
       e.step('when I clear search field') do
