@@ -4,7 +4,7 @@ require_relative '../pages/login/login'
 require_relative '../pages/main/home'
 require_relative '../pages/login/reset_password'
 # :full_login
-describe('Login in application', :master1) do
+describe('Login in application', :master) do
   before(:all) do
     # remover usuário no banco de dados
     # mongodb://usuario:senha@servidor:porta/banco_de_dados
