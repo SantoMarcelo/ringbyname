@@ -8,7 +8,7 @@ require_relative '../../../../pages/main/contacts/features/notes/contact_notes'
 require_relative '../../../../sections/main/contacts/features/notes/contact_notes'
 
 #miniapp_crm_geral :quick_notes_general
-describe('Quick Notes', :master  ) do
+describe('Quick Notes', :master1  ) do
   before do
     Capybara.page.driver.browser.manage.window.maximize
     login_page.load
