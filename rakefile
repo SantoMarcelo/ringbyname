@@ -40,6 +40,6 @@ task :run_tests do
     ENV['ENVIRONMENT'] = 'marcel'
     ENV['BRANCH'] = 'current'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag success_login --format html --out log/reports/spec.html'
+    sh 'rspec -fd --tag master --format html --out log/reports/spec.html'
     #sh 'allure serve log/reports'
 end 
