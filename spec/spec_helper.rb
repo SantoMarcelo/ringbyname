@@ -10,7 +10,7 @@ require 'httparty'
 require 'capybara-bootstrap-datepicker/rspec'
 #require 'capybara-bootstrap-datepicker/rspec'
 #require 'mysql'
-require 'CouchRest'
+#require 'CouchRest'
 require 'json'
 #adicionar na master
 require_relative 'helpers'
