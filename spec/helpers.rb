@@ -1,7 +1,7 @@
 
 module Helpers
   def get_screenshot
-    target = 'log/inprogress/temp.png'
+    target = 'log/reports/temp.png'
     sleep(1)
     File.new(page.save_screenshot(File.join(Dir.pwd, target)))
   end
