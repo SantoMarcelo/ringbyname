@@ -15,7 +15,7 @@ describe('Contact Card', :master) do
     home.wait_until_user_status_visible
     @contacts = get_contacts()
     admin_user = get_admin()
-  end
+  end 
   describe('search contacts', :search_contacts) do
     it('search contact by name and by phone', :search_by_name_and_phone) do |e|
       e.step('when I on home page') do
@@ -38,6 +38,7 @@ describe('Contact Card', :master) do
       end
       e.step('then I should see the filtred list') do
         puts '  then I should see the filtred list'
+        expect(home.contact).to 
         expect(home.validate_contact_list(@contacts[2])).to eql true
       end
       e.step('when I clear search field') do
