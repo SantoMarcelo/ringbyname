@@ -20,7 +20,7 @@ task :test_chrome_browser do
     ENV['ENVIRONMENT'] = 'marcel'
     ENV['BRANCH'] = 'current'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag edit_oppo_miniapp --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag cc_add_opportunity_validations --format html --out log/reports/spec2.html'
     #sh 'allure serve log/reports'
 end
 
@@ -30,7 +30,7 @@ task :test_headless_browser do
     ENV['ENVIRONMENT'] = 'marcel'
     ENV['BRANCH'] = 'current'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag opportunity_general --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag cc_general_opportunity --format html --out log/reports/spec2.html'
     #sh 'allure serve log/reports'
 end 
     

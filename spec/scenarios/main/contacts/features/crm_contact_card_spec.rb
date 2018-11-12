@@ -6,11 +6,11 @@ require_relative '../../../../pages/main/contacts/contact'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 #opportunity_general
 #cc_general_opportunity - :opportunity_general 
-describe('Contact Card - CRM Opportunity', :cc_general_opportunity) do
+describe('Contact Card - CRM Opportunity', :master) do
   before do
     system("mysql -h mysql.#{$environment}-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/delete_opportunity.sql")
     Capybara.page.driver.browser.manage.window.maximize
-    set_user_data(get_admin())
+    #set_user_data(get_admin())
     
     login_page.load
     login_page.do_login(get_admin())
@@ -288,42 +288,22 @@ describe('Contact Card - CRM Opportunity', :cc_general_opportunity) do
 
     end
     it('verify validations when insert opportunity', :cc_add_opportunity_validations) do |e|
+      puts 'verify validations when insert opportunity'
       e.step('given when I on contactr card page') do
+        puts '  given when I on contactr card page'
         home.wait_until_contact_visible
         sleep(2)
         home.select_contact(@contacts[0])
         contact.wait_until_contact_card_visible
       end
       e.step('and I add a oportunity') do
+        puts '  and I add a oportunity'
         contact.access_crm
       end
-      e.step('when I try to inser opportunity without name') do
-       puts 'when I try to inser opportunity without name'
-        contact.oppo_form.select_oppo_prob.send_keys :tab
-        contact.oppo_form.txt_oppo_product.send_keys :tab
-        contact.oppo_form.txt_oppo_price.send_keys :tab
-        contact.oppo_form.select_oppo_next_action.send_keys :tab
-        contact.oppo_form.date_oppo_follow_up.send_keys :tab
-        contact.oppo_form.date_close_date.send_keys :tab
-        contact.oppo_form.txt_oppo_comment.send_keys :tab
-
-        contact.oppo_form.btn_oppo_save.click
-      end
-      e.step('then I see a validation message') do
-        contact.wait_until_message_visible
-        expect(home.message.text).to eql 'Please provide the opportunity name.'
-      end
+      
       e.step('when I try to inser opportunity without source') do
-        puts 'when I try to inser opportunity without source'
+        puts '  when I try to inser opportunity without source'
         contact.wait_until_message_invisible
-        contact.oppo_form.select_oppo_next_action.send_keys [:shift, :tab]
-        contact.oppo_form.txt_oppo_price.send_keys [:shift, :tab]
-        contact.oppo_form.txt_oppo_product.send_keys [:shift, :tab]
-        contact.oppo_form.select_oppo_prob.send_keys [:shift, :tab]
-        contact.oppo_form.select_oppo_status.send_keys [:shift, :tab]
-        contact.oppo_form.select_oppo_source.send_keys [:shift, :tab]
-
-        contact.oppo_form.txt_oppo_name.set 'Oportunity Validations'
 
         contact.oppo_form.select_oppo_prob.send_keys :tab
         contact.oppo_form.txt_oppo_product.send_keys :tab
@@ -336,11 +316,12 @@ describe('Contact Card - CRM Opportunity', :cc_general_opportunity) do
         contact.oppo_form.btn_oppo_save.click
       end
       e.step('then I see a validation message') do
+        puts '  then I see a validation message'
         contact.wait_until_message_visible
         expect(home.message.text).to eql 'Invalid opportunity source.'
       end
       e.step('when I try to inser opportunity without status') do
-        puts 'when I try to inser opportunity without status'
+        puts '  when I try to inser opportunity without status'
         contact.wait_until_message_invisible
         contact.oppo_form.select_oppo_next_action.send_keys [:shift, :tab]
         contact.oppo_form.txt_oppo_price.send_keys [:shift, :tab]
@@ -358,11 +339,12 @@ describe('Contact Card - CRM Opportunity', :cc_general_opportunity) do
         contact.oppo_form.btn_oppo_save.click
       end
       e.step('then I see a validation message') do
+        puts '  then I see a validation message'
         contact.wait_until_message_visible
         expect(home.message.text).to eql 'Please provide a valid status.'
       end
       e.step('when I try to inser opportunity without probability') do
-        puts 'when I try to inser opportunity without probability'
+        puts '  when I try to inser opportunity without probability'
         contact.wait_until_message_invisible
         contact.oppo_form.select_oppo_next_action.send_keys [:shift, :tab]
         contact.oppo_form.txt_oppo_price.send_keys [:shift, :tab]
@@ -380,11 +362,12 @@ describe('Contact Card - CRM Opportunity', :cc_general_opportunity) do
         contact.oppo_form.btn_oppo_save.click
       end
       e.step('then I see a validation message') do
+        ' then I see a validation message'
         contact.wait_until_message_visible
         expect(contact.message.text).to eql 'Please provide a valid probability.'
        end
       e.step('when I try to inser opportunity without next action') do
-        puts 'when I try to inser opportunity without next action'
+        puts '  when I try to inser opportunity without next action'
         contact.wait_until_message_invisible
         contact.oppo_form.select_oppo_next_action.send_keys [:shift, :tab]
         contact.oppo_form.txt_oppo_price.send_keys [:shift, :tab]
@@ -402,9 +385,22 @@ describe('Contact Card - CRM Opportunity', :cc_general_opportunity) do
         contact.oppo_form.btn_oppo_save.click
       end
       e.step('then I see a validation message') do
+        puts '  then I see a validation message'
         contact.wait_until_message_visible
         expect(contact.message.text).to eql 'Please provide a valid next action.'
       end
+      e.step('when I try to inser opportunity without name') do
+        puts ' when I try to inser opportunity without name'
+        contact.wait_until_message_invisible
+        contact.oppo_form.select_oppo_next_action.find('option', text: 'Phone Call').select_option
+ 
+         contact.oppo_form.btn_oppo_save.click
+       end
+       e.step('then I see a validation message') do
+         ' then I see a validation message'
+         contact.wait_until_message_visible
+         expect(home.message.text).to eql 'Please provide the opportunity name.'
+       end
     end
     after() do
       system("mysql -h mysql.#{$environment}-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/delete_opportunity.sql")
