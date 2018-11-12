@@ -755,7 +755,7 @@ describe('CRM - Opportunity', :master  ) do
        end
     end
     after() do
-      #system("mysql -h mysql.#{$environment}-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/delete_opportunity.sql")
+      system("mysql -h mysql.#{$environment}-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/delete_opportunity.sql")
       Capybara.reset_sessions!
     end
   end
