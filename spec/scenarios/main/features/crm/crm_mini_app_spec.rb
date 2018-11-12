@@ -5,7 +5,7 @@ require_relative '../../../../pages/login/reset_password'
 require_relative '../../../../pages/main/contacts/contact'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 #miniapp_crm_geral - :opportunity_general 
-describe('CRM - Opportunity', :master  ) do
+describe('CRM - Opportunity', :miniapp_crm_geral  ) do
   before do
     # if users.get_number_of_crm_licenses == 0
     #   provisioning('account','crm_licenses', '1')
@@ -224,137 +224,138 @@ describe('CRM - Opportunity', :master  ) do
     end
     it('seacrch by opportunity name', :miniapp_serach_by_name) do |e|
       puts '  seacrch by opportunity name'
-       e.step('When I access mini app and search by name') do
+       e.step(' When I access mini app and search by name') do
          home.access_crm
          crm_mini_app.crm_container.wait_for_opportunity_list
          crm_mini_app.crm_container.txt_search.set(@opportunity1[:name])
          crm_mini_app.crm_container.btn_apply.click
          sleep(1)
        end
-       e.step('  then I can see only the searched opportunity') do
+       e.step('then I can see only the searched opportunity') do
+        '  then I can see only the searched opportunity'
          puts @opportunity1[:contact_owner]
          expect(crm_mini_app.validate_opportunity_list(@opportunity1)).to eql true
          sleep 10
        end
     end
     it('search opportunity by status', :miniapp_serach_by_status) do |e|
-      puts 'search opportunity by status'
+      puts '  search opportunity by status'
       e.step('when I search by Attempted status') do
-        puts 'search by Attempted status'
+        puts '  search by Attempted status'
         home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'Attempted').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with Attempted status') do
-        puts 'the I can see only opportunity with Attempted status'
+      e.step('then I can see only opportunity with Attempted status') do
+        puts '  then I can see only opportunity with Attempted status'
         expect(crm_mini_app.validate_opportunity_list(@opportunity1)).to eql true
       end
       e.step('when I search by Contacted status') do
-        puts 'search by Contacted status'
+        puts '  search by Contacted status'
         home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'Contacted').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with Contacted status') do
-        puts 'the I can see only opportunity with Contacted status'
+      e.step('then I can see only opportunity with Contacted status') do
+        puts '  then I can see only opportunity with Contacted status'
         
         expect(crm_mini_app.validate_opportunity_list(@opportunity2)).to eql true
       end
       e.step('when I search by Qualified status') do
-        puts 'search by Qualified status'
+        puts '  search by Qualified status'
         home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'Qualified').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with Qualified status') do
-        puts 'the I can see only opportunity with Qualified status'
+      e.step('then I can see only opportunity with Qualified status') do
+        puts '  then I can see only opportunity with Qualified status'
         
         expect(crm_mini_app.validate_opportunity_list(@opportunity3)).to eql true
       end
       e.step('when I search by Unqualified status') do
-        puts 'search by Unqualified status'
+        puts '  search by Unqualified status'
         home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'Unqualified').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with Unqualified status') do
-        puts 'the I can see only opportunity with Unqualified status'
+      e.step('then I can see only opportunity with Unqualified status') do
+        puts '  then I can see only opportunity with Unqualified status'
         
         expect(crm_mini_app.validate_opportunity_list(@opportunity4)).to eql true
       end
       e.step('when I search by Dead status') do
-        puts 'search by Dead status'
+        puts '  search by Dead status'
         home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'Dead').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with Dead status') do
-        puts 'the I can see only opportunity with Dead status'
+      e.step('then I can see only opportunity with Dead status') do
+        puts '  then I can see only opportunity with Dead status'
         
         expect(crm_mini_app.validate_opportunity_list(@opportunity5)).to eql true
       end
       e.step('when I search by Quoted status') do
-        puts 'search by Quoted status'
+        puts '  search by Quoted status'
         home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'Quoted').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with Quoted status') do
-        puts 'the I can see only opportunity with Quoted status'
+      e.step('then I can see only opportunity with Quoted status') do
+        puts '  then I can see only opportunity with Quoted status'
         
         expect(crm_mini_app.validate_opportunity_list(@opportunity6)).to eql true
       end
       e.step('when I search by Negotiating status') do
-        puts 'search by Negotiating status'
+        puts '  search by Negotiating status'
         home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'Negotiating').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with Negotiating status') do
-        puts 'the I can see only opportunity with Negotiating status'
+      e.step('then I can see only opportunity with Negotiating status') do
+        puts '  then I can see only opportunity with Negotiating status'
         
         expect(crm_mini_app.validate_opportunity_list(@opportunity7)).to eql true
       end
       e.step('when I search by Closed Won status') do
-        puts 'search by Closed Won status'
+        puts '  search by Closed Won status'
         home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'Closed Won').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with Closed Won status') do
-        puts 'the I can see only opportunity with Closed Won status'
+      e.step('then I can see only opportunity with Closed Won status') do
+        puts '  then I can see only opportunity with Closed Won status'
         
         expect(crm_mini_app.validate_opportunity_list(@opportunity8)).to eql true
       end
       e.step('when I search by Closed Lost status') do
-        puts 'search by Closed Lost status'
+        puts '  search by Closed Lost status'
         home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'Closed Lost').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with Closed Lost status') do
-        puts 'the I can see only opportunity with Closed Lost status'
+      e.step('then I can see only opportunity with Closed Lost status') do
+        puts '  then I can see only opportunity with Closed Lost status'
         
         expect(crm_mini_app.validate_opportunity_list(@opportunity9)).to eql true
       end
       e.step('when I search by All Open status') do
         puts 'search by All Open status'
-        home.access_crm
+        home.a  ccess_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'All Open').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)
       end
-      e.step('the I can see only opportunity with All Open status') do
-        puts 'the I can see only opportunity with All Open status'
+      e.step('then I can see only opportunity with All Open status') do
+        puts '  then I can see only opportunity with All Open status'
         expect(crm_mini_app.validate_opportunity_list(@opportunity8)).to eql false
         expect(crm_mini_app.validate_opportunity_list(@opportunity9)).to eql false
       end
@@ -371,11 +372,11 @@ describe('CRM - Opportunity', :master  ) do
     end
     it('validate mini app pagination', :mini_app_pagination) do |e|
       e.step('and I access crm mini app') do
-        puts 'and I access crm mini app'
+        puts '  and I access crm mini app'
         home.access_crm
       end
       e.step('when I change the opportunity page') do
-        puts 'when I change the opportunity page'
+        puts '  when I change the opportunity page'
         crm_mini_app.crm_container.wait_for_opportunity_list
         crm_mini_app.crm_container.wait_for_pagination
         sleep 1
@@ -383,19 +384,19 @@ describe('CRM - Opportunity', :master  ) do
         sleep(2)
       end
       e.step('then I can see the second page of opportunity') do
-        puts 'then I can see the second page of opportunity'
+        puts '  then I can see the second page of opportunity'
         crm_mini_app.crm_container.wait_for_opportunity_list
         expect(crm_mini_app.validate_opportunity_list(@opportunity13)).to eql true
         expect(crm_mini_app.validate_opportunity_list(@opportunity14)).to eql true
         expect(crm_mini_app.validate_opportunity_list(@opportunity15)).to eql true
       end
       e.step('when I return to the first page') do
-        puts 'when I return to the first page'
+        puts '  when I return to the first page'
         crm_mini_app.goto_page(1)
         sleep(2)
       end
       e.step('then I can see the first page of opportunity') do
-        puts 'then I can see the first page of opportunity'
+        puts '  then I can see the first page of opportunity'
         crm_mini_app.crm_container.wait_for_opportunity_list
         expect(crm_mini_app.validate_opportunity_list(@opportunity1)).to eql true
         expect(crm_mini_app.validate_opportunity_list(@opportunity2)).to eql true
@@ -421,19 +422,19 @@ describe('CRM - Opportunity', :master  ) do
     end
     it('validate opportunity ordering') do |e|
       e.step('when I have a unordered opportunity list') do
-        puts 'when I have a unordered opportunity list'
+        puts '  when I have a unordered opportunity list'
         home.access_crm
         expect(crm_mini_app.crm_container.title.text).to eql 'CRM'
         crm_mini_app.crm_container.wait_for_opportunity_list
       end
       e.step('and I sort by ascending opportunity name') do
-        puts 'and I sort by asendingc opportunity name'
+        puts '  and I sort by asendingc opportunity name'
         crm_mini_app.crm_container.list_header_name.click
         crm_mini_app.crm_container.wait_for_sort_asc_indicator
         sleep 2
       end
       e.step('then I should see the list sorted in ascending order') do
-        puts 'then I should see the list sorted in ascending order'
+        puts '  then I should see the list sorted in ascending order'
         expect(crm_mini_app.crm_container.has_css?('.caret.active.asc')).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity1, 0)).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity10, 1)).to eql true
@@ -445,13 +446,13 @@ describe('CRM - Opportunity', :master  ) do
         expect(crm_mini_app.validate_list_ordenation(@opportunity7, 7)).to eql true
       end
       e.step('and I sort by descending opportunity name') do
-        puts 'and I sort by descending opportunity name'
+        puts '  and I sort by descending opportunity name'
         crm_mini_app.crm_container.list_header_name.click
         crm_mini_app.crm_container.wait_for_sort_desc_indicator
         sleep 2
       end
       e.step('then I should see the list sorted in ascending order') do
-        puts 'then I should see the list sorted in ascending order'
+        puts '  then I should see the list sorted in ascending order'
         expect(crm_mini_app.crm_container.has_css?('.caret.active.up.desc')).to eql true 
         expect(crm_mini_app.validate_list_ordenation(@opportunity7, 0)).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity6, 1)).to eql true
@@ -463,13 +464,13 @@ describe('CRM - Opportunity', :master  ) do
         expect(crm_mini_app.validate_list_ordenation(@opportunity1, 7)).to eql true
       end
       e.step('when I sort by acensding follow-up date') do
-        puts 'when I sort by acensding follow-up date'
+        puts '  when I sort by acensding follow-up date'
         crm_mini_app.crm_container.list_header_followup.click
         crm_mini_app.crm_container.wait_for_sort_asc_indicator
         sleep 2
       end
       e.step('then I should see the list sorted by ascending follow-up date') do
-        puts 'then I should see the list ordered by ascending follow-up date'
+        puts '  then I should see the list ordered by ascending follow-up date'
         expect(crm_mini_app.crm_container.has_css?('.caret.active.asc')).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity1, 0)).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity2, 1)).to eql true
@@ -481,13 +482,13 @@ describe('CRM - Opportunity', :master  ) do
         expect(crm_mini_app.validate_list_ordenation(@opportunity10, 7)).to eql true
       end
       e.step('when I sort by descending follow-up date') do
-        puts 'when I sort by descending follow-up date'
+        puts '  when I sort by descending follow-up date'
         crm_mini_app.crm_container.list_header_followup.click
         crm_mini_app.crm_container.wait_for_sort_desc_indicator
         sleep 2
       end
       e.step('then I should see the list sorted by descending follow-up date') do
-        puts 'then I should see the list ordered by descending follow-up date'
+        puts '  then I should see the list ordered by descending follow-up date'
         expect(crm_mini_app.crm_container.has_css?('.caret.active.up.desc')).to eql true 
         expect(crm_mini_app.validate_list_ordenation(@opportunity10, 0)).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity7, 1)).to eql true
@@ -499,13 +500,13 @@ describe('CRM - Opportunity', :master  ) do
         expect(crm_mini_app.validate_list_ordenation(@opportunity1, 7)).to eql true
       end
       e.step('when I sort by ascending Close date') do
-        puts 'when I sort by ascending Close date'
+        puts '  when I sort by ascending Close date'
         crm_mini_app.crm_container.list_header_close_date.click
         crm_mini_app.crm_container.wait_for_sort_asc_indicator
         sleep 2
       end
       e.step('then I should see the list ordered by ascending close date') do
-        puts 'then I should see the list ordered by ascending close date'
+        puts '  then I should see the list ordered by ascending close date'
         expect(crm_mini_app.crm_container.has_css?('.caret.active.asc')).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity1, 0)).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity2, 1)).to eql true
@@ -518,13 +519,13 @@ describe('CRM - Opportunity', :master  ) do
       
       end
       e.step('when I sort by descending Close date') do
-        puts 'when I sort by descending Close date'
+        puts '  when I sort by descending Close date'
         crm_mini_app.crm_container.list_header_close_date.click
         crm_mini_app.crm_container.wait_for_sort_desc_indicator
         sleep 2
       end
       e.step('then I should see the list ordered by descending close date') do
-        puts 'then I should see the list ordered by descending close date'
+        puts '  then I should see the list ordered by descending close date'
         expect(crm_mini_app.crm_container.has_css?('.caret.active.up.desc')).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity10, 0)).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity7, 1)).to eql true
@@ -536,13 +537,13 @@ describe('CRM - Opportunity', :master  ) do
         expect(crm_mini_app.validate_list_ordenation(@opportunity1, 7)).to eql true
       end
       e.step('when I sort by ascending price/cost') do
-        puts 'when I sort by ascending price/cost'
+        puts '  when I sort by ascending price/cost'
         crm_mini_app.crm_container.list_header_cost.click
         crm_mini_app.crm_container.wait_for_sort_asc_indicator
         sleep 2
       end  
       e.step('then I should see the list ordered by ascending price/cost') do
-        puts 'then I should see the list ordered by ascending price/cost'
+        puts '  then I should see the list ordered by ascending price/cost'
         expect(crm_mini_app.crm_container.has_css?('.caret.active.asc')).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity1, 0)).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity2, 1)).to eql true
@@ -554,13 +555,13 @@ describe('CRM - Opportunity', :master  ) do
         expect(crm_mini_app.validate_list_ordenation(@opportunity10, 7)).to eql true
       end
       e.step('when I sort by descending price/cost') do
-        puts 'when I sort by descending price/cost'
+        puts '  when I sort by descending price/cost'
         crm_mini_app.crm_container.list_header_cost.click
         crm_mini_app.crm_container.wait_for_sort_desc_indicator
         sleep 2
       end
       e.step('then I should see the list ordered by descending price/cost') do
-        puts 'then I should see the list ordered by descending price/cost'
+        puts '  then I should see the list ordered by descending price/cost'
         expect(crm_mini_app.validate_list_ordenation(@opportunity10, 0)).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity7, 1)).to eql true
         expect(crm_mini_app.validate_list_ordenation(@opportunity6, 2)).to eql true
@@ -727,18 +728,18 @@ describe('CRM - Opportunity', :master  ) do
     end
     it('validate opportunity details visualization') do |e|
       e.step('Given when I on home page and access CRM mini app') do
-        puts 'Given when I on home page and access CRM mini app'
+        puts '  Given when I on home page and access CRM mini app'
         home.access_crm
         crm_mini_app.crm_container.wait_for_opportunity_list_column
         expect(crm_mini_app.crm_container.title.text).to eql 'CRM'
       end
       e.step('and I select a oportunity to see your details') do
-        puts 'and I select a oportunity to see your details'
+        puts '  and I select a oportunity to see your details'
         crm_mini_app.select_opportunity(@opportunity1)
         sleep 2
       end
       e.step('then I should see all informations about the opportunity')do
-        puts 'then I should see all informations about the opportunity'
+        puts '  then I should see all informations about the opportunity'
         crm_mini_app.oppo_details.wait_for_opportunity_name
         expect(crm_mini_app.oppo_details.contact).to have_content(@admin_user[:full_name])
         expect(crm_mini_app.oppo_details.title).to have_content(@opportunity1[:name]) 
@@ -782,19 +783,19 @@ describe('CRM - Opportunity', :master  ) do
     it('edit opportunity through CRM mini app', :edit_oppo_miniapp) do |e|
       puts 'edit opportunity by CRM mini app'
       e.step('Given when I on home page and access CRM mini app') do
-        puts 'Given when I on home page and access CRM mini app'
+        puts '  Given when I on home page and access CRM mini app'
         home.access_crm
         crm_mini_app.crm_container.wait_for_opportunity_list_column
         expect(crm_mini_app.crm_container.title.text).to eql 'CRM'
       end
       e.step('and I select a oportunity to edit') do
-        puts 'and I select a oportunity to edit'
+        puts '  and I select a oportunity to edit'
         crm_mini_app.select_opportunity(@opportunity1)
         sleep 1
         crm_mini_app.crm_container.edit_icon.click
       end
       e.step('when I edit an opportunity') do
-        puts 'when I edit an opportunity'
+        puts '  when I edit an opportunity'
         crm_mini_app.oppo_form.wait_for_txt_oppo_name
         expect(crm_mini_app.crm_container.title.text).to eql 'CRM'
         crm_mini_app.oppo_form.txt_oppo_name.set(@opportunity_edited[:name])
@@ -817,8 +818,10 @@ describe('CRM - Opportunity', :master  ) do
         crm_mini_app.oppo_form.btn_oppo_save.click
       end
       e.step('then I check if was updated correctly ') do
-        puts 'then I check if was updated correctly '
+        puts '  then I check if was updated correctly '
+        home.wait_until_message_visible
         expect(home.message.text).to eql 'Opportunity updated.'
+        home.wait_until_message_invisible
         sleep 1
         crm_mini_app.oppo_details.wait_for_opportunity_name
         expect(crm_mini_app.oppo_details.contact).to have_content(@admin_user[:full_name])
@@ -840,20 +843,20 @@ describe('CRM - Opportunity', :master  ) do
     end
     it('validations in opportunity edit through CRM mini app', :validations_edit_oppo) do |e|
       e.step('Given when I on home page and access CRM mini app') do
-        puts 'Given when I on home page and access CRM mini app'
+        puts '  Given when I on home page and access CRM mini app'
         home.access_crm
         crm_mini_app.crm_container.wait_for_opportunity_list_column
         expect(crm_mini_app.crm_container.title.text).to eql 'CRM'
       end
       e.step('and I select a oportunity to edit') do
-        puts 'and I select a oportunity to edit'
+        puts '  and I select a oportunity to edit'
         crm_mini_app.select_opportunity(@opportunity1)
         sleep 1
         crm_mini_app.crm_container.edit_icon.click
 
       end
       e.step('when I try to save with empty opportunity name') do
-        puts 'when I try to save with empty opportunity name'
+        puts '  when I try to save with empty opportunity name'
         crm_mini_app.oppo_form.wait_for_txt_oppo_name
         crm_mini_app.oppo_form.txt_oppo_name.set("")
         crm_mini_app.oppo_form.select_oppo_prob.send_keys :tab
@@ -865,7 +868,7 @@ describe('CRM - Opportunity', :master  ) do
         crm_mini_app.oppo_form.btn_oppo_save.click
       end
       e.step('then I should see the validation message') do
-        puts 'then I should see the validation message'
+        puts '  then I should see the validation message'
         expect(home.message.text).to eql 'Please provide the opportunity name.'
       end
     end
