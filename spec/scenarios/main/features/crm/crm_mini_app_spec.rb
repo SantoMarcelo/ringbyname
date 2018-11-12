@@ -223,7 +223,7 @@ describe('CRM - Opportunity', :miniapp_crm_geral  ) do
       crm_mini_app.insert_opportunity(admin_user, 9)
     end
     it('seacrch by opportunity name', :miniapp_serach_by_name) do |e|
-      puts '  seacrch by opportunity name'
+      puts 'seacrch by opportunity name'
        e.step(' When I access mini app and search by name') do
          home.access_crm
          crm_mini_app.crm_container.wait_for_opportunity_list
@@ -239,7 +239,7 @@ describe('CRM - Opportunity', :miniapp_crm_geral  ) do
        end
     end
     it('search opportunity by status', :miniapp_serach_by_status) do |e|
-      puts '  search opportunity by status'
+      puts 'search opportunity by status'
       e.step('when I search by Attempted status') do
         puts '  search by Attempted status'
         home.access_crm
@@ -348,8 +348,8 @@ describe('CRM - Opportunity', :miniapp_crm_geral  ) do
         expect(crm_mini_app.validate_opportunity_list(@opportunity9)).to eql true
       end
       e.step('when I search by All Open status') do
-        puts 'search by All Open status'
-        home.a  ccess_crm
+        puts '  search by All Open status'
+        home.access_crm
         crm_mini_app.crm_container.select_filter.find('option', text: 'All Open').select_option
         crm_mini_app.crm_container.btn_apply.click
         sleep(1)

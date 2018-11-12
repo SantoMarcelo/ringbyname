@@ -56,7 +56,6 @@ class CrmMiniApp < SitePrism::Page
   def select_opportunity(opportunity)
     crm_container.wait_for_opportunity_list
     crm_container.opportunity_list.each do |u|
-      puts u.text
         if u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:price]) && u.text.include?(opportunity[:status])
           u.click
         break
