@@ -5,7 +5,7 @@ require_relative '../../../../pages/login/reset_password'
 require_relative '../../../../pages/main/contacts/contact'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 #miniapp_crm_geral - :opportunity_general 
-describe('CRM - Opportunity', :miniapp_crm_geral  ) do
+describe('CRM - Opportunity', :master  ) do
   before do
     # if users.get_number_of_crm_licenses == 0
     #   provisioning('account','crm_licenses', '1')
@@ -217,7 +217,7 @@ describe('CRM - Opportunity', :miniapp_crm_geral  ) do
       contact_owner: admin_user[:full_name]
     }
   end
-  describe('search opportunit in mini app', :master) do
+  describe('search opportunit in mini app', :search_opportunity) do
     before do
       admin_user = get_admin()
       crm_mini_app.insert_opportunity(admin_user, 9)
