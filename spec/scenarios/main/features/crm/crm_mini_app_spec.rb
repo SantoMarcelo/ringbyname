@@ -217,7 +217,7 @@ describe('CRM - Opportunity', :miniapp_crm_geral  ) do
       contact_owner: admin_user[:full_name]
     }
   end
-  describe('search opportunit in mini app', :miniapp_search_oppo) do
+  describe('search opportunit in mini app', :master) do
     before do
       admin_user = get_admin()
       crm_mini_app.insert_opportunity(admin_user, 9)
