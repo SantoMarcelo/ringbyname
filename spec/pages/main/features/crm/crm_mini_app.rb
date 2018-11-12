@@ -156,7 +156,6 @@ class CrmMiniApp < SitePrism::Page
             'X-Version' => 'v2',
             'X-Session-Id' => session_id
         }
-         
         @opportunity = HTTParty.post(
             "http://api.#{$environment}-php56.dev.ringbyname.com/crm-opportunity?",
             body: opportunity.to_json,

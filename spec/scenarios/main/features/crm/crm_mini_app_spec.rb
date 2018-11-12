@@ -5,11 +5,11 @@ require_relative '../../../../pages/login/reset_password'
 require_relative '../../../../pages/main/contacts/contact'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 #miniapp_crm_geral - :opportunity_general 
-describe('CRM - Opportunity', :opportunity_general  ) do
+describe('CRM - Opportunity', :master  ) do
   before do
-    if users.get_number_of_crm_licenses == 0
-      provisioning('account','crm_licenses', '1')
-    end
+    # if users.get_number_of_crm_licenses == 0
+    #   provisioning('account','crm_licenses', '1')
+    # end
 
     system("mysql -h mysql.#{$environment}-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/delete_opportunity.sql")
     Capybara.page.driver.browser.manage.window.maximize
@@ -18,7 +18,7 @@ describe('CRM - Opportunity', :opportunity_general  ) do
     home.wait_until_home_features_visible
     home.wait_until_user_status_visible
     admin_user = get_admin()
-    set_user_data(admin_user)
+    #set_user_data(admin_user)
     followup = Date.today
     close_date = followup+1
     @opportunity1 = {
@@ -755,7 +755,7 @@ describe('CRM - Opportunity', :opportunity_general  ) do
        end
     end
     after() do
-      system("mysql -h mysql.#{$environment}-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/delete_opportunity.sql")
+      #system("mysql -h mysql.#{$environment}-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/delete_opportunity.sql")
       Capybara.reset_sessions!
     end
   end
