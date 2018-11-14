@@ -42,6 +42,7 @@ class QuickNote < Home
         item.click
         wait_until_modal_confirmation_text_visible
         btn_modal_confirmation_ok.click
+        wait_until_message_invisible
       end
     end
     def mark_as_read

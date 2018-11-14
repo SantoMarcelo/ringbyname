@@ -6,7 +6,7 @@ require_relative '../../../../pages/admin/setup/user/users'
 describe('validate Users Setup', :user_setup) do
   puts "cheguei no specs"
   before(:each) do
-   
+    
     login_page.load
     login_page.do_login(get_admin())
     home.wait_until_home_features_visible
@@ -15,54 +15,70 @@ describe('validate Users Setup', :user_setup) do
     admin_dashboard.wait_until_btn_continue_visible
     admin_dashboard.btn_continue.click
 
-    @user1 = {
-      extension: '101',
-      name: 'Dev Marcelo 1 User',
-      first_name: 'Dev Marcelo 1',
-      last_name: 'User',
-      email: 'devmarcelo.user1@ringbyname.com',
-      new_password: 'dsa654321',
-      type: 'R! User',
-      direct: '12392080525',
-      outbound_caller_id: '12392080525 (New user 9314129)',
-      voicemail_password: '1234',
-      number_of_rings: '5',
-      landline_name: 'Cellphone Test',
-      landline_number: '011554899999999',
-      device_username: 'Username: 9314129',
-      device_authname: 'Auth Name: 9314129',
-      device_password: 'Password: 123456asd',
-      device_sip: 'SIP Server: 1168173.sip.dev.ringbyname.com',
-      text_to_speech: 'Thanks for calling to Dev QC'
+    users = get_user(-1)
+    puts users
+    user0 = get_user(0)
+    user1 = get_user(1)
+    user2 = get_user(2)
+    user3 = get_user(3)
 
-    }
-    @user2 = {
-      username: 'devmarcelo.user2@ringbyname.com',
-      password: '123456asd',
-      extension: '102',
-      name: 'Dev Marcelo 2 User',
-      type: 'R! User',
-      direct: 'None'
-    }
-    @user3 = {
-      extension: '103',
-      name: 'Dev Marcelo 3 User',
-      type: 'R! Virtual User',
-      direct: 'None',
-      username: 'devmarcelo.user3@ringbyname.com',
-      password: '123456asd'
-    }
-    @user4 = {
-      extension: '104',
-      name: 'Dev Marcelo 4 User',
-      email: 'devmarcelo.user4@ringbyname.com',
-      type: 'R! Virtual User',
-      direct: 'None',
-      first_name: 'Dev Marcelo 4',
-      last_name: 'User',
-      username: 'devmarcelo.user4@ringbyname.com',
-      password: '123456asd'
-    }
+     
+    puts "##"
+    puts user0
+    puts "##"
+    puts user1
+    puts "##"
+    puts user2
+    puts "##"
+    puts user3
+    # @user1 = {
+    #   extension: '101',
+    #   name: 'Dev Marcelo 1 User',
+    #   first_name: 'Dev Marcelo 1',
+    #   last_name: 'User',
+    #   email: 'devmarcelo.user1@ringbyname.com',
+    #   new_password: 'dsa654321',
+    #   type: 'R! User',
+    #   direct: '12392080525',
+    #   outbound_caller_id: '12392080525 (New user 9314129)',
+    #   voicemail_password: '1234',
+    #   number_of_rings: '5',
+    #   landline_name: 'Cellphone Test',
+    #   landline_number: '011554899999999',
+    #   device_username: 'Username: 9314129',
+    #   device_authname: 'Auth Name: 9314129',
+    #   device_password: 'Password: 123456asd',
+    #   device_sip: 'SIP Server: 1168173.sip.dev.ringbyname.com',
+    #   text_to_speech: 'Thanks for calling to Dev QC'
+
+    # }
+    # @user2 = {
+    #   username: 'devmarcelo.user2@ringbyname.com',
+    #   password: '123456asd',
+    #   extension: '102',
+    #   name: 'Dev Marcelo 2 User',
+    #   type: 'R! User',
+    #   direct: 'None'
+    # }
+    # @user3 = {
+    #   extension: '103',
+    #   name: 'Dev Marcelo 3 User',
+    #   type: 'R! Virtual User',
+    #   direct: 'None',
+    #   username: 'devmarcelo.user3@ringbyname.com',
+    #   password: '123456asd'
+    # }
+    # @user4 = {
+    #   extension: '104',
+    #   name: 'Dev Marcelo 4 User',
+    #   email: 'devmarcelo.user4@ringbyname.com',
+    #   type: 'R! Virtual User',
+    #   direct: 'None',
+    #   first_name: 'Dev Marcelo 4',
+    #   last_name: 'User',
+    #   username: 'devmarcelo.user4@ringbyname.com',
+    #   password: '123456asd'
+    # }
     @user_changed = {
       username: 'devmarcelo.user1.CHANGED@ringbyname.com',
       password: 'dsa654321',

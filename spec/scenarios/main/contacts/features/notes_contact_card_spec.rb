@@ -22,6 +22,8 @@ describe('Contact Card - Notes', :cc_general_notes) do
     notes.home_features.notes.click
     expect(notes.note_list.title.text).to eql 'Notes'
     notes.delete_notes
+    notes.wait_until_message_invisible
+    puts "passei before"
   end
   describe('add notes thought contact card', :cc_add_notes) do
     it('add note and check in the note list', :cc_add_note_and_check_list) do |e|
@@ -130,9 +132,9 @@ describe('Contact Card - Notes', :cc_general_notes) do
       e.step('then I have to see the note inserted') do
         puts '  then I have to see the note inserted'
         expect(note_contact.validate_data_on_screen(note_contact.note_list.note_text_list, @note[:text])).to eql true
-        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_sent_to, @contacts[2][:full_name])).to eql true
+        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_sent_to, @contacts[1][:full_name])).to eql true
         expect(note_contact.validate_data_on_screen(note_contact.note_list.note_posted_by, @contacts[0][:full_name])).to eql true
-        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_shared_with, @contacts[2][:full_name])).to eql true
+        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_shared_with, @contacts[1][:full_name])).to eql true
       end
       e.step('and I have to see the insert note activity') do
         puts '  and I have to see the insert note activity'
@@ -151,9 +153,9 @@ describe('Contact Card - Notes', :cc_general_notes) do
         notes.wait_for_note_list
         notes.note_list.wait_for_note_posted_by
         expect(notes.validate_data_on_screen(notes.note_list.note_text_list, @note[:text])).to eql true
-        expect(notes.validate_data_on_screen(notes.note_list.note_sent_to, @contacts[2][:full_name])).to eql true
+        expect(notes.validate_data_on_screen(notes.note_list.note_sent_to, @contacts[1][:full_name])).to eql true
         expect(notes.validate_data_on_screen(notes.note_list.note_posted_by, @contacts[0][:full_name])).to eql true
-        expect(notes.validate_data_on_screen(notes.note_list.note_shared_with, @contacts[2][:full_name])).to eql true
+        expect(notes.validate_data_on_screen(notes.note_list.note_shared_with, @contacts[1][:full_name])).to eql true
         e.attach_file('screenshot', get_screenshot)
         notes.home_features.notes.click
       end
@@ -297,28 +299,35 @@ describe('Contact Card - Notes', :cc_general_notes) do
       e.step('then I have to see the note inserted') do
         puts '  then I have to see the note inserted'
         expect(note_contact.validate_data_on_screen(note_contact.note_list.note_text_list, @note[:text])).to eql true
-        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_sent_to, @contacts[2][:full_name])).to eql true
+        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_sent_to, @contacts[1][:full_name])).to eql true
         expect(note_contact.validate_data_on_screen(note_contact.note_list.note_posted_by, @contacts[0][:full_name])).to eql true
-        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_shared_with, @contacts[2][:full_name])).to eql true
+        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_shared_with, @contacts[1][:full_name])).to eql true
         expect(activity.my_activity).to have_css('i.rbn-icon-activity-note_insert')
       end
       e.step('when I loggin with user that note was shared') do
         puts '  when I loggin with user that note was shared'
         notes.logout
+        expect(page).to have_content('Sign in')
         login_page.do_login(get_user(1))
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
-        sleep 1
+        expect(page).to have_content('Available')
+        
       end
       e.step('then I have to see the note that was shared') do
         puts '  then I have to see the note that was shared'
+        expect(page).to have_css('#contact-list')
+        puts "COntact List"
+        expect(page).to have_content(@contacts[3][:full_name])
+        e.attach_file('screenshot', get_screenshot)
         home.select_contact(@contacts[0])
+        e.attach_file('screenshot', get_screenshot)
         note_contact.note_list.wait_for_note_text_list
         contact.contact_feature_list.note_list.click
         expect(note_contact.validate_data_on_screen(note_contact.note_list.note_text_list, @note[:text])).to eql true
-        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_sent_to, @contacts[2][:full_name])).to eql true
+        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_sent_to, @contacts[1][:full_name])).to eql true
         expect(note_contact.validate_data_on_screen(note_contact.note_list.note_posted_by,@contacts[0][:full_name])).to eql true
-        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_shared_with, @contacts[2][:full_name])).to eql true
+        expect(note_contact.validate_data_on_screen(note_contact.note_list.note_shared_with, @contacts[1][:full_name])).to eql true
       end
       e.step('when I mark as read this note') do
         puts '  when I mark as read this note'
@@ -379,7 +388,8 @@ describe('Contact Card - Notes', :cc_general_notes) do
       end
       e.step('then I have to see the noteS that were shared') do
         puts '  then I have to see the noteS that were shared' 
-        
+        expect(page).to have_css('#contact-list')
+        expect(page).to have_content(@contacts[3][:full_name])
         expect(page).to have_css('.rbn-icon-common-quick-notes[data-notifications-before="2"]')
         home.select_contact(@contacts[0])
         note_contact.note_list.wait_for_title
@@ -480,7 +490,7 @@ describe('Contact Card - Notes', :cc_general_notes) do
       e.step('when I loggin with coworker that note was shared') do
         puts '  when I loggin with coworker that note was shared'
         note_contact.logout
-        login_page.do_login(get_user(3))
+        login_page.do_login(get_user(1))
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
       end
@@ -569,7 +579,6 @@ describe('Contact Card - Notes', :cc_general_notes) do
     end
     after(:each) do
       home.select_contact(@contacts[0])
-      puts note_contact.note_list.note_icon_delete_list.length 
       if note_contact.note_list.note_icon_delete_list.length > 0
         note_contact.delete_notes
       else
@@ -642,6 +651,7 @@ describe('Contact Card - Notes', :cc_general_notes) do
     it('delete note that was shared', :cc_delete_shared_note) do |e|
       e.step('when I access contact card on home page') do
         puts '  when I access contact card on home page'
+        puts "selecionando as pressas"
         home.select_contact(@contacts[0])
       end
       e.step('and I select to add a new note') do
@@ -681,7 +691,7 @@ describe('Contact Card - Notes', :cc_general_notes) do
       e.step('when I loggin with coworker that note was shared') do
         puts '  when I loggin with coworker that note was shared'
         note_contact.logout
-        login_page.do_login(get_user(3))
+        login_page.do_login(get_user(1))
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
       end
@@ -717,7 +727,7 @@ describe('Contact Card - Notes', :cc_general_notes) do
       e.step('when I loggin with coworker that note was shared') do
         puts '  when I loggin with coworker that note was shared'
         notes.logout
-        login_page.do_login(get_user(3))
+        login_page.do_login(get_user(1))
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
       end

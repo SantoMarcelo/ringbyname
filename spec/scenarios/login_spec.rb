@@ -65,7 +65,7 @@ describe('Login in application', :master) do
       end
       e.step('then I have to see the validation message') do
         puts '  then I have to see the validation message'
-        login_page.wait_for_message
+        login_page.has_message?
         expect(login_page.message.text).to eql '"Username": Value is required and can\'t be empty'
         login_page.close_message.click
       end
@@ -75,7 +75,7 @@ describe('Login in application', :master) do
       end
       e.step('then I have to see the validation message') do
         puts '  then I have to see the validation message'
-        login_page.wait_for_message
+        login_page.has_message?
         expect(login_page.message.text).to eql '"Password": Value is required and can\'t be empty'
         login_page.close_message.click
       end
@@ -85,7 +85,7 @@ describe('Login in application', :master) do
       end
       e.step('then I have to see the validation message') do
         puts '  then I have to see the validation message'
-        login_page.wait_for_message
+        login_page.has_message?
         expect(login_page.message.text).to eql 'Sorry, you have entered invalid credentials. Please try again.'
         login_page.close_message.click
       end
@@ -95,7 +95,7 @@ describe('Login in application', :master) do
       end
       e.step('then I have to see the validation message') do
         puts '  then I have to see the validation message'
-        login_page.wait_for_message
+        login_page.has_message?
         expect(login_page.message.text).to eql 'Sorry, you have entered invalid credentials. Please try again.'
         login_page.close_message.click
       end

@@ -109,6 +109,7 @@ module Config
 
 #   #get all account users
   def get_user(index)
+   
     @all_users = Array.new
     i=0
   
@@ -135,7 +136,9 @@ module Config
       @all_users[i] = (user)
       i +=1
     end
-    return @all_users[index]
+    
+      return @all_users[index]
+    
   end
 
   def get_contacts

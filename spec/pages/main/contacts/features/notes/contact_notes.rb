@@ -13,7 +13,7 @@ class ContactNotes < Contact
   element :btn_modal_confirmation_ok, '.modal-dialog .modal-footer .btn-primary'
   element :btn_modal_confirmation_cancel, '.modal-dialog .modal-footer .btn-default'
 
-
+ 
   def validate_data_on_screen(list, data)
     list.each do |item|
       if item.text.include?(data)
