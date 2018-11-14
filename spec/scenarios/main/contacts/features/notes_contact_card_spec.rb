@@ -6,7 +6,7 @@ require_relative '../../../../pages/main/contacts/contact'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 #opportunity_general
 #cc_general_opportunity:quick_notes_general 
-describe('Contact Card - Notes', :cc_general_notes) do
+describe('Contact Card - Notes', :master) do
   before do
     Capybara.page.driver.browser.manage.window.maximize
     
