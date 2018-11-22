@@ -48,6 +48,7 @@ class Home < SitePrism::Page
     wait_until_contact_visible
     sleep 1
     self.contact.contact_list.each do |u|
+      
       if u.text.include?(contact[:full_name])
         return true
       end

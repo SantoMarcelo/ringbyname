@@ -9,6 +9,8 @@ require_relative '../../../../pages/admin/dashboard/dashboard'
 describe('Contact Card - Notes', :master) do
   before do
     Capybara.page.driver.browser.manage.window.maximize
+
+    clear_notes()
     
     login_page.load
     login_page.do_login(get_admin())
@@ -19,11 +21,7 @@ describe('Contact Card - Notes', :master) do
     @note = {
       text: 'Test Automatic Note' 
     }
-    notes.home_features.notes.click
-    expect(notes.note_list.title.text).to eql 'Notes'
-    notes.delete_notes
-    notes.wait_until_message_invisible
-    puts "passei before"
+  
   end
   describe('add notes thought contact card', :cc_add_notes) do
     it('add note and check in the note list', :cc_add_note_and_check_list) do |e|
@@ -123,6 +121,7 @@ describe('Contact Card - Notes', :master) do
         note_contact.feature_notes.note_send_to.click
         note_contact.feature_notes.wait_for_send_department_list
         note_contact.send_to_user(get_user(1))
+        expect(page).to have_content('Save')
         note_contact.feature_notes.btn_save.click
         note_contact.wait_until_message_visible
         expect(note_contact.message.text).to eql 'Note Inserted'
@@ -248,20 +247,21 @@ describe('Contact Card - Notes', :master) do
       end
     end
     after(:each) do
-      notes.home_features.notes.click
-      if notes.note_list.note_icon_delete_list.length > 0
-        notes.delete_notes
-      else
-        notes.logout
-        login_page.do_login(get_admin())
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
-        notes.home_features.notes.click
-        sleep 2
-        notes.wait_for_note_list
-        expect(notes.note_list.title.text).to eql 'Notes'
-        notes.delete_notes
-      end
+      clear_notes()
+      # notes.home_features.notes.click
+      # if notes.note_list.note_icon_delete_list.length > 0
+      #   notes.delete_notes
+      # else
+      #   notes.logout
+      #   login_page.do_login(get_admin())
+      #   home.wait_until_home_features_visible
+      #   home.wait_until_user_status_visible
+      #   notes.home_features.notes.click
+      #   sleep 2
+      #   notes.wait_for_note_list
+      #   expect(notes.note_list.title.text).to eql 'Notes'
+      #   notes.delete_notes
+      # end
       notes.logout
     end
   end
@@ -429,19 +429,20 @@ describe('Contact Card - Notes', :master) do
       end
     end
     after(:each) do
-      notes.home_features.notes.click
-      if notes.note_list.note_icon_delete_list.length > 0
-        notes.delete_notes
-      else
-        notes.logout
-        login_page.do_login(get_admin())
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
-        notes.home_features.notes.click
-        notes.note_list.wait_for_note_text_list
-        expect(notes.note_list.title.text).to eql 'Notes'
-        notes.delete_notes
-      end
+      clear_notes()
+      # notes.home_features.notes.click
+      # if notes.note_list.note_icon_delete_list.length > 0
+      #   notes.delete_notes
+      # else
+      #   notes.logout
+      #   login_page.do_login(get_admin())
+      #   home.wait_until_home_features_visible
+      #   home.wait_until_user_status_visible
+      #   notes.home_features.notes.click
+      #   notes.note_list.wait_for_note_text_list
+      #   expect(notes.note_list.title.text).to eql 'Notes'
+      #   notes.delete_notes
+      # end
       notes.logout
     end
   end
@@ -578,19 +579,20 @@ describe('Contact Card - Notes', :master) do
       end
     end
     after(:each) do
-      home.select_contact(@contacts[0])
-      if note_contact.note_list.note_icon_delete_list.length > 0
-        note_contact.delete_notes
-      else
-        notes.logout
-        login_page.do_login(get_admin())
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
-        home.select_contact(@contacts[0])
-        contact.contact_feature_list.note_list.click
-        expect(note_contact.note_list.title.text).to eql 'Notes'
-        note_contact.delete_notes
-      end
+      clear_notes()
+      # home.select_contact(@contacts[0])
+      # if note_contact.note_list.note_icon_delete_list.length > 0
+      #   note_contact.delete_notes
+      # else
+      #   notes.logout
+      #   login_page.do_login(get_admin())
+      #   home.wait_until_home_features_visible
+      #   home.wait_until_user_status_visible
+      #   home.select_contact(@contacts[0])
+      #   contact.contact_feature_list.note_list.click
+      #   expect(note_contact.note_list.title.text).to eql 'Notes'
+      #   note_contact.delete_notes
+      # end
       home.logout
     end
   end
@@ -712,8 +714,9 @@ describe('Contact Card - Notes', :master) do
         login_page.do_login(get_admin())
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
-        home.select_contact(@contacts[0])
         sleep 2
+        home.select_contact(@contacts[0])
+        
         e.attach_file('screenshot', get_screenshot)
         note_contact.note_list.wait_for_note_text_list
         note_contact.delete_notes

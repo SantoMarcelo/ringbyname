@@ -247,6 +247,50 @@ module Config
 
   end
 
+  def clear_notes
+    account_db = get_couch_account_db(@account_id)
+
+    @response = HTTParty.get("http://couchdb.#{ENV['ENVIRONMENT']}-voip.dev.ringbyname.com:5984/#{ account_db}/_design/ipx_notes/_view/listing")
+    note_list = JSON.parse(@response)
+    
+    note_list.each do |key, value|
+      if key == 'rows'
+        @note_list_item =  value
+      end
+    end
+    user = get_admin()
+    body_login = { 'data' => {
+      'username' => user[:username],
+      'password' => user[:password],
+      'stay_sign_in' => 0,
+      'timezone' => 'America/Sao_Paulo'
+    } }
+    headers = {
+      'X-Application-Id' => 'webapp',
+      'X-Version' => 'v2'
+    }
+
+    @response = HTTParty.post(
+      "http://api.#{$environment}-php56.dev.ringbyname.com/auth?",
+      body: body_login.to_json,
+      headers: headers
+    )
+
+    session_id = @response.parsed_response['data']['session_id']
+
+    headers = {
+      'X-Application-Id' => 'webapp',
+      'X-Version' => 'v2',
+      'X-Session-Id' => session_id
+    }
+
+    @note_list_item.each do |u|
+      @delete_response = HTTParty.delete("http://api.#{$environment}-php56.dev.ringbyname.com/note/index/#{u['id']}?",
+        headers: headers
+      )
+    end
+
+  end
 #   def set_user_data(user)
 
 #     body_login = { 'data' => {

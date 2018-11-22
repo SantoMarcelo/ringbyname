@@ -18,9 +18,9 @@ desc "rodar dev marcelo com chrome"
 task :test_chrome_browser do
     ENV['BROWSER'] = 'chrome'
     ENV['ENVIRONMENT'] = 'marcel'
-    ENV['BRANCH'] = 'current'
+    ENV['BRANCH'] = '3.15.25'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag cc_share_notes_through_email --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag cc_add_note_and_send_to_user --format html --out log/reports/spec2.html'
     #sh 'allure serve log/reports'
 end
 
@@ -28,9 +28,9 @@ desc "rodar dev marcelo com chrome headless"
 task :test_headless_browser do
     ENV['BROWSER'] = 'chrome headless'
     ENV['ENVIRONMENT'] = 'marcel'
-    ENV['BRANCH'] = 'current'
+    ENV['BRANCH'] = '3.15.25'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag cc_share_notes_through_email --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag cc_add_note_and_send_to_user --format html --out log/reports/spec2.html'
     #sh 'allure serve log/reports'
 end 
     
@@ -38,8 +38,8 @@ desc "Run jenkins code"
 task :run_tests do
     ENV['BROWSER'] = 'chrome headless'
     ENV['ENVIRONMENT'] = 'marcel'
-    ENV['BRANCH'] = 'current'
+    ENV['BRANCH'] = '3.15.25'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag cc_share_notes_through_email --format html --out log/reports/spec.html'
+    sh 'rspec -fd --tag master --format html --out log/reports/spec.html'
     #sh 'allure serve log/reports'
 end 

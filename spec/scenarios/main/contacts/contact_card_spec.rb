@@ -30,6 +30,7 @@ describe('Contact Card', :master) do
       end
       e.step('then I should see the list filtred') do
         puts '  then I should see the list filtred'
+        expect(page).to have_css('.contacts')
         expect(home.validate_contact_list(@contacts[2])).to eql true
       end
       e.step('when I search a contact by phone') do
@@ -38,6 +39,7 @@ describe('Contact Card', :master) do
       end
       e.step('then I should see the filtred list') do
         puts '  then I should see the filtred list'
+        expect(page).to have_css('.contacts')
         expect(home.validate_contact_list(@contacts[2])).to eql true
       end
       e.step('when I clear search field') do
@@ -46,6 +48,7 @@ describe('Contact Card', :master) do
       end
       e.step('then I should see unfiltred list') do
         puts '  then I should see unfiltred list'
+        expect(page).to have_css('.contacts')
         expect(home.validate_contact_list(@contacts[0])).to eql true
         expect(home.validate_contact_list(@contacts[1])).to eql true
         expect(home.validate_contact_list(@contacts[2])).to eql true
@@ -75,6 +78,7 @@ describe('Contact Card', :master) do
       end
       e.step('then I should see the contact list filtred') do
         puts '  then I should see the contact list filtred'
+        expect(page).to have_css('.contacts')
         expect(home.validate_contact_list(@contacts[0])).to eql true
         expect(contact.validate_selected_contact_group("Family")).to eql true
       end
