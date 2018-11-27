@@ -109,7 +109,8 @@ module Config
 
 #   #get all account users
   def get_user(index)
-   
+
+    
     @all_users = Array.new
     i=0
   
@@ -139,6 +140,34 @@ module Config
     
       return @all_users[index]
     
+  end
+
+  def get_user_list()
+
+    user = get_admin()
+    puts user[:username]
+    body_login = { 'data' => {
+      'username' => user[:username],
+      'password' => user[:password],
+      'stay_sign_in' => 0,
+      'timezone' => 'America/Sao_Paulo'
+    } }
+    headers = {
+      'X-Application-Id' => 'webapp',
+      'X-Version' => 'v2'
+    }
+    @response = HTTParty.post(
+      "http://api.#{$environment}-php56.dev.ringbyname.com/auth?",
+      body: body_login.to_json,
+      headers: headers
+    )
+    session_id = @response.parsed_response['data']['session_id']
+    @response = HTTParty.get(
+      "http://api.#{$environment}-php56.dev.ringbyname.com/user-admin?X-Application-Id=webapp-admin&X-Session-Id=#{session_id}&X-Version=v2&limit=10&page=1&select=id%7Ccaller_id%7Cfirst_name%7Clast_name%7Cpackage_name%7Cassigned_phone_numbers%7Cis_local_calling%7Cpermission%7Cpersonal_phone_number%7Ccrm.is_enabled"
+    
+    )
+    user_list = @response['data']['rows']
+    return user_list
   end
 
   def get_contacts
