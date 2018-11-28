@@ -85,13 +85,13 @@ describe('validate Users Setup', :user_setup) do
     }
     @user_restored = {
       first_name: 'New User',
-      last_name: '9314132',
-      email: '407808@ringbyname.com',
+      last_name: '9432842',
+      email: '303903@ringbyname.com',
       extension: '104',
-      name: 'New User 9314132',
-      type: 'R! Virtual User',
-      direct: 'None',
-      username: '407808@ringbyname.com',
+      name: 'New User 9432842',
+      type: 'RingByName User',
+      direct: '12089328957',
+      username: '303903@ringbyname.com',
       password: 'ahc9Ha4rt4Aa'
     }
     # Capybara.ignore_hidden_elements = true
@@ -349,7 +349,7 @@ describe('validate Users Setup', :user_setup) do
  
   end
 
-  describe('validate users update', :user_update) do
+  describe('validate users update', :master) do
     it('  update users and check changed data') do |e|
       puts '  update users and check changed data'
       e.step('when I on users setup') do
@@ -611,7 +611,7 @@ describe('validate Users Setup', :user_setup) do
         end
       end
       e.step('when I select text to speech greeting option')do
-        puts 'when I select text to speech greeting option'
+        puts '  when I select text to speech greeting option'
         users.details.checkboxes.each do |u|
           u.click if u.text.include?('Enable Voicemail Box of User Calls')
         end
@@ -622,6 +622,7 @@ describe('validate Users Setup', :user_setup) do
         end
       end
       e.step('and I fill the text and select English language')do
+        puts '  and I fill the text and select English language'
         users.details.txt_text_greeting.set(@user1[:text_to_speech])
         users.details.select_language.find('option', text: 'English').select_option
         users.details.btn_save_user.click
@@ -630,13 +631,13 @@ describe('validate Users Setup', :user_setup) do
         users.message.btn_ok.click
       end
       e.step('then I check the selected option') do
-        puts 'then I check the selected option'
+        puts '  then I check the selected option'
         users.select_user_in_grid(@user_changed)
-        expect(users.details.radio_auto_greeting(visible: false)).to be_checked
+        expect(users.details.radio_auto_greeting(visible: false)).not_to be_checked
         expect(users.details.select_language.text.include?('English'))
       end
       e.step('when I change language to Spanish')do
-        puts 'when I change language to Spanish'
+        puts '  when I change language to Spanish'
         users.details.select_language.find('option', text: 'Spanish').select_option
         users.details.btn_save_user.click
         users.message.wait_until_modal_visible
@@ -644,13 +645,13 @@ describe('validate Users Setup', :user_setup) do
         users.message.btn_ok.click
       end
       e.step('then I check if was saved correctly')do
-        puts 'then I check if was saved correctly'
+        puts '  then I check if was saved correctly'
         users.select_user_in_grid(@user_changed)
-        expect(users.details.radio_auto_greeting(visible: false)).to be_checked
+        expect(users.details.radio_auto_greeting(visible: false)).not_to be_checked
         expect(users.details.select_language.text.include?('Spanish'))
       end
       e.step('when I change language to Portuguese')do
-        puts 'when I change language to Portuguese'
+        puts '  when I change language to Portuguese'
         users.details.select_language.find('option', text: 'Portuguese').select_option
         users.details.btn_save_user.click
         users.message.wait_until_modal_visible
@@ -658,14 +659,14 @@ describe('validate Users Setup', :user_setup) do
         users.message.btn_ok.click
       end
       e.step('then I check if was saved correctly')do
-        puts 'then I check if was saved correctly'
+        puts '  then I check if was saved correctly'
         users.select_user_in_grid(@user_changed)
-        expect(users.details.radio_auto_greeting(visible: false)).to be_checked
+        expect(users.details.radio_auto_greeting(visible: false)).not_to be_checked
         expect(users.details.select_language.text.include?('Portuguese'))
       end
     
       e.step('when I remove admin permission from other user')do
-        puts 'when I remove admin permission from other user'
+        puts '  when I remove admin permission from other user'
         users.select_user_in_grid(@user2)
         users.details.checkboxes.each do |u|
           u.click if u.text.include?('Make this user an admin')
@@ -677,14 +678,14 @@ describe('validate Users Setup', :user_setup) do
          sleep 1
       end
       e.step('then I can\'t see this user like admin in user grid')do
-        puts 'then I can\'t see this user like admin in user grid'
+        puts '  then I can\'t see this user like admin in user grid'
         users.setup.wait_for_grid_rows
         expect(users.setup.grid_icon_admin.length).to eql 3
         users.select_user_in_grid(@user2)
         expect(users.details.checkbox_admin_permission(visible: false)).not_to be_checked
       end
       e.step('when I login with an user what isn\'t a admin')do
-        puts 'when I login with an user what isn\'t a admin'
+        puts '  when I login with an user what isn\'t a admin'
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(@user2)
@@ -692,18 +693,20 @@ describe('validate Users Setup', :user_setup) do
         home.wait_until_user_status_visible
       end
       e.step('then I\'ll dont\'t have acces to admin page')do
-        puts 'then I\'ll dont\'t have acces to admin page'
+        puts '  then I\'ll dont\'t have acces to admin page'
         home.menu_access
         expect(home.dropdown_menu.has_goto_admin?).to eql false
       end
       e.step('when I try to remove admin permission to the same logged user')do
-        puts 'when I try to remove admin permission to the same logged user'
+        puts '  when I try to remove admin permission to the same logged user'
         home.dropdown_menu.logout.click
         login_page.wait_for_txt_user
         login_page.do_login(@user_changed)
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         home.goto_admin
+        admin_dashboard.wait_until_btn_continue_visible
+        admin_dashboard.btn_continue.click
         admin_dashboard.options.admin_setup.click
         expect(users.admin_title.text).to eql 'Setup'
         users.access_user_menu
@@ -711,7 +714,7 @@ describe('validate Users Setup', :user_setup) do
         users.select_user_in_grid(@user_changed)
       end
       e.step('then I can see disabled field')do
-        puts 'then I can see disabled field'
+        puts '  then I can see disabled field'
         expect(users.details.checkbox_admin_permission(visible: false).disabled?).to eql true
       end
       # e.step('when I upload a media to my greeting') do
@@ -726,8 +729,8 @@ describe('validate Users Setup', :user_setup) do
       # end
       
     end
-    after do
-      puts 'Return to original data'
+    after() do
+      puts '  Return to original data'
       # return user data to default
       users.details.txt_first_name.set (@user1[:first_name])
       users.details.txt_last_name.set (@user1[:last_name])
@@ -771,18 +774,19 @@ describe('validate Users Setup', :user_setup) do
   end
 
   describe('validate user reset data', :user_reset) do
-    it('  reset user data and check new data')do |e|
-      puts 'reset user data and check new data'
+    it('reset user data and check new data')do |e|
+      puts '  reset user data and check new data'
       e.step('when I on users setup') do
-        puts 'when I on users setup'
+        puts '  when I on users setup'
         admin_dashboard.options.admin_setup.click
+        expect(users.admin_title.text).to eql 'Setup'
       end
       e.step('and I select the user to reset data') do
-        puts 'and I select the user to reset data'
+        puts '  and I select the user to reset data'
         users.select_user_in_grid(@user4)
       end
       e.step('and I cancel reset user data')do
-        puts 'and I cancel reset user data'
+        puts '  and I cancel reset user data'
         users.details.btn_reset_user.click
         users.reset_modal.wait_for_modal_title
         expect(users.reset_modal.modal_title.text).to eql 'Reset User Settings'
@@ -790,12 +794,12 @@ describe('validate Users Setup', :user_setup) do
         users.reset_modal.modal_btn_cancel.click
       end
       e.step('the I return to user details')do
-        puts 'the I return to user details'
+        puts '  the I return to user details'
         users.wait_until_reset_modal_invisible
         expect(users.has_reset_modal?).to eql false
       end
       e.step('when I confirm reset user data')do
-        puts 'when I confirm reset user data'
+        puts '  when I confirm reset user data'
         users.details.btn_reset_user.click
         users.wait_for_reset_modal
         expect(users.reset_modal.modal_title.text).to eql 'Reset User Settings'
@@ -807,7 +811,7 @@ describe('validate Users Setup', :user_setup) do
         users.message.btn_ok.click
       end
       e.step('then I can see the all data restored')do
-        puts 'then I can see the all data restored'
+        puts '  then I can see the all data restored'
         users.is_user_in_grid(@user_restored)
         users.select_user_in_grid(@user_restored)
         expect(users.details.txt_first_name.text.include?(@user_restored[:first_name]))
@@ -817,7 +821,7 @@ describe('validate Users Setup', :user_setup) do
         expect(users.details.txt_direct_number.text.include?(@user_restored[:direct]))
       end
       e.step('and I validate the login with the new user data')do
-        puts 'and I validate the login with the new user data'
+        puts '  and I validate the login with the new user data'
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(@user_restored)

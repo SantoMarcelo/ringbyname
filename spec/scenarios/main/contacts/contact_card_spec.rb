@@ -105,9 +105,9 @@ describe('Contact Card', :master) do
     before do
       @contact = {
         company: 'Inphonex',
-        first_name: 'Test',
-        last_name: 'Auto Contact',
-        full_name: 'Test Auto Contact',
+        first_name: 'Auto Test',
+        last_name: 'Contact',
+        full_name: 'Auto Test Contact',
         work_email: 'work_email@test.com',
         personal_email: 'personal_email@test.com',
         main_phone: '9876543210',

@@ -20,7 +20,7 @@ task :test_chrome_browser do
     ENV['ENVIRONMENT'] = 'marcel'
     ENV['BRANCH'] = 'current'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag user_update --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag user_reset --format html --out log/reports/spec2.html'
     #sh 'allure serve log/reports'
 end
 
