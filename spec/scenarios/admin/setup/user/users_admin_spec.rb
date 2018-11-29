@@ -97,7 +97,7 @@ describe('validate Users Setup', :user_setup) do
     # Capybara.ignore_hidden_elements = true
   end
 #user_list
-  describe('validate users list', :master) do
+  describe('validate users list', :master_admin) do
     it('  access user setup and validate user list') do |e|
       puts 'access user setup and validate user list'
       e.step('when I on admin page') do
@@ -191,7 +191,7 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 #search_user
-  describe('search users', :master) do
+  describe('search users', :master_admin) do
     it('  validate all search cases') do |e|
       puts 'validate all search cases'
       e.step('when I on users setup') do
@@ -289,7 +289,7 @@ describe('validate Users Setup', :user_setup) do
     end
   end
  # user_details
-  describe('validate users details', :master) do
+  describe('validate users details', :master_admin) do
     it('  validate user information') do |e|
       puts 'validate user information'
       e.step('when I on users setup') do
@@ -349,7 +349,7 @@ describe('validate Users Setup', :user_setup) do
  
   end
 
-  describe('validate users update', :master) do
+  describe('validate users update', :master_admin) do
     it('  update users and check changed data') do |e|
       puts '  update users and check changed data'
       e.step('when I on users setup') do

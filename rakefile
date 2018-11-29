@@ -34,12 +34,22 @@ task :test_headless_browser do
     #sh 'allure serve log/reports'
 end 
     
-desc "Run jenkins code"
-task :run_tests do
+desc "Run webapp testes on jenkins"
+task :run_webapp_tests do
     ENV['BROWSER'] = 'chrome headless'
     ENV['ENVIRONMENT'] = 'marcel'
     ENV['BRANCH'] = 'current'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
     sh 'rspec -fd --tag master --format html --out log/reports/spec.html'
+    #sh 'allure serve log/reports'
+end 
+
+desc "Run admin testes on jenkins"
+task :run_admin_tests do
+    ENV['BROWSER'] = 'chrome headless'
+    ENV['ENVIRONMENT'] = 'marcel'
+    ENV['BRANCH'] = 'current'
+    ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
+    sh 'rspec -fd --tag master_admin --format html --out log/reports/spec.html'
     #sh 'allure serve log/reports'
 end 
