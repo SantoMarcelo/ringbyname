@@ -13,7 +13,7 @@ module Config
     @accounts = HTTParty.get(
         "http://couchdb.#{ENV['ENVIRONMENT']}-voip.dev.ringbyname.com:5984/accounts/#{@account_id}"
     )
-   
+    
     @accounts = JSON.parse(@accounts)
   
     @accounts.each do |key, value|

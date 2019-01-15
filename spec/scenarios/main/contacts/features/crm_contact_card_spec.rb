@@ -428,7 +428,7 @@ describe('Contact Card - CRM Opportunity', :master) do
           contact_owner: 'Dev Marcelo 1 User'
         }
     end
-    it('edit opportunity through contact card') do |e|
+    it('edit opportunity through contact card', :edit) do |e|
       puts 'edit opportunity through contact card'
       e.step('Given I on home page and access contact card') do
         puts 'Given I on home page and access contact card'
