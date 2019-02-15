@@ -12,8 +12,10 @@ describe('validate Users Setup', :user_setup) do
     
     login_page.load
     login_page.do_login(get_admin())
+    home.check_user_status
     home.wait_until_home_features_visible
     home.wait_until_user_status_visible
+    #home.check_user_status
     home.goto_admin
     admin_dashboard.wait_until_btn_continue_visible
     admin_dashboard.btn_continue.click
@@ -102,7 +104,7 @@ describe('validate Users Setup', :user_setup) do
       puts 'access user setup and validate user list'
       e.step('when I on admin page') do
         puts '  when I on admin page'
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
       end 
       e.step('I can see the user setup') do
         puts '  I can see the user setup'
@@ -115,6 +117,7 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I check user list') do
         puts '  then I check user list'
+        users.wait_for_grid
         expect(page).to have_content('Name')
         expect(users.is_user_in_grid(@user1)).to eql true
         expect(users.is_user_in_grid(@user2)).to eql true
@@ -131,18 +134,21 @@ describe('validate Users Setup', :user_setup) do
         puts '  and I change the page'
         users.setup.change_page(2)
         sleep 1
+        users.wait_for_grid
         expect(page).to have_content('Name')
         expect(users.setup.info_total_records.text).to eql '14'
       end
       e.step('then I can see the second page')do
         puts '  then I can see the second page'
-        users.setup.wait_for_grid_rows
+        # wait_for_ajax
+        wait_for_ajax
+        #expect(page).to have_css('#loading-bar')
         expect(users.setup.grid_rows.length).to eql 4
       end
       e.step('when I change the total of records per page to the minimum # of records')do
         puts '  when I change the total of records per page to the minimum # of records'
         users.setup.change_page(1)
-        users.setup.wait_for_grid_rows
+         wait_for_ajax
         # users.wait_until_load_invisible
         sleep 1
         users.setup.select_number_page_options.each do |u|
@@ -157,13 +163,14 @@ describe('validate Users Setup', :user_setup) do
         puts '  then I can see the three pages.'
         expect(users.setup.grid_rows.length).to eql 5
         users.setup.change_page(2)
-        users.setup.wait_for_grid_rows
+        users.wait_for_grid
+         wait_for_ajax
         sleep 1
         # users.wait_until_load_visible
         # users.wait_until_load_invisible
         expect(users.setup.grid_rows.length).to eql 5
         users.setup.change_page(3)
-        users.setup.wait_for_grid_rows
+         wait_for_ajax
         sleep 1
         # users.wait_until_load_visible
         # users.wait_until_load_invisible
@@ -172,7 +179,8 @@ describe('validate Users Setup', :user_setup) do
       e.step('when I change the total of records per page to the maximum # of records') do
         puts '  when I change the total of records per page to the maximum # of records'
         users.setup.change_page(1)
-        users.setup.wait_for_grid_rows
+        users.wait_for_grid
+         wait_for_ajax
         sleep 1
         # users.wait_until_load_visible
         # users.wait_until_load_invisible
@@ -182,7 +190,7 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I can see the one page with all registers.')do
         puts '  then I can see the one page with all registers.'
-        users.setup.wait_for_grid_rows
+         wait_for_ajax
         sleep 1
         # users.wait_until_load_invisible
         # need to check why not count all list itens
@@ -196,7 +204,7 @@ describe('validate Users Setup', :user_setup) do
       puts 'validate all search cases'
       e.step('when I on users setup') do
         puts '  when I on users setup'
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
         expect(users.admin_title.text).to eql 'Setup'
         users.access_user_menu
         expect(users.user_main.title.text).to eql 'Users'
@@ -208,8 +216,10 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I have to see only the filtred user') do
         puts '  then I have to see only the filtred user'
+        users.wait_for_grid
         users.setup.wait_until_grid_rows_visible
         sleep 2
+
         expect(users.is_user_in_grid(@user1)).to eql true
         expect(users.user_main.info_total_records.text).to eql '1'
       end
@@ -220,6 +230,7 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I have to see only the filtred user') do
         puts '  then I have to see only the filtred user'
+        users.wait_for_grid
         users.setup.wait_until_grid_rows_visible
         sleep 2
         expect(users.is_user_in_grid(@user2)).to eql true
@@ -232,6 +243,7 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I have to see only the filtred user') do
         puts '  then I have to see only the filtred user'
+        users.wait_for_grid
         users.setup.wait_until_grid_rows_visible
         sleep 2
         expect(users.is_user_in_grid(@user3)).to eql true
@@ -244,6 +256,7 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I have to see only the filtred user') do
         puts '  then I have to see only the filtred user'
+        users.wait_for_grid
         sleep 2
         expect(users.is_user_in_grid(@user3)).to eql true
         expect(users.user_main.info_total_records.text).to eql '1'
@@ -255,6 +268,7 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I have to see only the filtred user') do
         puts '  then I have to see only the filtred user'
+        users.wait_for_grid
         sleep 2
         expect(users.user_main.grid_rows.empty?).to eql true
         expect(users.user_main.info_total_records.text).to eql '0'
@@ -266,6 +280,7 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('validate what field is cleared and grid was refreshd with all users') do
         puts '  validate what field is cleared and grid was refreshd with all users'
+        users.wait_for_grid
         sleep 2
         expect(users.user_main.txt_search.text).to eql ''
         expect(users.is_user_in_grid(@user1)).to eql true
@@ -294,10 +309,11 @@ describe('validate Users Setup', :user_setup) do
       puts 'validate user information'
       e.step('when I on users setup') do
         puts 'when I on users setup'
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
       end
       e.step('and I select the first user') do
         puts 'and I select the first user'
+        users.wait_for_grid
         users.select_user_in_grid(@user1)
       end
       e.step('then I check user\' informations') do
@@ -354,15 +370,18 @@ describe('validate Users Setup', :user_setup) do
       puts '  update users and check changed data'
       e.step('when I on users setup') do
         puts '  when I on users setup'
-        admin_dashboard.options.admin_setup.click
+        admin_dashboard.goto_settings_admin
       end
       e.step('and I select the first user') do
         puts '  and I select the first user'
+       # sleep 10
         users.select_user_in_grid(@user1)
       end
       #update general information
       e.step('and I change user informations') do
         puts '  and I change user informations'
+        #expect(page).to have_css(users.details.txt_first_name.instance_variable_get(:@query).locator)
+        users.wait_for_user_details
         users.details.txt_first_name.set (@user_changed[:first_name])
         users.details.txt_last_name.set (@user_changed[:last_name])
         users.details.txt_email.set (@user_changed[:email])
@@ -379,16 +398,19 @@ describe('validate Users Setup', :user_setup) do
           u.click if u.text.include?('Allow others to remotely answer this user\'s calls')
         end
         users.details.btn_save_user.click
-        users.message.wait_until_modal_visible
+        sleep 5
+        #users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
+        users.wait_for_grid
         expect(page).to have_content('Name')
         sleep 2
       end
       e.step('then I check if all changes are displayed correctly') do
         puts '  then I check if all changes are displayed correctly'
         users.select_user_in_grid(@user_changed)
-        
+        expect(page).to have_css(users.details.txt_first_name.instance_variable_get(:@query).locator)
         users.details.wait_until_btn_save_user_visible
         expect(users.details.txt_first_name.text.include?(@user_changed[:first_name]))
         expect(users.details.txt_last_name.text.include?(@user_changed[:last_name]))
@@ -406,15 +428,18 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('when I change the user password')do
         puts '  when I change the user password'
+        sleep 2
         users.details.txt_password.each do |u|
           u.set(@user_changed[:password])
           break
         end
         users.details.txt_password_repeart.set(@user_changed[:password])
         users.details.btn_save_user.click
+        users.wait_for_message
         users.message.wait_until_modal_visible
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
+        users.wait_for_grid
         expect(users.is_user_in_grid(@user_changed)).to eql true
         
         users.main_menu.menu.click
@@ -423,6 +448,7 @@ describe('validate Users Setup', :user_setup) do
       e.step('then I can login in the system with this new password')do
         puts '  then I can login in the system with this new password'
         login_page.do_login(@user_changed)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
       end
@@ -431,7 +457,7 @@ describe('validate Users Setup', :user_setup) do
         home.goto_admin
         admin_dashboard.wait_until_btn_continue_visible
         admin_dashboard.btn_continue.click
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
         expect(users.admin_title.text).to eql 'Setup'
         users.access_user_menu
         expect(users.user_main.title.text).to eql 'Users'
@@ -443,7 +469,8 @@ describe('validate Users Setup', :user_setup) do
         users.details.txt_caller_custom_number.set(@user_changed[:caller_custom_number])
         users.details.txt_caller_custom_name.set(@user_changed[:caller_custom_name])
         users.details.btn_save_user.click
-        users.message.wait_until_modal_visible
+        users.wait_for_message
+        #users.message.wait_until_modal_visible
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
         sleep 10
@@ -459,7 +486,7 @@ describe('validate Users Setup', :user_setup) do
       e.step('when I insert others devices')do
         puts '  when I insert others devices'
         home.goto_admin
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
         expect(users.admin_title.text).to eql 'Setup'
         users.access_user_menu
         expect(users.user_main.title.text).to eql 'Users'
@@ -470,7 +497,8 @@ describe('validate Users Setup', :user_setup) do
           expect(u.text.include?('VoIP Device 9314129*'))
         end
         users.details.btn_save_user.click
-        users.message.wait_until_modal_visible
+        #users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
       end
@@ -523,7 +551,7 @@ describe('validate Users Setup', :user_setup) do
           expect(u.text.include?('VoIP Device 9314129d')).to eql false
         end
         users.details.btn_save_user.click
-        users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
       end
@@ -575,7 +603,7 @@ describe('validate Users Setup', :user_setup) do
           expect(u.text.include?(@user1[:landline_number]))
         end
         users.details.btn_save_user.click
-        users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
       end
@@ -598,7 +626,7 @@ describe('validate Users Setup', :user_setup) do
           expect(u.text.include?(@user1[:landline_number])).to eql false
         end
         users.details.btn_save_user.click
-        users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
       end
@@ -626,7 +654,7 @@ describe('validate Users Setup', :user_setup) do
         users.details.txt_text_greeting.set(@user1[:text_to_speech])
         users.details.select_language.find('option', text: 'English').select_option
         users.details.btn_save_user.click
-        users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
       end
@@ -640,7 +668,7 @@ describe('validate Users Setup', :user_setup) do
         puts '  when I change language to Spanish'
         users.details.select_language.find('option', text: 'Spanish').select_option
         users.details.btn_save_user.click
-        users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
       end
@@ -654,7 +682,7 @@ describe('validate Users Setup', :user_setup) do
         puts '  when I change language to Portuguese'
         users.details.select_language.find('option', text: 'Portuguese').select_option
         users.details.btn_save_user.click
-        users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
       end
@@ -672,7 +700,7 @@ describe('validate Users Setup', :user_setup) do
           u.click if u.text.include?('Make this user an admin')
         end
          users.details.btn_save_user.click
-         users.message.wait_until_modal_visible
+         users.wait_for_message
          expect(users.message.modal.text).to eql 'User updated successfully.'
          users.message.btn_ok.click
          sleep 1
@@ -707,7 +735,7 @@ describe('validate Users Setup', :user_setup) do
         home.goto_admin
         admin_dashboard.wait_until_btn_continue_visible
         admin_dashboard.btn_continue.click
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
         expect(users.admin_title.text).to eql 'Setup'
         users.access_user_menu
         expect(users.user_main.title.text).to eql 'Users'
@@ -758,7 +786,9 @@ describe('validate Users Setup', :user_setup) do
       users.details.txt_text_greeting.set('')
       users.details.txt_number_rings.set(@user1[:number_of_rings])
       users.details.btn_save_user.click
-      users.message.wait_until_modal_visible
+      expect(page).to have_css(users.message.modal.instance_variable_get(:@query).locator)
+      users.wait_for_message
+      
       expect(users.message.modal.text).to eql 'User updated successfully.'
       users.message.btn_ok.click
       users.is_user_in_grid(@user1)
@@ -767,7 +797,7 @@ describe('validate Users Setup', :user_setup) do
         u.click if u.text.include?('Make this user an admin')
       end
       users.details.btn_save_user.click
-      users.message.wait_until_modal_visible
+      users.wait_for_message
       expect(users.message.modal.text).to eql 'User updated successfully.'
       users.message.btn_ok.click
     end
@@ -778,7 +808,7 @@ describe('validate Users Setup', :user_setup) do
       puts '  reset user data and check new data'
       e.step('when I on users setup') do
         puts '  when I on users setup'
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
         expect(users.admin_title.text).to eql 'Setup'
       end
       e.step('and I select the user to reset data') do
@@ -834,7 +864,7 @@ describe('validate Users Setup', :user_setup) do
     after do
       puts 'return user data to default'
       home.goto_admin
-      admin_dashboard.options.admin_setup.click
+       admin_dashboard.goto_settings_admin
       expect(users.admin_title.text).to eql 'Setup'
       users.access_user_menu
       expect(users.user_main.title.text).to eql 'Users'
@@ -857,10 +887,10 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('Validate CRM Feature', :master) do
+  describe('Validate CRM Feature', :master1) do
     it('update users to enable CRM feature', :crm_enable) do |e|
       e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
       end
       e.step('and I select the first user') do
         users.select_user_in_grid(@user2)
@@ -872,7 +902,7 @@ describe('validate Users Setup', :user_setup) do
         users.message.btn_ok.click
       end
       e.step('and I check if the change was saved correctly') do
-        users.setup.wait_for_grid_rows
+         wait_for_ajax
         expect(users.setup.grid_icon_crm.length).to eql 2
         users.select_user_in_grid(@user2)
         expect(users.details.checkbox_crm(visible: false)).to be_checked
@@ -884,7 +914,7 @@ describe('validate Users Setup', :user_setup) do
         # expect(users.get_number_of_crm_licenses).to eql 1
       end
       e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
       end
       e.step('and I allow CRM feature to users') do
         users.select_user_in_grid(@user3)
@@ -897,7 +927,7 @@ describe('validate Users Setup', :user_setup) do
 
     it('update users to disable CRM feature', :crm_disable_feature) do |e|
       e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
       end
       e.step('and I select the first user') do
         users.select_user_in_grid(@user2)
@@ -908,7 +938,7 @@ describe('validate Users Setup', :user_setup) do
         users.message.btn_ok.click
       end
       e.step('and I check if the change was saved correctly') do
-        users.setup.wait_for_grid_rows
+         wait_for_ajax
         expect(users.setup.grid_icon_crm.length).to eql 1
         users.select_user_in_grid(@user2)
         sleep(2)
@@ -921,7 +951,7 @@ describe('validate Users Setup', :user_setup) do
     it('set the same caller id to all users and validate') do |e|
       puts 'set the same caller id to all users and validate'
       e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
       end
       e.step('and I select the massive update link')do
         puts 'and I select the massive update link'
@@ -988,7 +1018,7 @@ describe('validate Users Setup', :user_setup) do
       e.step('when I return to massive update') do
         puts 'when I return to massive update'
         home.goto_admin
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
         expect(users.admin_title.text).to eql 'Setup'
         users.access_user_menu
         expect(users.user_main.title.text).to eql 'Users'
@@ -1060,7 +1090,7 @@ describe('validate Users Setup', :user_setup) do
     it('set the same password to all users and validate') do |e|
       puts 'set the same password to all users and validate'
       e.step('when I on users setup') do
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
       end
       e.step('when I access massive password update')do
         puts 'when I access massive password update'
@@ -1126,7 +1156,7 @@ describe('validate Users Setup', :user_setup) do
       e.step('when I check the min length password validation')do
         puts 'when I check the min length password validation'
         home.goto_admin
-        admin_dashboard.options.admin_setup.click
+         admin_dashboard.goto_settings_admin
         expect(users.admin_title.text).to eql 'Setup'
         users.access_user_menu
         expect(users.user_main.title.text).to eql 'Users'

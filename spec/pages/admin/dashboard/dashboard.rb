@@ -13,5 +13,9 @@ class Dashboard < Admin
     self.option_home.click
   end
 
+  # def goto_settings
+  #   find(options.admin_setup).click
+  # end
+
 end
- 
+  

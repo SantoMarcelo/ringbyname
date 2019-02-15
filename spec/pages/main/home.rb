@@ -20,6 +20,12 @@ class Home < SitePrism::Page
     
   element :message, 'div[class="noty_message"] > span'
 
+  def check_user_status
+    while has_user_status? == false
+      puts"waiting for status.."
+    end
+  end
+
   def menu_access
     dropdown.click
   end

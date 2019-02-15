@@ -56,7 +56,8 @@ class UserDetails < SitePrism::Section
     elements :icon_tooltips, 'i.icon-tooltip'
     #reset user
     element :btn_reset_user, '.control button[data-ng-click*="resetUser"]'
-    
+
+
   end  
   class Messages < SitePrism::Section
 

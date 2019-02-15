@@ -23,9 +23,20 @@ class User < Setup
     menu.users.click
   end
 
+  def wait_for_grid
+    while user_main.has_grid_rows? == false do
+      puts "waiting grid.."
+    end
+  end
+
+  def wait_for_user_details
+    while details.has_txt_first_name? == false do
+      puts "waiting data.."
+    end
+  end
   # validate each line of grid
   def is_user_in_grid(user)
-    user_main.wait_until_grid_rows_visible
+    wait_for_grid
     setup.grid_rows.each do |u|
       if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
         return true
@@ -46,17 +57,18 @@ class User < Setup
   end
 
   def select_user_in_grid(user)
-    user_main.wait_until_grid_rows_visible
+    wait_for_grid
     setup.grid_rows.each do |u|
       if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
         u.click
       end
     end
     sleep(1)
+    wait_for_user_details
   end
 
   def grid_check_user_info(user)
-    user_main.wait_until_grid_rows_visible
+    wait_for_grid
     setup.grid_rows.each do |u|
       if u.text.include?(user[:extension]) && u.text.include?(user[:name]) && u.text.include?(user[:type]) && u.text.include?(user[:direct])
         true if u.include?(grid_icon_crm)
@@ -67,7 +79,7 @@ class User < Setup
   end
 
   def grid_check_admin_user_info(user)
-    user_main.wait_until_grid_rows_visible
+    wait_for_grid
     puts user[:extension]
     puts user[:name]
     setup.grid_rows.each do |u|
@@ -140,4 +152,6 @@ class User < Setup
     number_of_license = @response.parsed_response['data']['account']['crm']['licenses']
     number_of_license
   end
+
+
 end

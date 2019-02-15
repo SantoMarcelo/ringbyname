@@ -16,6 +16,7 @@ require 'json'
 require_relative 'helpers'
 require_relative 'object_factory'
 require_relative 'config'
+require_relative 'wait_for_ajax'
 
 # Rspec configuration
 RSpec.configure do |config|
@@ -43,6 +44,7 @@ RSpec.configure do |config|
   config.include Config
   config.include HTTParty
   # config.include Couch::Server
+  config.include WaitForAjax, type: :feature
 end
 
 
@@ -92,6 +94,7 @@ end
 Capybara.configure do |c|
   c.default_driver = :selenium
   $url = c.app_host   = "http://login.#{$environment}.dev.ringbyname.com/#{branch}/"
+  #default_max_wait_time = 20
 end
 
 Capybara.default_max_wait_time = 10

@@ -10,4 +10,15 @@ class Admin < SitePrism::Page
  element :admin_title, '.webapp-admin-page-header'
  element :load, 'div#loading-bar'
 
+
+
+  def goto_settings_admin
+    while options.has_admin_setup? == false do
+      puts "waiting for admin setup"
+    end
+      options.admin_setup.click
+  end
+
+
+
 end 

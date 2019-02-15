@@ -28,6 +28,7 @@ describe('Login in application', :master) do
       end
       e.step('and I log out from application') do
         puts 'and I log out from application'
+        sleep 3
         home.logout
       end
     end
@@ -61,11 +62,13 @@ describe('Login in application', :master) do
       end
       e.step('when I try to login with empty username') do
         puts '  when I try to login with empty username'
+        expect(page).to have_content('Sign In')
         login_page.do_login(@users1)
       end
       e.step('then I have to see the validation message') do
         puts '  then I have to see the validation message'
         login_page.has_message?
+        expect(page).to have_css('.alert-danger')
         expect(login_page.message.text).to eql '"Username": Value is required and can\'t be empty'
         login_page.close_message.click
       end
@@ -76,6 +79,7 @@ describe('Login in application', :master) do
       e.step('then I have to see the validation message') do
         puts '  then I have to see the validation message'
         login_page.has_message?
+        expect(page).to have_css('.alert-danger')
         expect(login_page.message.text).to eql '"Password": Value is required and can\'t be empty'
         login_page.close_message.click
       end
@@ -86,6 +90,7 @@ describe('Login in application', :master) do
       e.step('then I have to see the validation message') do
         puts '  then I have to see the validation message'
         login_page.has_message?
+        expect(page).to have_css('.alert-danger')
         expect(login_page.message.text).to eql 'Sorry, you have entered invalid credentials. Please try again.'
         login_page.close_message.click
       end
@@ -96,6 +101,7 @@ describe('Login in application', :master) do
       e.step('then I have to see the validation message') do
         puts '  then I have to see the validation message'
         login_page.has_message?
+        expect(page).to have_css('.alert-danger')
         expect(login_page.message.text).to eql 'Sorry, you have entered invalid credentials. Please try again.'
         login_page.close_message.click
       end

@@ -4,7 +4,7 @@ require_relative '../../../pages/main/contacts/contact'
 require_relative '../../../pages/main/activities/activity'
 
 #:contact_card_genenral 
-describe('Contact Card', :master) do
+describe('Contact Card', :master_contact) do
   before do
     Capybara.page.driver.browser.manage.window.maximize
     
@@ -57,7 +57,8 @@ describe('Contact Card', :master) do
       e.step('when I set group to contact') do
         puts "  when I set group to contact"
         home.select_contact(@contacts[0])
-        contact.contact_group.wait_for_contact_group_list
+        wait_for_ajax
+        #contact.contact_group.wait_for_contact_group_list
         contact.remove_contact_group('Family')
         contact.contact_group.txt_name_group.set("Family")
         contact.contact_group.btn_add_group.click

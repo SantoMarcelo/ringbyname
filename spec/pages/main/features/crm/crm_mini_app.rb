@@ -44,7 +44,8 @@ class CrmMiniApp < SitePrism::Page
 
   def validate_opportunity_list(opportunity)
    # need to validate close date in this step: && u.text.include?(opportunity[:close_date])
-    crm_container.wait_for_opportunity_list
+   wait_for_ajax
+    #crm_container.wait_for_opportunity_list
    crm_container.opportunity_list.each do |u|
       if u.text.include?(opportunity[:contact_owner]) && u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:status]) && u.text.include?(opportunity[:price]) #&& u.text.include?(opportunity[:close_date].gsub("-", "/"))  && u.text.include?(opportunity[:follow_up].gsub("-", "/"))
         return true
@@ -54,7 +55,8 @@ class CrmMiniApp < SitePrism::Page
   end
 
   def select_opportunity(opportunity)
-    crm_container.wait_for_opportunity_list
+    wait_for_ajax
+    #crm_container.wait_for_opportunity_list
     crm_container.opportunity_list.each do |u|
         if u.text.include?(opportunity[:name]) && u.text.include?(opportunity[:price]) && u.text.include?(opportunity[:status])
           u.click
