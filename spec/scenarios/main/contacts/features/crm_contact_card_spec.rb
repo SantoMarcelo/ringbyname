@@ -6,7 +6,7 @@ require_relative '../../../../pages/main/contacts/contact'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 #opportunity_general
 #cc_general_opportunity - :opportunity_general 
-describe('Contact Card - CRM Opportunity', :master) do
+describe('Contact Card - CRM Opportunity', :master_contact) do
   before do
     system("mysql -h mysql.#{$environment}-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/delete_opportunity.sql")
     Capybara.page.driver.browser.manage.window.maximize

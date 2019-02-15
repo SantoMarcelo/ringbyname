@@ -5,7 +5,7 @@ require_relative '../../../../pages/login/reset_password'
 require_relative '../../../../pages/main/contacts/contact'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 #miniapp_crm_geral - :opportunity_general 
-describe('CRM - Opportunity', :master  ) do
+describe('CRM - Opportunity', :master_opportunity  ) do
   before do
     # if users.get_number_of_crm_licenses == 0
     #   provisioning('account','crm_licenses', '1')
