@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6c27cb4-fb1e-4d31-936d-9fc93ecad1f3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rakefile" beforeDir="false" afterPath="$PROJECT_DIR$/rakefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,12 +37,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="rakefile" value="1" />
-          <entry key="rb" value="936" />
+          <entry key="rb" value="1024" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Ruby" value="937" />
+          <entry key="Ruby" value="1025" />
         </counts>
       </usages-collector>
     </session>
@@ -71,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="100" column="41" selection-start-line="100" selection-start-column="41" selection-end-line="100" selection-end-column="41" />
+            <state relative-caret-position="330">
+              <caret line="1092" column="67" selection-start-line="1092" selection-start-column="67" selection-end-line="1092" selection-end-column="67" />
               <folding>
                 <element signature="e#265#3027#0" />
                 <element signature="e#3082#6896#0" />
@@ -157,6 +153,8 @@
       <find>users.message.wait_until_modal_visible</find>
       <find>then I can login in the system with this new password</find>
       <find>when I change language to Portuguese</find>
+      <find>when I try to remove admin permission to the same logged user</find>
+      <find>login_page.do_login</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -291,12 +289,12 @@
       <updated>1550230308426</updated>
       <workItem from="1550230310051" duration="1588000" />
       <workItem from="1550233483550" duration="11961000" />
-      <workItem from="1550493357655" duration="2952000" />
+      <workItem from="1550493357655" duration="4103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16501000" />
+    <option name="totallyTimeSpent" value="17652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -361,13 +359,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/pages/main/home.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="23" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/pages/login/login.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -409,10 +400,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spec/pages/main/home.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="100" column="41" selection-start-line="100" selection-start-column="41" selection-end-line="100" selection-end-column="41" />
+        <state relative-caret-position="330">
+          <caret line="1092" column="67" selection-start-line="1092" selection-start-column="67" selection-end-line="1092" selection-end-column="67" />
           <folding>
             <element signature="e#265#3027#0" />
             <element signature="e#3082#6896#0" />

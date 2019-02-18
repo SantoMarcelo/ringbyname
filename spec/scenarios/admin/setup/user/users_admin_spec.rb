@@ -712,6 +712,7 @@ describe('validate Users Setup', :user_setup) do
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(@user2)
+        home_check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
       end
@@ -725,6 +726,7 @@ describe('validate Users Setup', :user_setup) do
         home.dropdown_menu.logout.click
         login_page.wait_for_txt_user
         login_page.do_login(@user_changed)
+        home_check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         home.goto_admin
@@ -850,6 +852,7 @@ describe('validate Users Setup', :user_setup) do
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(@user_restored)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
@@ -993,18 +996,21 @@ describe('validate Users Setup', :user_setup) do
         expect(home.my_caller_id.text.include?('12392068773'))
         home.logout
         login_page.do_login(@user2)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
         expect(home.my_caller_id.text.include?('12392068773'))
         home.logout
         login_page.do_login(@user3)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
         expect(home.my_caller_id.text.include?('12392068773'))
         home.logout
         login_page.do_login(@user4)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
@@ -1061,18 +1067,21 @@ describe('validate Users Setup', :user_setup) do
         expect(home.my_caller_id.text.include?('9999999999'))
         home.logout
         login_page.do_login(@user3)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
         expect(home.my_caller_id.text.include?('9999999999'))
         home.logout
         login_page.do_login(@user2)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
         expect(home.my_caller_id.text.include?('9999999999'))
         home.logout
         login_page.do_login(@user1)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
@@ -1129,21 +1138,25 @@ describe('validate Users Setup', :user_setup) do
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(user1)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
         home.logout
         login_page.do_login(user2)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
         home.logout
         login_page.do_login(user3)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
         home.logout
         login_page.do_login(user4)
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
