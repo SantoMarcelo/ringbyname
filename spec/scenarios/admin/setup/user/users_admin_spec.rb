@@ -4,7 +4,6 @@ require_relative '../../../../pages/admin/dashboard/dashboard'
 require_relative '../../../../pages/admin/setup/user/users'
 
 describe('validate Users Setup', :user_setup) do
-  puts "cheguei no specs"
   before(:each) do
 
      get_user_list()
@@ -135,13 +134,15 @@ describe('validate Users Setup', :user_setup) do
         users.setup.change_page(2)
         sleep 1
         users.wait_for_grid
+        users.wait_for_grid_line
         expect(page).to have_content('Name')
         expect(users.setup.info_total_records.text).to eql '14'
       end
       e.step('then I can see the second page')do
         puts '  then I can see the second page'
         # wait_for_ajax
-        wait_for_ajax
+        users.wait_for_grid
+        users.wait_for_grid_line
         #expect(page).to have_css('#loading-bar')
         expect(users.setup.grid_rows.length).to eql 4
       end
@@ -156,42 +157,36 @@ describe('validate Users Setup', :user_setup) do
           break
         end
         sleep 1
-        # users.wait_until_load_visible
-        # users.wait_until_load_invisible
       end
       e.step('then I can see the three pages.') do
         puts '  then I can see the three pages.'
         expect(users.setup.grid_rows.length).to eql 5
         users.setup.change_page(2)
         users.wait_for_grid
-         wait_for_ajax
-        sleep 1
-        # users.wait_until_load_visible
-        # users.wait_until_load_invisible
+        users.wait_for_grid_line
+        sleep 2
         expect(users.setup.grid_rows.length).to eql 5
         users.setup.change_page(3)
-         wait_for_ajax
-        sleep 1
-        # users.wait_until_load_visible
-        # users.wait_until_load_invisible
+        sleep 2
+        users.wait_for_grid
+        users.wait_for_grid_line
         expect(users.setup.grid_rows.length).to eql 4
       end
       e.step('when I change the total of records per page to the maximum # of records') do
         puts '  when I change the total of records per page to the maximum # of records'
         users.setup.change_page(1)
         users.wait_for_grid
-         wait_for_ajax
+        users.wait_for_grid_line
         sleep 1
-        # users.wait_until_load_visible
-        # users.wait_until_load_invisible
         users.setup.select_number_page_options.each do |u|
           u.click if u.text == ('50')
         end
       end
       e.step('then I can see the one page with all registers.')do
         puts '  then I can see the one page with all registers.'
-         wait_for_ajax
-        sleep 1
+        users.wait_for_grid
+        users.wait_for_grid_line
+        sleep 2
         # users.wait_until_load_invisible
         # need to check why not count all list itens
         expect(users.setup.grid_rows.length).to eql 10

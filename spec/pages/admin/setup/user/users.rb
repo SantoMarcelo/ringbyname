@@ -15,12 +15,19 @@ class User < Setup
   section :reset_modal, Sections::Messages, '.modal'
   section :details_cId, Sections::MassiveCallerId, '.webapp-admin-page-details'
   section :details_pass, Sections::MassivePassword, '.webapp-admin-page-details'
-   
+   element :user_grid_line, '.cell.column-name'
  
   # section :tooltips, Sections::Tooltips, '.page-details'
 
   def access_user_menu
     menu.users.click
+  end
+
+  def wait_for_grid_line
+    while has_user_grid_line? == false do
+      puts "waiting for data.."
+    end
+
   end
 
   def wait_for_grid
