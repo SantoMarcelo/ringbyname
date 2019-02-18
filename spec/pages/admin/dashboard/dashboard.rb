@@ -13,6 +13,13 @@ class Dashboard < Admin
     self.option_home.click
   end
 
+  def cofirm_modal
+    while has_btn_continue? == false do
+      puts "waitinf for modal.."
+    end
+    btn_continue.click
+  end
+
   # def goto_settings
   #   find(options.admin_setup).click
   # end

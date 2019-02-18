@@ -800,7 +800,7 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('validate user reset data', :user_reset) do
+  describe('validate user reset data', :master) do
     it('reset user data and check new data')do |e|
       puts '  reset user data and check new data'
       e.step('when I on users setup') do
@@ -862,7 +862,8 @@ describe('validate Users Setup', :user_setup) do
     after do
       puts 'return user data to default'
       home.goto_admin
-       admin_dashboard.goto_settings_admin
+      admin_dashboard.cofirm_modal
+      admin_dashboard.goto_settings_admin
       expect(users.admin_title.text).to eql 'Setup'
       users.access_user_menu
       expect(users.user_main.title.text).to eql 'Users'
@@ -878,6 +879,7 @@ describe('validate Users Setup', :user_setup) do
       users.details.txt_extension.set(@user4[:extension])
       
       users.details.btn_save_user.click
+      users.wait_for_message
       users.message.wait_until_modal_visible
       expect(users.message.modal.text).to eql 'User updated successfully.'
       users.message.btn_ok.click
