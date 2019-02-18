@@ -37,12 +37,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="rakefile" value="1" />
-          <entry key="rb" value="1024" />
+          <entry key="rb" value="1026" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Ruby" value="1025" />
+          <entry key="Ruby" value="1027" />
         </counts>
       </usages-collector>
     </session>
@@ -67,14 +67,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="1092" column="67" selection-start-line="1092" selection-start-column="67" selection-end-line="1092" selection-end-column="67" />
+            <state relative-caret-position="325">
+              <caret line="717" column="9" lean-forward="true" selection-start-line="717" selection-start-column="9" selection-end-line="717" selection-end-column="9" />
               <folding>
                 <element signature="e#265#3027#0" />
                 <element signature="e#3082#6896#0" />
                 <element signature="e#6946#11487#0" />
                 <element signature="e#11550#16134#0" />
-                <element signature="e#16181#37380#0" />
                 <element signature="e#37434#41200#0" />
                 <element signature="e#41247#43573#0" />
                 <element signature="e#43651#50517#0" />
@@ -289,19 +288,19 @@
       <updated>1550230308426</updated>
       <workItem from="1550230310051" duration="1588000" />
       <workItem from="1550233483550" duration="11961000" />
-      <workItem from="1550493357655" duration="4103000" />
+      <workItem from="1550493357655" duration="4741000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17652000" />
+    <option name="totallyTimeSpent" value="18290000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945712" weight="0.14765458" />
-      <window_info id="Structure" order="1" sideWeight="0.5005429" side_tool="true" visible="true" weight="0.14925373" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.5005429" side_tool="true" visible="true" weight="0.14925373" />
       <window_info id="Favorites" order="2" sideWeight="0.5005429" side_tool="true" weight="0.14765458" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -409,14 +408,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="1092" column="67" selection-start-line="1092" selection-start-column="67" selection-end-line="1092" selection-end-column="67" />
+        <state relative-caret-position="325">
+          <caret line="717" column="9" lean-forward="true" selection-start-line="717" selection-start-column="9" selection-end-line="717" selection-end-column="9" />
           <folding>
             <element signature="e#265#3027#0" />
             <element signature="e#3082#6896#0" />
             <element signature="e#6946#11487#0" />
             <element signature="e#11550#16134#0" />
-            <element signature="e#16181#37380#0" />
             <element signature="e#37434#41200#0" />
             <element signature="e#41247#43573#0" />
             <element signature="e#43651#50517#0" />

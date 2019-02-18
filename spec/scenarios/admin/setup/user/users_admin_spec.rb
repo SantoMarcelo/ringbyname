@@ -712,7 +712,7 @@ describe('validate Users Setup', :user_setup) do
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(@user2)
-        home_check_user_status
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
       end
@@ -726,7 +726,7 @@ describe('validate Users Setup', :user_setup) do
         home.dropdown_menu.logout.click
         login_page.wait_for_txt_user
         login_page.do_login(@user_changed)
-        home_check_user_status
+        home.check_user_status
         home.wait_until_home_features_visible
         home.wait_until_user_status_visible
         home.goto_admin
