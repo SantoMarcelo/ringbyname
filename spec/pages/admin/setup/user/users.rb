@@ -99,6 +99,7 @@ class User < Setup
   end
 
   def crm_feature_enable
+    wait_for_user_details
     details.wait_until_btn_save_user_visible
     details.checkboxes.each do |u|
       u.click if u.text.include?('Enable CRM for this user')
@@ -108,6 +109,7 @@ class User < Setup
   end
 
   def crm_feature_disable
+    wait_for_user_details
     details.wait_until_btn_save_user_visible
     sleep(1)
     details.checkboxes.each do |u|

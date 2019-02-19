@@ -887,7 +887,7 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('Validate CRM Feature', :master1) do
+  describe('Validate CRM Feature', :master) do
     it('update users to enable CRM feature', :crm_enable) do |e|
       e.step('when I on users setup') do
          admin_dashboard.goto_settings_admin
@@ -897,51 +897,66 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I allow CRM feature to user') do
         users.crm_feature_enable
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
-        sleep 2
         users.message.btn_ok.click
       end
       e.step('and I check if the change was saved correctly') do
-         wait_for_ajax
+        users.wait_for_grid
+        users.menu.departments.click
+        users.menu.users.click
+        users.wait_for_grid
         expect(users.setup.grid_icon_crm.length).to eql 2
         users.select_user_in_grid(@user2)
+        users.wait_for_user_details
         expect(users.details.checkbox_crm(visible: false)).to be_checked
       end
     end
 
     it('check maximum number of license validation message', :crm_validation) do |e|
       e.step('given I has only 1 CRM license') do
+        puts '  given I has only 1 CRM license'
         # expect(users.get_number_of_crm_licenses).to eql 1
       end
       e.step('when I on users setup') do
+        puts '  when I on users setup'
          admin_dashboard.goto_settings_admin
       end
       e.step('and I allow CRM feature to users') do
+        puts '  and I allow CRM feature to users'
         users.select_user_in_grid(@user3)
         users.crm_feature_enable
       end
       e.step('then I see the validation message') do
+        puts '  then I see the validation message'
+        users.wait_for_message
         expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this user, please buy another license or disable CRM of another user before proceeding."
       end
     end
 
     it('update users to disable CRM feature', :crm_disable_feature) do |e|
       e.step('when I on users setup') do
+
          admin_dashboard.goto_settings_admin
       end
       e.step('and I select the first user') do
+        users.wait_for_grid
         users.select_user_in_grid(@user2)
       end
       e.step('then I unallow CRM feature to user') do
         users.crm_feature_disable
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
         users.message.btn_ok.click
+
       end
       e.step('and I check if the change was saved correctly') do
-         wait_for_ajax
+        users.wait_for_grid
+        users.menu.departments.click
+        users.menu.users.click
         expect(users.setup.grid_icon_crm.length).to eql 1
         users.select_user_in_grid(@user2)
-        sleep(2)
+        users.wait_for_user_details
         expect(users.details.checkbox_crm(visible: false)).not_to be_checked
       end
     end
