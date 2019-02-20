@@ -883,6 +883,8 @@ describe('validate Users Setup', :user_setup) do
       users.message.wait_until_modal_visible
       expect(users.message.modal.text).to eql 'User updated successfully.'
       users.message.btn_ok.click
+      users.menu.department.click
+      users.menu.users.click
       expect(users.is_user_in_grid(@user4)).to eql true
     end
   end
@@ -970,7 +972,9 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('and I select the massive update link')do
         puts 'and I select the massive update link'
-        users.setup.link_outbound_caller.click
+        users.wait_for_grid
+        users.user_main.link_outbound_caller.click
+        users.details_cId.wait_for_fields
         expect(users.details_cId.title.text).to eql 'Set Outbound Caller ID for multiple users'
       end
       e.step('and I select users to update')do

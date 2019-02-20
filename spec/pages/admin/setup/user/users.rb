@@ -15,7 +15,7 @@ class User < Setup
   section :reset_modal, Sections::Messages, '.modal'
   section :details_cId, Sections::MassiveCallerId, '.webapp-admin-page-details'
   section :details_pass, Sections::MassivePassword, '.webapp-admin-page-details'
-   element :user_grid_line, '.cell.column-name'
+  element :user_grid_line, '.cell.column-name'
  
   # section :tooltips, Sections::Tooltips, '.page-details'
 

@@ -91,6 +91,15 @@ class UserDetails < SitePrism::Section
     element :txt_cId_custom_name, '.control input[data-ng-model*="custom.name"]'
     element :txt_cId_custom_number, '.control input[data-ng-model*="custom.number"]'
     element :btn_save, '.control button'
+
+
+    def wait_for_fields
+      while has_title? == false
+        puts "waiting for fields.."
+      end
+    end
+
+
   end
   class MassivePassword < SitePrism::Section
     element :title, '.details-title'
