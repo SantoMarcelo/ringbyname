@@ -14,6 +14,7 @@ class Login < SitePrism::Page
       self.txt_user.set (user[:username])
       self.txt_password.set (user[:password])
       self.btn_submit.click
+
     end
 
     def access_reset_page 

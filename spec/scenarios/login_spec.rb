@@ -11,13 +11,13 @@ describe('Login in application', :master) do
   end
 
   describe('Success login', :success_login) do
-    it('login with admin user') do |e|
+    it('login with admin setup') do |e|
       e.step('when I access login page') do
           puts 'when I access login page'
         login_page.load
       end
-      e.step('and I fill the user and password to login') do
-        puts 'and I fill the user and password to login'
+      e.step('and I fill the setup and password to login') do
+        puts 'and I fill the setup and password to login'
         login_page.do_login(get_admin())
       end
       e.step('then I can see the home page') do
@@ -46,7 +46,7 @@ describe('Login in application', :master) do
           password: ''
       }
       @users3 = {
-          username: 'devmarcelo.user@ringbyname.com',
+          username: 'devmarcelo.setup@ringbyname.com',
           password: '123456asd'
       }
       @users4 = {
@@ -123,8 +123,8 @@ describe('Reset Password', :Reset_password) do
         login_page.load
         login_page.access_reset_page
       end
-      e.step('and I fill the user email and click in reset') do
-        puts '  and I fill the user email and click in reset'
+      e.step('and I fill the setup email and click in reset') do
+        puts '  and I fill the setup email and click in reset'
         reset.do_reset(@user1[:email])
       end
       e.step('then I see the success message') do
@@ -173,7 +173,7 @@ describe('Reset Password', :Reset_password) do
   
         e.step('and I fill invalid email') do
           puts 'and I fill invalid email'
-          reset.do_reset('devmarcelo.user@ringbyname.coim ')
+          reset.do_reset('devmarcelo.setup@ringbyname.coim ')
         end
   
         e.step('the I can see the correct validation message') do
@@ -187,11 +187,11 @@ describe('Reset Password', :Reset_password) do
         end
   
         e.step('and I fill incorrect email') do
-          reset.do_reset('devmarcelo.user@ringbyname.com ')
+          reset.do_reset('devmarcelo.setup@ringbyname.com ')
         end
   
         e.step('the I can see the correct validation message') do
-          expect(reset.message.text).to eql '× Sorry, that user name cannot be found. Please try again.'
+          expect(reset.message.text).to eql '× Sorry, that setup name cannot be found. Please try again.'
         end
     end
   end

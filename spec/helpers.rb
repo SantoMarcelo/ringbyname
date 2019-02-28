@@ -71,7 +71,7 @@ module Helpers
  
 
   def provisioning(data = 'account', product = nil, value = nil) 
-   
+   puts "cheguei no provisioning"
     body = {  
       'request_id' =>'5b157d4ca622d',
       'data' => {  
@@ -123,7 +123,7 @@ module Helpers
       'virtual_users' => {  
         '0' => {  
            'cust_plan_id' =>'407809',
-           'first_name' =>'New user',
+           'first_name' =>'New setup',
            'last_name' =>'9314131',
            'email_address' =>'407809@ringbyname.com',
            'username' =>'407809',
@@ -149,7 +149,7 @@ module Helpers
         },
         '1' => {  
            'cust_plan_id' =>'407808',
-           'first_name' =>'New user',
+           'first_name' =>'New setup',
            'last_name' =>'9314132',
            'email_address' =>'407808@ringbyname.com',
            'username' =>'407808',
@@ -204,7 +204,7 @@ module Helpers
            'customer_id' =>'1168173',
            'cust_plan_id' =>'407811',
            'user_id' =>'',
-           'first_name' =>'New user',
+           'first_name' =>'New setup',
            'last_name' =>'9314129',
            'email_address' =>'407811@ringbyname.com',
            'username' =>'407811',
@@ -244,7 +244,7 @@ module Helpers
            'customer_id' =>'1168173',
            'cust_plan_id' =>'407810',
            'user_id' =>'',
-           'first_name' =>'New user',
+           'first_name' =>'New setup',
            'last_name' =>'9314130',
            'email_address' =>'407810@ringbyname.com',
            'username' =>'407810',
@@ -286,7 +286,8 @@ module Helpers
       }
      }
     }
-    
+    puts "body: "
+    puts body.to_json
     body['data'][data][product] = value
 
     headers = {
@@ -296,12 +297,15 @@ module Helpers
     response = HTTParty.put("http://api.#{$environment}-php56.dev.ringbyname.com/provisioning-admin/1168173",
       body: body.to_json,
       headers: headers, 
-      timeout: 9999)
-      if  response.parsed_response['code'] == 200
-        puts "provisioning complete"
-      elsif
-        puts "provisioning failed"
-      end
+      timeout: 9999
+    )
+   puts "response: "
+    puts response.to_json
+    if  response.parsed_response['code'] == 200
+      puts "provisioning complete"
+    elsif
+      puts "provisioning failed"
+    end
 
   end
 

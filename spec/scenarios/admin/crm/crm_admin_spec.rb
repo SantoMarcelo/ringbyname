@@ -32,8 +32,8 @@ describe('validate CRM admin') do
         puts 'when I on admin page'
         admin_dashboard.options.admin_crm.click
       end
-      e.step('I can see the user setup') do
-        puts 'I can see the user setup'
+      e.step('I can see the setup setup') do
+        puts 'I can see the setup setup'
         expect(crm_admin.admin_title.text).to eql 'CRM'
       end
       e.step('when I select opportunities menu') do

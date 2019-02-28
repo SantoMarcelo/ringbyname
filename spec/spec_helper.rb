@@ -17,6 +17,7 @@ require_relative 'helpers'
 require_relative 'object_factory'
 require_relative 'config'
 require_relative 'wait_for_ajax'
+require_relative '../spec/services/admin/setup/user/center_service'
 
 # Rspec configuration
 RSpec.configure do |config|
@@ -43,6 +44,7 @@ RSpec.configure do |config|
   config.include Pages
   config.include Config
   config.include HTTParty
+  config.include CenterService
   # config.include Couch::Server
   config.include WaitForAjax, type: :feature
 end

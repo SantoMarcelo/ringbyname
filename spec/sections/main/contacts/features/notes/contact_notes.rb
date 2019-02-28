@@ -5,7 +5,7 @@ module Sections
     element :txt_note_text, 'textarea'
     element :note_send_to, '.custom-dropdown-grouped'
     elements :send_department_list, 'li[data-ng-repeat^="department"]'
-    elements :send_users_list, 'li[data-ng-repeat^="user"]'
+    elements :send_users_list, 'li[data-ng-repeat^="setup"]'
     element :btn_save, '.btn-primary'
     element :btn_cancel, '.btn-warning'
 
@@ -26,7 +26,7 @@ module Sections
   class NoteSharePop < NotesFeture
     element :title, '.modal-header .modal-title'
     element :share_close_modal, '.modal-header button'
-    elements :share_user_list, '.modal-body .modal-share-user-list ul.list-unstyled li'
+    elements :share_user_list, '.modal-body .modal-share-setup-list ul.list-unstyled li'
     element :share_email, '.modal-body .custom-form textarea'
     element :shared_emails, '.custom-form div[data-ng-if*="emails_sharing"]'
     element :btn_save_share, '.modal-footer .btn-primary'

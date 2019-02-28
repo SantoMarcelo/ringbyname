@@ -25,8 +25,8 @@ module Sections
     element :info_total_records, 'strong[class="ng-binding"]'
     elements :btn_page_number, 'ul.pagination li' 
     # Settings for all users
-    element :link_outbound_caller, 'a[ui-sref="admin.setup.user.outbound"]'
-    element :link_multiple_password, 'a[ui-sref="admin.setup.user.password"]'
+    element :link_outbound_caller, 'a[ui-sref="admin.setup.setup.outbound"]'
+    element :link_multiple_password, 'a[ui-sref="admin.setup.setup.password"]'
 
     def do_search(info)
       self.setup.txt_search.set (info)

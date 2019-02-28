@@ -3,8 +3,8 @@ require_relative '../../sections/main/home'
 require_relative '../../sections/main/contacts/contact_card'
 
 class Home < SitePrism::Page
-  element :my_caller_id, '.column-left .dropdown-user-menu span.hover'
-  element :dropdown, '.column-right .dropdown-user-menu.dropdown'
+  element :my_caller_id, '.column-left .dropdown-setup-menu span.hover'
+  element :dropdown, '.column-right .dropdown-setup-menu.dropdown'
   element :title, '.column-middle-container'
   element :message, '.noty_message .noty_text'
 

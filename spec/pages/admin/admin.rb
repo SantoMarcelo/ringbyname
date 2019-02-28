@@ -19,6 +19,11 @@ class Admin < SitePrism::Page
       options.admin_setup.click
   end
 
+  def wait_for_load
+    while has_load? == false do
+      puts 'waiting for loading..'
+    end
+  end
 
 
 end 

@@ -1,7 +1,7 @@
 
 module Sections
 class UserDetails < SitePrism::Section
-    # user information
+    # setup information
     element :txt_first_name, 'input[placeholder="First Name"]'
     element :txt_last_name, 'input[placeholder="Last Name"]'
     element :txt_email, 'input[placeholder="E-mail"]'
@@ -54,7 +54,7 @@ class UserDetails < SitePrism::Section
     element :checkbox_crm, 'div.checkbox > input[data-ng-model="SetupUserDetailsController.record.crm.is_enabled"]'
 
     elements :icon_tooltips, 'i.icon-tooltip'
-    #reset user
+    #reset setup
     element :btn_reset_user, '.control button[data-ng-click*="resetUser"]'
 
 

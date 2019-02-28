@@ -40,7 +40,7 @@ class Department < Setup
           "endpoints" => [
             {
               "id" => "00edf3375cb2dbf353ac384209939dec",
-              "endpoint_type" => "user",
+              "endpoint_type" => "setup",
               "ring_delay" => 0,
               "ring_times" => 5,
               "order" => 1,
@@ -49,7 +49,7 @@ class Department < Setup
             },
             {
               "id" => "1f7a884701de598593602736de01b1c1",
-              "endpoint_type" => "user",
+              "endpoint_type" => "setup",
               "ring_delay" => 0,
               "ring_times" => 5,
               "order" => 2,
@@ -58,7 +58,7 @@ class Department < Setup
             },
             {
               "id" => "a55452509cc5124390e5e2928f57eb33",
-              "endpoint_type" => "user",
+              "endpoint_type" => "setup",
               "ring_delay" => 0,
               "ring_times" => 5,
               "order" => 3,
@@ -67,7 +67,7 @@ class Department < Setup
             },
             {
               "id" => "529cefcb549265c382e6b9b005f48f64",
-              "endpoint_type" => "user",
+              "endpoint_type" => "setup",
               "ring_delay" => 0,
               "ring_times" => 5,
               "order" => 4,

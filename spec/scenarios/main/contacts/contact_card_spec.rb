@@ -4,7 +4,7 @@ require_relative '../../../pages/main/contacts/contact'
 require_relative '../../../pages/main/activities/activity'
 
 #:contact_card_genenral 
-describe('Contact Card', :master_contact) do
+describe('Contact Card', :master) do
   before do
     Capybara.page.driver.browser.manage.window.maximize
     
@@ -728,7 +728,7 @@ describe('Contact Card', :master_contact) do
         expect(contact.validate_contact_info(@contact[:personal_weblink])).to eql true
         expect(contact.validate_contact_info(@contact[:other_weblink])).to eql true
       end
-      e.step('when I logon with other user') do
+      e.step('when I logon with other setup') do
         home.logout
         login_page.do_login(get_user(1))
         home.wait_until_home_features_visible
@@ -742,8 +742,8 @@ describe('Contact Card', :master_contact) do
         contact.contact_info.wait_for_contact_name
         expect(contact.contact_info.contact_name.text.include?(@contact[:full_name]))
       end
-      e.step('then this user does have not permission to edit this contact') do
-        puts '  then this user does have not permission to edit this contact'
+      e.step('then this setup does have not permission to edit this contact') do
+        puts '  then this setup does have not permission to edit this contact'
         element_visible = page.has_css?('.rbn-icon-common-contact-card-edit')
         expect(element_visible).to eql false
       end

@@ -6,7 +6,7 @@ require_relative '../../../../pages/main/contacts/contact'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 #opportunity_general
 #cc_general_opportunity:quick_notes_general 
-describe('Contact Card - Notes', :master_contact) do
+describe('Contact Card - Notes', :master) do
   before do
     Capybara.page.driver.browser.manage.window.maximize
 
@@ -105,8 +105,8 @@ describe('Contact Card - Notes', :master_contact) do
         notes.home_features.notes.click
       end
     end
-    it('add note and send it to other user', :cc_add_note_and_send_to_user) do |e|
-      puts '  add note and send it to other user'
+    it('add note and send it to other setup', :cc_add_note_and_send_to_user) do |e|
+      puts '  add note and send it to other setup'
       e.step('when I access contact card on home page') do
         puts '  when I access contact card on home page'
         home.select_contact(@contacts[0])
@@ -139,8 +139,8 @@ describe('Contact Card - Notes', :master_contact) do
         puts '  and I have to see the insert note activity'
         expect(activity.my_activity).to have_css('i.rbn-icon-activity-note_insert')
       end
-      e.step('when I loggin with user that note was shared') do
-        puts '  when I loggin with user that note was shared'
+      e.step('when I loggin with setup that note was shared') do
+        puts '  when I loggin with setup that note was shared'
         notes.logout
         login_page.do_login(get_user(1))
         home.wait_until_home_features_visible
@@ -190,8 +190,8 @@ describe('Contact Card - Notes', :master_contact) do
         expect(activity.my_activity).to have_css('i.rbn-icon-activity-note_insert')
         e.attach_file('screenshot', get_screenshot)
       end
-      e.step('when I loggin with department\'s user that note was shared') do
-        puts '  when I loggin with department\'s user that note was shared'
+      e.step('when I loggin with department\'s setup that note was shared') do
+        puts '  when I loggin with department\'s setup that note was shared'
         notes.logout
         login_page.do_login(get_user(1))
         home.wait_until_home_features_visible
@@ -208,8 +208,8 @@ describe('Contact Card - Notes', :master_contact) do
         expect(notes.validate_data_on_screen(notes.note_list.note_shared_with, @contacts[1][:full_name])).to eql true
         e.attach_file('screenshot', get_screenshot)
       end
-      e.step('when I loggin with other department\'s user that note was shared') do
-        puts '  when I loggin with other department\'s user that note was shared'
+      e.step('when I loggin with other department\'s setup that note was shared') do
+        puts '  when I loggin with other department\'s setup that note was shared'
         notes.logout
         login_page.do_login(get_user(2))
         home.wait_until_home_features_visible
@@ -226,8 +226,8 @@ describe('Contact Card - Notes', :master_contact) do
         expect(notes.validate_data_on_screen(notes.note_list.note_shared_with, @contacts[2][:full_name])).to eql true
         e.attach_file('screenshot', get_screenshot)
       end
-      e.step('when I loggin with other department\'s user that note was shared') do
-        puts '  when I loggin with other department\'s user that note was shared'
+      e.step('when I loggin with other department\'s setup that note was shared') do
+        puts '  when I loggin with other department\'s setup that note was shared'
         notes.logout
         login_page.do_login(get_user(3))
         home.wait_until_home_features_visible
@@ -274,8 +274,8 @@ describe('Contact Card - Notes', :master_contact) do
         text: 'Test Automatic Note 2' 
       }
     end
-    it('add note share with other user and mark as read it', :cc_mark_as_read_click) do |e|
-      puts '  add note share with other user and mark as read it'
+    it('add note share with other setup and mark as read it', :cc_mark_as_read_click) do |e|
+      puts '  add note share with other setup and mark as read it'
       e.step('when I access contact card on home page') do
         puts '    when I access contact card on home page'
         home.select_contact(@contacts[0])
@@ -304,8 +304,8 @@ describe('Contact Card - Notes', :master_contact) do
         expect(note_contact.validate_data_on_screen(note_contact.note_list.note_shared_with, @contacts[1][:full_name])).to eql true
         expect(activity.my_activity).to have_css('i.rbn-icon-activity-note_insert')
       end
-      e.step('when I loggin with user that note was shared') do
-        puts '  when I loggin with user that note was shared'
+      e.step('when I loggin with setup that note was shared') do
+        puts '  when I loggin with setup that note was shared'
         notes.logout
         expect(page).to have_content('Sign in')
         login_page.do_login(get_user(1))
@@ -379,8 +379,8 @@ describe('Contact Card - Notes', :master_contact) do
         expect(note_contact.validate_data_on_screen(note_contact.note_list.note_text_list, @note[:text])).to eql true
         expect(note_contact.validate_data_on_screen(note_contact.note_list.note_text_list, @note2[:text])).to eql true
       end
-      e.step('when I loggin with user that note was shared') do
-        puts '  when I loggin with user that note was shared'
+      e.step('when I loggin with setup that note was shared') do
+        puts '  when I loggin with setup that note was shared'
         notes.logout
         login_page.do_login(get_user(1))
         home.wait_until_home_features_visible

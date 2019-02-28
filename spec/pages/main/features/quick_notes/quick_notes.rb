@@ -7,7 +7,7 @@ class QuickNote < Home
     section :add_note, Sections::Notes, '.rbn-dropdown-menu.right'
     section :send_to, Sections::Notes, '.rbn-dropdown-menu.event-drop'
     section :share_note, Sections::NoteShare, '.modal-dialog'
-    element :checkbox, '.modal-body .custom-form .modal-share-user-list ul.list-unstyled li'
+    element :checkbox, '.modal-body .custom-form .modal-share-setup-list ul.list-unstyled li'
    
 
     element :modal_confirmation_text, '.modal-dialog .modal-body div.bootbox-body'
@@ -69,9 +69,9 @@ class QuickNote < Home
         body: user.to_json,
         headers: headers
       )
-      user_id = @response.parsed_response['data']['user']['id']
+      user_id = @response.parsed_response['data']['setup']['id']
       session_id = @response.parsed_response['data']['session_id']
-      puts "user id:  #{user_id}"
+      puts "setup id:  #{user_id}"
 
       headers = {
         'X-Application-Id' => 'webapp',
@@ -86,7 +86,7 @@ class QuickNote < Home
             'content' => "Test Auto Note #{i}",
             'contact_id' => nil,
             'responsible' => {
-              'type' => 'user',
+              'type' => 'setup',
               'id' => user_id}
        
           

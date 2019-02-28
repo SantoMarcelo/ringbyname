@@ -17,10 +17,10 @@ end
 desc "rodar dev marcelo com chrome"
 task :test_chrome_browser do
     ENV['BROWSER'] = 'chrome'
-    ENV['ENVIRONMENT'] = 'marcel'
-    ENV['BRANCH'] = 'current'
-    ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag user_massive_cId --format html --out log/reports/spec2.html'
+    ENV['ENVIRONMENT'] = 'marcelo'
+    ENV['BRANCH'] = 'misc_and_fixes'
+    ENV['R_CUSTOMER_ACCOUNT_ID'] = '69aed2821f3005236e13b1360f99cf34'
+    sh 'rspec -fd --tag center_update --format html --out log/reports/spec2.html'
     #sh 'allure serve log/reports'
 end
 
@@ -37,9 +37,9 @@ end
 desc "Run webapp testes on jenkins"
 task :run_webapp_tests do
     ENV['BROWSER'] = 'chrome headless'
-    ENV['ENVIRONMENT'] = 'marcel'
+    ENV['ENVIRONMENT'] = 'marcelo'
     ENV['BRANCH'] = 'current'
-    ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
+    ENV['R_CUSTOMER_ACCOUNT_ID'] = '69aed2821f3005236e13b1360f99cf34'
     sh 'rspec -fd --tag master --format html --out log/reports/spec.html'
     #sh 'allure serve log/reports'
 end 

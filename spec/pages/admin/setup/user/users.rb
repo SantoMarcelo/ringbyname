@@ -102,7 +102,7 @@ class User < Setup
     wait_for_user_details
     details.wait_until_btn_save_user_visible
     details.checkboxes.each do |u|
-      u.click if u.text.include?('Enable CRM for this user')
+      u.click if u.text.include?('Enable CRM for this setup')
     end
     details.btn_save_user.click
     sleep(2)
@@ -113,7 +113,7 @@ class User < Setup
     details.wait_until_btn_save_user_visible
     sleep(1)
     details.checkboxes.each do |u|
-      u.click if u.text.include?('Enable CRM for this user')
+      u.click if u.text.include?('Enable CRM for this setup')
     end
     details.btn_save_user.click
     setup.wait_until_grid_rows_visible
@@ -133,7 +133,7 @@ class User < Setup
     admin_dashboard.wait_until_btn_continue_visible
     admin_dashboard.btn_continue.click
     admin_dashboard.options.admin_setup.click
-    # select user and allow CRM feature
+    # select setup and allow CRM feature
     select_user_in_grid(user)
     crm_feature_enable
     sleep(5)

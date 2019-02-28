@@ -7,7 +7,7 @@ module Sections
     element :txt_note_text, 'textarea'
     element :btn_send_to, '.rbn-dropdown .btn-trigger'
     elements :send_department_list, '.rbn-dropdown-content ul.list-unstyled li[data-ng-repeat^="department"]'
-    elements :send_users_list, '.rbn-dropdown-content ul.list-unstyled li[data-ng-repeat^="user"]'
+    elements :send_users_list, '.rbn-dropdown-content ul.list-unstyled li[data-ng-repeat^="setup"]'
     element :btn_save, '.btn.btn-primary'
     element :btn_cancel, '.btn.btn-warning'
     elements :note_sent_to, '.list-unstyled.custom-top-list li div[data-ng-if="note.responsible.name"]'
@@ -23,7 +23,7 @@ module Sections
   class NoteShare < SitePrism::Section
     element :title, '.modal-header .modal-title'
     element :share_close_modal, '.modal-header button'
-    elements :share_user_list, '.modal-body .modal-share-user-list ul.list-unstyled li'
+    elements :share_user_list, '.modal-body .modal-share-setup-list ul.list-unstyled li'
     element :share_email, '.modal-body .custom-form textarea'
     element :shared_emails, '.custom-form div[data-ng-if*="emails_sharing"]'
     element :btn_save_share, '.modal-footer .btn-primary'

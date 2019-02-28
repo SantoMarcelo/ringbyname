@@ -43,7 +43,7 @@ Scenario: Validate required fields
   And insert a new group with this informations: 
       |name             |users         |
       |                 |User 1, User 2|
-  Then I have to see success message: 'Sorry, you must set a name for this Call center Group.'
+  Then I have to see validation message: 'Sorry, you must set a name for this Call center Group.'
     # Examples:
     #   |name             |users         |
     #   |                 |User 1, User 2|

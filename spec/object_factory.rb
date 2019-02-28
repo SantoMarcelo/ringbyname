@@ -14,5 +14,5 @@ module Pages
   def depto; Department.new end
   def notes; QuickNote.new end
   def note_contact; ContactNotes.new end
-  def centers; Center.new end
+  def center; Center.new end
 end

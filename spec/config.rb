@@ -62,7 +62,7 @@ module Config
     return @group_name
   end
 
-#   #get first admin user to set like admin
+#   #get first admin setup to set like admin
   def get_admin
     account_id = ENV['R_CUSTOMER_ACCOUNT_ID']
     
@@ -163,7 +163,7 @@ module Config
     )
     session_id = @response.parsed_response['data']['session_id']
     @response = HTTParty.get(
-      "http://api.#{$environment}-php56.dev.ringbyname.com/user-admin?X-Application-Id=webapp-admin&X-Session-Id=#{session_id}&X-Version=v2&limit=10&page=1&select=id%7Ccaller_id%7Cfirst_name%7Clast_name%7Cpackage_name%7Cassigned_phone_numbers%7Cis_local_calling%7Cpermission%7Cpersonal_phone_number%7Ccrm.is_enabled"
+      "http://api.#{$environment}-php56.dev.ringbyname.com/setup-admin?X-Application-Id=webapp-admin&X-Session-Id=#{session_id}&X-Version=v2&limit=10&page=1&select=id%7Ccaller_id%7Cfirst_name%7Clast_name%7Cpackage_name%7Cassigned_phone_numbers%7Cis_local_calling%7Cpermission%7Cpersonal_phone_number%7Ccrm.is_enabled"
     
     )
     user_list = @response['data']['rows']
@@ -320,11 +320,11 @@ module Config
     end
 
   end
-#   def set_user_data(user)
+#   def set_user_data(setup)
 
 #     body_login = { 'data' => {
-#         'username' => user[:username],
-#         'password' => user[:password],
+#         'username' => setup[:username],
+#         'password' => setup[:password],
 #         'stay_sign_in' => 0,
 #         'timezone' => 'America/Sao_Paulo'
 #     } }
@@ -339,7 +339,7 @@ module Config
 #         headers: headers
 #     )
 
-#     user_id = @response.parsed_response['data']['user']['id']
+#     user_id = @response.parsed_response['data']['setup']['id']
 #     session_id = @response.parsed_response['data']['session_id']
 
 #     user_info = {
@@ -354,7 +354,7 @@ module Config
 #                 "timezone" => "America/New_York",
 #                 "personal_phone_number" => {
 #                     "id" => "+12392080525",
-#                     "name" => "New user 9314129",
+#                     "name" => "New setup 9314129",
 #                     "email" => nil,
 #                     "allowed_users" => [
 
@@ -363,7 +363,7 @@ module Config
 #                     "type" => "personal",
 #                     "routing" => {
 #                         "id" => "00edf3375cb2dbf353ac384209939dec",
-#                         "type" => "user"
+#                         "type" => "setup"
 #                     },
 #                     "greeting" => {
 #                         "type" => "AUTO",
@@ -473,7 +473,7 @@ module Config
 #                 "assigned_phone_numbers" => [
 #                     {
 #                         "id" => "+12392080525",
-#                         "name" => "New user 9314129",
+#                         "name" => "New setup 9314129",
 #                         "number" => "12392080525",
 #                         "type" => "personal",
 #                         "caller_id_name" => "Dev Marcelo 1 U",
@@ -485,7 +485,7 @@ module Config
 #                         ],
 #                         "routing" => {
 #                             "id" => "00edf3375cb2dbf353ac384209939dec",
-#                             "type" => "user"
+#                             "type" => "setup"
 #                         },
 #                         "greeting" => {
 #                             "type" => "AUTO",
@@ -642,7 +642,7 @@ module Config
 
 #     }
 
-#     @reset = HTTParty.put("http://api.#{$environment}-php56.dev.ringbyname.com/user-admin/#{user[:user_id]}?",
+#     @reset = HTTParty.put("http://api.#{$environment}-php56.dev.ringbyname.com/setup-admin/#{setup[:user_id]}?",
 #                           body: user_info.to_json,
 #                           headers: headers
 #     )

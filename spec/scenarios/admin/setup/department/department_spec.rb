@@ -116,8 +116,8 @@ end
         puts 'when I on admin page'
         admin_dashboard.options.admin_setup.click
       end
-      e.step('I can see the user setup') do
-        puts 'I can see the user setup'
+      e.step('I can see the setup setup') do
+        puts 'I can see the setup setup'
         expect(depto.admin_title.text).to eql 'Setup'
       end
       e.step('and I can access the department settings') do

@@ -99,23 +99,23 @@ describe('validate Users Setup', :user_setup) do
   end
 #user_list
   describe('validate users list', :master) do
-    it('  access user setup and validate user list') do |e|
-      puts 'access user setup and validate user list'
+    it('  access setup setup and validate setup list') do |e|
+      puts 'access setup setup and validate setup list'
       e.step('when I on admin page') do
         puts '  when I on admin page'
          admin_dashboard.goto_settings_admin
       end 
-      e.step('I can see the user setup') do
-        puts '  I can see the user setup'
+      e.step('I can see the setup setup') do
+        puts '  I can see the setup setup'
         expect(users.admin_title.text).to eql 'Setup'
       end
-      e.step('and I can access the user setings') do
-        puts '  and I can access the user setings'
+      e.step('and I can access the setup setings') do
+        puts '  and I can access the setup setings'
         users.access_user_menu
         expect(users.user_main.title.text).to eql 'Users'
       end
-      e.step('then I check user list') do
-        puts '  then I check user list'
+      e.step('then I check setup list') do
+        puts '  then I check setup list'
         users.wait_for_grid
         expect(page).to have_content('Name')
         expect(users.is_user_in_grid(@user1)).to eql true
@@ -209,8 +209,8 @@ describe('validate Users Setup', :user_setup) do
         users.user_main.txt_search.set (@user1[:extension])
         users.user_main.btn_search.click
       end
-      e.step('then I have to see only the filtred user') do
-        puts '  then I have to see only the filtred user'
+      e.step('then I have to see only the filtred setup') do
+        puts '  then I have to see only the filtred setup'
         users.wait_for_grid
         users.setup.wait_until_grid_rows_visible
         sleep 2
@@ -223,8 +223,8 @@ describe('validate Users Setup', :user_setup) do
         users.user_main.txt_search.set (@user2[:name])
         users.user_main.btn_search.click
       end
-      e.step('then I have to see only the filtred user') do
-        puts '  then I have to see only the filtred user'
+      e.step('then I have to see only the filtred setup') do
+        puts '  then I have to see only the filtred setup'
         users.wait_for_grid
         users.setup.wait_until_grid_rows_visible
         sleep 2
@@ -236,8 +236,8 @@ describe('validate Users Setup', :user_setup) do
         users.user_main.txt_search.set (@user3[:type])
         users.user_main.btn_search.click
       end
-      e.step('then I have to see only the filtred user') do
-        puts '  then I have to see only the filtred user'
+      e.step('then I have to see only the filtred setup') do
+        puts '  then I have to see only the filtred setup'
         users.wait_for_grid
         users.setup.wait_until_grid_rows_visible
         sleep 2
@@ -249,8 +249,8 @@ describe('validate Users Setup', :user_setup) do
         users.user_main.txt_search.set (@user3[:direct])
         users.user_main.btn_search.click
       end
-      e.step('then I have to see only the filtred user') do
-        puts '  then I have to see only the filtred user'
+      e.step('then I have to see only the filtred setup') do
+        puts '  then I have to see only the filtred setup'
         users.wait_for_grid
         sleep 2
         expect(users.is_user_in_grid(@user3)).to eql true
@@ -261,8 +261,8 @@ describe('validate Users Setup', :user_setup) do
         users.user_main.txt_search.set '!@#$%¨&*()'
         users.user_main.btn_search.click
       end
-      e.step('then I have to see only the filtred user') do
-        puts '  then I have to see only the filtred user'
+      e.step('then I have to see only the filtred setup') do
+        puts '  then I have to see only the filtred setup'
         users.wait_for_grid
         sleep 2
         expect(users.user_main.grid_rows.empty?).to eql true
@@ -294,25 +294,25 @@ describe('validate Users Setup', :user_setup) do
         puts '  validate grid tooltip'
         users.user_main.icon_grid_tooltip.click
         users.tooltips.wait_until_tooltip_text_visible
-        expect(users.tooltips.tooltip_text.text).to eql 'Click on Deactivate to remove a user from the system and reset all of its stored settings. Deactivating an extension will remove all stored settings, voicemails, and configurations.'
+        expect(users.tooltips.tooltip_text.text).to eql 'Click on Deactivate to remove a setup from the system and reset all of its stored settings. Deactivating an extension will remove all stored settings, voicemails, and configurations.'
       end
     end
   end
  # user_details
   describe('validate users details', :master) do
-    it('  validate user information') do |e|
-      puts 'validate user information'
+    it('  validate setup information') do |e|
+      puts 'validate setup information'
       e.step('when I on users setup') do
         puts 'when I on users setup'
          admin_dashboard.goto_settings_admin
       end
-      e.step('and I select the first user') do
-        puts 'and I select the first user'
+      e.step('and I select the first setup') do
+        puts 'and I select the first setup'
         users.wait_for_grid
         users.select_user_in_grid(@user1)
       end
-      e.step('then I check user\' informations') do
-        puts 'then I check user\'s informations'
+      e.step('then I check setup\' informations') do
+        puts 'then I check setup\'s informations'
         expect(users.details.txt_first_name.text.include?(@user1[:first_name]))
         expect(users.details.txt_last_name.text.include?(@user1[:last_name]))
         expect(users.details.txt_email.text.include?(@user1[:email]))
@@ -337,21 +337,21 @@ describe('validate Users Setup', :user_setup) do
         puts 'and I validate all tooltips texts'
         # Add all tooltips text in array to validate with array returned in validation method.
         tooltips_texts_expect = [
-          'Please enter an e-mail to be used as a login for this user. This must be a unique e-mail. This email will also be used to send notifications to the user, such as new voicemail and fax alerts.',
-          'Please enter a password for this user. Passwords are alphanumeric and may contain letter and number combinations as well as special characters.',
+          'Please enter an e-mail to be used as a login for this setup. This must be a unique e-mail. This email will also be used to send notifications to the setup, such as new voicemail and fax alerts.',
+          'Please enter a password for this setup. Passwords are alphanumeric and may contain letter and number combinations as well as special characters.',
           'Please re-enter your password to check for accuracy.',
           'You may enter any 3 to 5-digit extension number not currently in use in your account',
-          'This is the direct telephone number that has been assigned to this user by the system administrator. If you would like to change the telephone number assigned, please navigate to the Phone Numbers section of the admin panel.',
-          'You may select what outbound caller ID will be used by this user when placing a call. This number will be displayed to all telephone numbers dialed by this user. To assign the same Outbound Caller ID to more than one user, consider using the "Set Outbound Caller ID for Mutlitiple Users" tool.',
-          'Click on this option if you wish to attach an additional VoIP telephone, or software based softphone to this user.',
+          'This is the direct telephone number that has been assigned to this setup by the system administrator. If you would like to change the telephone number assigned, please navigate to the Phone Numbers section of the admin panel.',
+          'You may select what outbound caller ID will be used by this setup when placing a call. This number will be displayed to all telephone numbers dialed by this setup. To assign the same Outbound Caller ID to more than one setup, consider using the "Set Outbound Caller ID for Mutlitiple Users" tool.',
+          'Click on this option if you wish to attach an additional VoIP telephone, or software based softphone to this setup.',
           'Click on this checkbox to enable routing of calls to a specific device.',
           'Click on this option if you would like the system to simultaneously route calls to a landline or mobile phone. Expert Tip: Try forwarding calls to a colleague while you are away on vaction, simply enter their extension number instead of a landline or mobile phone number',
-          "Click on this checkbox to enable or disable voicemail for this user\'s extensions",
+          "Click on this checkbox to enable or disable voicemail for this setup\'s extensions",
           'Enter any 4-digit numeric password for voicemail box access',
           'Select this option if you would like the system to use an automated voicemail greeting.',
           'Select a language and enter the voicemail greeting you would like the system to read to your callers',
           'Use this option if you would like to use an MP3 ro WAV file as a voicemail greeting',
-          'Click on this checkbox to grant this user Administrator access to the system and all configuration settings.'
+          'Click on this checkbox to grant this setup Administrator access to the system and all configuration settings.'
         ]
         users.details.wait_until_btn_save_user_visible
         expect(users.validate_details_tooltips).to eql tooltips_texts_expect
@@ -367,14 +367,14 @@ describe('validate Users Setup', :user_setup) do
         puts '  when I on users setup'
         admin_dashboard.goto_settings_admin
       end
-      e.step('and I select the first user') do
-        puts '  and I select the first user'
+      e.step('and I select the first setup') do
+        puts '  and I select the first setup'
        # sleep 10
         users.select_user_in_grid(@user1)
       end
       #update general information
-      e.step('and I change user informations') do
-        puts '  and I change user informations'
+      e.step('and I change setup informations') do
+        puts '  and I change setup informations'
         #expect(page).to have_css(users.details.txt_first_name.instance_variable_get(:@query).locator)
         users.wait_for_user_details
         users.details.txt_first_name.set (@user_changed[:first_name])
@@ -382,15 +382,15 @@ describe('validate Users Setup', :user_setup) do
         users.details.txt_email.set (@user_changed[:email])
         users.details.txt_extension.set (@user_changed[:extension])
         users.details.select_outbound_caller_id.find('option', text: (@user_changed[:outbound_caller_id])).select_option
-        #get all checkboxes on the user datails and click in the each.
+        #get all checkboxes on the setup datails and click in the each.
       
         users.details.checkboxes.each do |u|
           u.click if u.text.include?('Enable Voicemail Box of User Calls')
           u.click if u.text.include?('Use Callback Request')
           u.click if u.text.include?('Require key press to accept transferred calls')
-          #u.click if u.text.include?('Enable inbound call recording for this user')
-         # u.click if u.text.include?('Enable outbound call recording for this user')
-          u.click if u.text.include?('Allow others to remotely answer this user\'s calls')
+          #u.click if u.text.include?('Enable inbound call recording for this setup')
+         # u.click if u.text.include?('Enable outbound call recording for this setup')
+          u.click if u.text.include?('Allow others to remotely answer this setup\'s calls')
         end
         users.details.btn_save_user.click
         sleep 5
@@ -421,8 +421,8 @@ describe('validate Users Setup', :user_setup) do
         #expect(users.details.checkbox_outbound_call_recording(visible: false)).to be_checked
         expect(users.details.checkbox_call_pickup(visible: false)).not_to be_checked
       end
-      e.step('when I change the user password')do
-        puts '  when I change the user password'
+      e.step('when I change the setup password')do
+        puts '  when I change the setup password'
         sleep 2
         users.details.txt_password.each do |u|
           u.set(@user_changed[:password])
@@ -530,7 +530,7 @@ describe('validate Users Setup', :user_setup) do
         puts '  then I can see the validation message'
         users.device_modal.wait_until_modal_title_visible
         expect(users.device_modal.modal_title.text).to eql 'Maximum Number of Devices Reached'
-        expect(users.device_modal.modal_message.text).to eql 'You have reached the limit of devices per user.'
+        expect(users.device_modal.modal_message.text).to eql 'You have reached the limit of devices per setup.'
         users.device_modal.modal_button.click
       end
       e.step('and when I delete an inserted devices')do
@@ -688,11 +688,11 @@ describe('validate Users Setup', :user_setup) do
         expect(users.details.select_language.text.include?('Portuguese'))
       end
     
-      e.step('when I remove admin permission from other user')do
-        puts '  when I remove admin permission from other user'
+      e.step('when I remove admin permission from other setup')do
+        puts '  when I remove admin permission from other setup'
         users.select_user_in_grid(@user2)
         users.details.checkboxes.each do |u|
-          u.click if u.text.include?('Make this user an admin')
+          u.click if u.text.include?('Make this setup an admin')
         end
          users.details.btn_save_user.click
          users.wait_for_message
@@ -700,15 +700,15 @@ describe('validate Users Setup', :user_setup) do
          users.message.btn_ok.click
          sleep 1
       end
-      e.step('then I can\'t see this user like admin in user grid')do
-        puts '  then I can\'t see this user like admin in user grid'
+      e.step('then I can\'t see this setup like admin in setup grid')do
+        puts '  then I can\'t see this setup like admin in setup grid'
         users.setup.wait_for_grid_rows
         expect(users.setup.grid_icon_admin.length).to eql 3
         users.select_user_in_grid(@user2)
         expect(users.details.checkbox_admin_permission(visible: false)).not_to be_checked
       end
-      e.step('when I login with an user what isn\'t a admin')do
-        puts '  when I login with an user what isn\'t a admin'
+      e.step('when I login with an setup what isn\'t a admin')do
+        puts '  when I login with an setup what isn\'t a admin'
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(@user2)
@@ -721,8 +721,8 @@ describe('validate Users Setup', :user_setup) do
         home.menu_access
         expect(home.dropdown_menu.has_goto_admin?).to eql false
       end
-      e.step('when I try to remove admin permission to the same logged user')do
-        puts '  when I try to remove admin permission to the same logged user'
+      e.step('when I try to remove admin permission to the same logged setup')do
+        puts '  when I try to remove admin permission to the same logged setup'
         home.dropdown_menu.logout.click
         login_page.wait_for_txt_user
         login_page.do_login(@user_changed)
@@ -756,7 +756,7 @@ describe('validate Users Setup', :user_setup) do
     end
     after() do
       puts '  Return to original data'
-      # return user data to default
+      # return setup data to default
       users.details.txt_first_name.set (@user1[:first_name])
       users.details.txt_last_name.set (@user1[:last_name])
       users.details.txt_email.set (@user1[:email])
@@ -770,9 +770,9 @@ describe('validate Users Setup', :user_setup) do
       users.details.checkboxes.each do |u|
         u.click if u.text.include?('Use Callback Request')
         u.click if u.text.include?('Require key press to accept transferred calls')
-        #u.click if u.text.include?('Enable inbound call recording for this user')
-       # u.click if u.text.include?('Enable outbound call recording for this user')
-        u.click if u.text.include?('Allow others to remotely answer this user\'s calls')
+        #u.click if u.text.include?('Enable inbound call recording for this setup')
+       # u.click if u.text.include?('Enable outbound call recording for this setup')
+        u.click if u.text.include?('Allow others to remotely answer this setup\'s calls')
       end
       users.details.txt_text_greeting.set('')
       users.details.radios.each do |u|
@@ -791,7 +791,7 @@ describe('validate Users Setup', :user_setup) do
       users.is_user_in_grid(@user1)
       users.select_user_in_grid(@user2)
       users.details.checkboxes.each do |u|
-        u.click if u.text.include?('Make this user an admin')
+        u.click if u.text.include?('Make this setup an admin')
       end
       users.details.btn_save_user.click
       users.wait_for_message
@@ -800,37 +800,37 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('validate user reset data', :master) do
-    it('reset user data and check new data')do |e|
-      puts '  reset user data and check new data'
+  describe('validate setup reset data', :master) do
+    it('reset setup data and check new data')do |e|
+      puts '  reset setup data and check new data'
       e.step('when I on users setup') do
         puts '  when I on users setup'
          admin_dashboard.goto_settings_admin
         expect(users.admin_title.text).to eql 'Setup'
       end
-      e.step('and I select the user to reset data') do
-        puts '  and I select the user to reset data'
+      e.step('and I select the setup to reset data') do
+        puts '  and I select the setup to reset data'
         users.select_user_in_grid(@user4)
       end
-      e.step('and I cancel reset user data')do
-        puts '  and I cancel reset user data'
+      e.step('and I cancel reset setup data')do
+        puts '  and I cancel reset setup data'
         users.details.btn_reset_user.click
         users.reset_modal.wait_for_modal_title
         expect(users.reset_modal.modal_title.text).to eql 'Reset User Settings'
-        expect(users.reset_modal.modal_message.text).to eql "Please confirm you wish to reset this user and erase all user settings."
+        expect(users.reset_modal.modal_message.text).to eql "Please confirm you wish to reset this setup and erase all setup settings."
         users.reset_modal.modal_btn_cancel.click
       end
-      e.step('the I return to user details')do
-        puts '  the I return to user details'
+      e.step('the I return to setup details')do
+        puts '  the I return to setup details'
         users.wait_until_reset_modal_invisible
         expect(users.has_reset_modal?).to eql false
       end
-      e.step('when I confirm reset user data')do
-        puts '  when I confirm reset user data'
+      e.step('when I confirm reset setup data')do
+        puts '  when I confirm reset setup data'
         users.details.btn_reset_user.click
         users.wait_for_reset_modal
         expect(users.reset_modal.modal_title.text).to eql 'Reset User Settings'
-        expect(users.reset_modal.modal_message.text).to eql 'Please confirm you wish to reset this user and erase all user settings.'
+        expect(users.reset_modal.modal_message.text).to eql 'Please confirm you wish to reset this setup and erase all setup settings.'
         users.reset_modal.modal_btn_save.click
         #confirmation message
         users.wait_for_message
@@ -847,8 +847,8 @@ describe('validate Users Setup', :user_setup) do
         expect(users.details.txt_extension.text.include?(@user_restored[:extension]))
         expect(users.details.txt_direct_number.text.include?(@user_restored[:direct]))
       end
-      e.step('and I validate the login with the new user data')do
-        puts '  and I validate the login with the new user data'
+      e.step('and I validate the login with the new setup data')do
+        puts '  and I validate the login with the new setup data'
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(@user_restored)
@@ -860,7 +860,7 @@ describe('validate Users Setup', :user_setup) do
     end 
 
     after do
-      puts 'return user data to default'
+      puts 'return setup data to default'
       home.goto_admin
       admin_dashboard.cofirm_modal
       admin_dashboard.goto_settings_admin
@@ -894,10 +894,10 @@ describe('validate Users Setup', :user_setup) do
       e.step('when I on users setup') do
          admin_dashboard.goto_settings_admin
       end
-      e.step('and I select the first user') do
+      e.step('and I select the first setup') do
         users.select_user_in_grid(@user2)
       end
-      e.step('then I allow CRM feature to user') do
+      e.step('then I allow CRM feature to setup') do
         users.crm_feature_enable
         users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'
@@ -932,7 +932,7 @@ describe('validate Users Setup', :user_setup) do
       e.step('then I see the validation message') do
         puts '  then I see the validation message'
         users.wait_for_message
-        expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this user, please buy another license or disable CRM of another user before proceeding."
+        expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this setup, please buy another license or disable CRM of another setup before proceeding."
       end
     end
 
@@ -941,11 +941,11 @@ describe('validate Users Setup', :user_setup) do
 
          admin_dashboard.goto_settings_admin
       end
-      e.step('and I select the first user') do
+      e.step('and I select the first setup') do
         users.wait_for_grid
         users.select_user_in_grid(@user2)
       end
-      e.step('then I unallow CRM feature to user') do
+      e.step('then I unallow CRM feature to setup') do
         users.crm_feature_disable
         users.wait_for_message
         expect(users.message.modal.text).to eql 'User updated successfully.'

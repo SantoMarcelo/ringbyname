@@ -23,7 +23,7 @@ describe('validate permissions setup', :permission_admin) do
 #3. The search at the top will search names of permission groups and users within them.
 # Make sure the search is working.
 # Search for a group name, verify that it has returned correctly;
-# Search for the name of a user who is within one or more groups and verify that all groups that this user belongs to are listed.
+# Search for the name of a setup who is within one or more groups and verify that all groups that this setup belongs to are listed.
 #4. Provide option to create a new group (to appear in 3rd column)
 # Check for the option to create a new group.
 # Select Create New Group and verify that the screen for setting up this new group is displayed.
@@ -37,20 +37,20 @@ describe('validate permissions setup', :permission_admin) do
 # Verify that the rules for groups are listed.
 # Change some rules and save.
 # Please edit and verify that your changes have been kept.
-#7. Permission Rule 1: Limit user view to assigned departments,
+#7. Permission Rule 1: Limit setup view to assigned departments,
 # Associate this rule with a group, and make sure that users who belong to this group have access only to your department
 #8. Below the list of rules display the dual list of users so they can select which users these rules will apply to.
 # check that just below the list of rules is displayed a list with the users.
 # verify that you can select one or more users for a given rule
-#9. Similar to what we do for e911, as user can only be assigned to one permission group, so if they current belong to one, they cannot be assigned to another until they are unassigned from a group.
-# Try associating a user who is already in a group of permissions with another group, make sure the app does not allow it.
-# Verify that a message is displayed to the user.
+#9. Similar to what we do for e911, as setup can only be assigned to one permission group, so if they current belong to one, they cannot be assigned to another until they are unassigned from a group.
+# Try associating a setup who is already in a group of permissions with another group, make sure the app does not allow it.
+# Verify that a message is displayed to the setup.
 #10. Permission Rule 2: Prevent users from changing Outbound Caller Id
-# enable this rule for a user, then verify that it will no longer be able to change the outgoing caller ID.
-#11. Permission Rule 3: Training Status - Will not receive department calls (user would be removed from call groups - can still receive direct and any other calls and can make calls)
-# Enable this rule for a user, so make sure he does not receive calls from the department.
-# Verify that the user can receive direct calls
-# Verify that the user can make calls.
+# enable this rule for a setup, then verify that it will no longer be able to change the outgoing caller ID.
+#11. Permission Rule 3: Training Status - Will not receive department calls (setup would be removed from call groups - can still receive direct and any other calls and can make calls)
+# Enable this rule for a setup, so make sure he does not receive calls from the department.
+# Verify that the setup can receive direct calls
+# Verify that the setup can make calls.
 #12. Permission groups names must unique.
 # Verify that you can not save two groups with the same name.
 #13. When assigning users to a permission group, admins must be grayed out and not selectable.
@@ -59,7 +59,7 @@ describe('validate permissions setup', :permission_admin) do
   end
     describe('validate permissions groups', :permission_admin_groups) do
       before() do
-        set_user_permission(get_user(2), "user")
+        set_user_permission(get_user(2), "setup")
         #clear_permissions
         provisioning
 
@@ -84,7 +84,7 @@ describe('validate permissions setup', :permission_admin) do
           expect(permission.admin_title.text).to eql 'Setup'
           expect(permission.menu).to have_css(permission.menu.permission.instance_variable_get(:@query).locator)
         end
-       # When selecting this tab, verify that the user is directed to the permissions settings screen.
+       # When selecting this tab, verify that the setup is directed to the permissions settings screen.
        e.step('when I select the permission option') do
          puts '  when I select the permission option'
          permission.menu.permission.click
@@ -140,7 +140,7 @@ describe('validate permissions setup', :permission_admin) do
            expect(permission.admin_title.text).to eql 'Setup'
            expect(permission.menu).to have_css(permission.menu.permission.instance_variable_get(:@query).locator)
          end
-        # When selecting this tab, verify that the user is directed to the permissions settings screen.
+        # When selecting this tab, verify that the setup is directed to the permissions settings screen.
         e.step('when I select the permission option') do
           puts '  when I select the permission option'
           permission.menu.permission.click

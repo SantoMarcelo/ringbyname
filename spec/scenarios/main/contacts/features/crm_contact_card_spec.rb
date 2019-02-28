@@ -6,7 +6,7 @@ require_relative '../../../../pages/main/contacts/contact'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 #opportunity_general
 #cc_general_opportunity - :opportunity_general 
-describe('Contact Card - CRM Opportunity', :master_contact) do
+describe('Contact Card - CRM Opportunity', :master) do
   before do
     system("mysql -h mysql.#{$environment}-php56.dev.ringbyname.com -u devroot -ptesttest -f < sql/delete_opportunity.sql")
     Capybara.page.driver.browser.manage.window.maximize
@@ -642,14 +642,14 @@ describe('Contact Card - CRM Opportunity', :master_contact) do
 
   # describe('opportunity owner', :cc_oppo_owner)do
   
-  #   it('display only opportunity what logged user is an owner') do |e|
+  #   it('display only opportunity what logged setup is an owner') do |e|
   #     puts 'WARNING: Need to has 2 CRM licenses provisioned on account'
-  #     e.step('given when I allow CRM license to other user')do
+  #     e.step('given when I allow CRM license to other setup')do
   #     home.goto_admin
   #     admin_dashboard.wait_until_btn_continue_visible
   #     admin_dashboard.btn_continue.click
   #     admin_dashboard.options.admin_setup.click
-  #     # select user and allow CRM feature
+  #     # select setup and allow CRM feature
   #     users.select_user_in_grid($user2)
   #     users.crm_feature_enable
   #     sleep(5)

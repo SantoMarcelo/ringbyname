@@ -39,7 +39,7 @@ module Env
 #       email: 'devmarcelo.user1@ringbyname.com',
 #       type: 'R! User',
 #       direct: '12392080525',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -52,7 +52,7 @@ module Env
 #       email: 'devmarcelo.user2@ringbyname.com',
 #       type: 'R! User',
 #       direct: 'None',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -65,7 +65,7 @@ module Env
 #       email: 'devmarcelo.user3@ringbyname.com',
 #       type: 'R! Virtual User',
 #       direct: 'None',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -77,7 +77,7 @@ module Env
 #       email: 'devmarcelo.user4@ringbyname.com',
 #       type: 'R! Virtual User',
 #       direct: 'None',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -101,7 +101,7 @@ module Env
 #       email: 'devmarcel.user1@ringbyname.com',
 #       type: 'R! Virtual User',
 #       direct: 'None',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -114,7 +114,7 @@ module Env
 #       email: 'devmarcel.user2@ringbyname.com',
 #       type: 'R! Virtual User',
 #       direct: 'None',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -138,7 +138,7 @@ module Env
 #       email: 'devqc.user1@ringbyname.com',
 #       type: 'R! User',
 #       direct: '12092573583',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -151,7 +151,7 @@ module Env
 #       email: 'devqc.user2@ringbyname.com',
 #       type: 'R! User',
 #       direct: '12092573701',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -164,7 +164,7 @@ module Env
 #       email: 'devqc.user3@ringbyname.com',
 #       type: 'R! Virtual User',
 #       direct: 'None',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -176,7 +176,7 @@ module Env
 #       email: 'devqc.user4@ringbyname.com',
 #       type: 'R! Virtual User',
 #       direct: 'None',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -200,7 +200,7 @@ module Env
 #       email: 'devuat.user1@ringbyname.com',
 #       type: 'R! User',
 #       direct: '12062092213',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }
@@ -213,7 +213,7 @@ module Env
 #       email: 'devuat.user2@ringbyname.com',
 #       type: 'R! User',
 #       direct: '12065081444',
-#       outbound_caller_id: '12392080525 (New user 9314129)',
+#       outbound_caller_id: '12392080525 (New setup 9314129)',
 #       voicemail_password: '1234',
 #       number_of_rings: '5'
 #     }

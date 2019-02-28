@@ -96,7 +96,7 @@ class CrmMiniApp < SitePrism::Page
       body: user.to_json,
       headers: headers
     )
-    user_id = @response.parsed_response['data']['user']['id']
+    user_id = @response.parsed_response['data']['setup']['id']
     session_id = @response.parsed_response['data']['session_id']
 
     headers = {
