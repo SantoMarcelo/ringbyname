@@ -52,6 +52,18 @@ module Sections
     end
   end
 
+  class DeleteModal <SitePrism::Section
+    element :title, '.modal-header .modal-title'
+    element :message_text, '.modal-body p'
+    element :btn_cancel, '.modal-footer .button-cancel'
+    element :btn_confirm, '.modal-footer .button-save'
+
+    def wait_for_modal
+      while has_title? ==false do
+        puts 'waiting for delete modal..'
+      end
+    end
+  end
 
   class Messages < SitePrism::Section
 
@@ -59,8 +71,4 @@ module Sections
     element :btn_ok, '.swal2-confirm'
 
   end
-
-
-
-
 end

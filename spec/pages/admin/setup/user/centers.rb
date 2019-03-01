@@ -9,9 +9,9 @@ class Center < Setup
 
   section :setup, Sections::CenterSetup, '.page-main'
   section :details, Sections::CenterDetails, '.page-details'
+  section :delete_modal, Sections::DeleteModal, '.modal-dialog'
 
   def check_is_center_in_grid(center)
-
     setup.grid_list_items.each do |item|
       if item.text.include?(center[:name]) &&
           item.text.include?(center[:city]) &&
@@ -25,8 +25,6 @@ class Center < Setup
   end
 
   def select_center(center)
-    puts center
-
     setup.wait_for_grid
     setup.grid_list_items.each do |item|
       puts item.text
@@ -39,7 +37,4 @@ class Center < Setup
       end
     end
   end
-
-
-
 end

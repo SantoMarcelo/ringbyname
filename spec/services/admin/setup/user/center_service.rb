@@ -98,15 +98,12 @@ module CenterService
               }
           }
       }
-      puts "body"
-      puts body
 
       response = HTTParty.post(
           "http://api.#{$environment}-php56.dev.ringbyname.com/user-admin/location?",
           headers:headers,
           body:body.to_json)
-      puts "response"
-      puts response
+
       i+=1
     end
 

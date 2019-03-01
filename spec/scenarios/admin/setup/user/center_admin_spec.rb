@@ -5,7 +5,7 @@ require_relative '../../../../pages/admin/setup/user/centers'
 require_relative '../../../../sections/admin/setup/user/centers'
 require_relative '../../../../services/admin/setup/user/center_service'
 
-describe('Validate Center setup', :center_setup) do
+describe('Validate Center setup', :master) do
   before(:each) do
 
 
@@ -39,7 +39,7 @@ describe('Validate Center setup', :center_setup) do
     }
 
   end
-  describe('Validate insert new center', :center_insert) do
+  describe('Check insert new center', :center_insert) do
     it ('Insert a new Center and see on the center list') do |e|
       e.step('Given Hasn\'t Centers rigistreds in system') do
         puts '  Given Hasn\'t Centers rigistreds in system'
@@ -74,7 +74,7 @@ describe('Validate Center setup', :center_setup) do
       end
     end
   end
-  describe('Validate insert validations', :center_validations) do
+  describe('Check insert center validations', :center_validations) do
     it ('Insert Center validations messages') do |e|
       e.step('Given Hasn\'t Centers rigistreds in system') do
         puts '  Given Hasn\'t Centers rigistreds in system'
@@ -187,7 +187,7 @@ describe('Validate Center setup', :center_setup) do
       end
     end
   end
-  describe('Validate update centers', :center_update) do
+  describe('Check update centers', :center_update) do
     it ('Update Centers') do |e|
       e.step('Given I had center registered in system')do
         puts '  Given I had center registered in system'
@@ -195,8 +195,6 @@ describe('Validate Center setup', :center_setup) do
         center.menu.departments.click
         center.menu.users.click
         @center_list = get_center_list
-
-        puts @center_list[0]
 
         @new_center = {
             name: @center_list[0]['name'],
@@ -247,5 +245,192 @@ describe('Validate Center setup', :center_setup) do
 
       end
     end
+    it ('Update Center validations messages') do |e|
+      e.step('Given I had center registered in system')do
+        puts '  Given I had center registered in system'
+        insert_center(1)
+        center.menu.departments.click
+        center.menu.users.click
+        @center_list = get_center_list
+
+        @new_center = {
+            name: @center_list[0]['name'],
+            city: @center_list[0]['address']['city'],
+            state: @center_list[0]['address']['state'],
+            country: @center_list[0]['address']['country'],
+            country_uf: @center_list[0]['address']['country'],
+            time_zone: @center_list[0]['address']['timezone']
+        }
+      end
+      e.step('When I select this center to update') do
+        puts '  When I select this center to update'
+        center.setup.wait_for_grid
+        center.select_center(@new_center)
+        sleep 1
+        center.details.wait_for_details
+      end
+      e.step('And I update center without name and save') do
+        puts '  And I update center without name and save'
+        expect(center.details.title.text).to eql('Center Details')
+        center.details.name.set("")
+        center.details.city.set(@center_edited[:city])
+        center.details.state.set(@center_edited[:state])
+        center.details.select_country.find('option', text: (@center_edited[:country])).select_option
+        center.details.select_time_zone.find('option', text: (@center_edited[:time_zone])).select_option
+        center.details.btn_save.click
+      end
+      e.step('Then I should see the validation message') do
+        puts '  Then I should see the validation message'
+        center.wait_for_message
+        expect(center.message.modal.text).to eql ('Sorry, you must set a name for this Call Center.')
+        center.message.btn_ok.click
+      end
+      e.step('when I try to update with empty City')do
+        puts '  when I try to update with empty City'
+        center.details.wait_for_details
+        center.details.name.set(@center_edited[:name])
+        center.details.city.set("")
+        center.details.btn_save.click
+      end
+      e.step('Then I should see the validation message') do
+        puts '  Then I should see the validation message'
+        center.wait_for_message
+        expect(center.message.modal.text).to eql ('You must provide a City to this Call Center.')
+        center.message.btn_ok.click
+      end
+      e.step('when I try to update with empty State')do
+        puts '  when I try to update with empty State'
+        center.details.wait_for_details
+        center.details.city.set(@center_edited[:city])
+        center.details.state.set("")
+        center.details.btn_save.click
+      end
+      e.step('Then I should see the validation message') do
+        puts '  Then I should see the validation message'
+        center.wait_for_message
+        expect(center.message.modal.text).to eql ('You must provide a State to this Call Center.')
+        center.message.btn_ok.click
+      end
+      e.step('when I try to update with empty Country')do
+        puts '  when I try to update with empty Country'
+        center.setup.btn_add.click
+        center.details.wait_for_details
+        center.details.name.set(@center_edited[:name])
+        center.details.city.set(@center_edited[:city])
+        center.details.state.set(@center_edited[:state])
+        center.details.btn_save.click
+      end
+      e.step('Then I should see the validation message') do
+        puts '  Then I should see the validation message'
+        center.wait_for_message
+        expect(center.message.modal.text).to eql ('You must provide a Country to this Call Center.')
+        center.message.btn_ok.click
+      end
+      e.step('when I try to update with empty TimeZone')do
+        puts '  when I try to update with empty TimeZone'
+        center.setup.btn_add.click
+        center.details.wait_for_details
+        center.details.name.set(@center_edited[:name])
+        center.details.city.set(@center_edited[:city])
+        center.details.state.set(@center_edited[:state])
+        center.details.select_country.find('option', text: (@center_edited[:country])).select_option
+        center.details.btn_save.click
+      end
+      e.step('Then I should see the validation message') do
+        puts '  Then I should see the validation message'
+        center.wait_for_message
+        expect(center.message.modal.text).to eql ('You must provide a Timezone to this Call Center.')
+        center.message.btn_ok.click
+      end
+      e.step('when I try to update name with more than 35 chars')do
+        puts '  when I try to update name with more than 35 chars'
+        center.setup.btn_add.click
+        center.details.wait_for_details
+        center.details.name.set(@center_edited[:name_validation])
+        center.details.btn_save.click
+      end
+      e.step('Then I should see the validation message') do
+        puts '  Then I should see the validation message'
+        center.wait_for_message
+        expect(center.message.modal.text).to eql ('Call Center name field length must be 35 characters maximum.')
+        center.message.btn_ok.click
+      end
+      e.step('when I try to update state with more than 35 chars')do
+        puts '  when I try to update state with more than 35 chars'
+        center.setup.btn_add.click
+        center.details.wait_for_details
+        center.details.name.set(@center_edited[:name])
+        center.details.state.set(@center_edited[:state_validation])
+        center.details.btn_save.click
+      end
+      e.step('Then I should see the validation message') do
+        puts '  Then I should see the validation message'
+        center.wait_for_message
+        expect(center.message.modal.text).to eql ('State field length must be 35 characters maximum.')
+        center.message.btn_ok.click
+      end
+    end
+  end
+  describe('Check Delete center', :delete_center) do
+    it ('Delete center') do |e|
+      e.step('Given I had center registered in system')do
+        puts '  Given I had center registered in system'
+        insert_center(1)
+        center.menu.departments.click
+        center.menu.users.click
+        @center_list = get_center_list
+
+        @new_center = {
+            name: @center_list[0]['name'],
+            city: @center_list[0]['address']['city'],
+            state: @center_list[0]['address']['state'],
+            country: @center_list[0]['address']['country'],
+            country_uf: @center_list[0]['address']['country'],
+            time_zone: @center_list[0]['address']['timezone']
+        }
+      end
+      e.step('When I select this center to delete') do
+        puts '  When I select this center to update'
+        center.setup.wait_for_grid
+        center.select_center(@new_center)
+        sleep 1
+        center.details.wait_for_details
+      end
+      e.step('and click to delete this center')do
+        puts '  and click to delete this center'
+        center.details.btn_remove.click
+        center.delete_modal.wait_for_modal
+      end
+      e.step('and I cancel delete') do
+        puts '  and I cancel delete'
+        center.delete_modal.btn_cancel.click
+      end
+      e.step('then I should see the update center form')do
+        puts '  then I should see the update center form'
+        center.details.wait_for_details
+        expect(center.details.has_name?)
+      end
+      e.step('when I confirm the deletion')do
+        puts '  when I confirm the deletion'
+        center.details.btn_remove.click
+        center.delete_modal.wait_for_modal
+        center.delete_modal.btn_confirm.click
+      end
+      e.step('then I should see the success message') do
+        puts '  then I should see the success message'
+        center.wait_for_message
+        expect(center.message.modal.text).to eql ('Call Center removed')
+        center.message.btn_ok.click
+      end
+      e.step('And I should not see this center in center list') do
+        puts '  And I should not see this center in center list'
+        center.setup.wait_for_grid
+        expect(center.check_is_center_in_grid(@new_center)).to eql false
+      end
+    end
+  end
+  after(:each) do |e|
+    e.attach_file('screenshot', get_screenshot)
+    Capybara.current_session.driver.quit
   end
 end
