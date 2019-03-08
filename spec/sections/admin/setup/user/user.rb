@@ -1,12 +1,12 @@
 
 module Sections
-class UserDetails < SitePrism::Section
+  class UserDetails < SitePrism::Section
     # setup information
     element :txt_first_name, 'input[placeholder="First Name"]'
     element :txt_last_name, 'input[placeholder="Last Name"]'
     element :txt_email, 'input[placeholder="E-mail"]'
     elements :txt_password, '.control input[placeholder="Password"]'
-    element :txt_password_repeart, 'input[placeholder="Repeat"]'
+    element :txt_password_repeart, 'input[placeholder="Confirm Password"]'
     # extensions
     element :txt_extension, 'input[placeholder="Extension"]'
     element :txt_direct_number, 'div[class="control ng-binding"]:nth-of-type(2)'
@@ -87,10 +87,10 @@ class UserDetails < SitePrism::Section
     element :title, '.details-title'
     elements :users_list, '.form .column .checkbox'
     elements :radios_options, '.control .radio'
-    element :select_cId_number, '.control .select'
+    element :select_cId_number, '.control .select.is-fullwidth'
     element :txt_cId_custom_name, '.control input[data-ng-model*="custom.name"]'
     element :txt_cId_custom_number, '.control input[data-ng-model*="custom.number"]'
-    element :btn_save, '.control button'
+    element :btn_save, '.control button.button-save'
 
 
     def wait_for_fields
@@ -104,7 +104,13 @@ class UserDetails < SitePrism::Section
   class MassivePassword < SitePrism::Section
     element :title, '.details-title'
     elements :users_list, '.form .column .checkbox'
-    element :txt_massive_pass, '.control .input'
-    element :btn_save, '.control button'
+    element :txt_massive_pass, '[name="multiple_password"]'
+    element :btn_save, '.control button.button-save'
+
+    def wait_for_fields
+      while has_title? == false
+        puts "waiting for fields.."
+      end
+    end
   end
 end

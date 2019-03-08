@@ -59,6 +59,7 @@ class User < Setup
       tooltips.wait_until_tooltip_text_visible
       tolltip_texts.push(tooltips.tooltip_text.text)
       u.click
+      sleep 1
     end
     return tolltip_texts
   end
@@ -120,8 +121,15 @@ class User < Setup
   end
 
   def select_massive_user(user)
-    details_cId.users_list.each do |u|
-      u.click if u.text.include?(user[:name])      
+    user[:name]
+    puts user_list_component.user_name_list.length
+    user_list_component.user_name_list.each_with_index do |item, index|
+      puts item.text
+      index+=1
+      if item.text.include?(user[:name])
+        user_list_component.check_select_list[index].click
+        break
+      end
     end
   end
 

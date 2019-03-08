@@ -96,6 +96,7 @@ end
 Capybara.configure do |c|
   c.default_driver = :selenium
   $url = c.app_host   = "http://login.#{$environment}.dev.ringbyname.com/#{branch}/"
+  #$url = c.app_host   = "localhost:8888"
   #default_max_wait_time = 20
 end
 

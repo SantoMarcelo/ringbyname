@@ -5,6 +5,7 @@ class Admin < SitePrism::Page
 
  section :options, Sections::MenuOptions, '#navigation-bar'
  section :main_menu, Sections::MainMenu, '.navigation-menu '
+ section :user_list_component, Sections::SelectUser, '.check-users-directive'
  element :dropdown, '.rbn-dropdown span.ng-binding'
  element :option_home, 'ul[class="rbn-dropdown-menu dropdown-menu-right"] > li:nth-child(7) > a'
  element :admin_title, '.webapp-admin-page-header'

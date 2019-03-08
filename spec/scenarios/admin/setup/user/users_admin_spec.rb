@@ -1,23 +1,15 @@
-
 require_relative '../../../../pages/login/login'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 require_relative '../../../../pages/admin/setup/user/users'
 
-describe('validate Users Setup', :user_setup) do
+describe('validate Users Setup', :master) do
   before(:each) do
 
-     get_user_list()
-    
-    
-    login_page.load
-    login_page.do_login(get_admin())
-    home.check_user_status
-    home.wait_until_home_features_visible
-    home.wait_until_user_status_visible
-    #home.check_user_status
-    home.goto_admin
-    admin_dashboard.wait_until_btn_continue_visible
-    admin_dashboard.btn_continue.click
+     get_user_list
+     login_page.load
+     login_page.do_login(get_admin())
+     home.check_user_status
+     visit('#!/admin/setup/user')
  
     
     @user1 = {
@@ -95,11 +87,10 @@ describe('validate Users Setup', :user_setup) do
       username: '303903@ringbyname.com',
       password: 'ahc9Ha4rt4Aa'
     }
-    # Capybara.ignore_hidden_elements = true
   end
 #user_list
-  describe('validate users list', :master) do
-    it('  access setup setup and validate setup list') do |e|
+  describe('validate users list', :master_user) do
+    it('  access user setup and validate user list') do |e|
       puts 'access setup setup and validate setup list'
       e.step('when I on admin page') do
         puts '  when I on admin page'
@@ -189,12 +180,12 @@ describe('validate Users Setup', :user_setup) do
         sleep 2
         # users.wait_until_load_invisible
         # need to check why not count all list itens
-        expect(users.setup.grid_rows.length).to eql 10
+        expect(users.setup.grid_rows.length).to eql 14
       end
     end
   end
 #search_user
-  describe('search users', :master) do
+  describe('search users', :master_user) do
     it('  validate all search cases') do |e|
       puts 'validate all search cases'
       e.step('when I on users setup') do
@@ -206,6 +197,7 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('and search by extension') do
         puts '  and search by extension'
+        users.wait_for_grid
         users.user_main.txt_search.set (@user1[:extension])
         users.user_main.btn_search.click
       end
@@ -289,23 +281,22 @@ describe('validate Users Setup', :user_setup) do
         users.user_main.icon_search_tooltip.click
         users.tooltips.wait_until_tooltip_text_visible
         expect(users.tooltips.tooltip_text.text).to eql 'Enter any Extension number, telephone number, or name to find it in your account.'
+        users.user_main.txt_search.click
+        sleep 1
       end
       e.step('validate grid tooltip') do
         puts '  validate grid tooltip'
         users.user_main.icon_grid_tooltip.click
         users.tooltips.wait_until_tooltip_text_visible
-        expect(users.tooltips.tooltip_text.text).to eql 'Click on Deactivate to remove a setup from the system and reset all of its stored settings. Deactivating an extension will remove all stored settings, voicemails, and configurations.'
+        expect(users.tooltips.tooltip_text.text).to eql 'Click on Deactivate to remove a user from the system and reset all of its stored settings. Deactivating an extension will remove all stored settings, voicemails, and configurations.'
       end
     end
   end
  # user_details
-  describe('validate users details', :master) do
-    it('  validate setup information') do |e|
+  describe('validate users details', :master_user) do
+    it('  validate users information') do |e|
       puts 'validate setup information'
-      e.step('when I on users setup') do
-        puts 'when I on users setup'
-         admin_dashboard.goto_settings_admin
-      end
+
       e.step('and I select the first setup') do
         puts 'and I select the first setup'
         users.wait_for_grid
@@ -337,44 +328,40 @@ describe('validate Users Setup', :user_setup) do
         puts 'and I validate all tooltips texts'
         # Add all tooltips text in array to validate with array returned in validation method.
         tooltips_texts_expect = [
-          'Please enter an e-mail to be used as a login for this setup. This must be a unique e-mail. This email will also be used to send notifications to the setup, such as new voicemail and fax alerts.',
-          'Please enter a password for this setup. Passwords are alphanumeric and may contain letter and number combinations as well as special characters.',
+          'Please enter an e-mail to be used as a login for this user. This must be a unique e-mail. This email will also be used to send notifications to the user, such as new voicemail and fax alerts.',
+          'Please enter a password for this user. Passwords are alphanumeric and may contain letter and number combinations as well as special characters.',
           'Please re-enter your password to check for accuracy.',
+          'Please enter your Center Name here.',
           'You may enter any 3 to 5-digit extension number not currently in use in your account',
-          'This is the direct telephone number that has been assigned to this setup by the system administrator. If you would like to change the telephone number assigned, please navigate to the Phone Numbers section of the admin panel.',
-          'You may select what outbound caller ID will be used by this setup when placing a call. This number will be displayed to all telephone numbers dialed by this setup. To assign the same Outbound Caller ID to more than one setup, consider using the "Set Outbound Caller ID for Mutlitiple Users" tool.',
-          'Click on this option if you wish to attach an additional VoIP telephone, or software based softphone to this setup.',
+          'This is the direct telephone number that has been assigned to this user by the system administrator. If you would like to change the telephone number assigned, please navigate to the Phone Numbers section of the admin panel.',
+          'You may select what outbound caller ID will be used by this user when placing a call. This number will be displayed to all telephone numbers dialed by this user. To assign the same Outbound Caller ID to more than one user, consider using the "Set Outbound Caller ID for Mutlitiple Users" tool.',
+          'Click on this option if you wish to attach an additional VoIP telephone, or software based softphone to this user.',
           'Click on this checkbox to enable routing of calls to a specific device.',
           'Click on this option if you would like the system to simultaneously route calls to a landline or mobile phone. Expert Tip: Try forwarding calls to a colleague while you are away on vaction, simply enter their extension number instead of a landline or mobile phone number',
-          "Click on this checkbox to enable or disable voicemail for this setup\'s extensions",
+          "Click on this checkbox to enable or disable voicemail for this user's extensions",
           'Enter any 4-digit numeric password for voicemail box access',
           'Select this option if you would like the system to use an automated voicemail greeting.',
           'Select a language and enter the voicemail greeting you would like the system to read to your callers',
           'Use this option if you would like to use an MP3 ro WAV file as a voicemail greeting',
-          'Click on this checkbox to grant this setup Administrator access to the system and all configuration settings.'
+          'Click on this checkbox to grant this user Administrator access to the system and all configuration settings.'
         ]
         users.details.wait_until_btn_save_user_visible
         expect(users.validate_details_tooltips).to eql tooltips_texts_expect
       end
     end
- 
   end
 
-  describe('validate users update', :master) do
+  describe('validate users update', :user_update) do
     it('  update users and check changed data') do |e|
       puts '  update users and check changed data'
-      e.step('when I on users setup') do
-        puts '  when I on users setup'
-        admin_dashboard.goto_settings_admin
-      end
-      e.step('and I select the first setup') do
-        puts '  and I select the first setup'
+      e.step('and I select the first user') do
+        puts '  and I select the first user'
        # sleep 10
         users.select_user_in_grid(@user1)
       end
       #update general information
-      e.step('and I change setup informations') do
-        puts '  and I change setup informations'
+      e.step('and I change user informations') do
+        puts '  and I change user informations'
         #expect(page).to have_css(users.details.txt_first_name.instance_variable_get(:@query).locator)
         users.wait_for_user_details
         users.details.txt_first_name.set (@user_changed[:first_name])
@@ -382,15 +369,15 @@ describe('validate Users Setup', :user_setup) do
         users.details.txt_email.set (@user_changed[:email])
         users.details.txt_extension.set (@user_changed[:extension])
         users.details.select_outbound_caller_id.find('option', text: (@user_changed[:outbound_caller_id])).select_option
-        #get all checkboxes on the setup datails and click in the each.
+        #get all checkboxes on the user datails and click in the each.
       
         users.details.checkboxes.each do |u|
           u.click if u.text.include?('Enable Voicemail Box of User Calls')
-          u.click if u.text.include?('Use Callback Request')
+          u.click if u.text.include?('Enable Callback Request')
           u.click if u.text.include?('Require key press to accept transferred calls')
-          #u.click if u.text.include?('Enable inbound call recording for this setup')
-         # u.click if u.text.include?('Enable outbound call recording for this setup')
-          u.click if u.text.include?('Allow others to remotely answer this setup\'s calls')
+          #u.click if u.text.include?('Enable inbound call recording for this user')
+         # u.click if u.text.include?('Enable outbound call recording for this user')
+          u.click if u.text.include?('Allow others to remotely answer this user\'s calls')
         end
         users.details.btn_save_user.click
         sleep 5
@@ -421,8 +408,8 @@ describe('validate Users Setup', :user_setup) do
         #expect(users.details.checkbox_outbound_call_recording(visible: false)).to be_checked
         expect(users.details.checkbox_call_pickup(visible: false)).not_to be_checked
       end
-      e.step('when I change the setup password')do
-        puts '  when I change the setup password'
+      e.step('when I change the user password')do
+        puts '  when I change the user password'
         sleep 2
         users.details.txt_password.each do |u|
           u.set(@user_changed[:password])
@@ -449,12 +436,8 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('and I return to users setup')do
         puts '  and I return to users setup'
-        home.goto_admin
-        admin_dashboard.wait_until_btn_continue_visible
-        admin_dashboard.btn_continue.click
-         admin_dashboard.goto_settings_admin
-        expect(users.admin_title.text).to eql 'Setup'
-        users.access_user_menu
+        visit('#!/admin/setup/user')
+        users.wait_for_grid
         expect(users.user_main.title.text).to eql 'Users'
       end
       e.step('when I change outbound caller to custom options')do
@@ -480,10 +463,8 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('when I insert others devices')do
         puts '  when I insert others devices'
-        home.goto_admin
-         admin_dashboard.goto_settings_admin
-        expect(users.admin_title.text).to eql 'Setup'
-        users.access_user_menu
+        visit('#!/admin/setup/user')
+        users.wait_for_grid
         expect(users.user_main.title.text).to eql 'Users'
         users.select_user_in_grid(@user_changed)
         users.details.link_add_device.click
@@ -530,7 +511,7 @@ describe('validate Users Setup', :user_setup) do
         puts '  then I can see the validation message'
         users.device_modal.wait_until_modal_title_visible
         expect(users.device_modal.modal_title.text).to eql 'Maximum Number of Devices Reached'
-        expect(users.device_modal.modal_message.text).to eql 'You have reached the limit of devices per setup.'
+        expect(users.device_modal.modal_message.text).to eql 'You have reached the limit of devices per user.'
         users.device_modal.modal_button.click
       end
       e.step('and when I delete an inserted devices')do
@@ -688,11 +669,11 @@ describe('validate Users Setup', :user_setup) do
         expect(users.details.select_language.text.include?('Portuguese'))
       end
     
-      e.step('when I remove admin permission from other setup')do
-        puts '  when I remove admin permission from other setup'
+      e.step('when I remove admin permission from other user')do
+        puts '  when I remove admin permission from other user'
         users.select_user_in_grid(@user2)
         users.details.checkboxes.each do |u|
-          u.click if u.text.include?('Make this setup an admin')
+          u.click if u.text.include?('Make this user an admin')
         end
          users.details.btn_save_user.click
          users.wait_for_message
@@ -700,41 +681,34 @@ describe('validate Users Setup', :user_setup) do
          users.message.btn_ok.click
          sleep 1
       end
-      e.step('then I can\'t see this setup like admin in setup grid')do
-        puts '  then I can\'t see this setup like admin in setup grid'
+      e.step('then I can\'t see this user like admin in user grid')do
+        puts '  then I can\'t see this user like admin in user grid'
         users.setup.wait_for_grid_rows
         expect(users.setup.grid_icon_admin.length).to eql 3
         users.select_user_in_grid(@user2)
         expect(users.details.checkbox_admin_permission(visible: false)).not_to be_checked
       end
-      e.step('when I login with an setup what isn\'t a admin')do
-        puts '  when I login with an setup what isn\'t a admin'
+      e.step('when I login with an user what isn\'t a admin')do
+        puts '  when I login with an user what isn\'t a admin'
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(@user2)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
       end
       e.step('then I\'ll dont\'t have acces to admin page')do
         puts '  then I\'ll dont\'t have acces to admin page'
         home.menu_access
+        sleep 1
         expect(home.dropdown_menu.has_goto_admin?).to eql false
       end
-      e.step('when I try to remove admin permission to the same logged setup')do
-        puts '  when I try to remove admin permission to the same logged setup'
+      e.step('when I try to remove admin permission to the same logged user')do
+        puts '  when I try to remove admin permission to the same logged user'
         home.dropdown_menu.logout.click
         login_page.wait_for_txt_user
         login_page.do_login(@user_changed)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
-        home.goto_admin
-        admin_dashboard.wait_until_btn_continue_visible
-        admin_dashboard.btn_continue.click
-         admin_dashboard.goto_settings_admin
-        expect(users.admin_title.text).to eql 'Setup'
-        users.access_user_menu
+        visit('#!/admin/setup/user')
+        users.wait_for_grid
         expect(users.user_main.title.text).to eql 'Users'
         users.select_user_in_grid(@user_changed)
       end
@@ -800,7 +774,7 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('validate setup reset data', :master) do
+  describe('validate setup reset data', :master_user) do
     it('reset setup data and check new data')do |e|
       puts '  reset setup data and check new data'
       e.step('when I on users setup') do
@@ -889,7 +863,7 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('Validate CRM Feature', :master) do
+  describe('Validate CRM Feature', :master_user) do
     it('update users to enable CRM feature', :crm_enable) do |e|
       e.step('when I on users setup') do
          admin_dashboard.goto_settings_admin
@@ -964,12 +938,9 @@ describe('validate Users Setup', :user_setup) do
     end
   end
 
-  describe('Validate Outbound Caller ID massive update', :user_massive_cId) do
+  describe('Validate Outbound Caller ID massive update', :master_user) do
     it('set the same caller id to all users and validate') do |e|
       puts 'set the same caller id to all users and validate'
-      e.step('when I on users setup') do
-         admin_dashboard.goto_settings_admin
-      end
       e.step('and I select the massive update link')do
         puts 'and I select the massive update link'
         users.wait_for_grid
@@ -990,65 +961,63 @@ describe('validate Users Setup', :user_setup) do
         users.details_cId.radios_options.each do |u|
           u.click if u.text.include?('Use this number')
         end
-        users.details_cId.select_cId_number.find('option', text: '12392068773 (Dev Comp 1 Marcelo)').select_option
+        users.details_cId.select_cId_number.find('option', text: '12083660505 (Dev Marcel)').select_option
         users.details_cId.btn_save.click
-        users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'Outbound Caller Id updated successfully.'
         users.message.btn_ok.click
       end
       e.step('then I check if was updated correctly')do
         puts ('then I check if was updated correctly')
         users.select_user_in_grid(@user1)
-        users.details.wait_for_txt_first_name
-        expect(users.details.select_outbound_caller_id.text.include?('12392068773 (Dev Comp 1 Marcelo)'))
+        users.wait_for_user_details
+        expect(users.details.select_outbound_caller_id.text.include?('12083660505 (Dev Marcel)'))
         users.select_user_in_grid(@user2)
-        users.details.wait_for_txt_first_name
-        expect(users.details.select_outbound_caller_id.text.include?('12392068773 (Dev Comp 1 Marcelo)'))
+        users.wait_for_user_details
+        expect(users.details.select_outbound_caller_id.text.include?('12083660505 (Dev Marcel)'))
         users.select_user_in_grid(@user3)
-        users.details.wait_for_txt_first_name
-        expect(users.details.select_outbound_caller_id.text.include?('12392068773 (Dev Comp 1 Marcelo)'))
+        users.wait_for_user_details
+        expect(users.details.select_outbound_caller_id.text.include?('12083660505 (Dev Marcel)'))
         users.select_user_in_grid(@user4)
-        users.details.wait_for_txt_first_name
-        expect(users.details.select_outbound_caller_id.text.include?('12392068773 (Dev Comp 1 Marcelo)'))
+        users.wait_for_user_details
+        expect(users.details.select_outbound_caller_id.text.include?('12083660505 (Dev Marcel)'))
       end
       e.step('and I chek in the home page if displaying updated caller ID') do
         puts 'and I chek in the home page if displaying updated caller ID'
-        admin_dashboard.goto_home
-        expect(home.my_caller_id.text.include?('12392068773'))
-        home.logout
+        visit('#!/app/welcome-page')
+        home.check_user_status
+        expect(home.my_caller_id.text.include?('12083660505'))
+        visit('#!/auth/login')
+        #home.logout
         login_page.do_login(@user2)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-        expect(home.my_caller_id.text.include?('12392068773'))
-        home.logout
+        expect(home.my_caller_id.text.include?('12083660505'))
+        visit('#!/auth/login')
+        #home.logout
         login_page.do_login(@user3)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-        expect(home.my_caller_id.text.include?('12392068773'))
-        home.logout
+        expect(home.my_caller_id.text.include?('12083660505'))
+        visit('#!/auth/login')
+        #home.logout
         login_page.do_login(@user4)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-        expect(home.my_caller_id.text.include?('12392068773'))
+        expect(home.my_caller_id.text.include?('12083660505'))
       end
       e.step('when I return to massive update') do
         puts 'when I return to massive update'
-        home.goto_admin
-         admin_dashboard.goto_settings_admin
-        expect(users.admin_title.text).to eql 'Setup'
-        users.access_user_menu
-        expect(users.user_main.title.text).to eql 'Users'
+        home.check_user_status
+        visit('#!/admin/setup/user')
+        users.wait_for_grid
         users.setup.link_outbound_caller.click
+        users.details_cId.wait_for_fields
         expect(users.details_cId.title.text).to eql 'Set Outbound Caller ID for multiple users'
       end
       e.step('and I select all users') do
         puts 'and I select all users'
+        users.details_cId.wait_for_fields
         users.details_cId.wait_for_users_list
         users.select_massive_user(@user1)
         users.select_massive_user(@user2)
@@ -1063,68 +1032,69 @@ describe('validate Users Setup', :user_setup) do
         users.details_cId.txt_cId_custom_name.set('Massive Caller ID')
         users.details_cId.txt_cId_custom_number.set('9999999999')
         users.details_cId.btn_save.click
-        users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'Outbound Caller Id updated successfully.'
         users.message.btn_ok.click
       end
       e.step('then I check if was updated correctly in admin') do
         puts 'then I check if was updated correctly in admin'
         users.select_user_in_grid(@user1)
+        users.wait_for_user_details
         expect(users.details.select_outbound_caller_id.text.include?('Massive Caller ID'))
         expect(users.details.txt_caller_custom_name.text.include?('9999999999'))
         users.select_user_in_grid(@user2)
+        users.wait_for_user_details
         expect(users.details.select_outbound_caller_id.text.include?('Massive Caller ID'))
         expect(users.details.txt_caller_custom_name.text.include?('9999999999'))
         users.select_user_in_grid(@user3)
+        users.wait_for_user_details
         expect(users.details.select_outbound_caller_id.text.include?('Massive Caller ID'))
         expect(users.details.txt_caller_custom_name.text.include?('9999999999'))
         users.select_user_in_grid(@user4)
+        users.wait_for_user_details
         expect(users.details.select_outbound_caller_id.text.include?('Massive Caller ID'))
         expect(users.details.txt_caller_custom_name.text.include?('9999999999'))
       end
       e.step('and I chek in the home page if displaying updated caller ID') do
         puts 'and I chek in the home page if displaying updated caller ID'
-        admin_dashboard.goto_home
+        visit('#!/app/welcome-page')
         expect(home.my_caller_id.text.include?('9999999999'))
-        home.logout
+        visit('#!/auth/login')
+        #home.logout
         login_page.do_login(@user3)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
         expect(home.my_caller_id.text.include?('9999999999'))
-        home.logout
+        visit('#!/auth/login')
+        #home.logout
         login_page.do_login(@user2)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
         expect(home.my_caller_id.text.include?('9999999999'))
-        home.logout
-        login_page.do_login(@user1)
-        home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
-        expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-        expect(home.my_caller_id.text.include?('9999999999'))
+        visit('#!/auth/login')
+        #home.logout
+
       end
     end
   end
 
-  describe('Validate password massive update', :user_massive_pass) do
+  describe('Validate password massive update', :master_user) do
     it('set the same password to all users and validate') do |e|
       puts 'set the same password to all users and validate'
+=begin
       e.step('when I on users setup') do
          admin_dashboard.goto_settings_admin
       end
+=end
       e.step('when I access massive password update')do
         puts 'when I access massive password update'
+        users.wait_for_grid
         users.setup.link_multiple_password.click
         expect(users.details_pass.title.text).to eql 'Set Password for multiple users'
       end
       e.step('and I select all users to set a new password')do
         puts 'and I select all users to set a new password'
-        users.details_pass.wait_for_users_list
+        users.user_list_component.wait_for_users
         users.select_massive_user(@user1)
         users.select_massive_user(@user2)
         users.select_massive_user(@user3)
@@ -1134,64 +1104,54 @@ describe('validate Users Setup', :user_setup) do
         puts 'and I set the new password'
         users.details_pass.txt_massive_pass.set('asd123456')
         users.details_pass.btn_save.click
-        #users.message.wait_until_modal_visible
-        #expect(users.message.modal.text).to eql ''
+        users.wait_for_message
+        expect(users.message.modal.text).to eql 'Password updated'
         users.message.btn_ok.click
+        users.wait_for_grid
+        sleep 2
       end
       e.step('then I check if the password was changed correctly')do
         puts 'then I check if the password was changed correctly'
         user1 = {
-          username: 'devmarcelo.user1@ringbyname.com',
+          username: "dev#{$environment}.user1@ringbyname.com",
           password: 'asd123456'
         }
         user2 = {
-          username: 'devmarcelo.user2@ringbyname.com',
+          username: "dev#{$environment}.user2@ringbyname.com",
           password: 'asd123456'
         }
         user3 = {
-          username: 'devmarcelo.user3@ringbyname.com',
+          username: "dev#{$environment}.user3@ringbyname.com",
           password: 'asd123456'
         }
         user4 = {
-          username: 'devmarcelo.user4@ringbyname.com',
+          username: "dev#{$environment}.user4@ringbyname.com",
           password: 'asd123456'
         }
-        users.main_menu.menu.click
-        users.main_menu.logout.click
+        visit('#!/auth/login')
         login_page.do_login(user1)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-        home.logout
+        visit('#!/auth/login')
         login_page.do_login(user2)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-        home.logout
+        visit('#!/auth/login')
         login_page.do_login(user3)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
-        home.logout
+        visit('#!/auth/login')
         login_page.do_login(user4)
         home.check_user_status
-        home.wait_until_home_features_visible
-        home.wait_until_user_status_visible
         expect(login_page.current_url).to end_with '/#!/app/welcome-page'
       end
       e.step('when I check the min length password validation')do
         puts 'when I check the min length password validation'
-        home.goto_admin
-         admin_dashboard.goto_settings_admin
-        expect(users.admin_title.text).to eql 'Setup'
-        users.access_user_menu
-        expect(users.user_main.title.text).to eql 'Users'
+        visit('#!/admin/setup/user')
+        users.wait_for_grid
         users.setup.link_multiple_password.click
+        users.user_list_component.wait_for_users
         expect(users.details_pass.title.text).to eql 'Set Password for multiple users'
-        users.details_pass.wait_for_users_list
         users.select_massive_user(@user1)
         users.select_massive_user(@user2)
         users.select_massive_user(@user3)
@@ -1201,19 +1161,19 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I check the validation message')do
         puts 'then I check the validation message'
-        users.message.wait_until_modal_visible
-        expect(users.message.modal.text).to eql 'Your password must be between 6 and 12 characters long. Please try again.'
+        users.wait_for_message
+        expect(users.message.modal.text).to eql 'Your password must be between 6 and 30 characters long. Please try again.'
         users.message.btn_ok.click
       end
       e.step('when I check the max length password validation')do
         puts 'when I check the max length password validation'
-        users.details_pass.txt_massive_pass.set('1234567890123')
+        users.details_pass.txt_massive_pass.set('asd1234567890123asd1234567890123asd1234567890123')
         users.details_pass.btn_save.click
       end
       e.step('then I check the validation message')do
         puts 'then I check the validation message'
-        users.message.wait_until_modal_visible
-        expect(users.message.modal.text).to eql 'Your password must be between 6 and 12 characters long. Please try again.'
+        users.wait_for_message
+        expect(users.message.modal.text).to eql 'Your password must be between 6 and 30 characters long. Please try again.'
         users.message.btn_ok.click
       end
       e.step('when I check the password composition')do
@@ -1223,21 +1183,30 @@ describe('validate Users Setup', :user_setup) do
       end
       e.step('then I check the validation message')do
         puts 'then I check the validation message'
-        users.message.wait_until_modal_visible
+        users.wait_for_message
         expect(users.message.modal.text).to eql 'Your password must include letters and numbers. Please try again.'
         users.message.btn_ok.click
       end
       
     end
     after do
+      puts "Finish, return to original password"
       users.details_pass.txt_massive_pass.set('123456asd')
       users.details_pass.btn_save.click
-      #users.message.wait_until_modal_visible
-      #expect(users.message.modal.text).to eql ''
+      sleep 2
+      users.wait_for_message
       users.message.btn_ok.click
     end
   end
 
+  describe('Validate User Center Association', :user_center_update) do
+    it('associate user to a center') do |e|
+      e.step('') do
+
+
+      end
+    end
+  end
   after(:each) do |e|
     e.attach_file('screenshot', get_screenshot)
     Capybara.current_session.driver.quit
