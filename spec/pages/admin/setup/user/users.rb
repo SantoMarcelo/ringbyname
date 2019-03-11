@@ -24,21 +24,27 @@ class User < Setup
   end
 
   def wait_for_grid_line
-    while has_user_grid_line? == false do
+    i=0
+    while has_user_grid_line? == false | i ==100 do
       puts "waiting for data.."
+      i+=1
     end
 
   end
 
   def wait_for_grid
-    while user_main.has_grid_rows? == false do
+    i=0
+    while user_main.has_grid_rows? == false | i ==100 do
       puts "waiting grid.."
+      i+=1
     end
   end
 
   def wait_for_user_details
-    while details.has_txt_first_name? == false do
+    i=0
+    while details.has_txt_first_name? == false  | i ==100 do
       puts "waiting data.."
+      i+=1
     end
   end
   # validate each line of grid

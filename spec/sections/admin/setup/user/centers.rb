@@ -20,8 +20,10 @@ module Sections
     elements :pages_list, 'dir-pagination-controls[pagination-id="PaginationCallCenterID"]'
 
     def wait_for_grid
-      while has_grid_list? == false do
+      i=0
+      while has_grid_list? == false | i == 100 do
         puts "waiting for grid.."
+        i+=1
       end
     end
 
@@ -46,8 +48,10 @@ module Sections
     element :btn_remove, '.center-details-btn-remove'
 
     def wait_for_details
-      while has_name? == false do
+      i=0
+      while has_name? == false  | i == 100 do
         puts 'waiting for details..'
+        i+=1
       end
     end
   end
@@ -59,8 +63,10 @@ module Sections
     element :btn_confirm, '.modal-footer .button-save'
 
     def wait_for_modal
-      while has_title? ==false do
+      i=0
+      while has_title? ==false | i == 100 do
         puts 'waiting for delete modal..'
+        i+=1
       end
     end
   end

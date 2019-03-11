@@ -8,8 +8,10 @@ class Setup < Admin
     element :load_icon, '#loading-bar'
 
     def wait_for_message
-        while has_message? == false do
+        i=0
+        while has_message? == false | i == 100do
             puts "waiting for message.."
+            i+=1
         end
     end
 end 

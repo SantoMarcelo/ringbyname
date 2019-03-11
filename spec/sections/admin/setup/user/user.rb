@@ -94,8 +94,10 @@ module Sections
 
 
     def wait_for_fields
-      while has_title? == false
+      i=0
+      while has_title? == false | i == 100
         puts "waiting for fields.."
+        i+=1
       end
     end
 

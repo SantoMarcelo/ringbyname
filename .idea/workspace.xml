@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6c27cb4-fb1e-4d31-936d-9fc93ecad1f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rakefile" beforeDir="false" afterPath="$PROJECT_DIR$/rakefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/pages/admin/setup/setup.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/pages/admin/setup/setup.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/sections/admin/setup/user/centers.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/sections/admin/setup/user/centers.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +58,7 @@
             <entry file="file://$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="575">
-                  <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+                  <caret line="72" column="6" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -170,7 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/spec/pages/admin/setup/setup.rb" />
         <option value="$PROJECT_DIR$/spec/pages/admin/dashboard/dashboard.rb" />
         <option value="$PROJECT_DIR$/spec/scenarios/provisioning.rb" />
         <option value="$PROJECT_DIR$/spec/scenarios/provisioning_spec.rb" />
@@ -179,17 +179,18 @@
         <option value="$PROJECT_DIR$/spec/pages/login/login.rb" />
         <option value="$PROJECT_DIR$/spec/services/admin/setup/user/center_service.rb" />
         <option value="$PROJECT_DIR$/spec/pages/admin/setup/user/centers.rb" />
-        <option value="$PROJECT_DIR$/spec/sections/admin/setup/user/centers.rb" />
         <option value="$PROJECT_DIR$/spec/scenarios/admin/setup/user/center_admin_spec.rb" />
         <option value="$PROJECT_DIR$/spec/pages/admin/admin.rb" />
         <option value="$PROJECT_DIR$/spec/sections/admin/admin.rb" />
         <option value="$PROJECT_DIR$/spec/sections/admin/setup/setup.rb" />
-        <option value="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" />
         <option value="$PROJECT_DIR$/spec/spec_helper.rb" />
-        <option value="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" />
         <option value="$PROJECT_DIR$/spec/pages/main/home.rb" />
         <option value="$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb" />
         <option value="$PROJECT_DIR$/rakefile" />
+        <option value="$PROJECT_DIR$/spec/sections/admin/setup/user/centers.rb" />
+        <option value="$PROJECT_DIR$/spec/pages/admin/setup/setup.rb" />
+        <option value="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" />
+        <option value="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" />
       </list>
     </option>
   </component>
@@ -308,12 +309,12 @@
       <workItem from="1551707650039" duration="9139000" />
       <workItem from="1551878588049" duration="29072000" />
       <workItem from="1552310478649" duration="650000" />
-      <workItem from="1552311957924" duration="2390000" />
+      <workItem from="1552311957924" duration="3277000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119493000" />
+    <option name="totallyTimeSpent" value="120380000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -326,7 +327,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49837133" weight="0.19616205" />
       <window_info id="Structure" order="1" sideWeight="0.50162864" side_tool="true" weight="0.14765458" />
@@ -559,7 +559,7 @@
     <entry file="file://$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
-          <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+          <caret line="72" column="6" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
         </state>
       </provider>
     </entry>
