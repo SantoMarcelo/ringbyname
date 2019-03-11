@@ -21,7 +21,7 @@ module Sections
 
     def wait_for_grid
       i=0
-      while has_grid_list? == false | i == 100 do
+      while has_grid_list? == false || i == 100 do
         puts "waiting for grid.."
         i+=1
       end
@@ -49,7 +49,7 @@ module Sections
 
     def wait_for_details
       i=0
-      while has_name? == false  | i == 100 do
+      while has_name? == false  || i == 100 do
         puts 'waiting for details..'
         i+=1
       end
@@ -64,7 +64,7 @@ module Sections
 
     def wait_for_modal
       i=0
-      while has_title? ==false | i == 100 do
+      while has_title? ==false || i == 100 do
         puts 'waiting for delete modal..'
         i+=1
       end

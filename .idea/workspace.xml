@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/spec/pages/admin/setup/setup.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/pages/admin/setup/setup.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/sections/admin/setup/user/centers.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/sections/admin/setup/user/centers.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +22,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1920">
-                  <caret line="1191" selection-start-line="1191" selection-end-line="1191" />
+                <state relative-caret-position="255">
+                  <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
                   <folding>
                     <element signature="e#2871#6471#0" />
                     <element signature="e#6573#11162#0" />
@@ -85,16 +84,19 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="27" column="36" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="36" />
+                <state relative-caret-position="810">
+                  <caret line="112" column="31" lean-forward="true" selection-start-line="112" selection-start-column="31" selection-end-line="112" selection-end-column="31" />
+                  <folding>
+                    <element signature="e#19#3126#0" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/sections/main/home.rb">
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
@@ -187,10 +189,10 @@
         <option value="$PROJECT_DIR$/spec/pages/main/home.rb" />
         <option value="$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb" />
         <option value="$PROJECT_DIR$/rakefile" />
+        <option value="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" />
         <option value="$PROJECT_DIR$/spec/sections/admin/setup/user/centers.rb" />
         <option value="$PROJECT_DIR$/spec/pages/admin/setup/setup.rb" />
         <option value="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" />
-        <option value="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" />
       </list>
     </option>
   </component>
@@ -309,12 +311,12 @@
       <workItem from="1551707650039" duration="9139000" />
       <workItem from="1551878588049" duration="29072000" />
       <workItem from="1552310478649" duration="650000" />
-      <workItem from="1552311957924" duration="3277000" />
+      <workItem from="1552311957924" duration="3854000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120380000" />
+    <option name="totallyTimeSpent" value="120957000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -387,6 +389,11 @@
           <url>file://$PROJECT_DIR$/spec/scenarios/admin/setup/user/center_admin_spec.rb</url>
           <line>190</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb</url>
+          <line>2</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -525,13 +532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/setup.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -572,8 +572,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="1191" selection-start-line="1191" selection-end-line="1191" />
+        <state relative-caret-position="255">
+          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
           <folding>
             <element signature="e#2871#6471#0" />
             <element signature="e#6573#11162#0" />
@@ -589,6 +589,16 @@
             <element signature="e#49915#54501#0" />
             <element signature="e#54512#54746#0" />
             <element signature="e#54862#54908#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="112" column="31" lean-forward="true" selection-start-line="112" selection-start-column="31" selection-end-line="112" selection-end-column="31" />
+          <folding>
+            <element signature="e#19#3126#0" />
           </folding>
         </state>
       </provider>
