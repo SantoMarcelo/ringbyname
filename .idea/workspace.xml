@@ -2,62 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6c27cb4-fb1e-4d31-936d-9fc93ecad1f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rakefile" beforeDir="false" afterPath="$PROJECT_DIR$/rakefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/pages/admin/admin.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/pages/admin/admin.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/pages/main/home.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/pages/main/home.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/sections/admin/admin.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/sections/admin/admin.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/sections/admin/setup/setup.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/sections/admin/setup/setup.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/spec_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="1027710188">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.26" value="1" />
-          <entry key="project.open.time.27" value="1" />
-          <entry key="project.open.time.30" value="2" />
-          <entry key="project.open.time.49" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="7" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="data" value="1" />
-          <entry key="rakefile" value="3" />
-          <entry key="rb" value="65" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Ruby" value="68" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="rakefile" value="22" />
-          <entry key="rb" value="11197" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="Ruby" value="11219" />
-        </counts>
-      </usages-collector>
-    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="WebApp-Acceptance-Tests" />
@@ -69,22 +22,23 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="280">
-                  <caret line="381" selection-start-line="381" selection-end-line="381" />
+                <state relative-caret-position="1920">
+                  <caret line="1191" selection-start-line="1191" selection-end-line="1191" />
                   <folding>
-                    <element signature="e#2875#6475#0" />
-                    <element signature="e#6572#11077#0" />
-                    <element signature="e#11284#15748#0" />
-                    <element signature="e#16096#16214#0" />
-                    <element signature="e#15859#35103#0" />
-                    <element signature="e#35101#37075#0" />
-                    <element signature="e#37180#39977#0" />
-                    <element signature="e#39990#41066#0" />
-                    <element signature="e#41118#43974#0" />
-                    <element signature="e#41179#42036#0" />
-                    <element signature="e#42116#43032#0" />
-                    <element signature="e#43102#43968#0" />
-                    <element signature="e#50422#55418#0" />
+                    <element signature="e#2871#6471#0" />
+                    <element signature="e#6573#11162#0" />
+                    <element signature="e#11278#15734#0" />
+                    <element signature="e#15843#34305#0" />
+                    <element signature="e#34318#36292#0" />
+                    <element signature="e#36402#39199#0" />
+                    <element signature="e#39212#40288#0" />
+                    <element signature="e#40406#41263#0" />
+                    <element signature="e#41343#42259#0" />
+                    <element signature="e#42329#43195#0" />
+                    <element signature="e#43336#49785#0" />
+                    <element signature="e#49915#54501#0" />
+                    <element signature="e#54512#54746#0" />
+                    <element signature="e#54862#54908#0" />
                   </folding>
                 </state>
               </provider>
@@ -94,7 +48,7 @@
             <entry file="file://$PROJECT_DIR$/spec/pages/main/home.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="90">
-                  <caret line="6" column="60" lean-forward="true" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
+                  <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
                 </state>
               </provider>
             </entry>
@@ -102,8 +56,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="756">
-                  <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+                <state relative-caret-position="575">
+                  <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -111,8 +65,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/rakefile">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+                <state relative-caret-position="405">
+                  <caret line="27" column="27" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="27" />
                 </state>
               </provider>
             </entry>
@@ -133,15 +87,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="314">
+                <state relative-caret-position="405">
                   <caret line="27" column="36" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="36" />
-                  <folding>
-                    <element signature="e#3119#3675#0" />
-                    <element signature="e#3678#3923#0" />
-                    <element signature="e#3926#4443#0" />
-                    <element signature="e#4446#5003#0" />
-                    <element signature="e#5006#5233#0" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -155,7 +102,7 @@
             <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/setup.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="390">
-                  <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+                  <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
                 </state>
               </provider>
             </entry>
@@ -163,8 +110,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="544">
-                  <caret line="97" column="53" lean-forward="true" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="53" />
+                <state relative-caret-position="1455">
+                  <caret line="97" column="53" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="53" />
                 </state>
               </provider>
             </entry>
@@ -239,18 +186,12 @@
         <option value="$PROJECT_DIR$/spec/sections/admin/setup/setup.rb" />
         <option value="$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb" />
         <option value="$PROJECT_DIR$/spec/spec_helper.rb" />
-        <option value="$PROJECT_DIR$/rakefile" />
         <option value="$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb" />
         <option value="$PROJECT_DIR$/spec/pages/main/home.rb" />
         <option value="$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb" />
+        <option value="$PROJECT_DIR$/rakefile" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="466" />
@@ -266,7 +207,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -327,6 +267,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,12 +306,14 @@
       <workItem from="1550665567817" duration="5821000" />
       <workItem from="1551286571218" duration="37343000" />
       <workItem from="1551707650039" duration="9139000" />
-      <workItem from="1551878588049" duration="28603000" />
+      <workItem from="1551878588049" duration="29072000" />
+      <workItem from="1552310478649" duration="650000" />
+      <workItem from="1552311957924" duration="2390000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115984000" />
+    <option name="totallyTimeSpent" value="119493000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -385,7 +328,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837133" visible="true" weight="0.19189766" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49837133" weight="0.19616205" />
       <window_info id="Structure" order="1" sideWeight="0.50162864" side_tool="true" weight="0.14765458" />
       <window_info id="Favorites" order="2" sideWeight="0.5005429" side_tool="true" weight="0.14765458" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -400,7 +343,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32899022" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.32899022" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49946696" weight="0.32899022" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" sideWeight="0.49946696" visible="true" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -431,9 +374,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -568,16 +508,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
-          <folding>
-            <element signature="e#357#1103#0" />
-            <element signature="e#1157#3894#0" />
-            <element signature="e#4174#5164#0" />
-            <element signature="e#5307#7000#0" />
-            <element signature="e#5341#5913#0" />
-            <element signature="e#5947#6499#0" />
-            <element signature="e#6535#6994#0" />
-            <element signature="e#7061#7543#0" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/pages/main/home.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -588,6 +525,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/setup.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1455">
+          <caret line="97" column="53" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/spec/sections/admin/admin.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -595,76 +553,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/setup.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/spec/sections/main/home.rb">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/pages/admin/setup/user/users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="97" column="53" lean-forward="true" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="53" />
+        <state relative-caret-position="575">
+          <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rakefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/sections/admin/setup/user/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="36" />
-          <folding>
-            <element signature="e#3119#3675#0" />
-            <element signature="e#3678#3923#0" />
-            <element signature="e#3926#4443#0" />
-            <element signature="e#4446#5003#0" />
-            <element signature="e#5006#5233#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/sections/main/home.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/pages/main/home.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="60" lean-forward="true" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
+        <state relative-caret-position="405">
+          <caret line="27" column="27" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/scenarios/admin/setup/user/users_admin_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="381" selection-start-line="381" selection-end-line="381" />
+        <state relative-caret-position="1920">
+          <caret line="1191" selection-start-line="1191" selection-end-line="1191" />
           <folding>
-            <element signature="e#2875#6475#0" />
-            <element signature="e#6572#11077#0" />
-            <element signature="e#11284#15748#0" />
-            <element signature="e#16096#16214#0" />
-            <element signature="e#15859#35103#0" />
-            <element signature="e#35101#37075#0" />
-            <element signature="e#37180#39977#0" />
-            <element signature="e#39990#41066#0" />
-            <element signature="e#41118#43974#0" />
-            <element signature="e#41179#42036#0" />
-            <element signature="e#42116#43032#0" />
-            <element signature="e#43102#43968#0" />
-            <element signature="e#50422#55418#0" />
+            <element signature="e#2871#6471#0" />
+            <element signature="e#6573#11162#0" />
+            <element signature="e#11278#15734#0" />
+            <element signature="e#15843#34305#0" />
+            <element signature="e#34318#36292#0" />
+            <element signature="e#36402#39199#0" />
+            <element signature="e#39212#40288#0" />
+            <element signature="e#40406#41263#0" />
+            <element signature="e#41343#42259#0" />
+            <element signature="e#42329#43195#0" />
+            <element signature="e#43336#49785#0" />
+            <element signature="e#49915#54501#0" />
+            <element signature="e#54512#54746#0" />
+            <element signature="e#54862#54908#0" />
           </folding>
         </state>
       </provider>
