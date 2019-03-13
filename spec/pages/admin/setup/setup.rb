@@ -9,8 +9,10 @@ class Setup < Admin
 
     def wait_for_message
         i=0
-        while has_message? == false || i == 100do
-            puts "waiting for message.."
+        while has_message? == false || i == 100 do
+            if i ==0
+                puts "waiting for message.."
+            end
             i+=1
         end
     end

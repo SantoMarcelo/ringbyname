@@ -14,10 +14,10 @@ describe('validate Users Setup', :master) do
     
     @user1 = {
       extension: '101',
-      name: 'Dev Marcel User 1',
-      first_name: 'Dev Marcel',
+      name: "Dev #{$environment} User 1",
+      first_name: "Dev #{$environment}",
       last_name: 'User 1',
-      email: 'devmarcel.user1@ringbyname.com',
+      email: "dev#{$environment}.user1@ringbyname.com",
       new_password: 'dsa654321',
       type: 'R! Virtual User',
       direct: 'None',
@@ -34,40 +34,40 @@ describe('validate Users Setup', :master) do
 
     }
     @user2 = {
-      username: 'devmarcel.user2@ringbyname.com',
+      username: "dev#{$environment}.user2@ringbyname.com",
       password: '123456asd',
       extension: '102',
-      name: 'Dev Marcel User 2',
+      name: "Dev #{$environment} User 2",
       type: 'R! Virtual User',
       direct: 'None'
     }
     @user3 = {
-      username: 'devmarcel.user3@ringbyname.com',
+      username: "dev#{$environment}.user3@ringbyname.com",
       password: '123456asd',
       extension: '103',
-      name: 'Dev Marcel User 3',
+      name: "Dev #{$environment} User 3",
       type: 'RingByName User',
       direct: '12089328951'      
     }
     @user4 = {
       extension: '104',
-      name: 'Dev Marcel User 4',
-      email: 'devmarcel.user4@ringbyname.com',
+      name: "Dev #{$environment} User 4",
+      email: "dev#{$environment}.user4@ringbyname.com",
       type: 'RingByName User',
       direct: '12089328957',
       first_name: 'Dev Marcel',
       last_name: 'User 4',
-      username: 'devmarcel.user4@ringbyname.com',
+      username: "dev#{$environment}.user4@ringbyname.com",
       password: '123456asd'
     }
     @user_changed = {
-      username: 'devmarcel.user1.CHANGED@ringbyname.com',
+      username: "dev#{$environment}.user1.CHANGED@ringbyname.com",
       password: 'dsa654321',
       extension: '999',
-      name: 'Dev Marcel 1 CHANGED User CHANGED',
-      first_name: 'Dev Marcel 1 CHANGED',
+      name: "Dev #{$environment} 1 CHANGED User CHANGED",
+      first_name: "Dev #{$environment} 1 CHANGED",
       last_name: 'User CHANGED',
-      email: 'devmarcel.user1.CHANGED@ringbyname.com',
+      email: "dev#{$environment}.user1.CHANGED@ringbyname.com",
       type: 'R! Virtual User',
       direct: 'None',
       outbound_caller_id: '12089328965 (Dev Marcel)',
@@ -364,6 +364,7 @@ describe('validate Users Setup', :master) do
         puts '  and I change user informations'
         #expect(page).to have_css(users.details.txt_first_name.instance_variable_get(:@query).locator)
         users.wait_for_user_details
+        sleep 1
         users.details.txt_first_name.set (@user_changed[:first_name])
         users.details.txt_last_name.set (@user_changed[:last_name])
         users.details.txt_email.set (@user_changed[:email])
@@ -408,6 +409,13 @@ describe('validate Users Setup', :master) do
         #expect(users.details.checkbox_outbound_call_recording(visible: false)).to be_checked
         expect(users.details.checkbox_call_pickup(visible: false)).not_to be_checked
       end
+    end
+    it('validate password update') do |e|
+      e.step('and I select the first user') do
+        puts '  and I select the first user'
+        # sleep 10
+        users.select_user_in_grid(@user_changed)
+      end
       e.step('when I change the user password')do
         puts '  when I change the user password'
         sleep 2
@@ -423,7 +431,7 @@ describe('validate Users Setup', :master) do
         users.message.btn_ok.click
         users.wait_for_grid
         expect(users.is_user_in_grid(@user_changed)).to eql true
-        
+
         users.main_menu.menu.click
         users.main_menu.logout.click
        end
@@ -439,6 +447,13 @@ describe('validate Users Setup', :master) do
         visit('#!/admin/setup/user')
         users.wait_for_grid
         expect(users.user_main.title.text).to eql 'Users'
+      end
+    end
+    it('validate outbound caller ID update') do |e|
+      e.step('and I select the first user') do
+        puts '  and I select the first user'
+        # sleep 10
+        users.select_user_in_grid(@user_changed)
       end
       e.step('when I change outbound caller to custom options')do
         puts '  when I change outbound caller to custom options'
@@ -460,6 +475,13 @@ describe('validate Users Setup', :master) do
         # expect(users.details.txt_caller_custom_name.text.include?(@user_changed[:caller_custom_name]))
         admin_dashboard.goto_home
         expect(home.my_caller_id.text.include?(@user_changed[:caller_custom_number]))
+      end
+    end
+    it('validate devices update') do |e|
+      e.step('and I select the first user') do
+        puts '  and I select the first user'
+        # sleep 10
+        users.select_user_in_grid(@user_changed)
       end
       e.step('when I insert others devices')do
         puts '  when I insert others devices'
@@ -487,11 +509,7 @@ describe('validate Users Setup', :master) do
       end
       e.step('when I validate the maximum number of devices')do
         puts '  when I validate the maximum number of devices'
-        sleep 1
-        users.details.link_add_device.click
-        users.details.link_devices_name.each do |u|
-          expect(u.text.include?('VoIP Device 9314129*'))
-        end
+        sleep 2
         users.details.link_add_device.click
         users.details.link_devices_name.each do |u|
           expect(u.text.include?('VoIP Device 9314129*'))
@@ -540,7 +558,10 @@ describe('validate Users Setup', :master) do
       end
       e.step('and when I select device to see the config specs')do
         puts '  and when I select device to see the config specs'
+        sleep 1
+        puts users.details.link_devices_name.length
         users.details.link_devices_name.each do |u|
+          puts u.text
           u.click
         end
       end
@@ -614,6 +635,13 @@ describe('validate Users Setup', :master) do
           # expect(u.text.include?(@user1[:landline_number])).to eql false
         end
       end
+    end
+    it('validate voicemail settings update') do |e|
+      e.step('and I select the first user') do
+        puts '  and I select the first user'
+        # sleep 10
+        users.select_user_in_grid(@user_changed)
+      end
       e.step('when I select text to speech greeting option')do
         puts '  when I select text to speech greeting option'
         users.details.checkboxes.each do |u|
@@ -665,13 +693,15 @@ describe('validate Users Setup', :master) do
       e.step('then I check if was saved correctly')do
         puts '  then I check if was saved correctly'
         users.select_user_in_grid(@user_changed)
+        sleep 2
         expect(users.details.radio_auto_greeting(visible: false)).not_to be_checked
         expect(users.details.select_language.text.include?('Portuguese'))
       end
-    
+    end
+    it('validate admin update') do |e|
       e.step('when I remove admin permission from other user')do
         puts '  when I remove admin permission from other user'
-        users.select_user_in_grid(@user2)
+        users.select_user_in_grid(@user_changed)
         users.details.checkboxes.each do |u|
           u.click if u.text.include?('Make this user an admin')
         end
@@ -685,14 +715,14 @@ describe('validate Users Setup', :master) do
         puts '  then I can\'t see this user like admin in user grid'
         users.setup.wait_for_grid_rows
         expect(users.setup.grid_icon_admin.length).to eql 3
-        users.select_user_in_grid(@user2)
+        users.select_user_in_grid(@user_changed)
         expect(users.details.checkbox_admin_permission(visible: false)).not_to be_checked
       end
-      e.step('when I login with an user what isn\'t a admin')do
-        puts '  when I login with an user what isn\'t a admin'
+      e.step('when I login with an user what isn\'t an admin')do
+        puts '  when I login with an user what isn\'t an admin'
         users.main_menu.menu.click
         users.main_menu.logout.click
-        login_page.do_login(@user2)
+        login_page.do_login(@user_changed)
         home.check_user_status
       end
       e.step('then I\'ll dont\'t have acces to admin page')do
@@ -705,12 +735,12 @@ describe('validate Users Setup', :master) do
         puts '  when I try to remove admin permission to the same logged user'
         home.dropdown_menu.logout.click
         login_page.wait_for_txt_user
-        login_page.do_login(@user_changed)
+        login_page.do_login(@user2)
         home.check_user_status
         visit('#!/admin/setup/user')
         users.wait_for_grid
         expect(users.user_main.title.text).to eql 'Users'
-        users.select_user_in_grid(@user_changed)
+        users.select_user_in_grid(@user2)
       end
       e.step('then I can see disabled field')do
         puts '  then I can see disabled field'
@@ -726,10 +756,59 @@ describe('validate Users Setup', :master) do
       #  puts File.join(Dir.pwd, target)
       #  attach_file(users.details.link_upload_voicemail_file, (File.join(Dir.pwd, target)))
       # end
-      
     end
-    after() do
+    after(:all) do
       puts '  Return to original data'
+      @user_changed = {
+          username: "dev#{$environment}.user1.CHANGED@ringbyname.com",
+          password: 'dsa654321',
+          extension: '999',
+          name: "Dev #{$environment} 1 CHANGED User CHANGED",
+          first_name: "Dev #{$environment} 1 CHANGED",
+          last_name: 'User CHANGED',
+          email: "dev#{$environment}.user1.CHANGED@ringbyname.com",
+          type: 'R! Virtual User',
+          direct: 'None',
+          outbound_caller_id: '12089328965 (Dev Marcel)',
+          voicemail_password: '1234',
+          number_of_rings: '10',
+          caller_custom_number: '9999999999',
+          caller_custom_name: 'Test Custom Name'
+      }
+      @user1 = {
+          extension: '101',
+          name: "Dev #{$environment} User 1",
+          first_name: "Dev #{$environment}",
+          last_name: 'User 1',
+          email: "dev#{$environment}.user1@ringbyname.com",
+          new_password: 'dsa654321',
+          type: 'R! Virtual User',
+          direct: 'None',
+          outbound_caller_id: '12083660505 (Dev Marcel)',
+          voicemail_password: '81947',
+          number_of_rings: '5',
+          landline_name: 'Cellphone Test',
+          landline_number: '011554899999999',
+          device_username: 'Username: 9432841',
+          device_authname: 'Auth Name: 9432841',
+          device_password: 'Password: 4d48cfcd20c2',
+          device_sip: 'SIP Server: 1168173.sip.dev.ringbyname.com',
+          text_to_speech: 'Thanks for calling to Dev QC'
+
+      }
+      @user2 = {
+          username: "dev#{$environment}.user2@ringbyname.com",
+          password: '123456asd',
+          extension: '102',
+          name: "Dev #{$environment} User 2",
+          type: 'R! Virtual User',
+          direct: 'None'
+      }
+      login_page.load
+      login_page.do_login(get_admin())
+      home.check_user_status
+      visit('#!/admin/setup/user')
+      users.select_user_in_grid(@user_changed)
       # return setup data to default
       users.details.txt_first_name.set (@user1[:first_name])
       users.details.txt_last_name.set (@user1[:last_name])
@@ -744,11 +823,11 @@ describe('validate Users Setup', :master) do
       users.details.checkboxes.each do |u|
         u.click if u.text.include?('Use Callback Request')
         u.click if u.text.include?('Require key press to accept transferred calls')
-        #u.click if u.text.include?('Enable inbound call recording for this setup')
+        u.click if u.text.include?('Enable Voicemail Box of User Calls')
        # u.click if u.text.include?('Enable outbound call recording for this setup')
         u.click if u.text.include?('Allow others to remotely answer this setup\'s calls')
       end
-      users.details.txt_text_greeting.set('')
+      #users.details.txt_text_greeting.set('')
       users.details.radios.each do |u|
         if u.text.include?('Use Automatic Greeting')
           u.click
@@ -757,15 +836,13 @@ describe('validate Users Setup', :master) do
       users.details.txt_text_greeting.set('')
       users.details.txt_number_rings.set(@user1[:number_of_rings])
       users.details.btn_save_user.click
-      expect(page).to have_css(users.message.modal.instance_variable_get(:@query).locator)
       users.wait_for_message
-      
       expect(users.message.modal.text).to eql 'User updated successfully.'
       users.message.btn_ok.click
       users.is_user_in_grid(@user1)
       users.select_user_in_grid(@user2)
       users.details.checkboxes.each do |u|
-        u.click if u.text.include?('Make this setup an admin')
+        u.click if u.text.include?('Make this user an admin')
       end
       users.details.btn_save_user.click
       users.wait_for_message
@@ -782,29 +859,29 @@ describe('validate Users Setup', :master) do
          admin_dashboard.goto_settings_admin
         expect(users.admin_title.text).to eql 'Setup'
       end
-      e.step('and I select the setup to reset data') do
-        puts '  and I select the setup to reset data'
+      e.step('and I select the user to reset data') do
+        puts '  and I select the user to reset data'
         users.select_user_in_grid(@user4)
       end
-      e.step('and I cancel reset setup data')do
-        puts '  and I cancel reset setup data'
+      e.step('and I cancel reset user data')do
+        puts '  and I cancel reset user data'
         users.details.btn_reset_user.click
         users.reset_modal.wait_for_modal_title
         expect(users.reset_modal.modal_title.text).to eql 'Reset User Settings'
-        expect(users.reset_modal.modal_message.text).to eql "Please confirm you wish to reset this setup and erase all setup settings."
+        expect(users.reset_modal.modal_message.text).to eql "Please confirm you wish to reset this user and erase all user settings."
         users.reset_modal.modal_btn_cancel.click
       end
-      e.step('the I return to setup details')do
-        puts '  the I return to setup details'
+      e.step('the I return to user details')do
+        puts '  the I return to user details'
         users.wait_until_reset_modal_invisible
         expect(users.has_reset_modal?).to eql false
       end
-      e.step('when I confirm reset setup data')do
-        puts '  when I confirm reset setup data'
+      e.step('when I confirm reset user data')do
+        puts '  when I confirm reset user data'
         users.details.btn_reset_user.click
         users.wait_for_reset_modal
         expect(users.reset_modal.modal_title.text).to eql 'Reset User Settings'
-        expect(users.reset_modal.modal_message.text).to eql 'Please confirm you wish to reset this setup and erase all setup settings.'
+        expect(users.reset_modal.modal_message.text).to eql 'Please confirm you wish to reset this user and erase all user settings.'
         users.reset_modal.modal_btn_save.click
         #confirmation message
         users.wait_for_message
@@ -821,8 +898,8 @@ describe('validate Users Setup', :master) do
         expect(users.details.txt_extension.text.include?(@user_restored[:extension]))
         expect(users.details.txt_direct_number.text.include?(@user_restored[:direct]))
       end
-      e.step('and I validate the login with the new setup data')do
-        puts '  and I validate the login with the new setup data'
+      e.step('and I validate the login with the new user data')do
+        puts '  and I validate the login with the new user data'
         users.main_menu.menu.click
         users.main_menu.logout.click
         login_page.do_login(@user_restored)
@@ -857,17 +934,14 @@ describe('validate Users Setup', :master) do
       users.message.wait_until_modal_visible
       expect(users.message.modal.text).to eql 'User updated successfully.'
       users.message.btn_ok.click
-      users.menu.department.click
+      users.menu.departments.click
       users.menu.users.click
       expect(users.is_user_in_grid(@user4)).to eql true
     end
   end
 
-  describe('Validate CRM Feature', :master_user) do
+  describe('Validate CRM Feature', :crm_feature) do
     it('update users to enable CRM feature', :crm_enable) do |e|
-      e.step('when I on users setup') do
-         admin_dashboard.goto_settings_admin
-      end
       e.step('and I select the first setup') do
         users.select_user_in_grid(@user2)
       end
@@ -890,14 +964,6 @@ describe('validate Users Setup', :master) do
     end
 
     it('check maximum number of license validation message', :crm_validation) do |e|
-      e.step('given I has only 1 CRM license') do
-        puts '  given I has only 1 CRM license'
-        # expect(users.get_number_of_crm_licenses).to eql 1
-      end
-      e.step('when I on users setup') do
-        puts '  when I on users setup'
-         admin_dashboard.goto_settings_admin
-      end
       e.step('and I allow CRM feature to users') do
         puts '  and I allow CRM feature to users'
         users.select_user_in_grid(@user3)
@@ -906,7 +972,7 @@ describe('validate Users Setup', :master) do
       e.step('then I see the validation message') do
         puts '  then I see the validation message'
         users.wait_for_message
-        expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this setup, please buy another license or disable CRM of another setup before proceeding."
+        expect(users.message.modal.text).to eql "Sorry, but you've reached the maximum number of CRM licenses for your account. If you still want to enable the CRM feature for this user, please buy another license or disable CRM of another user before proceeding."
       end
     end
 
@@ -930,6 +996,7 @@ describe('validate Users Setup', :master) do
         users.wait_for_grid
         users.menu.departments.click
         users.menu.users.click
+        sleep 1
         expect(users.setup.grid_icon_crm.length).to eql 1
         users.select_user_in_grid(@user2)
         users.wait_for_user_details

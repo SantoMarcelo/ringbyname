@@ -25,8 +25,10 @@ class User < Setup
 
   def wait_for_grid_line
     i=0
-    while has_user_grid_line? == false || i ==100 do
-      puts "waiting for data.."
+    while has_user_grid_line? == false  do
+      if i == 0
+        puts "waiting for data.."
+      end
       i+=1
     end
 
@@ -35,7 +37,9 @@ class User < Setup
   def wait_for_grid
     i=0
     while user_main.has_grid_rows? == false || i ==100 do
-      puts "waiting grid.."
+      if i == 0
+        puts "waiting grid.."
+      end
       i+=1
     end
   end
@@ -43,7 +47,9 @@ class User < Setup
   def wait_for_user_details
     i=0
     while details.has_txt_first_name? == false  || i ==100 do
-      puts "waiting data.."
+      if i == 0
+        puts "waiting data.."
+      end
       i+=1
     end
   end
@@ -109,7 +115,7 @@ class User < Setup
     wait_for_user_details
     details.wait_until_btn_save_user_visible
     details.checkboxes.each do |u|
-      u.click if u.text.include?('Enable CRM for this setup')
+      u.click if u.text.include?('Enable CRM for this user')
     end
     details.btn_save_user.click
     sleep(2)
@@ -120,7 +126,7 @@ class User < Setup
     details.wait_until_btn_save_user_visible
     sleep(1)
     details.checkboxes.each do |u|
-      u.click if u.text.include?('Enable CRM for this setup')
+      u.click if u.text.include?('Enable CRM for this user')
     end
     details.btn_save_user.click
     setup.wait_until_grid_rows_visible

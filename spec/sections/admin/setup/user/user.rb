@@ -95,8 +95,10 @@ module Sections
 
     def wait_for_fields
       i=0
-      while has_title? == false | i == 100
-        puts "waiting for fields.."
+      while has_title? == false || i == 50
+        if i== 0
+          puts "waiting for fields.."
+        end
         i+=1
       end
     end
@@ -110,8 +112,12 @@ module Sections
     element :btn_save, '.control button.button-save'
 
     def wait_for_fields
-      while has_title? == false
-        puts "waiting for fields.."
+      i=0
+      while has_title? == false || i== 50
+        if i== 0
+          puts "waiting for fields.."
+        end
+       i+=1
       end
     end
   end

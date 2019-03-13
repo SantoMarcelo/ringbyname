@@ -21,8 +21,12 @@ class Home < SitePrism::Page
   element :message, 'div[class="noty_message"] > span'
 
   def check_user_status
-    while has_user_status? == false
-      puts"waiting for status.."
+    i = 0
+    while has_user_status? == false || i == 2
+      if i==0
+        puts"waiting for status.."
+      end
+      i+=1
     end
   end
 
