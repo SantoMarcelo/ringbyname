@@ -5,7 +5,7 @@ require_relative '../../../../pages/admin/setup/user/centers'
 require_relative '../../../../sections/admin/setup/user/centers'
 require_relative '../../../../services/admin/setup/user/center_service'
 
-describe('Validate Center setup', :master) do
+describe('Validate Center setup', :master_admin) do
   before(:each) do
 
 

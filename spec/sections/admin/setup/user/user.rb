@@ -7,6 +7,7 @@ module Sections
     element :txt_email, 'input[placeholder="E-mail"]'
     elements :txt_password, '.control input[placeholder="Password"]'
     element :txt_password_repeart, 'input[placeholder="Confirm Password"]'
+    element :txt_center_name, 'input[data-ng-model*="location.name"]'
     # extensions
     element :txt_extension, 'input[placeholder="Extension"]'
     element :txt_direct_number, 'div[class="control ng-binding"]:nth-of-type(2)'

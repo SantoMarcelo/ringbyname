@@ -2,7 +2,7 @@ require_relative '../../../../pages/login/login'
 require_relative '../../../../pages/admin/dashboard/dashboard'
 require_relative '../../../../pages/admin/setup/user/users'
 
-describe('validate Users Setup', :master) do
+describe('validate Users Setup', :master_admin) do
   before(:each) do
 
      get_user_list
@@ -89,7 +89,7 @@ describe('validate Users Setup', :master) do
     }
   end
 #user_list
-  describe('validate users list', :master_user) do
+  describe('validate users list', :master_user_list) do
     it('  access user setup and validate user list') do |e|
       puts 'access setup setup and validate setup list'
       e.step('when I on admin page') do
@@ -185,7 +185,7 @@ describe('validate Users Setup', :master) do
     end
   end
 #search_user
-  describe('search users', :master_user) do
+  describe('search users', :master_user_search) do
     it('  validate all search cases') do |e|
       puts 'validate all search cases'
       e.step('when I on users setup') do
@@ -293,7 +293,7 @@ describe('validate Users Setup', :master) do
     end
   end
  # user_details
-  describe('validate users details', :master_user) do
+  describe('validate users details', :master_user_details) do
     it('  validate users information') do |e|
       puts 'validate setup information'
 
@@ -351,7 +351,7 @@ describe('validate Users Setup', :master) do
     end
   end
 
-  describe('validate users update', :user_update) do
+  describe('validate users update', :master_user_update) do
     it('  update users and check changed data') do |e|
       puts '  update users and check changed data'
       e.step('and I select the first user') do
@@ -851,7 +851,7 @@ describe('validate Users Setup', :master) do
     end
   end
 
-  describe('validate setup reset data', :master_user) do
+  describe('validate setup reset data', :master_user_reset) do
     it('reset setup data and check new data')do |e|
       puts '  reset setup data and check new data'
       e.step('when I on users setup') do
@@ -940,7 +940,7 @@ describe('validate Users Setup', :master) do
     end
   end
 
-  describe('Validate CRM Feature', :crm_feature) do
+  describe('Validate CRM Feature', :master_user_crm_feature) do
     it('update users to enable CRM feature', :crm_enable) do |e|
       e.step('and I select the first setup') do
         users.select_user_in_grid(@user2)
@@ -1005,7 +1005,7 @@ describe('validate Users Setup', :master) do
     end
   end
 
-  describe('Validate Outbound Caller ID massive update', :master_user) do
+  describe('Validate Outbound Caller ID massive update', :master_user_massive_OCID) do
     it('set the same caller id to all users and validate') do |e|
       puts 'set the same caller id to all users and validate'
       e.step('and I select the massive update link')do
@@ -1145,7 +1145,7 @@ describe('validate Users Setup', :master) do
     end
   end
 
-  describe('Validate password massive update', :master_user) do
+  describe('Validate password massive update', :master_user_massive_pwd) do
     it('set the same password to all users and validate') do |e|
       puts 'set the same password to all users and validate'
 =begin
@@ -1268,12 +1268,33 @@ describe('validate Users Setup', :master) do
 
   describe('Validate User Center Association', :user_center_update) do
     it('associate user to a center') do |e|
-      e.step('') do
+      e.step('Given I have center registered on the system') do
+        puts '  Given I have center registered on the system'
+        insert_center(1)
+      end
+      e.step('And I select the first user') do
+        puts '  And I select the first user'
+        # sleep 10
+        users.select_user_in_grid(@user1)
+      end
+      e.step('When I select one center to this user') do
+        puts '  When I select one center to this user and save'
+        @center_list = get_center_list
+        puts (@center_list[0])
+        #users.details.txt_center_name.set(@center_list[0])
+      end
+      e.step('Then I should see the success message') do
 
 
       end
+      e.step('And I should see the center name on user list to this user')do
+        puts '  And I should see the center name on user list to this user'
+      end
+
     end
   end
+
+
   after(:each) do |e|
     e.attach_file('screenshot', get_screenshot)
     Capybara.current_session.driver.quit

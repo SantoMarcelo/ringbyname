@@ -18,9 +18,16 @@ desc "rodar dev marcelo com chrome"
 task :test_chrome_browser do
     ENV['BROWSER'] = 'chrome'
     ENV['ENVIRONMENT'] = 'Marcel'
-    ENV['BRANCH'] = '3.18.1'
+    ENV['BRANCH'] = 'current'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag crm_feature --format html --out log/reports/spec2.html'
+#    sh 'rspec -fd --tag user_center_update --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag master_user_search --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag master_user_details --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag master_user_update --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag master_user_reset --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag master_user_crm_feature --format html --out log/reports/spec2.html'
+    #sh 'rspec -fd --tag master_user_massive_OCID --format html --out log/reports/spec2.html'
+   # sh 'rspec -fd --tag master_user_massive_pwd --format html --out log/reports/spec2.html'
     #sh 'allure serve log/reports'
 end
 
@@ -28,17 +35,17 @@ desc "rodar dev marcelo com chrome headless"
 task :test_headless_browser do
     ENV['BROWSER'] = 'chrome headless'
     ENV['ENVIRONMENT'] = 'marcel'
-    ENV['BRANCH'] = 'master'
+    ENV['BRANCH'] = 'current'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag user_update --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag user_center_update --format html --out log/reports/spec2.html'
     #sh 'allure serve log/reports'
 end 
     
 desc "Run webapp testes on jenkins"
 task :run_webapp_tests do
     ENV['BROWSER'] = 'chrome headless'
-    ENV['ENVIRONMENT'] = 'marcelo'
-    ENV['BRANCH'] = 'current'
+    ENV['ENVIRONMENT'] = 'marcel'
+    ENV['BRANCH'] = '3.18.1'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '69aed2821f3005236e13b1360f99cf34'
     sh 'rspec -fd --tag master --format html --out log/reports/spec.html'
     #sh 'allure serve log/reports'
@@ -46,10 +53,15 @@ end
 
 desc "Run admin testes on jenkins"
 task :run_admin_tests do
-    ENV['BROWSER'] = 'chrome headless'
+    ENV['BROWSER'] = 'chrome'
     ENV['ENVIRONMENT'] = 'marcel'
-    ENV['BRANCH'] = 'current'
+    ENV['BRANCH'] = 'user_migration'
     ENV['R_CUSTOMER_ACCOUNT_ID'] = '19b142a310a2facdc62db067ac0889c0'
-    sh 'rspec -fd --tag master_admin --format html --out log/reports/spec.html'
+    #sh 'rspec -fd --tag master_admin --format html --out log/reports/spec.html'
     #sh 'allure serve log/reports'
+    sh 'rspec -fd --tag master_user_search --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag master_user_details --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag master_user_update --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag master_user_reset --format html --out log/reports/spec2.html'
+    sh 'rspec -fd --tag master_user_crm_feature --format html --out log/reports/spec2.html'
 end 
